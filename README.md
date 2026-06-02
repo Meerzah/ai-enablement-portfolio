@@ -10,6 +10,7 @@ Building enterprise AI tools on Google Cloud · Vertex AI · Agentspace · Googl
 [![Agentspace](https://img.shields.io/badge/Google-Agentspace-FBBC04?style=flat-square&logo=google&logoColor=black)](https://cloud.google.com/agentspace)
 [![MCP](https://img.shields.io/badge/Protocol-MCP-7F77DD?style=flat-square)](https://modelcontextprotocol.io)
 [![Okta](https://img.shields.io/badge/Identity-Okta-007DC1?style=flat-square&logo=okta&logoColor=white)](https://okta.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-meerzah-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/meerzah)
 
 </div>
 
@@ -75,5 +76,5 @@ Every project in this repo includes a `ROLLOUT.md` documenting how it was adopte
 
 Open to AI Enablement, AI Adoption Engineering, and Senior IT AI roles.
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/YOUR_HANDLE)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-meerzah-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/meerzah)
 

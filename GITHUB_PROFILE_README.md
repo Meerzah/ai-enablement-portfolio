@@ -56,5 +56,5 @@ Before AI tooling, I spent a decade managing enterprise IT infrastructure — fl
 ---
 
 <div align="center">
-  <sub>Open to AI Enablement, AI Adoption Engineering, and Senior IT AI roles · <a href="https://linkedin.com/in/YOUR_HANDLE">LinkedIn</a></sub>
+  <sub>Open to AI Enablement, AI Adoption Engineering, and Senior IT AI roles · <a href="https://linkedin.com/in/meerzah">LinkedIn</a></sub>
 </div>
