@@ -1,13 +1,13 @@
 {
   "title": "AI Systems / Agentic Ops Roadmap",
   "subtitle": "Identity-backed automation → AI agents for internal ops",
-  "careerFocus": "Move 1 — AI Systems / Serval-shaped roles",
+  "careerFocus": "Move 1 — AI Systems",
   "repoName": "ai-systems-portfolio",
   "pagesBase": "https://meerzah.github.io/ai-systems-portfolio",
   "currentWeek": 1,
   "currentPhase": 1,
   "currentUnit": 1,
-  "currentUnitLabel": "Friction → Workflow map",
+  "currentUnitLabel": "Friction map → pick automation target",
   "weeksTotal": 36,
   "hoursPerWeek": "12–15",
   "resume": "Kamaal_Mirza_Resume_Serval.docx",
@@ -26,81 +26,144 @@
       "phase": 1,
       "weeks": "1–4",
       "title": "Friction map + first workflow",
-      "focus": "Catalog top manual ops requests; draft intake→approval→action for one high-volume ticket type",
-      "capstone": "Ops friction inventory + workflow diagram"
+      "focus": "Service desk ticket counts → pick access OR triage candidate → workflow diagram",
+      "capstone": "study-notes/week-01-friction-inventory.md + workflow diagram",
+      "deliverables": [
+        "Top 3 frictions with real ticket counts",
+        "One workflow diagram (intake → HITL → action)",
+        "Baseline metrics plan (no fake %)",
+        "Run helpdesk agent — 5 test queries logged"
+      ],
+      "artifacts": ["study-notes/week-01-friction-inventory.md", "projects/01-it-helpdesk-agent/"]
     },
     {
       "id": 2,
       "phase": 1,
       "weeks": "5–8",
       "title": "Identity-scoped automation",
-      "focus": "Okta group grants, Lumos patterns, audit logging for one workflow",
-      "capstone": "Access grant workflow with identity audit trail"
+      "focus": "Document production access-governance + Okta path; CIPHER ship plan Phase 1",
+      "capstone": "study-notes/week-05-access-workflow.md + projects/06-cipher/",
+      "deliverables": [
+        "Production access-grant flow documented",
+        "Audit log schema (who, what, when, ticket_id)",
+        "CIPHER Phase 1 design (architected — not shipped)",
+        "Okta MCP read-only demo script"
+      ],
+      "artifacts": ["projects/06-cipher/SHIP-PLAN.md", "projects/02-okta-mcp-server/"]
     },
     {
       "id": 3,
       "phase": 1,
       "weeks": "9–12",
       "title": "Agent-assisted triage POC",
-      "focus": "Where LLM helps routing/KB vs deterministic steps; HITL approval gates",
-      "capstone": "Agentic IT workflow case study draft (triage + Okta + audit)"
+      "focus": "Case study: helpdesk agent + Okta MCP + HITL — honest POC status",
+      "capstone": "study-notes/agentic-case-study.md",
+      "deliverables": [
+        "10 eval cases with pass/fail log",
+        "HITL sequence diagram",
+        "Escalation policy doc",
+        "2-min portfolio demo script"
+      ],
+      "artifacts": ["projects/01-it-helpdesk-agent/", "projects/02-okta-mcp-server/"]
     },
     {
       "id": 4,
       "phase": 2,
       "weeks": "13–16",
       "title": "Workflow reliability",
-      "focus": "Retries, idempotency, failure alerts, runbooks",
-      "capstone": "Reliability checklist for one production workflow"
+      "focus": "Workflow reliability patterns + ALIUS offboarding design + runbooks",
+      "capstone": "study-notes/runbooks/access-grant-failure.md",
+      "deliverables": [
+        "Idempotency design for webhooks",
+        "Slack alert payload for failures",
+        "ALIUS architecture review complete",
+        "MTTR baseline for automation failures"
+      ],
+      "artifacts": ["projects/07-alius/ARCHITECTURE.md", "workflow automation + endpoint control (shipped)"]
     },
     {
       "id": 5,
       "phase": 2,
       "weeks": "17–20",
       "title": "Agent tool-use + evals",
-      "focus": "Tool schemas, guardrails, eval sets for triage prompts",
-      "capstone": "Small eval harness for one ops agent path"
+      "focus": "Tool schemas, 20 eval cases, guardrails for helpdesk agent",
+      "capstone": "study-notes/evals/eval_cases.csv + eval runner notes",
+      "deliverables": [
+        "JSON schemas for rag_tool + okta_tool",
+        "eval_cases.csv (10–20 rows)",
+        "escalation-policy.md",
+        "Raw pass/fail log — no invented accuracy"
+      ],
+      "artifacts": ["projects/01-it-helpdesk-agent/tools/"]
     },
     {
       "id": 6,
       "phase": 2,
       "weeks": "21–24",
       "title": "Knowledge base for ops",
-      "focus": "KB structure, grounding, when not to use RAG",
-      "capstone": "Ops KB slice wired into triage POC"
+      "focus": "Runbook corpus for RAG + grounding rules + demo script",
+      "capstone": "study-notes/ops-kb-index.md + updated case study",
+      "deliverables": [
+        "2+ new runbook snippets in agent corpus",
+        "KB index with owners",
+        "Fallback when no KB match",
+        "End-to-end demo script"
+      ],
+      "artifacts": ["projects/01-it-helpdesk-agent/"]
     },
     {
       "id": 7,
       "phase": 3,
       "weeks": "25–28",
       "title": "Metrics + consulting packaging",
-      "focus": "Real ops metrics; package consulting offers (a)(b)(c)",
-      "capstone": "Consulting one-pager + metrics baseline"
+      "focus": "Real metrics baseline + consulting one-pager (a)(b)(c)",
+      "capstone": "study-notes/consulting-one-pager.md + metrics-baseline.md",
+      "deliverables": [
+        "Hours-saved formula with real volume",
+        "Adoption dashboard event schema",
+        "Consulting offers (a)(b)(c) scoped",
+        "5-min platform-bridge rehearsal"
+      ],
+      "artifacts": ["projects/05-adoption-dashboard/", "CONTEXT.md"]
     },
     {
       "id": 8,
       "phase": 3,
       "weeks": "29–32",
       "title": "Interview wave 1",
-      "focus": "Serval-shaped roles; system design for internal ops automation",
-      "capstone": "Mock interviews + portfolio walkthrough"
+      "focus": "AI Systems system designs + STAR + company research",
+      "capstone": "interview-prep/answers/ + timed design docs",
+      "deliverables": [
+        "4 timed system design writeups",
+        "STAR stories filled (Slack automation, workflow automation, case study)",
+        "4 company research notes",
+        "Resume bullets updated"
+      ],
+      "artifacts": ["interview-prep/system-design-template.md", "Kamaal_Mirza_Resume_Serval.docx"]
     },
     {
       "id": 9,
       "phase": 3,
       "weeks": "33–36",
       "title": "Apply + iterate",
-      "focus": "Wave 1 applications; refine case study from feedback",
-      "capstone": "Program capstone — portfolio + apply tracker"
+      "focus": "Wave 1 applications to AI Systems roles",
+      "capstone": "study-notes/apply-retro.md + apply tracker",
+      "deliverables": [
+        "Apply tracker with 3+ targets",
+        "LinkedIn + GitHub aligned to AI Systems",
+        "Case study refined from mock feedback",
+        "1+ applications submitted"
+      ],
+      "artifacts": ["interview-prep/answers/wave-1-checklist.md", "README.md"]
     }
   ],
   "applicationWaves": [
-    { "id": 0, "label": "Wave 0", "when": "Now", "focus": "Resume + LinkedIn; portfolio case draft" },
-    { "id": 1, "label": "Wave 1", "when": "Month 3+", "focus": "Serval-shaped startups; AI ops / internal tools" },
-    { "id": 2, "label": "Wave 2", "when": "Month 6+", "focus": "Senior IC / FDE automation; consulting" }
+    { "id": 0, "label": "Wave 0", "when": "Now", "focus": "Resume + LinkedIn; friction inventory + helpdesk agent demo" },
+    { "id": 1, "label": "Wave 1", "when": "Month 3+", "focus": "AI automation startups; case study + portfolio walkthrough" },
+    { "id": 2, "label": "Wave 2", "when": "Month 6+", "focus": "Senior IC / consulting pipeline active" }
   ],
   "portfolio": {
-    "shipped": ["Slack App Governance → Jira", "n8n ops workflows", "Argus GCP Cloud Run", "Okta + Lumos access automation"],
+    "shipped": ["Slack intake → ticket automation", "Workflow automation", "GCP Cloud Run control plane", "Okta access request automation"],
     "projects": [
       { "id": "01", "path": "projects/01-it-helpdesk-agent/", "label": "IT Helpdesk Agent", "status": "portfolio demo" },
       { "id": "02", "path": "projects/02-okta-mcp-server/", "label": "Okta MCP Server", "status": "portfolio demo" },

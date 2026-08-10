@@ -26,7 +26,7 @@
 - CIPHER (30s): architecting ABAC mover automation — in development
 - ALIUS (30s): designed offboarding orchestration
 - Agentic case (60s): POC triage workflow — honest status, HITL gates
-- Close: targeting AI Systems / Serval-shaped automation roles
+- Close: targeting AI Systems / AI Systems roles
 
 ## Deliverables checklist
 

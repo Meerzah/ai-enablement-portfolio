@@ -1,6 +1,6 @@
 # Phase 3 — Apply lane (Weeks 25–36)
 
-**Goal:** Interview, apply, iterate — Serval-shaped AI Systems roles.
+**Goal:** Interview, apply, iterate — AI Systems roles.
 
 | Unit | Weeks | Focus |
 |------|-------|-------|

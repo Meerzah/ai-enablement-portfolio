@@ -33,7 +33,7 @@ identity-backed automation daily.
 | Stage | Focus |
 |-------|--------|
 | Now | Systems / IT — identity + automation foundation |
-| Move 1 | AI Systems / Serval-shaped roles (primary 6–12 mo) |
+| Move 1 | AI Systems (primary 6–12 mo) |
 | Stretch (this lane) | Senior IC at AI startups |
 
 ---
@@ -75,7 +75,7 @@ identity-backed automation daily.
 - Fri → Measure
 - Sat–Sun → Prove (weekly mini)
 - Capstone weeks (4, 8, 12 …) → monthly build
-- Interview prep from Week 30+ (Serval-shaped roles)
+- Interview prep from Week 30+ (AI Systems roles)
 
 **Dashboard:** `./tracker/serve.sh` — meta in `tracker/progress.json`  
 **Public URL:** https://meerzah.github.io/ai-systems-portfolio/tracker/
@@ -110,7 +110,7 @@ identity-backed automation daily.
 - Save under `/study-notes/` for active path work.
 
 **Interview prep:**
-- Frame for **Serval-like AI automation**, AI Systems, Internal Tools / AI Ops — Staff-level at AI startups with ops automation teams.
+- Frame for **AI-native internal ops AI automation**, AI Systems, Internal Tools / AI Ops — Staff-level at AI startups with ops automation teams.
 - Tie answers to **shipped** work: Slack governance, n8n, Argus, Okta/Lumos, Kandji.
 - CIPHER/ALIUS: accurate status only.
 

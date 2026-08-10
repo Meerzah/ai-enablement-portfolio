@@ -43,7 +43,7 @@ Background and framing for agents, interview prep, and consulting. Read with [`C
 | Stage | Focus |
 |-------|--------|
 | Now | Systems / IT — identity + automation foundation |
-| Move 1 | AI Systems / Serval-shaped roles |
+| Move 1 | AI Systems |
 | Stretch (this lane) | Senior IC at AI startups |
 
 ---

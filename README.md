@@ -68,7 +68,6 @@ profile = {
 | Weekly dashboard | [`tracker/`](./tracker/) — run `./tracker/serve.sh` locally |
 | Phase guides | [`phases/`](./phases/) |
 | Interview prep | [`interview-prep/`](./interview-prep/) |
-| Merge notes | [`MERGE.md`](./MERGE.md) — what was combined from both repos |
 
 ---
 
@@ -90,7 +89,7 @@ SETUP.md             # Run projects + tracker locally
 
 <div align="center">
 
-Open to **AI Systems**, **AI-native automation**, and **internal ops agent** roles (Serval-shaped).
+Open to **AI Systems**, **AI-native automation**, and **internal ops agent** roles.
 
 [![LinkedIn](https://img.shields.io/badge/Connect-meerzah-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/meerzah)
 

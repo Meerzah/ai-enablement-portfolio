@@ -1,7 +1,7 @@
 # System Design Interview Template
 ## AI Systems / internal ops automation framing
 
-Use this structure for every system design practice session (Serval-shaped roles, AI startups with ops teams).
+Use this structure for every system design practice session (AI Systems roles, AI startups with ops teams).
 
 ---
 

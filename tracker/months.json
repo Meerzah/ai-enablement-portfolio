@@ -9,7 +9,7 @@
         "List top 10 manual IT/ops requests by volume",
         "Pick one candidate for automation (ticket triage or access request)",
         "Draft intake → approval → action with HITL gates marked",
-        "Identify Okta/Lumos touchpoints and audit log requirements"
+        "Identify Okta / access-governance touchpoints and audit log requirements"
       ],
       "wave": "Wave 0 — align resume to AI Systems positioning"
     },
@@ -19,7 +19,7 @@
       "title": "Identity-backed access workflow",
       "capstone": "Okta group grant workflow + audit trail design",
       "rubric": [
-        "Document Lumos/Okta pattern already shipped at AppLovin",
+        "Document access-governance + Okta pattern from production work",
         "Design group grant with least-privilege + manager approval",
         "Specify BigQuery or Firestore audit fields (no fake metrics)",
         "Link to projects/06-cipher/ ship plan (architected, not shipped)"
@@ -37,7 +37,7 @@
         "Document failure/retry behavior",
         "Walk through projects/01-it-helpdesk-agent + 02-okta-mcp-server"
       ],
-      "wave": "Wave 1 — begin Serval-shaped outreach"
+      "wave": "Wave 1 — begin targeted outreach"
     },
     {
       "month": 4,
@@ -94,9 +94,9 @@
       "title": "Interview prep — AI Systems",
       "capstone": "Mock system designs for internal ops automation",
       "rubric": [
-        "Practice: design Serval-like ticket automation",
+        "Practice: design AI-native internal IT ticket automation",
         "Practice: Okta + agent identity for service accounts",
-        "STAR stories from Slack app, n8n, Argus",
+        "STAR stories from Slack automation, workflow automation, endpoint control",
         "Timed mock: access-request automation system design"
       ],
       "wave": "Wave 1 active applications"
@@ -108,7 +108,7 @@
       "capstone": "Portfolio walkthrough + apply tracker",
       "rubric": [
         "Single narrative: shipped work + agentic case study",
-        "Apply tracker with Serval-shaped targets",
+        "Apply tracker with AI Systems targets",
         "Consulting pipeline or Wave 2 roles",
         "Retrospective: what to deepen in the next quarter"
       ],

@@ -54,9 +54,15 @@
     .prove-link { display: inline-block; margin: 8px 0; padding: 8px 12px; border-radius: 8px; background: var(--surface2); border: 1px solid var(--accent); color: var(--accent); text-decoration: none; font-size: .88rem; }
     .prove-link:hover { background: #1f3a5f; }
     .unit-list { list-style: none; }
-    .unit-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: .9rem; }
+    .unit-list li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: .9rem; }
     .unit-list li:last-child { border-bottom: none; }
-    .unit-list .active { color: var(--accent); font-weight: 600; }
+    .unit-list .active { color: var(--accent); }
+    .unit-list .active > strong { font-weight: 650; }
+    .unit-detail { margin-top: 8px; padding: 10px 12px; background: var(--surface2); border-radius: 8px; border: 1px solid var(--border); font-size: .85rem; }
+    .unit-detail ul { margin: 6px 0 0 18px; color: var(--muted); }
+    .unit-detail li { margin-bottom: 3px; }
+    .unit-capstone { margin-top: 8px; font-size: 12px; color: var(--purple); }
+    .unit-artifacts { margin-top: 6px; font-size: 12px; }
     footer { margin-top: 24px; font-size: 12px; color: var(--muted); text-align: center; }
     footer a { color: var(--accent); }
   </style>
@@ -91,7 +97,7 @@
       <div id="days"></div>
     </div>
 
-    <footer>Progress saved in browser localStorage · <a href="../">Home</a> · <a href="../README.md">README</a> · <a href="../projects/01-it-helpdesk-agent/">Projects</a></footer>
+    <footer>Progress saved in browser localStorage · <a href="../">Home</a> · <a href="../projects/01-it-helpdesk-agent/">Projects</a></footer>
   </div>
 
   <script>
@@ -145,9 +151,21 @@
 
     function renderUnits() {
       const cur = progress.currentUnit || 1;
-      document.getElementById("unit-list").innerHTML = (progress.units || []).map(u =>
-        `<li class="${u.id === cur ? 'active' : ''}"><strong>Unit ${u.id}</strong> (W${u.weeks}) — ${u.title}<br><span style="color:var(--muted);font-size:12px">${u.focus}</span></li>`
-      ).join("");
+      document.getElementById("unit-list").innerHTML = (progress.units || []).map(u => {
+        const isActive = u.id === cur;
+        const deliverables = (u.deliverables || []).map(d => `<li>${d}</li>`).join("");
+        const artifacts = (u.artifacts || []).map(a =>
+          `<a href="../${a}" style="color:var(--accent);margin-right:8px">${a}</a>`
+        ).join("");
+        const detail = isActive && (deliverables || u.capstone) ? `
+          <div class="unit-detail">
+            <div style="color:var(--muted);margin-bottom:4px">${u.focus}</div>
+            ${deliverables ? `<strong style="font-size:12px">Deliverables</strong><ul>${deliverables}</ul>` : ""}
+            ${u.capstone ? `<div class="unit-capstone">Capstone: ${u.capstone}</div>` : ""}
+            ${artifacts ? `<div class="unit-artifacts">Artifacts: ${artifacts}</div>` : ""}
+          </div>` : `<br><span style="color:var(--muted);font-size:12px">${u.focus}</span>`;
+        return `<li class="${isActive ? 'active' : ''}"><strong>Unit ${u.id}</strong> (W${u.weeks}) — ${u.title}${detail}</li>`;
+      }).join("");
     }
 
     function renderWeekSelector() {
