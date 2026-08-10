@@ -1,232 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Week 1 workbook — AI Systems roadmap</title>
-  <style>
-:root {
-  --bg:#0d1117;--surface:#161b22;--surface2:#1c2129;--border:#30363d;
-  --text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--success:#3fb950;
-  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-}
+<html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Week 1 — Run the helpdesk agent + extend runbook corpus</title>
+<style>
+:root{--bg:#0d1117;--surface:#161b22;--surface2:#1c2129;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--success:#3fb950;--warn:#d29922;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.55}
 .wrap{max-width:760px;margin:0 auto;padding:20px 16px 64px}
-.top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
-.top a{color:var(--accent);text-decoration:none;font-size:.9rem}
-.top a:hover{text-decoration:underline}
-h1{font-size:1.35rem;margin:6px 0 4px}
-.sub{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.top a{color:var(--accent);text-decoration:none;font-size:.9rem;margin-right:14px}
+h1{font-size:1.35rem;margin:8px 0}
+.sub{color:var(--muted);font-size:.92rem;margin-bottom:16px}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px}
-.card h2{font-size:.95rem;margin-bottom:8px;color:var(--accent)}
-.steps{margin:0 0 12px 18px;color:var(--muted);font-size:.88rem}
-.steps li{margin-bottom:4px}
+.card h2{font-size:.95rem;color:var(--accent);margin-bottom:8px}
+ul{margin:0 0 10px 18px;color:var(--muted);font-size:.88rem}
+.done li{margin-bottom:4px}
 .field{margin-bottom:12px}
-.field label{display:block;font-size:.85rem;margin-bottom:4px;color:var(--muted)}
-.field input,.field textarea{width:100%;background:var(--surface2);border:1px solid var(--border);
-  border-radius:8px;color:var(--text);padding:8px 10px;font:inherit;font-size:.9rem}
-.field textarea{min-height:88px;resize:vertical}
-.links{margin-top:10px;font-size:.85rem}
-.links a{color:var(--accent);margin-right:12px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
-button{background:var(--surface2);border:1px solid var(--border);color:var(--text);
-  padding:8px 14px;border-radius:8px;cursor:pointer;font:inherit;font-size:.88rem}
-button:hover{border-color:var(--accent)}
+.field label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:4px}
+.field textarea{width:100%;min-height:72px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px 10px;font:inherit}
+.phase{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--warn);margin-bottom:8px}
+.phase.capstone{color:#a371f7;border-color:#a371f7}
+.phase.portfolio{color:var(--success);border-color:var(--success)}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+button{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 14px;border-radius:8px;cursor:pointer}
 button.primary{border-color:var(--accent);color:var(--accent)}
-.saved{font-size:12px;color:var(--success);margin-left:8px}
+.project-link{display:inline-block;margin:8px 0;padding:10px 14px;border:1px solid var(--accent);border-radius:8px;color:var(--accent);text-decoration:none;font-weight:600}
 </style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="top">
-      <a href="../index.html">← Dashboard</a>
-      <a href="../../phases/phase-1/README.md" target="_blank" rel="noopener">Phase guide</a>
-    </div>
-    <p style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">Week 1 workbook</p>
-    <h1>Ops friction inventory — pick your automation target</h1>
-    
-    <p class="sub">Fill in each section below. Progress auto-saves in this browser. Copy finished output into <code>study-notes/weeks/</code> when ready to commit.</p>
-    <div class="actions">
-      <button type="button" class="primary" id="copy-md">Copy as Markdown</button>
-      <button type="button" id="clear-week">Clear saved draft</button>
-      <span class="saved" id="save-status"></span>
-    </div>
-    <section class="card" id="mon">
-  <h2>Monday — Friction</h2>
-  <p class="sub" style="margin-bottom:10px">Quantify what IT actually handles manually at production IT.</p>
-  <ul class='steps'><li>Export or count IT service desk tickets (last 30 days) by category: access, SaaS, MDM, onboarding</li><li>Note Slack IT support channel or governance app volume — real counts only</li><li>Rank top 3 by frequency + time spent (your estimate, not invented %)</li><li>Pick ONE candidate for this unit: access request OR ticket triage</li></ul>
-  <div class="field">
-  <label for="f1">Friction #1 — category</label>
-  <textarea id="f1" data-key="w1-mon-f1" placeholder="Access requests"></textarea>
-</div><div class="field">
-  <label for="f1vol">Volume (last 30 days)</label>
-  <textarea id="f1vol" data-key="w1-mon-f1vol" placeholder="48 tickets"></textarea>
-</div><div class="field">
-  <label for="f1min">Avg minutes each</label>
-  <textarea id="f1min" data-key="w1-mon-f1min" placeholder="15"></textarea>
-</div><div class="field">
-  <label for="f2">Friction #2 — category</label>
-  <textarea id="f2" data-key="w1-mon-f2" placeholder="SaaS onboarding"></textarea>
-</div><div class="field">
-  <label for="f2vol">Volume</label>
-  <textarea id="f2vol" data-key="w1-mon-f2vol" placeholder=""></textarea>
-</div><div class="field">
-  <label for="f3">Friction #3 — category</label>
-  <textarea id="f3" data-key="w1-mon-f3" placeholder="MDM / device issues"></textarea>
-</div><div class="field">
-  <label for="f3vol">Volume</label>
-  <textarea id="f3vol" data-key="w1-mon-f3vol" placeholder=""></textarea>
-</div><div class="field">
-  <label for="pick">Chosen automation candidate (one only)</label>
-  <textarea id="pick" data-key="w1-mon-pick" placeholder="Access requests — high volume, clear approval path"></textarea>
+</head><body><div class="wrap">
+<div class="top"><a href="../index.html">← Dashboard</a></div>
+<span class="phase mini">mini · week 1</span>
+<h1>Run the helpdesk agent + extend runbook corpus</h1>
+<p class="sub">Ship one concrete artifact this week in the repo. Check each item, commit, then mark the week done on the dashboard.</p>
+<a class="project-link" href="https://meerzah.github.io/ai-systems-portfolio/projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Open projects/01-it-helpdesk-agent/ →</a>
+<div class="card"><h2>Build this week</h2><ul><li>Clone repo; run agent locally per README</li><li>Add 2 new Markdown runbooks (VPN + SSO or MDM)</li><li>Run 5 test queries; log pass vs escalate in README or notes</li></ul></div>
+<div class="card"><h2>Done when</h2><ul class="done"><li>Agent runs without errors</li><li>2 runbooks committed under runbooks/ or docs/</li><li>5-query log saved in study-notes/weeks/week-01-prove-log.md</li></ul></div>
+<div class="card"><h2>Ship notes</h2>
+<div class="field"><label>What I committed (paths + PR/commit hash)</label>
+<textarea id="ship" data-key="w1-ship" placeholder="e.g. projects/01-it-helpdesk-agent/runbooks/vpn.md — commit abc123"></textarea></div>
+<div class="field"><label>Blockers / next week prep</label>
+<textarea id="blockers" data-key="w1-blockers"></textarea></div>
 </div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/CONTEXT.md" target="_blank" rel="noopener">CONTEXT.md</a> <a href="https://meerzah.github.io/ai-systems-portfolio/study-notes/weeks/week-01-friction-inventory.md" target="_blank" rel="noopener">study-notes/weeks/week-01-friction-inventory.md</a></div>
-</section><section class="card" id="tue">
-  <h2>Tuesday — Workflow</h2>
-  <p class="sub" style="margin-bottom:10px">Sketch intake → approval → action for your chosen friction.</p>
-  <ul class='steps'><li>Draw current manual path (who submits, who approves, who executes)</li><li>Mark where Slack intake workflow or workflow automation already automates similar steps</li><li>Add HITL gate before any Okta write or Jira state change</li><li>Output: one-page workflow diagram (Excalidraw/Mermaid OK)</li></ul>
-  <div class="field">
-  <label for="trigger">Intake trigger</label>
-  <textarea id="trigger" data-key="w1-tue-trigger" placeholder="Slack modal / form / email"></textarea>
-</div><div class="field">
-  <label for="approval">Who approves?</label>
-  <textarea id="approval" data-key="w1-tue-approval" placeholder="Manager + app owner"></textarea>
-</div><div class="field">
-  <label for="action">Automated action</label>
-  <textarea id="action" data-key="w1-tue-action" placeholder="Okta group add via access governance API"></textarea>
-</div><div class="field">
-  <label for="hitl">HITL gate (before any write)</label>
-  <textarea id="hitl" data-key="w1-tue-hitl" placeholder="IT approves in Slack before Okta change"></textarea>
-</div><div class="field">
-  <label for="diagram">Workflow diagram (Mermaid OK)</label>
-  <textarea id="diagram" data-key="w1-tue-diagram" placeholder="flowchart LR
-  intake --&gt; validate --&gt; approve --&gt; execute"></textarea>
+<div class="btnrow">
+<button type="button" class="primary" id="copy">Copy ship summary</button>
+<button type="button" id="clear">Clear draft</button>
 </div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/study-notes/weeks/week-01-friction-inventory.md" target="_blank" rel="noopener">study-notes/weeks/week-01-friction-inventory.md</a> <a href="https://meerzah.github.io/ai-systems-portfolio/phases/phase-1/README.md" target="_blank" rel="noopener">phases/phase-1/README.md</a></div>
-</section><section class="card" id="wed">
-  <h2>Wednesday — Identity</h2>
-  <p class="sub" style="margin-bottom:10px">Map identity touchpoints for the candidate workflow.</p>
-  <ul class='steps'><li>List Okta groups / access governance policies involved (pattern names, not secrets)</li><li>Document who can approve grants (manager? app owner? IT?)</li><li>Define audit fields: requester, approver, ticket_id, groups_before/after, timestamp</li><li>Note: agent future — read-only Okta MCP vs write via access governance API</li></ul>
-  <div class="field">
-  <label for="groups">Okta groups / policies involved</label>
-  <textarea id="groups" data-key="w1-wed-groups" placeholder="app-foo-users, app-foo-admins"></textarea>
-</div><div class="field">
-  <label for="approvers">Approver roles</label>
-  <textarea id="approvers" data-key="w1-wed-approvers" placeholder="Manager, app owner, IT"></textarea>
-</div><div class="field">
-  <label for="audit">Audit log fields</label>
-  <textarea id="audit" data-key="w1-wed-audit" placeholder="requester, approver, ticket_id, groups_before, groups_after, timestamp"></textarea>
-</div><div class="field">
-  <label for="agent_scope">Future agent scope (read vs write)</label>
-  <textarea id="agent_scope" data-key="w1-wed-agent_scope" placeholder="Read-only Okta MCP; writes via approved workflow only"></textarea>
 </div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/projects/02-okta-mcp-server/README.md" target="_blank" rel="noopener">projects/02-okta-mcp-server/</a> <a href="https://meerzah.github.io/ai-systems-portfolio/study-notes/wif-agent-identity-design.md" target="_blank" rel="noopener">study-notes/wif-agent-identity-design.md</a></div>
-</section><section class="card" id="thu">
-  <h2>Thursday — Agent</h2>
-  <p class="sub" style="margin-bottom:10px">Decide where an agent helps vs stays deterministic.</p>
-  <ul class='steps'><li>Deterministic: Okta group add, Jira transition, access governance API call</li><li>Agent-suitable: classify ticket intent, KB lookup, route to right queue</li><li>Review projects/01-it-helpdesk-agent — RAG for VPN/MDM/SSO questions</li><li>Write 3 example prompts the agent would handle vs 3 it must escalate</li></ul>
-  <div class="field">
-  <label for="deterministic">Deterministic steps (no LLM)</label>
-  <textarea id="deterministic" data-key="w1-thu-deterministic" placeholder="Group add, Jira transition, webhook calls"></textarea>
-</div><div class="field">
-  <label for="agent">Agent-suitable steps</label>
-  <textarea id="agent" data-key="w1-thu-agent" placeholder="Intent classification, KB lookup, routing"></textarea>
-</div><div class="field">
-  <label for="escalate">Must escalate (3 examples)</label>
-  <textarea id="escalate" data-key="w1-thu-escalate" placeholder="Privilege escalation, offboarding, exec access"></textarea>
-</div><div class="field">
-  <label for="handle">Agent can handle (3 examples)</label>
-  <textarea id="handle" data-key="w1-thu-handle" placeholder="VPN how-to, password reset policy, SSO FAQ"></textarea>
-</div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">projects/01-it-helpdesk-agent/README.md</a> <a href="https://meerzah.github.io/ai-systems-portfolio/projects/02-okta-mcp-server/README.md" target="_blank" rel="noopener">projects/02-okta-mcp-server/README.md</a></div>
-</section><section class="card" id="fri">
-  <h2>Friday — Measure</h2>
-  <p class="sub" style="margin-bottom:10px">Baseline before automation — numbers you can actually collect.</p>
-  <ul class='steps'><li>Record current weekly ticket count for your chosen category</li><li>Estimate manual minutes per request (sample 5 tickets, average handling time)</li><li>Decide where data lives: Jira fields, BigQuery export, workflow automation execution log</li><li>Do NOT invent deflection % — write the measurement plan only</li></ul>
-  <div class="field">
-  <label for="weekly_count">Current weekly ticket count (chosen category)</label>
-  <textarea id="weekly_count" data-key="w1-fri-weekly_count" placeholder="48"></textarea>
-</div><div class="field">
-  <label for="avg_minutes">Avg manual minutes (sample of 5)</label>
-  <textarea id="avg_minutes" data-key="w1-fri-avg_minutes" placeholder="15"></textarea>
-</div><div class="field">
-  <label for="data_source">Where metrics will live</label>
-  <textarea id="data_source" data-key="w1-fri-data_source" placeholder="Jira custom field + BigQuery export"></textarea>
-</div><div class="field">
-  <label for="metrics_plan">Metrics you&#x27;ll track (no fake %)</label>
-  <textarea id="metrics_plan" data-key="w1-fri-metrics_plan" placeholder="volume, approval_latency, reopen_rate"></textarea>
-</div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/tracker/months.json" target="_blank" rel="noopener">tracker/months.json Month 1 rubric</a></div>
-</section><section class="card" id="sat">
-  <h2>Saturday — Prove</h2>
-  <p class="sub" style="margin-bottom:10px">Run the portfolio helpdesk agent against real runbook questions.</p>
-  <ul class='steps'><li>Clone repo, set up projects/01-it-helpdesk-agent per README</li><li>Run 5 queries: 3 IT runbook questions + 2 identity lookups via Okta MCP</li><li>Screenshot or log: which answered correctly vs escalated</li><li>Save notes to study-notes/weeks/week-01-prove-log.md</li></ul>
-  <div class="field">
-  <label for="q1">Helpdesk query 1 + result</label>
-  <textarea id="q1" data-key="w1-sat-q1" placeholder="How do I reset MFA? → answered / escalated"></textarea>
-</div><div class="field">
-  <label for="q2">Query 2 + result</label>
-  <textarea id="q2" data-key="w1-sat-q2" placeholder=""></textarea>
-</div><div class="field">
-  <label for="q3">Query 3 + result</label>
-  <textarea id="q3" data-key="w1-sat-q3" placeholder=""></textarea>
-</div><div class="field">
-  <label for="q4">Okta MCP query 1 + result</label>
-  <textarea id="q4" data-key="w1-sat-q4" placeholder=""></textarea>
-</div><div class="field">
-  <label for="q5">Okta MCP query 2 + result</label>
-  <textarea id="q5" data-key="w1-sat-q5" placeholder=""></textarea>
-</div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">projects/01-it-helpdesk-agent/</a> <a href="https://meerzah.github.io/ai-systems-portfolio/README.md" target="_blank" rel="noopener">README.md</a> <a href="https://meerzah.github.io/ai-systems-portfolio/projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">→ Prove: projects/01-it-helpdesk-agent/</a></div>
-</section><section class="card" id="sun">
-  <h2>Sunday — Prove</h2>
-  <p class="sub" style="margin-bottom:10px">Polish friction inventory draft.</p>
-  <ul class='steps'><li>Complete study-notes/weeks/week-01-friction-inventory.md from workbook output</li><li>Link workflow diagram from Tue</li><li>One paragraph: why this candidate fits AI Systems portfolio narrative</li></ul>
-  <div class="field">
-  <label for="summary">Friction inventory summary (top 3 + pick)</label>
-  <textarea id="summary" data-key="w1-sun-summary" placeholder=""></textarea>
-</div><div class="field">
-  <label for="narrative">Why this fits your AI Systems portfolio (1 paragraph)</label>
-  <textarea id="narrative" data-key="w1-sun-narrative" placeholder=""></textarea>
-</div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/study-notes/weeks/week-01-friction-inventory.md" target="_blank" rel="noopener">study-notes/weeks/week-01-friction-inventory.md</a> <a href="https://meerzah.github.io/ai-systems-portfolio/study-notes/weeks/week-01-friction-inventory.md" target="_blank" rel="noopener">→ Prove: study-notes/weeks/week-01-friction-inventory.md</a></div>
-</section>
-  </div>
-  <script>
-    const WEEK = 1;
-    const PREFIX = `workbook-w${WEEK}-`;
-    const status = document.getElementById('save-status');
-
-    document.querySelectorAll('[data-key]').forEach(el => {
-      const key = PREFIX + el.id;
-      const saved = localStorage.getItem(key);
-      if (saved) el.value = saved;
-      el.addEventListener('input', () => {
-        localStorage.setItem(key, el.value);
-        status.textContent = 'Saved';
-        setTimeout(() => { status.textContent = ''; }, 1500);
-      });
-    });
-
-    document.getElementById('clear-week').onclick = () => {
-      if (!confirm('Clear all saved fields for week ' + WEEK + '?')) return;
-      document.querySelectorAll('[data-key]').forEach(el => {
-        localStorage.removeItem(PREFIX + el.id);
-        el.value = '';
-      });
-    };
-
-    document.getElementById('copy-md').onclick = () => {
-      const lines = ['# Week 1: Ops friction inventory — pick your automation target', ''];
-      document.querySelectorAll('[data-key]').forEach(el => {
-        const label = el.previousElementSibling?.textContent || el.id;
-        lines.push('## ' + label, el.value || '(empty)', '');
-      });
-      navigator.clipboard.writeText(lines.join('\n')).then(() => {
-        status.textContent = 'Copied to clipboard';
-      });
-    };
-  </script>
-</body>
-</html>
+<script>
+const PREFIX='workbook-';
+document.querySelectorAll('[data-key]').forEach(el=>{
+  const k=PREFIX+el.dataset.key; if(localStorage.getItem(k)) el.value=localStorage.getItem(k);
+  el.addEventListener('input',()=>localStorage.setItem(k,el.value));
+});
+document.getElementById('copy').onclick=()=>{
+  const t=document.getElementById('ship').value;
+  navigator.clipboard.writeText('# Week 1\n\n'+t);
+};
+document.getElementById('clear').onclick=()=>{
+  if(confirm('Clear?')) document.querySelectorAll('[data-key]').forEach(el=>{localStorage.removeItem(PREFIX+el.dataset.key);el.value='';});
+};
+</script></body></html>

@@ -1,3292 +1,798 @@
 {
-  "schema": "ai-systems-spine-v3-workbooks",
-  "spine": [
-    "friction",
-    "workflow",
-    "identity",
-    "agent",
-    "measure",
-    "prove"
-  ],
+  "schema": "mini-project-roadmap-v1",
+  "program": {
+    "weeks1to20": "Weekly mini-projects \u2014 shippable portfolio artifacts",
+    "weeks21to24": "Capstone \u2014 integrated ops agent platform",
+    "weeks25to36": "Demo, case study, interview, apply"
+  },
   "weeks": [
     {
       "week": 1,
       "month": 1,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Ops friction inventory \u2014 pick your automation target",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Quantify what IT actually handles manually at production IT.",
-          "steps": [
-            "Export or count IT service desk tickets (last 30 days) by category: access, SaaS, MDM, onboarding",
-            "Note Slack IT support channel or governance app volume \u2014 real counts only",
-            "Rank top 3 by frequency + time spent (your estimate, not invented %)",
-            "Pick ONE candidate for this unit: access request OR ticket triage"
-          ],
-          "resources": [
-            "CONTEXT.md",
-            "study-notes/weeks/week-01-friction-inventory.md"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Sketch intake \u2192 approval \u2192 action for your chosen friction.",
-          "steps": [
-            "Draw current manual path (who submits, who approves, who executes)",
-            "Mark where Slack intake workflow or workflow automation already automates similar steps",
-            "Add HITL gate before any Okta write or Jira state change",
-            "Output: one-page workflow diagram (Excalidraw/Mermaid OK)"
-          ],
-          "resources": [
-            "study-notes/weeks/week-01-friction-inventory.md",
-            "phases/phase-1/README.md"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Map identity touchpoints for the candidate workflow.",
-          "steps": [
-            "List Okta groups / access governance policies involved (pattern names, not secrets)",
-            "Document who can approve grants (manager? app owner? IT?)",
-            "Define audit fields: requester, approver, ticket_id, groups_before/after, timestamp",
-            "Note: agent future \u2014 read-only Okta MCP vs write via access governance API"
-          ],
-          "resources": [
-            "projects/02-okta-mcp-server/",
-            "study-notes/wif-agent-identity-design.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Decide where an agent helps vs stays deterministic.",
-          "steps": [
-            "Deterministic: Okta group add, Jira transition, access governance API call",
-            "Agent-suitable: classify ticket intent, KB lookup, route to right queue",
-            "Review projects/01-it-helpdesk-agent \u2014 RAG for VPN/MDM/SSO questions",
-            "Write 3 example prompts the agent would handle vs 3 it must escalate"
-          ],
-          "resources": [
-            "projects/01-it-helpdesk-agent/README.md",
-            "projects/02-okta-mcp-server/README.md"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Baseline before automation \u2014 numbers you can actually collect.",
-          "steps": [
-            "Record current weekly ticket count for your chosen category",
-            "Estimate manual minutes per request (sample 5 tickets, average handling time)",
-            "Decide where data lives: Jira fields, BigQuery export, workflow automation execution log",
-            "Do NOT invent deflection % \u2014 write the measurement plan only"
-          ],
-          "resources": [
-            "tracker/months.json Month 1 rubric"
-          ]
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Run the portfolio helpdesk agent against real runbook questions.",
-          "steps": [
-            "Clone repo, set up projects/01-it-helpdesk-agent per README",
-            "Run 5 queries: 3 IT runbook questions + 2 identity lookups via Okta MCP",
-            "Screenshot or log: which answered correctly vs escalated",
-            "Save notes to study-notes/weeks/week-01-prove-log.md"
-          ],
-          "resources": [
-            "projects/01-it-helpdesk-agent/",
-            "README.md"
-          ],
-          "proveLink": "projects/01-it-helpdesk-agent/"
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Polish friction inventory draft.",
-          "steps": [
-            "Complete study-notes/weeks/week-01-friction-inventory.md from workbook output",
-            "Link workflow diagram from Tue",
-            "One paragraph: why this candidate fits AI Systems portfolio narrative"
-          ],
-          "resources": [
-            "study-notes/weeks/week-01-friction-inventory.md"
-          ],
-          "proveLink": "study-notes/weeks/week-01-friction-inventory.md"
-        }
-      },
-      "workbook": "workbooks/week-01.html"
+      "title": "Run the helpdesk agent + extend runbook corpus",
+      "workbook": "workbooks/week-01.html",
+      "miniProject": {
+        "name": "Run the helpdesk agent + extend runbook corpus",
+        "path": "projects/01-it-helpdesk-agent/",
+        "build": [
+          "Clone repo; run agent locally per README",
+          "Add 2 new Markdown runbooks (VPN + SSO or MDM)",
+          "Run 5 test queries; log pass vs escalate in README or notes"
+        ],
+        "doneWhen": [
+          "Agent runs without errors",
+          "2 runbooks committed under runbooks/ or docs/",
+          "5-query log saved in study-notes/weeks/week-01-prove-log.md"
+        ]
+      }
     },
     {
       "week": 2,
       "month": 1,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Compare candidate to shipped Slack + workflow automation patterns",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Deep-dive your chosen category with real examples.",
-          "steps": [
-            "Pull 5 anonymized ticket examples",
-            "Note repeat questions vs one-offs",
-            "Identify approval delays (waiting on manager/app owner)",
-            "Tag each: automatable / agent-assist / human-only"
-          ],
-          "resources": [
-            "IT service desk samples"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Reverse-engineer Slack intake workflow as reference architecture.",
-          "steps": [
-            "Document trigger (Slack slash/modal), validation, Jira create/update",
-            "List failure modes you've seen in prod",
-            "Gap analysis: what's missing for your candidate workflow?",
-            "Reuse patterns: structured intake, idempotent Jira writes"
-          ],
-          "resources": [
-            "Shipped Slack intake workflow (internal)",
-            "projects/03-agentspace-rollout/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "access governance access-request path (production pattern).",
-          "steps": [
-            "Map access governance request \u2192 approval \u2192 Okta provision flow you operate",
-            "Note SCIM vs manual group adds",
-            "Where would audit log hook in for agent workflow?",
-            "Compare to consulting offer (b) in CONTEXT.md"
-          ],
-          "resources": [
-            "CONTEXT.md consulting (b)",
-            "Okta + access governance production"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Wire agent concepts to workflow automation vs ADK split.",
-          "steps": [
-            "workflow automation: deterministic webhooks, schedules, approval branches",
-            "ADK/helpdesk agent: NL triage + RAG",
-            "Define handoff: agent classifies \u2192 workflow automation executes approved action",
-            "Draft sequence diagram agent \u2192 HITL \u2192 access governance/Okta"
-          ],
-          "resources": [
-            "workflow automation shipped workflows",
-            "projects/01-it-helpdesk-agent/"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Approval latency baseline.",
-          "steps": [
-            "For 5 access/triage tickets: time from open \u2192 first human action \u2192 resolved",
-            "Note bottlenecks (approver OOO, wrong queue, missing info)",
-            "Metric candidates: approval_latency, reopen_rate"
-          ],
-          "resources": [
-            "Jira timestamps"
-          ]
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Workflow diagram v2 with shipped-pattern callouts.",
-          "steps": [
-            "Update Tue diagram with Slack app + workflow automation reuse notes",
-            "Commit to study-notes/",
-            "Add to portfolio narrative draft"
-          ],
-          "resources": [
-            "study-notes/weeks/week-02-workflow.md"
-          ]
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Review projects/04-prompt-playbooks for intake wording.",
-          "steps": [
-            "Read projects/04-prompt-playbooks/teams/it-ops.md",
-            "Draft intake form fields for your workflow (Slack modal or form)",
-            "Align language for non-technical requesters"
-          ],
-          "resources": [
-            "projects/04-prompt-playbooks/"
-          ]
-        }
-      },
-      "workbook": "workbooks/week-02.html"
+      "title": "Okta MCP server \u2014 read-only identity queries",
+      "workbook": "workbooks/week-02.html",
+      "miniProject": {
+        "name": "Okta MCP server \u2014 read-only identity queries",
+        "path": "projects/02-okta-mcp-server/",
+        "build": [
+          "Configure read-only Okta API token (preview org or sandbox)",
+          "Implement or verify list_users + get_user_groups tools",
+          "Run 3 MCP queries from Claude/Cursor or MCP inspector"
+        ],
+        "doneWhen": [
+          "MCP server starts and registers tools",
+          "3 sample queries documented with outputs (redact PII)"
+        ]
+      }
     },
     {
       "week": 3,
       "month": 1,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "SaaS onboarding + MDM friction (MDM platform fleet)",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Expand inventory: SaaS onboarding + macOS requests.",
-          "steps": [
-            "Add MDM ticket types to friction list (~600 device fleet context)",
-            "SaaS onboarding: app provisioning, SSO assignment, license",
-            "Cross-check: overlaps with access-request candidate?",
-            "Update study-notes/week-01-friction-inventory.md"
-          ],
-          "resources": [
-            "MDM platform MDM (production)"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Multi-step onboarding workflow draft.",
-          "steps": [
-            "Trigger: new hire or role change ticket",
-            "Steps: Okta groups \u2192 SaaS SSO \u2192 MDM profile (if applicable)",
-            "HITL: manager confirms role before group grants",
-            "Reference endpoint control service if endpoint/cloud touchpoints involved"
-          ],
-          "resources": [
-            "endpoint control service GCP Cloud Run (shipped)",
-            "projects/06-cipher/ (future ABAC mover)"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Joiner/mover group patterns.",
-          "steps": [
-            "Document functionalTeam / ABAC group naming you use (pattern level)",
-            "Read projects/06-cipher/SHIP-PLAN.md \u2014 how CIPHER will compute deltas",
-            "Interview frame: CIPHER in development, not shipped",
-            "List groups that must NEVER be agent-writable"
-          ],
-          "resources": [
-            "projects/06-cipher/SHIP-PLAN.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Helpdesk agent for MDM/SSO questions.",
-          "steps": [
-            "Test agent on: VPN, MDM platform enrollment, Okta Verify troubleshooting",
-            "Document 3 runbook gaps to add to RAG corpus",
-            "Escalation rule: device compliance \u2192 human MDM admin"
-          ],
-          "resources": [
-            "projects/01-it-helpdesk-agent/"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Onboarding workflow timing.",
-          "steps": [
-            "Sample 3 recent onboarding tickets \u2014 hours to complete all steps",
-            "Identify parallelizable vs sequential steps",
-            "Metric: steps_automated vs manual"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Add 3 runbook snippets to helpdesk agent test corpus.",
-          "steps": [
-            "Extend local runbook markdown or note paths for RAG",
-            "Re-run 3 failing queries from Week 1",
-            "Log results in study-notes/"
-          ],
-          "resources": [
-            "projects/01-it-helpdesk-agent/"
-          ]
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Consolidate Month 1 prep for capstone week.",
-          "steps": [
-            "Checklist: friction list, workflow v2, baseline metrics, agent test log",
-            "Gap list for Week 4 capstone"
-          ],
-          "resources": [
-            "tracker/months.json Month 1"
-          ]
-        }
-      },
-      "workbook": "workbooks/week-03.html"
+      "title": "Wire agent \u2192 Okta MCP for identity-aware answers",
+      "workbook": "workbooks/week-03.html",
+      "miniProject": {
+        "name": "Wire agent \u2192 Okta MCP for identity-aware answers",
+        "path": "projects/01-it-helpdesk-agent/",
+        "build": [
+          "Connect helpdesk agent to Okta MCP tools",
+          "Add system prompt rule: identity lookups are read-only",
+          "Test: group membership question + user status question"
+        ],
+        "doneWhen": [
+          "Agent calls Okta tool for at least 2 query types",
+          "Escalation when write/action requested"
+        ]
+      }
     },
     {
       "week": 4,
       "month": 1,
-      "capstoneWeek": true,
+      "phase": "mini",
+      "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Ops friction inventory",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Review",
-          "guide": "Month 1 capstone prep: Ops friction inventory",
-          "steps": [
-            "Review study-notes from weeks 1\u20133 of this month",
-            "Check tracker/months.json rubric \u2014 gap list"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Review",
-          "guide": "Consolidate workflow artifacts from this month",
-          "steps": [
-            "Merge best workflow diagram from study-notes/",
-            "Confirm every Okta write has HITL gate marked"
-          ],
-          "resources": [
-            "study-notes/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Review",
-          "guide": "Identity + audit checklist before capstone ship",
-          "steps": [
-            "Verify least privilege on all designed workflows",
-            "Audit log schema complete (who, what, when, ticket_id)"
-          ],
-          "resources": [
-            "study-notes/prod-iam-audit.md"
-          ]
-        },
-        "thu": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Build capstone: Ops friction inventory",
-          "steps": [
-            "List top 10 manual IT/ops requests by volume",
-            "Pick one candidate for automation (ticket triage or access request)"
-          ],
-          "resources": [
-            "tracker/months.json rubric"
-          ]
-        },
-        "fri": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Continue capstone \u2014 ship-quality draft",
-          "steps": [
-            "Draft intake \u2192 approval \u2192 action with HITL gates marked",
-            "Identify Okta / access-governance touchpoints and audit log requirements"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Capstone ship",
-          "guide": "Ship capstone artifact to study-notes/ or projects/",
-          "steps": [
-            "Commit artifact with date in filename",
-            "Honest status label (POC / design / shipped)"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Capstone retro",
-          "guide": "Retro + update portfolio README if needed",
-          "steps": [
-            "What shipped vs planned \u2014 write 5 bullets",
-            "Update README or case study links"
-          ],
-          "resources": [
-            "README.md"
-          ]
-        }
-      },
-      "capstoneTitle": "Friction map + first workflow diagram",
-      "workbook": "workbooks/week-04.html"
+      "title": "Escalation policy + agent guardrails doc",
+      "workbook": "workbooks/week-04.html",
+      "miniProject": {
+        "name": "Escalation policy + agent guardrails doc",
+        "path": "projects/01-it-helpdesk-agent/",
+        "build": [
+          "Write escalation-policy.md: when agent must refuse or hand off",
+          "Add 3 must-escalate + 3 safe-to-answer examples",
+          "Update agent prompt to cite policy"
+        ],
+        "doneWhen": [
+          "escalation-policy.md committed",
+          "1 test query per category logged"
+        ]
+      }
     },
     {
       "week": 5,
       "month": 2,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Document production access governance/Okta access grant flow",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Access-request volume and pain points.",
-          "steps": [
-            "Quantify access governance/Okta requests per week (real count)",
-            "Categories: new app, role change, time-bound access",
-            "Note denied/expired requests \u2014 rework friction"
-          ],
-          "resources": [
-            "access governance production"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Production access grant sequence.",
-          "steps": [
-            "Document: request \u2192 manager approval \u2192 provisioning \u2192 confirmation",
-            "Where Slack or email notifications fire",
-            "Compare to consulting offer (b) deliverable outline"
-          ],
-          "resources": [
-            "CONTEXT.md consulting (b)"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Least-privilege grant design.",
-          "steps": [
-            "Map approval matrix by app sensitivity",
-            "Audit log schema: who, what, when, ticket_id, groups",
-            "Design BigQuery or Firestore fields (no fake data)",
-            "Agent rule: no grant without approved access governance ticket ID"
-          ],
-          "resources": [
-            "study-notes/prod-iam-audit.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Okta MCP read vs write boundary.",
-          "steps": [
-            "Run projects/02-okta-mcp-server \u2014 list user groups (read-only)",
-            "Define tool schema for agent: get_user, list_groups \u2014 NOT add_to_group",
-            "Write path stays access governance API or human-approved workflow automation webhook"
-          ],
-          "resources": [
-            "projects/02-okta-mcp-server/"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Grant turnaround time.",
-          "steps": [
-            "Baseline: request \u2192 provisioned duration (5 samples)",
-            "Track approval step separately",
-            "Target metric: approval_latency P50"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Access workflow doc for portfolio.",
-          "steps": [
-            "Write study-notes/week-05-access-workflow.md",
-            "Include audit field schema",
-            "Link to projects/06-cipher as future extension"
-          ],
-          "resources": [
-            "projects/06-cipher/"
-          ],
-          "proveLink": "projects/06-cipher/"
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "CIPHER ship plan Phase 1 review.",
-          "steps": [
-            "Complete Phase 1 checklist in projects/06-cipher/SHIP-PLAN.md",
-            "Architecture diagram for ABAC mover dry-run",
-            "Honest status: architected, not shipped"
-          ],
-          "resources": [
-            "projects/06-cipher/SHIP-PLAN.md"
-          ],
-          "proveLink": "projects/06-cipher/"
-        }
-      },
-      "workbook": "workbooks/week-05.html"
+      "title": "IT intake prompt playbook",
+      "workbook": "workbooks/week-05.html",
+      "miniProject": {
+        "name": "IT intake prompt playbook",
+        "path": "projects/04-prompt-playbooks/",
+        "build": [
+          "Draft teams/it-ops.md intake prompts for non-technical requesters",
+          "Cover access request + device issue + how-to question",
+          "Add copy-paste Slack/form field labels"
+        ],
+        "doneWhen": [
+          "it-ops.md committed with 3 prompt templates",
+          "Linked from project README"
+        ]
+      }
     },
     {
       "week": 6,
       "month": 2,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "CIPHER design \u2014 ABAC mover dry-run plan",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Joiner/mover/leavers without CIPHER today.",
-          "steps": [
-            "How are functionalTeam group changes done manually?",
-            "Jira Role Base / conversion ticket volume",
-            "Error stories: wrong group, delayed mover"
-          ],
-          "resources": [
-            "projects/06-cipher/"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "CIPHER target flow: Jira \u2192 dry-run \u2192 Slack approve \u2192 apply.",
-          "steps": [
-            "Read SHIP-PLAN architecture diagram",
-            "Define dry-run output format for stakeholders",
-            "HITL: Slack approve before Okta apply"
-          ],
-          "resources": [
-            "projects/06-cipher/SHIP-PLAN.md"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "CIPHER service account + WIF.",
-          "steps": [
-            "Least-privilege SA for Cloud Run CIPHER",
-            "WIF pattern \u2014 study-notes/wif-agent-identity-design.md",
-            "No long-lived Okta SSWS in agent code"
-          ],
-          "resources": [
-            "study-notes/wif-agent-identity-design.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "CIPHER is NOT an LLM agent \u2014 deterministic automation.",
-          "steps": [
-            "Document why mover automation stays deterministic",
-            "Agent role: only triage which Jira tickets trigger CIPHER",
-            "Separate concerns: CIPHER vs helpdesk RAG agent"
-          ],
-          "resources": [
-            "projects/06-cipher/",
-            "projects/01-it-helpdesk-agent/"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Mover ticket handling time today.",
-          "steps": [
-            "Sample 3 mover tickets \u2014 manual steps and duration",
-            "Metric target: delta computation time vs apply time"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "CIPHER Phase 1 design doc section.",
-          "steps": [
-            "Draft cipher-architecture.md section in study-notes/",
-            "Threat table from SHIP-PLAN",
-            "Review with self \u2014 ready for stakeholder review?"
-          ],
-          "resources": [
-            "projects/06-cipher/"
-          ],
-          "proveLink": "projects/06-cipher/"
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Link CIPHER to portfolio README.",
-          "steps": [
-            "Ensure projects/06-cipher/README.md reflects accurate status",
-            "Interview pitch paragraph (30 sec)"
-          ],
-          "resources": [
-            "projects/06-cipher/README.md"
-          ],
-          "proveLink": "projects/06-cipher/"
-        }
-      },
-      "workbook": "workbooks/week-06.html"
+      "title": "Structured query logging for the agent",
+      "workbook": "workbooks/week-06.html",
+      "miniProject": {
+        "name": "Structured query logging for the agent",
+        "path": "projects/01-it-helpdesk-agent/",
+        "build": [
+          "Log each query: timestamp, query, tools_used, outcome, latency_ms",
+          "JSON lines to logs/queries.jsonl (gitignore secrets)",
+          "Add README section on log format"
+        ],
+        "doneWhen": [
+          "10 sample log lines from real test runs",
+          "No PII or tokens in committed logs"
+        ]
+      }
     },
     {
       "week": 7,
       "month": 2,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Audit trail + identity for agentic access workflow",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Audit gaps in manual access changes.",
-          "steps": [
-            "Where are Okta System Log exports today?",
-            "Can you trace a group change to a ticket?",
-            "List gaps for compliance questions"
-          ],
-          "resources": [
-            "Okta System Log"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Audit-first workflow design.",
-          "steps": [
-            "Every provision action writes: actor, target, groups, ticket_id, timestamp",
-            "Failure path: log + Slack alert, no silent fail",
-            "Idempotency key on access governance webhook handlers"
-          ],
-          "resources": [
-            "workflow automation error handling patterns"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "SCIM vs API grant patterns.",
-          "steps": [
-            "Which apps use SCIM push vs manual?",
-            "access governance integration points",
-            "Document for interview: identity-backed automation"
-          ],
-          "resources": []
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Agent audit: log every tool call.",
-          "steps": [
-            "Design log schema for agent tool invocations",
-            "Include: prompt hash, tools_called, human_approval_id",
-            "projects/02-okta-mcp-server \u2014 ensure read-only enforced"
-          ],
-          "resources": [
-            "projects/02-okta-mcp-server/server.py"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Audit completeness check.",
-          "steps": [
-            "Pick 3 recent grants \u2014 can you reconstruct full chain?",
-            "Score: complete / partial / missing"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Audit schema doc.",
-          "steps": [
-            "study-notes/week-07-audit-schema.md",
-            "JSON example (fake user IDs OK)"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Month 2 capstone prep.",
-          "steps": [
-            "Checklist against months.json Month 2 rubric",
-            "Gap list for Week 8"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        }
-      },
-      "workbook": "workbooks/week-07.html"
+      "title": "Tool JSON schemas + agent tool manifest",
+      "workbook": "workbooks/week-07.html",
+      "miniProject": {
+        "name": "Tool JSON schemas + agent tool manifest",
+        "path": "projects/01-it-helpdesk-agent/",
+        "build": [
+          "Document JSON schema for rag_tool and okta_tool inputs/outputs",
+          "Add tools/README.md with contract for each tool",
+          "Validate one happy-path + one error-path call"
+        ],
+        "doneWhen": [
+          "tools/README.md with schemas",
+          "Agent respects schema on malformed tool args"
+        ]
+      }
     },
     {
       "week": 8,
       "month": 2,
-      "capstoneWeek": true,
+      "phase": "mini",
+      "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Identity-backed access workflow",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Review",
-          "guide": "Month 2 capstone prep: Identity-backed access workflow",
-          "steps": [
-            "Review study-notes from weeks 1\u20133 of this month",
-            "Check tracker/months.json rubric \u2014 gap list"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Review",
-          "guide": "Consolidate workflow artifacts from this month",
-          "steps": [
-            "Merge best workflow diagram from study-notes/",
-            "Confirm every Okta write has HITL gate marked"
-          ],
-          "resources": [
-            "study-notes/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Review",
-          "guide": "Identity + audit checklist before capstone ship",
-          "steps": [
-            "Verify least privilege on all designed workflows",
-            "Audit log schema complete (who, what, when, ticket_id)"
-          ],
-          "resources": [
-            "study-notes/prod-iam-audit.md"
-          ]
-        },
-        "thu": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Build capstone: Identity-backed access workflow",
-          "steps": [
-            "Document access-governance + Okta pattern from production work",
-            "Design group grant with least-privilege + manager approval"
-          ],
-          "resources": [
-            "tracker/months.json rubric"
-          ]
-        },
-        "fri": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Continue capstone \u2014 ship-quality draft",
-          "steps": [
-            "Specify BigQuery or Firestore audit fields (no fake metrics)",
-            "Link to projects/06-cipher/ ship plan (architected, not shipped)"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Capstone ship",
-          "guide": "Ship capstone artifact to study-notes/ or projects/",
-          "steps": [
-            "Commit artifact with date in filename",
-            "Honest status label (POC / design / shipped)"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Capstone retro",
-          "guide": "Retro + update portfolio README if needed",
-          "steps": [
-            "What shipped vs planned \u2014 write 5 bullets",
-            "Update README or case study links"
-          ],
-          "resources": [
-            "README.md"
-          ]
-        }
-      },
-      "capstoneTitle": "Okta group grant workflow + audit trail design",
-      "workbook": "workbooks/week-08.html"
+      "title": "Eval harness \u2014 first 5 cases",
+      "workbook": "workbooks/week-08.html",
+      "miniProject": {
+        "name": "Eval harness \u2014 first 5 cases",
+        "path": "projects/01-it-helpdesk-agent/",
+        "build": [
+          "Create evals/eval_cases.csv: query, expected_behavior, pass/fail",
+          "Add 5 rows: 3 runbook, 2 identity read",
+          "Run manually; log results in evals/results.md"
+        ],
+        "doneWhen": [
+          "eval_cases.csv committed (5 rows)",
+          "results.md with honest pass/fail \u2014 no invented accuracy %"
+        ]
+      }
     },
     {
       "week": 9,
       "month": 3,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Agentic case study \u2014 architecture draft",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Ticket triage queue pain.",
-          "steps": [
-            "Sample 10 service desk ticket titles \u2014 classify manually",
-            "Note mis-routed tickets",
-            "Agent opportunity: routing + KB"
-          ],
-          "resources": [
-            "IT service desk"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Case study flow: Slack/Jira intake \u2192 agent triage \u2192 HITL \u2192 access governance.",
-          "steps": [
-            "Draw end-to-end diagram",
-            "Mark deterministic vs agent steps",
-            "Reference shipped Slack app"
-          ],
-          "resources": [
-            "study-notes/agentic-case-study.md (create)"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Read-only agent identity.",
-          "steps": [
-            "Okta MCP scoped to read API only",
-            "No SSWS in agent runtime",
-            "WIF for Cloud Run if hosting agent"
-          ],
-          "resources": [
-            "projects/02-okta-mcp-server/",
-            "study-notes/wif-agent-identity-design.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Run helpdesk agent + document gaps.",
-          "steps": [
-            "5 test queries from Week 1",
-            "Extend runbook corpus if needed",
-            "Log in study-notes/week-09-agent-log.md"
-          ],
-          "resources": [
-            "projects/01-it-helpdesk-agent/"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Triage accuracy plan (not fake metrics).",
-          "steps": [
-            "Define 10 eval cases",
-            "Pass = correct route or correct KB answer",
-            "Run weekly, track in spreadsheet"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Case study draft section 1: Problem + Architecture.",
-          "steps": [
-            "Write study-notes/agentic-case-study.md \u00a71-2",
-            "Honest POC label"
-          ],
-          "resources": [
-            "study-notes/agentic-case-study.md"
-          ],
-          "proveLink": "projects/01-it-helpdesk-agent/"
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Polish README portfolio table entry.",
-          "steps": [
-            "Update root README if case study path changed",
-            "Cross-link projects 01+02"
-          ],
-          "resources": [
-            "README.md"
-          ],
-          "proveLink": "projects/01-it-helpdesk-agent/"
-        }
-      },
-      "workbook": "workbooks/week-09.html"
+      "title": "Eval harness \u2014 expand to 15 cases",
+      "workbook": "workbooks/week-09.html",
+      "miniProject": {
+        "name": "Eval harness \u2014 expand to 15 cases",
+        "path": "projects/01-it-helpdesk-agent/",
+        "build": [
+          "Add 10 edge cases: ambiguous, OOO approver, privilege escalation attempt",
+          "Update results.md after full run",
+          "Note top 3 failures to fix before capstone"
+        ],
+        "doneWhen": [
+          "15 rows in eval_cases.csv",
+          "Failure list with fix plan"
+        ]
+      }
     },
     {
       "week": 10,
       "month": 3,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Okta MCP + agent tool boundary",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Identity lookup requests in tickets.",
-          "steps": [
-            "How often do tickets need 'what groups is user X in?'",
-            "Manual Okta admin steps today",
-            "Agent saves: read via MCP"
-          ],
-          "resources": []
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Tool-call flow in agent loop.",
-          "steps": [
-            "User question \u2192 agent \u2192 okta_tool \u2192 formatted answer",
-            "Never chain to write API",
-            "Log tool calls"
-          ],
-          "resources": [
-            "projects/01-it-helpdesk-agent/tools/okta_tool.py"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "MCP server scopes.",
-          "steps": [
-            "Review projects/02-okta-mcp-server/server.py",
-            "Document allowed Okta endpoints",
-            "Rate limit / audit considerations"
-          ],
-          "resources": [
-            "projects/02-okta-mcp-server/"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "10 eval cases for identity questions.",
-          "steps": [
-            "Run MCP server locally",
-            "Test: list groups, user status, app assignments (read-only)",
-            "Log results"
-          ],
-          "resources": [
-            "projects/02-okta-mcp-server/"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Time saved estimate methodology.",
-          "steps": [
-            "Manual Okta lookup: ~X min (your sample)",
-            "Agent path: ~Y min",
-            "Document method, not marketing %"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Extend okta_tool or document integration gap.",
-          "steps": [
-            "Note what you'd add for production",
-            "Commit notes to study-notes/"
-          ],
-          "resources": [
-            "projects/02-okta-mcp-server/"
-          ],
-          "proveLink": "projects/02-okta-mcp-server/"
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Case study \u00a73: Identity layer.",
-          "steps": [
-            "study-notes/agentic-case-study.md",
-            "MCP diagram"
-          ],
-          "resources": [],
-          "proveLink": "projects/02-okta-mcp-server/"
-        }
-      },
-      "workbook": "workbooks/week-10.html"
+      "title": "HITL approval gate \u2014 mock implementation",
+      "workbook": "workbooks/week-10.html",
+      "miniProject": {
+        "name": "HITL approval gate \u2014 mock implementation",
+        "path": "projects/01-it-helpdesk-agent/",
+        "build": [
+          "Design flow: agent proposes action \u2192 human approves \u2192 execute",
+          "Mock with CLI y/n or Slack Block Kit draft (no prod webhook required)",
+          "Sequence diagram in docs/hitl-flow.md"
+        ],
+        "doneWhen": [
+          "docs/hitl-flow.md with diagram",
+          "Mock demo: blocked action without approval"
+        ]
+      }
     },
     {
       "week": 11,
       "month": 3,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "HITL + Agentspace adoption patterns",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Trust barriers to agent-assisted IT.",
-          "steps": [
-            "Read projects/03-agentspace-rollout/README.md",
-            "Note adoption friction from rollout doc",
-            "Apply to internal IT agent"
-          ],
-          "resources": [
-            "projects/03-agentspace-rollout/"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "HITL Slack approval prototype (paper or stub).",
-          "steps": [
-            "Approver sees: ticket, agent recommendation, Okta action preview",
-            "Approve/Reject buttons",
-            "Rejected \u2192 back to queue"
-          ],
-          "resources": [
-            "Shipped Slack app patterns"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Approver authorization.",
-          "steps": [
-            "Only app owner or manager can approve grants",
-            "Map to Okta group or Slack user ID",
-            "Audit approver identity"
-          ],
-          "resources": []
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Prompt playbooks for IT ops.",
-          "steps": [
-            "Read projects/04-prompt-playbooks/teams/it-ops.md",
-            "Adapt 3 prompts for your triage agent",
-            "Non-technical user language"
-          ],
-          "resources": [
-            "projects/04-prompt-playbooks/"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Adoption metrics plan.",
-          "steps": [
-            "Align with projects/05-adoption-dashboard/README.md",
-            "What would you log: queries, escalations, approvals"
-          ],
-          "resources": [
-            "projects/05-adoption-dashboard/"
-          ]
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "HITL sequence diagram.",
-          "steps": [
-            "Add to case study",
-            "Mermaid in study-notes/"
-          ],
-          "resources": [],
-          "proveLink": "projects/01-it-helpdesk-agent/"
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Case study \u00a74: HITL + failure modes.",
-          "steps": [
-            "Retry, escalate, low-confidence paths",
-            "No production claims"
-          ],
-          "resources": [
-            "study-notes/agentic-case-study.md"
-          ],
-          "proveLink": "projects/01-it-helpdesk-agent/"
-        }
-      },
-      "workbook": "workbooks/week-11.html"
+      "title": "HTTP API wrapper for the agent",
+      "workbook": "workbooks/week-11.html",
+      "miniProject": {
+        "name": "HTTP API wrapper for the agent",
+        "path": "projects/01-it-helpdesk-agent/",
+        "build": [
+          "FastAPI POST /query endpoint wrapping agent",
+          "Request/response Pydantic models",
+          "curl example in README"
+        ],
+        "doneWhen": [
+          "/query returns answer + tools_used",
+          "Health check endpoint"
+        ]
+      }
     },
     {
       "week": 12,
       "month": 3,
-      "capstoneWeek": true,
+      "phase": "mini",
+      "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Agentic triage POC",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Review",
-          "guide": "Month 3 capstone prep: Agentic triage POC",
-          "steps": [
-            "Review study-notes from weeks 1\u20133 of this month",
-            "Check tracker/months.json rubric \u2014 gap list"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Review",
-          "guide": "Consolidate workflow artifacts from this month",
-          "steps": [
-            "Merge best workflow diagram from study-notes/",
-            "Confirm every Okta write has HITL gate marked"
-          ],
-          "resources": [
-            "study-notes/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Review",
-          "guide": "Identity + audit checklist before capstone ship",
-          "steps": [
-            "Verify least privilege on all designed workflows",
-            "Audit log schema complete (who, what, when, ticket_id)"
-          ],
-          "resources": [
-            "study-notes/prod-iam-audit.md"
-          ]
-        },
-        "thu": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Build capstone: Agentic triage POC",
-          "steps": [
-            "Separate deterministic steps from LLM-assisted triage/routing",
-            "Define HITL approval before any Okta write"
-          ],
-          "resources": [
-            "tracker/months.json rubric"
-          ]
-        },
-        "fri": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Continue capstone \u2014 ship-quality draft",
-          "steps": [
-            "Document failure/retry behavior",
-            "Walk through projects/01-it-helpdesk-agent + 02-okta-mcp-server"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Capstone ship",
-          "guide": "Ship capstone artifact to study-notes/ or projects/",
-          "steps": [
-            "Commit artifact with date in filename",
-            "Honest status label (POC / design / shipped)"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Capstone retro",
-          "guide": "Retro + update portfolio README if needed",
-          "steps": [
-            "What shipped vs planned \u2014 write 5 bullets",
-            "Update README or case study links"
-          ],
-          "resources": [
-            "README.md"
-          ]
-        }
-      },
-      "capstoneTitle": "Case study draft: triage + Okta grant + audit",
-      "workbook": "workbooks/week-12.html"
+      "title": "Audit log schema + write path",
+      "workbook": "workbooks/week-12.html",
+      "miniProject": {
+        "name": "Audit log schema + write path",
+        "path": "projects/05-adoption-dashboard/",
+        "build": [
+          "Define audit event: actor, action, resource, ticket_id, timestamp, approved_by",
+          "Implement file or Firestore stub writer",
+          "Wire one mock approved action to audit log"
+        ],
+        "doneWhen": [
+          "schema.md committed",
+          "Sample audit events from test run"
+        ]
+      }
     },
     {
       "week": 13,
       "month": 4,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Reliability \u2014 workflow automation + Cloud Run patterns from endpoint control service",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Workflow failures you've seen.",
-          "steps": [
-            "workflow automation execution failures \u2014 top 3 causes",
-            "Manual reruns required?",
-            "Document real incidents (sanitized)"
-          ],
-          "resources": [
-            "workflow automation production"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Idempotency keys on webhooks.",
-          "steps": [
-            "Design idempotency for access governance/Okta callbacks",
-            "Duplicate webhook handling",
-            "Reference endpoint control service retry patterns"
-          ],
-          "resources": [
-            "endpoint control service (shipped)"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Credential rotation without downtime.",
-          "steps": [
-            "Okta token rotation procedure",
-            "WIF > long-lived keys",
-            "Agent SA rotation plan"
-          ],
-          "resources": [
-            "study-notes/wif-agent-identity-design.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Agent timeout + fallback.",
-          "steps": [
-            "Max tool-call iterations",
-            "Fallback message to user",
-            "Alert IT on repeated failures"
-          ],
-          "resources": []
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Retry rate baseline.",
-          "steps": [
-            "workflow automation failed executions / total (real ratio)",
-            "Target: reduce with idempotency"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Runbook stub for one workflow.",
-          "steps": [
-            "study-notes/runbooks/access-grant-failure.md",
-            "On-call steps"
-          ],
-          "resources": [],
-          "proveLink": "projects/07-alius/"
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Read ALIUS architecture for retry/DLQ patterns.",
-          "steps": [
-            "projects/07-alius/ARCHITECTURE.md",
-            "Compare to your access workflow"
-          ],
-          "resources": [
-            "projects/07-alius/"
-          ],
-          "proveLink": "projects/07-alius/"
-        }
-      },
-      "workbook": "workbooks/week-13.html"
+      "title": "Idempotent webhook handler pattern",
+      "workbook": "workbooks/week-13.html",
+      "miniProject": {
+        "name": "Idempotent webhook handler pattern",
+        "path": "projects/01-it-helpdesk-agent/",
+        "build": [
+          "Add webhook stub POST /hooks/ticket with idempotency key header",
+          "Document retry behavior in docs/reliability.md",
+          "Test duplicate delivery returns same response"
+        ],
+        "doneWhen": [
+          "docs/reliability.md",
+          "Duplicate POST test logged"
+        ]
+      }
     },
     {
       "week": 14,
       "month": 4,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "ALIUS offboarding design connection",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Offboarding manual steps.",
-          "steps": [
-            "List systems touched on deactivate",
-            "Orphan NHIs you've seen?",
-            "Link to ALIUS problem statement"
-          ],
-          "resources": [
-            "projects/07-alius/ARCHITECTURE.md"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "ALIUS state machine sketch.",
-          "steps": [
-            "Okta deactivate \u2192 Firestore steps",
-            "Google sequence, Okta cleanup, device lookup",
-            "Planning only \u2014 not shipped"
-          ],
-          "resources": [
-            "projects/07-alius/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "NHI revoke on offboard.",
-          "steps": [
-            "Service accounts tied to humans",
-            "KeySentinel / revoke sequence in ALIUS doc",
-            "Interview SD: offboarding-pipeline.md"
-          ],
-          "resources": [
-            "interview-prep/answers/offboarding-pipeline.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Agent credentials on offboard.",
-          "steps": [
-            "If user had agent API keys \u2014 revoke in workflow",
-            "Future: agent identity broker design"
-          ],
-          "resources": [
-            "interview-prep/answers/agent-identity-broker.md"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Offboard completion tracking.",
-          "steps": [
-            "Metric: % terminal states in state machine (when ALIUS exists)",
-            "Today: manual checklist completion"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "ALIUS design questions checklist.",
-          "steps": [
-            "Complete Week 7 questions in ARCHITECTURE.md",
-            "2-min pitch written"
-          ],
-          "resources": [
-            "projects/07-alius/ARCHITECTURE.md"
-          ],
-          "proveLink": "projects/07-alius/"
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Link ALIUS + access workflow in platform-bridge.",
-          "steps": [
-            "study-notes/platform-projects/platform-bridge.md",
-            "Update if needed"
-          ],
-          "resources": [
-            "study-notes/platform-projects/platform-bridge.md"
-          ],
-          "proveLink": "projects/07-alius/"
-        }
-      },
-      "workbook": "workbooks/week-14.html"
+      "title": "Failure alerts \u2014 design + test payload",
+      "workbook": "workbooks/week-14.html",
+      "miniProject": {
+        "name": "Failure alerts \u2014 design + test payload",
+        "path": "projects/01-it-helpdesk-agent/",
+        "build": [
+          "Define Slack alert JSON for agent/tool failures",
+          "Simulate failure path; print alert payload",
+          "Runbook snippet: what on-call does"
+        ],
+        "doneWhen": [
+          "docs/failure-alerts.md with sample payload",
+          "Runbook linked from alert template"
+        ]
+      }
     },
     {
       "week": 15,
       "month": 4,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Alerting + Slack ops notifications",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Silent workflow failures.",
-          "steps": [
-            "When did automation fail without alert?",
-            "Gap list"
-          ],
-          "resources": []
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Slack alert on workflow automation/Cloud Run failure.",
-          "steps": [
-            "Webhook to #it-automation-alerts",
-            "Include execution ID, workflow name, error",
-            "Reuse Slack app bot token patterns"
-          ],
-          "resources": [
-            "Slack app (shipped)"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Alert channel access.",
-          "steps": [
-            "Who can see automation alerts?",
-            "Least privilege on webhook URLs"
-          ],
-          "resources": []
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Agent failure alerts.",
-          "steps": [
-            "Separate alert when agent escalates 3x same issue",
-            "Not spam on every low-confidence"
-          ],
-          "resources": []
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "MTTR for automation failures.",
-          "steps": [
-            "Time from fail \u2192 human fix (sample)",
-            "Target reduction with runbooks"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Alert payload JSON example.",
-          "steps": [
-            "study-notes/week-15-alerts.md"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Month 4 capstone prep.",
-          "steps": [
-            "Reliability checklist draft",
-            "months.json Month 4 rubric"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        }
-      },
-      "workbook": "workbooks/week-15.html"
+      "title": "Agentspace rollout checklist v1",
+      "workbook": "workbooks/week-15.html",
+      "miniProject": {
+        "name": "Agentspace rollout checklist v1",
+        "path": "projects/03-agentspace-rollout/",
+        "build": [
+          "Complete rollout checklist for 1 team (identity + data scope)",
+          "Pilot success criteria (adoption, not fake CSAT)",
+          "Risk register: 3 items + mitigations"
+        ],
+        "doneWhen": [
+          "checklist.md committed",
+          "Pilot scope documented"
+        ]
+      }
     },
     {
       "week": 16,
       "month": 4,
-      "capstoneWeek": true,
+      "phase": "mini",
+      "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Workflow reliability",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Review",
-          "guide": "Month 4 capstone prep: Workflow reliability",
-          "steps": [
-            "Review study-notes from weeks 1\u20133 of this month",
-            "Check tracker/months.json rubric \u2014 gap list"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Review",
-          "guide": "Consolidate workflow artifacts from this month",
-          "steps": [
-            "Merge best workflow diagram from study-notes/",
-            "Confirm every Okta write has HITL gate marked"
-          ],
-          "resources": [
-            "study-notes/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Review",
-          "guide": "Identity + audit checklist before capstone ship",
-          "steps": [
-            "Verify least privilege on all designed workflows",
-            "Audit log schema complete (who, what, when, ticket_id)"
-          ],
-          "resources": [
-            "study-notes/prod-iam-audit.md"
-          ]
-        },
-        "thu": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Build capstone: Workflow reliability",
-          "steps": [
-            "Idempotency and retry policy documented",
-            "Alerting on failure paths (Slack)"
-          ],
-          "resources": [
-            "tracker/months.json rubric"
-          ]
-        },
-        "fri": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Continue capstone \u2014 ship-quality draft",
-          "steps": [
-            "Runbook for on-call handoff",
-            "Measure baseline: time-to-resolve before automation (real numbers only)"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Capstone ship",
-          "guide": "Ship capstone artifact to study-notes/ or projects/",
-          "steps": [
-            "Commit artifact with date in filename",
-            "Honest status label (POC / design / shipped)"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Capstone retro",
-          "guide": "Retro + update portfolio README if needed",
-          "steps": [
-            "What shipped vs planned \u2014 write 5 bullets",
-            "Update README or case study links"
-          ],
-          "resources": [
-            "README.md"
-          ]
-        }
-      },
-      "capstoneTitle": "Reliability runbook for one workflow",
-      "workbook": "workbooks/week-16.html"
+      "title": "Adoption metrics event schema",
+      "workbook": "workbooks/week-16.html",
+      "miniProject": {
+        "name": "Adoption metrics event schema",
+        "path": "projects/05-adoption-dashboard/",
+        "build": [
+          "Define events: query_submitted, tool_called, escalated, approved",
+          "Map to BigQuery-friendly fields",
+          "Emit sample events from agent logging"
+        ],
+        "doneWhen": [
+          "events-schema.md",
+          "Sample JSONL aligned with Week 6 logs"
+        ]
+      }
     },
     {
       "week": 17,
       "month": 5,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Agent tool schemas \u2014 helpdesk + Okta tools",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Tool misuse risks.",
-          "steps": [
-            "Agent calls wrong tool or args",
-            "Document 3 failure modes"
-          ],
-          "resources": []
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "JSON schema for each tool.",
-          "steps": [
-            "rag_tool, okta_tool in helpdesk agent",
-            "Required fields, enums",
-            "Validate before Okta API call"
-          ],
-          "resources": [
-            "projects/01-it-helpdesk-agent/tools/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Tool scope tied to requester.",
-          "steps": [
-            "Agent can only lookup users relevant to ticket",
-            "No arbitrary user enumeration in prod"
-          ],
-          "resources": []
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Expand eval set to 20 cases.",
-          "steps": [
-            "Add edge cases: empty query, ambiguous user",
-            "Log in study-notes/week-17-evals.md"
-          ],
-          "resources": [
-            "projects/01-it-helpdesk-agent/"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Tool call error rate.",
-          "steps": [
-            "Track schema validation failures in test runs"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Eval results table.",
-          "steps": [
-            "study-notes/week-17-evals.md",
-            "No fake accuracy \u2014 raw pass/fail"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Guardrails doc.",
-          "steps": [
-            "Max tools per turn, block list for destructive ops"
-          ],
-          "resources": []
-        }
-      },
-      "workbook": "workbooks/week-17.html"
+      "title": "Usage dashboard stub",
+      "workbook": "workbooks/week-17.html",
+      "miniProject": {
+        "name": "Usage dashboard stub",
+        "path": "projects/05-adoption-dashboard/",
+        "build": [
+          "Simple script or SQL: queries per day, escalation rate (from logs)",
+          "No invented numbers \u2014 use your test log data only",
+          "Screenshot or terminal output in docs/"
+        ],
+        "doneWhen": [
+          "Query script runs on sample logs",
+          "README updated with how to run"
+        ]
+      }
     },
     {
       "week": 18,
       "month": 5,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Eval harness structure",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Regression when changing prompts.",
-          "steps": [
-            "Note prompt change that broke answers",
-            "Why evals matter"
-          ],
-          "resources": []
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Eval runner script outline.",
-          "steps": [
-            "Input: CSV of prompt, expected_route, expected_contains",
-            "Output: pass/fail log",
-            "Run in CI optional"
-          ],
-          "resources": [
-            "projects/01-it-helpdesk-agent/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Eval data \u2014 no real employee PII.",
-          "steps": [
-            "Synthetic users in test tenant",
-            "Sanitized ticket titles"
-          ],
-          "resources": []
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Implement or stub 5 eval runs.",
-          "steps": [
-            "Python script or notebook",
-            "Commit to study-notes/evals/"
-          ],
-          "resources": []
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Eval pass rate tracking.",
-          "steps": [
-            "Track over time in spreadsheet \u2014 real runs only"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "eval_cases.csv with 10 rows.",
-          "steps": [
-            "study-notes/evals/eval_cases.csv"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Document when agent must escalate.",
-          "steps": [
-            "Add to case study \u00a75"
-          ],
-          "resources": [
-            "study-notes/agentic-case-study.md"
-          ]
-        }
-      },
-      "workbook": "workbooks/week-18.html"
+      "title": "Ops KB index + grounding rules",
+      "workbook": "workbooks/week-18.html",
+      "miniProject": {
+        "name": "Ops KB index + grounding rules",
+        "path": "projects/01-it-helpdesk-agent/",
+        "build": [
+          "study-notes/ops-kb-index.md listing runbooks + owners",
+          "Grounding rules: cite source, say when KB miss",
+          "Update agent prompt with citation format"
+        ],
+        "doneWhen": [
+          "ops-kb-index.md committed",
+          "Agent cites runbook in 2 test answers"
+        ]
+      }
     },
     {
       "week": 19,
       "month": 5,
+      "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Guardrails + escalation policy",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "High-risk requests agents must never auto-handle.",
-          "steps": [
-            "Admin grants, bulk deletes, production changes"
-          ],
-          "resources": []
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Escalation policy doc.",
-          "steps": [
-            "Tier 1: agent auto | Tier 2: agent + HITL | Tier 3: human only",
-            "Map your ticket categories"
-          ],
-          "resources": []
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Privileged access workflow.",
-          "steps": [
-            "Separate path from standard access governance request",
-            "No agent write to privileged groups"
-          ],
-          "resources": []
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "System prompt guardrails.",
-          "steps": [
-            "Draft system prompt section: never claim authority to grant access",
-            "Cite KB sources when answering"
-          ],
-          "resources": []
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Escalation rate tracking.",
-          "steps": [
-            "Count escalations / total agent sessions in tests"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "escalation-policy.md",
-          "steps": [
-            "study-notes/escalation-policy.md"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Month 5 capstone prep.",
-          "steps": [
-            "Eval harness + guardrails checklist"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        }
-      },
-      "workbook": "workbooks/week-19.html"
+      "title": "End-to-end integration demo",
+      "workbook": "workbooks/week-19.html",
+      "miniProject": {
+        "name": "End-to-end integration demo",
+        "path": "projects/01-it-helpdesk-agent/",
+        "build": [
+          "Scripted demo: runbook Q \u2192 identity Q \u2192 escalation \u2192 HITL mock \u2192 audit log",
+          "Record terminal session or write demo-script.md step-by-step",
+          "2-minute talk track"
+        ],
+        "doneWhen": [
+          "demo-script.md",
+          "All components touched in one flow"
+        ]
+      }
     },
     {
       "week": 20,
       "month": 5,
-      "capstoneWeek": true,
+      "phase": "mini",
+      "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Agent tool-use + evals",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Review",
-          "guide": "Month 5 capstone prep: Agent tool-use + evals",
-          "steps": [
-            "Review study-notes from weeks 1\u20133 of this month",
-            "Check tracker/months.json rubric \u2014 gap list"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Review",
-          "guide": "Consolidate workflow artifacts from this month",
-          "steps": [
-            "Merge best workflow diagram from study-notes/",
-            "Confirm every Okta write has HITL gate marked"
-          ],
-          "resources": [
-            "study-notes/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Review",
-          "guide": "Identity + audit checklist before capstone ship",
-          "steps": [
-            "Verify least privilege on all designed workflows",
-            "Audit log schema complete (who, what, when, ticket_id)"
-          ],
-          "resources": [
-            "study-notes/prod-iam-audit.md"
-          ]
-        },
-        "thu": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Build capstone: Agent tool-use + evals",
-          "steps": [
-            "Tool schema for ticket lookup / KB search",
-            "10+ eval cases (happy path + edge)"
-          ],
-          "resources": [
-            "tracker/months.json rubric"
-          ]
-        },
-        "fri": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Continue capstone \u2014 ship-quality draft",
-          "steps": [
-            "Document when agent must escalate to human",
-            "No claim of production deployment"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Capstone ship",
-          "guide": "Ship capstone artifact to study-notes/ or projects/",
-          "steps": [
-            "Commit artifact with date in filename",
-            "Honest status label (POC / design / shipped)"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Capstone retro",
-          "guide": "Retro + update portfolio README if needed",
-          "steps": [
-            "What shipped vs planned \u2014 write 5 bullets",
-            "Update README or case study links"
-          ],
-          "resources": [
-            "README.md"
-          ]
-        }
-      },
-      "capstoneTitle": "Eval harness for triage agent path",
-      "workbook": "workbooks/week-20.html"
+      "title": "Capstone scaffold + architecture",
+      "workbook": "workbooks/week-20.html",
+      "miniProject": {
+        "name": "Capstone scaffold + architecture",
+        "path": "projects/08-capstone-ops-agent/",
+        "build": [
+          "Create capstone repo folder with ARCHITECTURE.md",
+          "Diagram: API + agent + MCP + HITL + audit + metrics",
+          "List what migrates from mini-projects 01\u201305"
+        ],
+        "doneWhen": [
+          "projects/08-capstone-ops-agent/ committed",
+          "Architecture reviewed against eval failures from W9"
+        ]
+      }
     },
     {
       "week": 21,
       "month": 6,
-      "capstoneWeek": false,
+      "phase": "capstone",
+      "capstoneWeek": true,
       "interviewPrep": false,
-      "title": "Ops KB structure for RAG",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "KB gaps from agent test failures.",
-          "steps": [
-            "List runbook topics agent couldn't answer",
-            "Prioritize top 5 to author"
-          ],
-          "resources": []
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Runbook markdown structure.",
-          "steps": [
-            "Title, symptoms, steps, escalation",
-            "Match projects/01-it-helpdesk-agent runbook format"
-          ],
-          "resources": [
-            "projects/01-it-helpdesk-agent/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "KB access control.",
-          "steps": [
-            "Which runbooks contain sensitive info?",
-            "Segment internal-only vs general IT"
-          ],
-          "resources": []
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Grounding rules.",
-          "steps": [
-            "Agent must cite runbook section",
-            "If no KB hit \u2192 say so, don't hallucinate"
-          ],
-          "resources": []
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "KB coverage metric.",
-          "steps": [
-            "% of eval cases with matching runbook chunk (from tests)"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Author 2 new runbook snippets.",
-          "steps": [
-            "Add to helpdesk agent corpus",
-            "Re-run 3 failing evals"
-          ],
-          "resources": [
-            "projects/01-it-helpdesk-agent/"
-          ]
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "KB index doc.",
-          "steps": [
-            "study-notes/ops-kb-index.md"
-          ],
-          "resources": []
-        }
-      },
-      "workbook": "workbooks/week-21.html"
+      "title": "Capstone W1 \u2014 Core platform assembly",
+      "workbook": "workbooks/week-21.html",
+      "miniProject": {
+        "name": "Capstone W1 \u2014 Core platform assembly",
+        "path": "projects/08-capstone-ops-agent/",
+        "build": [
+          "Merge agent + MCP + FastAPI into capstone service layout",
+          "Single docker-compose or local run script",
+          "Port eval suite to capstone repo"
+        ],
+        "doneWhen": [
+          "One command starts API + agent",
+          "5 eval cases pass in capstone repo"
+        ]
+      }
     },
     {
       "week": 22,
       "month": 6,
-      "capstoneWeek": false,
+      "phase": "capstone",
+      "capstoneWeek": true,
       "interviewPrep": false,
-      "title": "RAG tuning \u2014 when not to use RAG",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Wrong RAG answers.",
-          "steps": [
-            "Examples of retrieval mismatch",
-            "When keyword search fails"
-          ],
-          "resources": []
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Hybrid: RAG for FAQ, deterministic for status.",
-          "steps": [
-            "User status \u2192 Okta MCP not RAG",
-            "Policy questions \u2192 RAG"
-          ],
-          "resources": []
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Don't embed secrets in KB.",
-          "steps": [
-            "Audit runbooks for tokens, internal URLs",
-            "Redact if needed"
-          ],
-          "resources": []
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Chunk size / metadata experiments.",
-          "steps": [
-            "Note 2 chunk strategies tested",
-            "Which worked for IT runbooks"
-          ],
-          "resources": [
-            "projects/01-it-helpdesk-agent/tools/rag_tool.py"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Retrieval precision (manual review).",
-          "steps": [
-            "For 10 queries: relevant chunk retrieved yes/no"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Update case study KB section.",
-          "steps": [
-            "study-notes/agentic-case-study.md"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Fallback flow diagram.",
-          "steps": [
-            "No KB match \u2192 escalate with collected context"
-          ],
-          "resources": []
-        }
-      },
-      "workbook": "workbooks/week-22.html"
+      "title": "Capstone W2 \u2014 HITL + policy enforcement",
+      "workbook": "workbooks/week-22.html",
+      "miniProject": {
+        "name": "Capstone W2 \u2014 HITL + policy enforcement",
+        "path": "projects/08-capstone-ops-agent/",
+        "build": [
+          "Implement approval gate before any side-effect tool",
+          "Load escalation-policy.md as enforced rules",
+          "Reject privilege escalation test cases"
+        ],
+        "doneWhen": [
+          "Unapproved writes blocked in tests",
+          "Approval flow in ARCHITECTURE.md updated"
+        ]
+      }
     },
     {
       "week": 23,
       "month": 6,
-      "capstoneWeek": false,
+      "phase": "capstone",
+      "capstoneWeek": true,
       "interviewPrep": false,
-      "title": "Wire KB into triage flow",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Stale runbooks.",
-          "steps": [
-            "Last updated dates on key docs",
-            "Ownership for KB maintenance"
-          ],
-          "resources": []
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "KB update process.",
-          "steps": [
-            "Ticket resolves with new fix \u2192 runbook PR",
-            "Owner: IT ops"
-          ],
-          "resources": []
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "KB repo access.",
-          "steps": [
-            "Who can merge runbook changes?",
-            "Same as internal docs policy"
-          ],
-          "resources": []
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "End-to-end demo path.",
-          "steps": [
-            "Query \u2192 RAG \u2192 answer OR \u2192 MCP lookup OR \u2192 escalate",
-            "Script demo for portfolio"
-          ],
-          "resources": [
-            "projects/01-it-helpdesk-agent/"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Self-service resolution in tests.",
-          "steps": [
-            "Count eval passes without escalation"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Record demo script.",
-          "steps": [
-            "study-notes/demo-script.md",
-            "2-min portfolio walkthrough"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Month 6 capstone prep.",
-          "steps": [
-            "KB + case study complete checklist"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        }
-      },
-      "workbook": "workbooks/week-23.html"
+      "title": "Capstone W3 \u2014 Audit trail + observability",
+      "workbook": "workbooks/week-23.html",
+      "miniProject": {
+        "name": "Capstone W3 \u2014 Audit trail + observability",
+        "path": "projects/08-capstone-ops-agent/",
+        "build": [
+          "Wire audit log + adoption events on every query",
+          "Failure alert hook on tool errors",
+          "Dashboard script reads capstone logs"
+        ],
+        "doneWhen": [
+          "Audit + metrics emitted for full demo flow",
+          "Reliability docs ported from mini-projects"
+        ]
+      }
     },
     {
       "week": 24,
       "month": 6,
+      "phase": "capstone",
       "capstoneWeek": true,
       "interviewPrep": false,
-      "title": "Ops knowledge base",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Review",
-          "guide": "Month 6 capstone prep: Ops knowledge base",
-          "steps": [
-            "Review study-notes from weeks 1\u20133 of this month",
-            "Check tracker/months.json rubric \u2014 gap list"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Review",
-          "guide": "Consolidate workflow artifacts from this month",
-          "steps": [
-            "Merge best workflow diagram from study-notes/",
-            "Confirm every Okta write has HITL gate marked"
-          ],
-          "resources": [
-            "study-notes/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Review",
-          "guide": "Identity + audit checklist before capstone ship",
-          "steps": [
-            "Verify least privilege on all designed workflows",
-            "Audit log schema complete (who, what, when, ticket_id)"
-          ],
-          "resources": [
-            "study-notes/prod-iam-audit.md"
-          ]
-        },
-        "thu": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Build capstone: Ops knowledge base",
-          "steps": [
-            "Structure KB for IT ops (not generic RAG demo)",
-            "Grounding rules and citation in agent responses"
-          ],
-          "resources": [
-            "tracker/months.json rubric"
-          ]
-        },
-        "fri": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Continue capstone \u2014 ship-quality draft",
-          "steps": [
-            "Fallback when KB miss",
-            "Update projects/07-alius/ design from reliability learnings"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Capstone ship",
-          "guide": "Ship capstone artifact to study-notes/ or projects/",
-          "steps": [
-            "Commit artifact with date in filename",
-            "Honest status label (POC / design / shipped)"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Capstone retro",
-          "guide": "Retro + update portfolio README if needed",
-          "steps": [
-            "What shipped vs planned \u2014 write 5 bullets",
-            "Update README or case study links"
-          ],
-          "resources": [
-            "README.md"
-          ]
-        }
-      },
-      "capstoneTitle": "KB slice integrated into triage flow",
-      "workbook": "workbooks/week-24.html"
+      "title": "Capstone W4 \u2014 Deploy POC + case study draft",
+      "workbook": "workbooks/week-24.html",
+      "miniProject": {
+        "name": "Capstone W4 \u2014 Deploy POC + case study draft",
+        "path": "projects/08-capstone-ops-agent/",
+        "build": [
+          "Cloud Run deploy POC (or documented deploy script)",
+          "study-notes/capstone-case-study.md \u2014 honest POC status",
+          "Update portfolio README with capstone link"
+        ],
+        "doneWhen": [
+          "Deploy instructions in capstone README",
+          "Case study: problem \u2192 architecture \u2192 eval results \u2192 limits"
+        ]
+      }
     },
     {
       "week": 25,
       "month": 7,
+      "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Metrics baseline + adoption dashboard",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "No visibility into automation value.",
-          "steps": [
-            "What can't you measure today?",
-            "Gap list for leadership story"
-          ],
-          "resources": []
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Adoption dashboard data model.",
-          "steps": [
-            "Read projects/05-adoption-dashboard/README.md",
-            "Events: query, approval, grant, failure",
-            "BigQuery or Logging sink"
-          ],
-          "resources": [
-            "projects/05-adoption-dashboard/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "PII in metrics.",
-          "steps": [
-            "Hash user IDs in logs",
-            "Aggregate only for dashboards"
-          ],
-          "resources": []
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Log agent sessions for dashboard.",
-          "steps": [
-            "Schema: timestamp, tools, outcome, duration"
-          ],
-          "resources": [
-            "projects/05-adoption-dashboard/"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Hours saved calculation.",
-          "steps": [
-            "Formula: (manual_min - automated_min) * volume",
-            "Document assumptions \u2014 real volume only"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Metrics one-pager.",
-          "steps": [
-            "study-notes/metrics-baseline.md",
-            "3 metrics you can collect this quarter"
-          ],
-          "resources": [
-            "projects/05-adoption-dashboard/"
-          ],
-          "proveLink": "projects/05-adoption-dashboard/"
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Consulting offer (a) outline.",
-          "steps": [
-            "Okta JML audit \u2014 scope from CONTEXT.md",
-            "Fixed-fee structure draft"
-          ],
-          "resources": [
-            "CONTEXT.md"
-          ],
-          "proveLink": "projects/05-adoption-dashboard/"
-        }
-      },
-      "workbook": "workbooks/week-25.html"
+      "title": "Capstone demo polish + 2-min walkthrough",
+      "workbook": "workbooks/week-25.html",
+      "miniProject": {
+        "name": "Capstone demo polish + 2-min walkthrough",
+        "path": "projects/08-capstone-ops-agent/",
+        "build": [
+          "Record or script demo",
+          "Fix top 3 eval failures",
+          "README hero section"
+        ],
+        "doneWhen": [
+          "demo-script.md updated",
+          "README has architecture diagram"
+        ]
+      }
     },
     {
       "week": 26,
       "month": 7,
+      "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Consulting packaging (a)(b)(c)",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Consulting buyer pain.",
-          "steps": [
-            "Who buys Okta audits? IT lead, security, fast-growing startup IT"
-          ],
-          "resources": []
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Offer (b) access automation deck.",
-          "steps": [
-            "Intake \u2192 access governance/Okta \u2014 your production experience",
-            "Deliverables list"
-          ],
-          "resources": [
-            "CONTEXT.md consulting (b)"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Offer (c) AI triage bot POC.",
-          "steps": [
-            "Scope: Slack + agent + HITL \u2014 portfolio case study",
-            "4-6 week POC, fixed fee"
-          ],
-          "resources": [
-            "CONTEXT.md consulting (c)"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Demo reel outline.",
-          "steps": [
-            "helpdesk agent + MCP + HITL slide sequence"
-          ],
-          "resources": [
-            "study-notes/demo-script.md"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "LinkedIn post draft metrics.",
-          "steps": [
-            "Shipped X at production IT \u2014 no invented %",
-            "Portfolio links"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "consulting-one-pager.md",
-          "steps": [
-            "study-notes/consulting-one-pager.md",
-            "Offers (a)(b)(c)"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Update wave-1-checklist.",
-          "steps": [
-            "interview-prep/answers/wave-1-checklist.md"
-          ],
-          "resources": [
-            "interview-prep/answers/wave-1-checklist.md"
-          ]
-        }
-      },
-      "workbook": "workbooks/week-26.html"
+      "title": "Portfolio narrative + LinkedIn post draft",
+      "workbook": "workbooks/week-26.html",
+      "miniProject": {
+        "name": "Portfolio narrative + LinkedIn post draft",
+        "path": "study-notes/",
+        "build": [
+          "Write platform-bridge.md update",
+          "Link shipped work + capstone",
+          "Draft LinkedIn post"
+        ],
+        "doneWhen": [
+          "platform-bridge.md committed",
+          "Post draft in study-notes/"
+        ]
+      }
     },
     {
       "week": 27,
       "month": 7,
+      "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Portfolio narrative single story",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Interview gap: scattered projects.",
-          "steps": [
-            "List what feels disconnected",
-            "Unify under identity-backed ops automation"
-          ],
-          "resources": []
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "platform-bridge walkthrough.",
-          "steps": [
-            "study-notes/platform-projects/platform-bridge.md",
-            "5-min talk track rehearse"
-          ],
-          "resources": [
-            "study-notes/platform-projects/platform-bridge.md"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "STAR: Okta/access governance shipped work.",
-          "steps": [
-            "interview-prep/answers/behavioral-star.md \u2014 fill Slack/workflow automation/endpoint control service"
-          ],
-          "resources": [
-            "interview-prep/answers/behavioral-star.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "STAR: agentic case study (POC honest).",
-          "steps": [
-            "Fill behavioral-star agentic section"
-          ],
-          "resources": []
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Measure",
-          "guide": "Portfolio completeness checklist.",
-          "steps": [
-            "All 7 projects linked",
-            "Status labels accurate"
-          ],
-          "resources": [
-            "README.md"
-          ]
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Record yourself \u2014 5 min portfolio narrated.",
-          "steps": [
-            "Notes on weak sections to fix"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Month 7 capstone prep.",
-          "steps": [
-            "Consulting + metrics rubric"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        }
-      },
-      "workbook": "workbooks/week-27.html"
+      "title": "Consulting one-pager (offers a/b/c)",
+      "workbook": "workbooks/week-27.html",
+      "miniProject": {
+        "name": "Consulting one-pager (offers a/b/c)",
+        "path": "CONTEXT.md",
+        "build": [
+          "study-notes/consulting-one-pager.md",
+          "Scope fixed-fee offers from CONTEXT",
+          "No invented client metrics"
+        ],
+        "doneWhen": [
+          "One-pager committed",
+          "3 offers scoped"
+        ]
+      }
     },
     {
       "week": 28,
       "month": 7,
-      "capstoneWeek": true,
+      "phase": "portfolio",
+      "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Metrics + consulting menu",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Review",
-          "guide": "Month 7 capstone prep: Metrics + consulting menu",
-          "steps": [
-            "Review study-notes from weeks 1\u20133 of this month",
-            "Check tracker/months.json rubric \u2014 gap list"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Review",
-          "guide": "Consolidate workflow artifacts from this month",
-          "steps": [
-            "Merge best workflow diagram from study-notes/",
-            "Confirm every Okta write has HITL gate marked"
-          ],
-          "resources": [
-            "study-notes/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Review",
-          "guide": "Identity + audit checklist before capstone ship",
-          "steps": [
-            "Verify least privilege on all designed workflows",
-            "Audit log schema complete (who, what, when, ticket_id)"
-          ],
-          "resources": [
-            "study-notes/prod-iam-audit.md"
-          ]
-        },
-        "thu": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Build capstone: Metrics + consulting menu",
-          "steps": [
-            "Define measurable ops KPIs you can actually collect",
-            "Package (a)(b)(c) from CONTEXT.md with fixed-fee framing"
-          ],
-          "resources": [
-            "tracker/months.json rubric"
-          ]
-        },
-        "fri": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Continue capstone \u2014 ship-quality draft",
-          "steps": [
-            "Hours-saved estimate methodology \u2014 no invented deflection %",
-            "LinkedIn post draft on identity-backed automation"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Capstone ship",
-          "guide": "Ship capstone artifact to study-notes/ or projects/",
-          "steps": [
-            "Commit artifact with date in filename",
-            "Honest status label (POC / design / shipped)"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Capstone retro",
-          "guide": "Retro + update portfolio README if needed",
-          "steps": [
-            "What shipped vs planned \u2014 write 5 bullets",
-            "Update README or case study links"
-          ],
-          "resources": [
-            "README.md"
-          ]
-        }
-      },
-      "capstoneTitle": "Consulting one-pager (Okta audit, access automation, AI triage bot)",
-      "workbook": "workbooks/week-28.html"
+      "title": "Metrics baseline documentation",
+      "workbook": "workbooks/week-28.html",
+      "miniProject": {
+        "name": "Metrics baseline documentation",
+        "path": "projects/05-adoption-dashboard/",
+        "build": [
+          "study-notes/metrics-baseline.md",
+          "Hours-saved formula with YOUR volume only",
+          "Tie to capstone logs"
+        ],
+        "doneWhen": [
+          "Baseline doc with real numbers or TBD placeholders"
+        ]
+      }
     },
     {
       "week": 29,
       "month": 8,
+      "phase": "portfolio",
       "capstoneWeek": false,
-      "interviewPrep": false,
-      "title": "Interview prep \u2014 AI Systems system design (Week 29)",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Target company research.",
-          "steps": [
-            "Research 1 company for Wave 1 (week 29)",
-            "Note their ops/automation stack",
-            "Write 3 interview questions you'd ask them"
-          ],
-          "resources": [
-            "CONTEXT.md target companies"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Timed system design (45 min).",
-          "steps": [
-            "Prompt: design AI-native internal IT ticket automation",
-            "Use interview-prep/system-design-template.md",
-            "Submit written answer"
-          ],
-          "resources": [
-            "interview-prep/system-design-template.md"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Timed design: Okta + agent identity.",
-          "steps": [
-            "Prompt: agent identity broker or access grant automation",
-            "Include HITL + audit"
-          ],
-          "resources": [
-            "interview-prep/answers/agent-identity-broker.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Portfolio walkthrough rehearsal.",
-          "steps": [
-            "10-min: shipped work \u2192 case study \u2192 CIPHER/ALIUS design",
-            "Record or script"
-          ],
-          "resources": [
-            "study-notes/demo-script.md"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Interview prep",
-          "guide": "Week 29 mock block.",
-          "steps": [
-            "1 system design review (self-grade rubric)",
-            "1 STAR aloud",
-            "1 company research summary"
-          ],
-          "resources": [
-            "interview-prep/answers/wave-1-checklist.md"
-          ]
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Save design answer to interview-prep/answers/.",
-          "steps": [
-            "File: week-{w}-system-design.md"
-          ],
-          "resources": [
-            "interview-prep/answers/"
-          ]
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Update resume bullet from this week's STAR.",
-          "steps": [
-            "Kamaal_Mirza_Resume_Serval.docx \u2014 align wording"
-          ],
-          "resources": []
-        }
-      },
-      "workbook": "workbooks/week-29.html"
+      "interviewPrep": true,
+      "title": "System design practice #1 \u2014 access automation",
+      "workbook": "workbooks/week-29.html",
+      "miniProject": {
+        "name": "System design practice #1 \u2014 access automation",
+        "path": "interview-prep/",
+        "build": [
+          "45-min timed design: access request automation",
+          "Use system-design-template.md",
+          "Save to interview-prep/answers/"
+        ],
+        "doneWhen": [
+          "Written design doc committed"
+        ]
+      }
     },
     {
       "week": 30,
       "month": 8,
+      "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "Interview prep \u2014 AI Systems system design (Week 30)",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Target company research.",
-          "steps": [
-            "Research 1 company for Wave 1 (week 30)",
-            "Note their ops/automation stack",
-            "Write 3 interview questions you'd ask them"
-          ],
-          "resources": [
-            "CONTEXT.md target companies"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Timed system design (45 min).",
-          "steps": [
-            "Prompt: design AI-native internal IT ticket automation",
-            "Use interview-prep/system-design-template.md",
-            "Submit written answer"
-          ],
-          "resources": [
-            "interview-prep/system-design-template.md"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Timed design: Okta + agent identity.",
-          "steps": [
-            "Prompt: agent identity broker or access grant automation",
-            "Include HITL + audit"
-          ],
-          "resources": [
-            "interview-prep/answers/agent-identity-broker.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Portfolio walkthrough rehearsal.",
-          "steps": [
-            "10-min: shipped work \u2192 case study \u2192 CIPHER/ALIUS design",
-            "Record or script"
-          ],
-          "resources": [
-            "study-notes/demo-script.md"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Interview prep",
-          "guide": "Week 30 mock block.",
-          "steps": [
-            "1 system design review (self-grade rubric)",
-            "1 STAR aloud",
-            "1 company research summary"
-          ],
-          "resources": [
-            "interview-prep/answers/wave-1-checklist.md"
-          ]
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Save design answer to interview-prep/answers/.",
-          "steps": [
-            "File: week-{w}-system-design.md"
-          ],
-          "resources": [
-            "interview-prep/answers/"
-          ]
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Update resume bullet from this week's STAR.",
-          "steps": [
-            "Kamaal_Mirza_Resume_Serval.docx \u2014 align wording"
-          ],
-          "resources": []
-        }
-      },
-      "workbook": "workbooks/week-30.html"
+      "title": "System design practice #2 \u2014 agent identity",
+      "workbook": "workbooks/week-30.html",
+      "miniProject": {
+        "name": "System design practice #2 \u2014 agent identity",
+        "path": "interview-prep/",
+        "build": [
+          "Timed design: agent service accounts + WIF",
+          "Reference wif-agent-identity-design.md",
+          "Save answer"
+        ],
+        "doneWhen": [
+          "Design doc committed"
+        ]
+      }
     },
     {
       "week": 31,
       "month": 8,
+      "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "Interview prep \u2014 AI Systems system design (Week 31)",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Target company research.",
-          "steps": [
-            "Research 1 company for Wave 1 (week 31)",
-            "Note their ops/automation stack",
-            "Write 3 interview questions you'd ask them"
-          ],
-          "resources": [
-            "CONTEXT.md target companies"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Timed system design (45 min).",
-          "steps": [
-            "Prompt: design AI-native internal IT ticket automation",
-            "Use interview-prep/system-design-template.md",
-            "Submit written answer"
-          ],
-          "resources": [
-            "interview-prep/system-design-template.md"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "Timed design: Okta + agent identity.",
-          "steps": [
-            "Prompt: agent identity broker or access grant automation",
-            "Include HITL + audit"
-          ],
-          "resources": [
-            "interview-prep/answers/agent-identity-broker.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Portfolio walkthrough rehearsal.",
-          "steps": [
-            "10-min: shipped work \u2192 case study \u2192 CIPHER/ALIUS design",
-            "Record or script"
-          ],
-          "resources": [
-            "study-notes/demo-script.md"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Interview prep",
-          "guide": "Week 31 mock block.",
-          "steps": [
-            "1 system design review (self-grade rubric)",
-            "1 STAR aloud",
-            "1 company research summary"
-          ],
-          "resources": [
-            "interview-prep/answers/wave-1-checklist.md"
-          ]
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Save design answer to interview-prep/answers/.",
-          "steps": [
-            "File: week-{w}-system-design.md"
-          ],
-          "resources": [
-            "interview-prep/answers/"
-          ]
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Update resume bullet from this week's STAR.",
-          "steps": [
-            "Kamaal_Mirza_Resume_Serval.docx \u2014 align wording"
-          ],
-          "resources": []
-        }
-      },
-      "workbook": "workbooks/week-31.html"
+      "title": "STAR stories + resume bullets",
+      "workbook": "workbooks/week-31.html",
+      "miniProject": {
+        "name": "STAR stories + resume bullets",
+        "path": "interview-prep/answers/behavioral-star.md",
+        "build": [
+          "Fill STAR for Slack automation, capstone, identity work",
+          "Update resume bullets",
+          "Align to AI Systems framing"
+        ],
+        "doneWhen": [
+          "behavioral-star.md updated"
+        ]
+      }
     },
     {
       "week": 32,
       "month": 8,
-      "capstoneWeek": true,
+      "phase": "portfolio",
+      "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "Interview prep \u2014 AI Systems",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Review",
-          "guide": "Month 8 capstone prep: Interview prep \u2014 AI Systems",
-          "steps": [
-            "Review study-notes from weeks 1\u20133 of this month",
-            "Check tracker/months.json rubric \u2014 gap list"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Review",
-          "guide": "Consolidate workflow artifacts from this month",
-          "steps": [
-            "Merge best workflow diagram from study-notes/",
-            "Confirm every Okta write has HITL gate marked"
-          ],
-          "resources": [
-            "study-notes/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Review",
-          "guide": "Identity + audit checklist before capstone ship",
-          "steps": [
-            "Verify least privilege on all designed workflows",
-            "Audit log schema complete (who, what, when, ticket_id)"
-          ],
-          "resources": [
-            "study-notes/prod-iam-audit.md"
-          ]
-        },
-        "thu": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Build capstone: Interview prep \u2014 AI Systems",
-          "steps": [
-            "Practice: design AI-native internal IT ticket automation",
-            "Practice: Okta + agent identity for service accounts"
-          ],
-          "resources": [
-            "tracker/months.json rubric"
-          ]
-        },
-        "fri": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Continue capstone \u2014 ship-quality draft",
-          "steps": [
-            "STAR stories from Slack automation, workflow automation, endpoint control",
-            "Timed mock: access-request automation system design"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Capstone ship",
-          "guide": "Ship capstone artifact to study-notes/ or projects/",
-          "steps": [
-            "Commit artifact with date in filename",
-            "Honest status label (POC / design / shipped)"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Capstone retro",
-          "guide": "Retro + update portfolio README if needed",
-          "steps": [
-            "What shipped vs planned \u2014 write 5 bullets",
-            "Update README or case study links"
-          ],
-          "resources": [
-            "README.md"
-          ]
-        }
-      },
-      "capstoneTitle": "Mock system designs for internal ops automation",
-      "workbook": "workbooks/week-32.html"
+      "title": "Mock interview block",
+      "workbook": "workbooks/week-32.html",
+      "miniProject": {
+        "name": "Mock interview block",
+        "path": "interview-prep/",
+        "build": [
+          "1 system design aloud",
+          "1 STAR aloud",
+          "1 capstone demo rehearsal"
+        ],
+        "doneWhen": [
+          "Self-score rubric in wave-1-checklist.md"
+        ]
+      }
     },
     {
       "week": 33,
       "month": 9,
+      "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "Apply + iterate \u2014 Wave 1 (Week 33)",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Application pipeline.",
-          "steps": [
-            "Update apply tracker: company, role, date, status",
-            "3 target companies minimum"
-          ],
-          "resources": [
-            "interview-prep/answers/wave-1-checklist.md"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Tailor resume per role.",
-          "steps": [
-            "Highlight shipped + portfolio demo + case study",
-            "No AI Security lead framing"
-          ],
-          "resources": []
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "LinkedIn + GitHub pins.",
-          "steps": [
-            "Pin ai-systems-portfolio",
-            "About section: AI Systems positioning"
-          ],
-          "resources": [
-            "README.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Refine case study from feedback.",
-          "steps": [
-            "If any mock feedback \u2014 update agentic-case-study.md",
-            "Honest POC status always"
-          ],
-          "resources": [
-            "study-notes/agentic-case-study.md"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Interview prep",
-          "guide": "Follow-up + networking.",
-          "steps": [
-            "1 LinkedIn outreach to AI ops engineer at target co",
-            "1 recruiter reply if applicable"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Submit 1 application or referral ask.",
-          "steps": [
-            "Log in apply tracker"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Retro: what's working in outreach.",
-          "steps": [
-            "study-notes/apply-retro.md"
-          ],
-          "resources": []
-        }
-      },
-      "workbook": "workbooks/week-33.html"
+      "title": "Apply tracker + 3 targets",
+      "workbook": "workbooks/week-33.html",
+      "miniProject": {
+        "name": "Apply tracker + 3 targets",
+        "path": "interview-prep/answers/wave-1-checklist.md",
+        "build": [
+          "Company research notes",
+          "Tailor resume per target",
+          "Apply tracker spreadsheet or md table"
+        ],
+        "doneWhen": [
+          "3 companies researched",
+          "Tracker started"
+        ]
+      }
     },
     {
       "week": 34,
       "month": 9,
+      "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "Apply + iterate \u2014 Wave 1 (Week 34)",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Application pipeline.",
-          "steps": [
-            "Update apply tracker: company, role, date, status",
-            "3 target companies minimum"
-          ],
-          "resources": [
-            "interview-prep/answers/wave-1-checklist.md"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Tailor resume per role.",
-          "steps": [
-            "Highlight shipped + portfolio demo + case study",
-            "No AI Security lead framing"
-          ],
-          "resources": []
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "LinkedIn + GitHub pins.",
-          "steps": [
-            "Pin ai-systems-portfolio",
-            "About section: AI Systems positioning"
-          ],
-          "resources": [
-            "README.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Refine case study from feedback.",
-          "steps": [
-            "If any mock feedback \u2014 update agentic-case-study.md",
-            "Honest POC status always"
-          ],
-          "resources": [
-            "study-notes/agentic-case-study.md"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Interview prep",
-          "guide": "Follow-up + networking.",
-          "steps": [
-            "1 LinkedIn outreach to AI ops engineer at target co",
-            "1 recruiter reply if applicable"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Submit 1 application or referral ask.",
-          "steps": [
-            "Log in apply tracker"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Retro: what's working in outreach.",
-          "steps": [
-            "study-notes/apply-retro.md"
-          ],
-          "resources": []
-        }
-      },
-      "workbook": "workbooks/week-34.html"
+      "title": "Submit applications + outreach",
+      "workbook": "workbooks/week-34.html",
+      "miniProject": {
+        "name": "Submit applications + outreach",
+        "path": "interview-prep/",
+        "build": [
+          "Submit 1+ applications",
+          "1 LinkedIn outreach",
+          "Refine case study from any feedback"
+        ],
+        "doneWhen": [
+          "Apply log updated",
+          "Case study v2 if needed"
+        ]
+      }
     },
     {
       "week": 35,
       "month": 9,
+      "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "Apply + iterate \u2014 Wave 1 (Week 35)",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Friction",
-          "guide": "Application pipeline.",
-          "steps": [
-            "Update apply tracker: company, role, date, status",
-            "3 target companies minimum"
-          ],
-          "resources": [
-            "interview-prep/answers/wave-1-checklist.md"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Workflow",
-          "guide": "Tailor resume per role.",
-          "steps": [
-            "Highlight shipped + portfolio demo + case study",
-            "No AI Security lead framing"
-          ],
-          "resources": []
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Identity",
-          "guide": "LinkedIn + GitHub pins.",
-          "steps": [
-            "Pin ai-systems-portfolio",
-            "About section: AI Systems positioning"
-          ],
-          "resources": [
-            "README.md"
-          ]
-        },
-        "thu": {
-          "section": "agent",
-          "label": "Agent",
-          "guide": "Refine case study from feedback.",
-          "steps": [
-            "If any mock feedback \u2014 update agentic-case-study.md",
-            "Honest POC status always"
-          ],
-          "resources": [
-            "study-notes/agentic-case-study.md"
-          ]
-        },
-        "fri": {
-          "section": "measure",
-          "label": "Interview prep",
-          "guide": "Follow-up + networking.",
-          "steps": [
-            "1 LinkedIn outreach to AI ops engineer at target co",
-            "1 recruiter reply if applicable"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Submit 1 application or referral ask.",
-          "steps": [
-            "Log in apply tracker"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Prove",
-          "guide": "Retro: what's working in outreach.",
-          "steps": [
-            "study-notes/apply-retro.md"
-          ],
-          "resources": []
-        }
-      },
-      "workbook": "workbooks/week-35.html"
+      "title": "Portfolio retro + next quarter plan",
+      "workbook": "workbooks/week-35.html",
+      "miniProject": {
+        "name": "Portfolio retro + next quarter plan",
+        "path": "study-notes/",
+        "build": [
+          "study-notes/program-retro.md",
+          "What shipped vs planned",
+          "Next 90-day focus"
+        ],
+        "doneWhen": [
+          "Retro committed",
+          "README counters honest"
+        ]
+      }
     },
     {
       "week": 36,
       "month": 9,
-      "capstoneWeek": true,
+      "phase": "portfolio",
+      "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "Program capstone",
-      "days": {
-        "mon": {
-          "section": "friction",
-          "label": "Review",
-          "guide": "Month 9 capstone prep: Program capstone",
-          "steps": [
-            "Review study-notes from weeks 1\u20133 of this month",
-            "Check tracker/months.json rubric \u2014 gap list"
-          ],
-          "resources": [
-            "tracker/months.json"
-          ]
-        },
-        "tue": {
-          "section": "workflow",
-          "label": "Review",
-          "guide": "Consolidate workflow artifacts from this month",
-          "steps": [
-            "Merge best workflow diagram from study-notes/",
-            "Confirm every Okta write has HITL gate marked"
-          ],
-          "resources": [
-            "study-notes/"
-          ]
-        },
-        "wed": {
-          "section": "identity",
-          "label": "Review",
-          "guide": "Identity + audit checklist before capstone ship",
-          "steps": [
-            "Verify least privilege on all designed workflows",
-            "Audit log schema complete (who, what, when, ticket_id)"
-          ],
-          "resources": [
-            "study-notes/prod-iam-audit.md"
-          ]
-        },
-        "thu": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Build capstone: Program capstone",
-          "steps": [
-            "Single narrative: shipped work + agentic case study",
-            "Apply tracker with AI Systems targets"
-          ],
-          "resources": [
-            "tracker/months.json rubric"
-          ]
-        },
-        "fri": {
-          "section": "prove",
-          "label": "Capstone build",
-          "guide": "Continue capstone \u2014 ship-quality draft",
-          "steps": [
-            "Consulting pipeline or Wave 2 roles",
-            "Retrospective: what to deepen in the next quarter"
-          ],
-          "resources": []
-        },
-        "sat": {
-          "section": "prove",
-          "label": "Capstone ship",
-          "guide": "Ship capstone artifact to study-notes/ or projects/",
-          "steps": [
-            "Commit artifact with date in filename",
-            "Honest status label (POC / design / shipped)"
-          ],
-          "resources": []
-        },
-        "sun": {
-          "section": "prove",
-          "label": "Capstone retro",
-          "guide": "Retro + update portfolio README if needed",
-          "steps": [
-            "What shipped vs planned \u2014 write 5 bullets",
-            "Update README or case study links"
-          ],
-          "resources": [
-            "README.md"
-          ]
-        }
-      },
-      "capstoneTitle": "Portfolio walkthrough + apply tracker",
-      "workbook": "workbooks/week-36.html"
+      "title": "Program complete \u2014 maintain cadence",
+      "workbook": "workbooks/week-36.html",
+      "miniProject": {
+        "name": "Program complete \u2014 maintain cadence",
+        "path": "projects/08-capstone-ops-agent/",
+        "build": [
+          "Keep capstone runnable",
+          "Monthly eval re-run",
+          "Iterate from interview feedback"
+        ],
+        "doneWhen": [
+          "Capstone still runs",
+          "Next milestone defined"
+        ]
+      }
     }
   ]
 }

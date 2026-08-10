@@ -1,12 +1,11 @@
-# Study notes — weekly outputs
+# Weekly ship log
 
-Each week’s **workbook** (linked from the [dashboard](https://meerzah.github.io/ai-systems-portfolio/tracker/)) is where you draft answers. When a section is done, copy it here or edit these files directly and commit.
+Each week = **one mini-project** in `projects/`. Track builds on the [dashboard](https://meerzah.github.io/ai-systems-portfolio/tracker/).
 
-| Week | Workbook | Commit target |
-|------|----------|---------------|
-| 1 | [workbook](../tracker/workbooks/week-01.html) | `week-01-friction-inventory.md`, `week-01-prove-log.md` |
-| 2 | [workbook](../tracker/workbooks/week-02.html) | `week-02-workflow.md` |
-| 3 | [workbook](../tracker/workbooks/week-03.html) | (add `week-03-*.md` as needed) |
-| 4 | Capstone | See dashboard Month 1 rubric |
+| Weeks | Focus | Capstone target |
+|-------|--------|-----------------|
+| 1–20 | Mini-projects | Building blocks in projects/01–05 |
+| 21–24 | Capstone build | `projects/08-capstone-ops-agent/` |
+| 25–36 | Demo + apply | Case study + interviews |
 
-Do not invent metrics — use real ticket counts and timestamps only.
+Use the dashboard build sheet to log commit hashes. Copy ship notes here if you want them in git.

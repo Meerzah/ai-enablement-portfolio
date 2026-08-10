@@ -1,156 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Week 30 workbook — AI Systems roadmap</title>
-  <style>
-:root {
-  --bg:#0d1117;--surface:#161b22;--surface2:#1c2129;--border:#30363d;
-  --text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--success:#3fb950;
-  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-}
+<html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Week 30 — System design practice #2 — agent identity</title>
+<style>
+:root{--bg:#0d1117;--surface:#161b22;--surface2:#1c2129;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--success:#3fb950;--warn:#d29922;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.55}
 .wrap{max-width:760px;margin:0 auto;padding:20px 16px 64px}
-.top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
-.top a{color:var(--accent);text-decoration:none;font-size:.9rem}
-.top a:hover{text-decoration:underline}
-h1{font-size:1.35rem;margin:6px 0 4px}
-.sub{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.top a{color:var(--accent);text-decoration:none;font-size:.9rem;margin-right:14px}
+h1{font-size:1.35rem;margin:8px 0}
+.sub{color:var(--muted);font-size:.92rem;margin-bottom:16px}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px}
-.card h2{font-size:.95rem;margin-bottom:8px;color:var(--accent)}
-.steps{margin:0 0 12px 18px;color:var(--muted);font-size:.88rem}
-.steps li{margin-bottom:4px}
+.card h2{font-size:.95rem;color:var(--accent);margin-bottom:8px}
+ul{margin:0 0 10px 18px;color:var(--muted);font-size:.88rem}
+.done li{margin-bottom:4px}
 .field{margin-bottom:12px}
-.field label{display:block;font-size:.85rem;margin-bottom:4px;color:var(--muted)}
-.field input,.field textarea{width:100%;background:var(--surface2);border:1px solid var(--border);
-  border-radius:8px;color:var(--text);padding:8px 10px;font:inherit;font-size:.9rem}
-.field textarea{min-height:88px;resize:vertical}
-.links{margin-top:10px;font-size:.85rem}
-.links a{color:var(--accent);margin-right:12px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
-button{background:var(--surface2);border:1px solid var(--border);color:var(--text);
-  padding:8px 14px;border-radius:8px;cursor:pointer;font:inherit;font-size:.88rem}
-button:hover{border-color:var(--accent)}
+.field label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:4px}
+.field textarea{width:100%;min-height:72px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px 10px;font:inherit}
+.phase{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--warn);margin-bottom:8px}
+.phase.capstone{color:#a371f7;border-color:#a371f7}
+.phase.portfolio{color:var(--success);border-color:var(--success)}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+button{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 14px;border-radius:8px;cursor:pointer}
 button.primary{border-color:var(--accent);color:var(--accent)}
-.saved{font-size:12px;color:var(--success);margin-left:8px}
+.project-link{display:inline-block;margin:8px 0;padding:10px 14px;border:1px solid var(--accent);border-radius:8px;color:var(--accent);text-decoration:none;font-weight:600}
 </style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="top">
-      <a href="../index.html">← Dashboard</a>
-      <a href="../../phases/phase-3/README.md" target="_blank" rel="noopener">Phase guide</a>
-    </div>
-    <p style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">Week 30 workbook</p>
-    <h1>Interview prep — AI Systems system design (Week 30)</h1>
-    
-    <p class="sub">Fill in each section below. Progress auto-saves in this browser. Copy finished output into <code>study-notes/weeks/</code> when ready to commit.</p>
-    <div class="actions">
-      <button type="button" class="primary" id="copy-md">Copy as Markdown</button>
-      <button type="button" id="clear-week">Clear saved draft</button>
-      <span class="saved" id="save-status"></span>
-    </div>
-    <section class="card" id="mon">
-  <h2>Monday — Friction</h2>
-  <p class="sub" style="margin-bottom:10px">Target company research.</p>
-  <ul class='steps'><li>Research 1 company for Wave 1 (week 30)</li><li>Note their ops/automation stack</li><li>Write 3 interview questions you&#x27;d ask them</li></ul>
-  <div class="field">
-  <label for="notes">Your output for today</label>
-  <textarea id="notes" data-key="w30-mon-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
+</head><body><div class="wrap">
+<div class="top"><a href="../index.html">← Dashboard</a></div>
+<span class="phase portfolio">portfolio · week 30</span>
+<h1>System design practice #2 — agent identity</h1>
+<p class="sub">Ship one concrete artifact this week in the repo. Check each item, commit, then mark the week done on the dashboard.</p>
+<a class="project-link" href="https://meerzah.github.io/ai-systems-portfolio/interview-prep/README.md" target="_blank" rel="noopener">Open interview-prep/ →</a>
+<div class="card"><h2>Build this week</h2><ul><li>Timed design: agent service accounts + WIF</li><li>Reference wif-agent-identity-design.md</li><li>Save answer</li></ul></div>
+<div class="card"><h2>Done when</h2><ul class="done"><li>Design doc committed</li></ul></div>
+<div class="card"><h2>Ship notes</h2>
+<div class="field"><label>What I committed (paths + PR/commit hash)</label>
+<textarea id="ship" data-key="w30-ship" placeholder="e.g. projects/01-it-helpdesk-agent/runbooks/vpn.md — commit abc123"></textarea></div>
+<div class="field"><label>Blockers / next week prep</label>
+<textarea id="blockers" data-key="w30-blockers"></textarea></div>
 </div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/CONTEXT.md" target="_blank" rel="noopener">CONTEXT.md target companies</a></div>
-</section><section class="card" id="tue">
-  <h2>Tuesday — Workflow</h2>
-  <p class="sub" style="margin-bottom:10px">Timed system design (45 min).</p>
-  <ul class='steps'><li>Prompt: design AI-native internal IT ticket automation</li><li>Use interview-prep/system-design-template.md</li><li>Submit written answer</li></ul>
-  <div class="field">
-  <label for="notes">Your output for today</label>
-  <textarea id="notes" data-key="w30-tue-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
+<div class="btnrow">
+<button type="button" class="primary" id="copy">Copy ship summary</button>
+<button type="button" id="clear">Clear draft</button>
 </div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/interview-prep/system-design-template.md" target="_blank" rel="noopener">interview-prep/system-design-template.md</a></div>
-</section><section class="card" id="wed">
-  <h2>Wednesday — Identity</h2>
-  <p class="sub" style="margin-bottom:10px">Timed design: Okta + agent identity.</p>
-  <ul class='steps'><li>Prompt: agent identity broker or access grant automation</li><li>Include HITL + audit</li></ul>
-  <div class="field">
-  <label for="notes">Your output for today</label>
-  <textarea id="notes" data-key="w30-wed-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
 </div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/interview-prep/answers/agent-identity-broker.md" target="_blank" rel="noopener">interview-prep/answers/agent-identity-broker.md</a></div>
-</section><section class="card" id="thu">
-  <h2>Thursday — Agent</h2>
-  <p class="sub" style="margin-bottom:10px">Portfolio walkthrough rehearsal.</p>
-  <ul class='steps'><li>10-min: shipped work → case study → CIPHER/ALIUS design</li><li>Record or script</li></ul>
-  <div class="field">
-  <label for="notes">Your output for today</label>
-  <textarea id="notes" data-key="w30-thu-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
-</div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/study-notes/demo-script.md" target="_blank" rel="noopener">study-notes/demo-script.md</a></div>
-</section><section class="card" id="fri">
-  <h2>Friday — Measure</h2>
-  <p class="sub" style="margin-bottom:10px">Week 30 mock block.</p>
-  <ul class='steps'><li>1 system design review (self-grade rubric)</li><li>1 STAR aloud</li><li>1 company research summary</li></ul>
-  <div class="field">
-  <label for="notes">Your output for today</label>
-  <textarea id="notes" data-key="w30-fri-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
-</div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/interview-prep/answers/wave-1-checklist.md" target="_blank" rel="noopener">interview-prep/answers/wave-1-checklist.md</a></div>
-</section><section class="card" id="sat">
-  <h2>Saturday — Prove</h2>
-  <p class="sub" style="margin-bottom:10px">Save design answer to interview-prep/answers/.</p>
-  <ul class='steps'><li>File: week-{w}-system-design.md</li></ul>
-  <div class="field">
-  <label for="notes">Your output for today</label>
-  <textarea id="notes" data-key="w30-sat-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
-</div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/interview-prep/answers/README.md" target="_blank" rel="noopener">interview-prep/answers/</a></div>
-</section><section class="card" id="sun">
-  <h2>Sunday — Prove</h2>
-  <p class="sub" style="margin-bottom:10px">Update resume bullet from this week&#x27;s STAR.</p>
-  <ul class='steps'><li>Kamaal_Mirza_Resume_Serval.docx — align wording</li></ul>
-  <div class="field">
-  <label for="notes">Your output for today</label>
-  <textarea id="notes" data-key="w30-sun-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
-</div>
-  
-</section>
-  </div>
-  <script>
-    const WEEK = 30;
-    const PREFIX = `workbook-w${WEEK}-`;
-    const status = document.getElementById('save-status');
-
-    document.querySelectorAll('[data-key]').forEach(el => {
-      const key = PREFIX + el.id;
-      const saved = localStorage.getItem(key);
-      if (saved) el.value = saved;
-      el.addEventListener('input', () => {
-        localStorage.setItem(key, el.value);
-        status.textContent = 'Saved';
-        setTimeout(() => { status.textContent = ''; }, 1500);
-      });
-    });
-
-    document.getElementById('clear-week').onclick = () => {
-      if (!confirm('Clear all saved fields for week ' + WEEK + '?')) return;
-      document.querySelectorAll('[data-key]').forEach(el => {
-        localStorage.removeItem(PREFIX + el.id);
-        el.value = '';
-      });
-    };
-
-    document.getElementById('copy-md').onclick = () => {
-      const lines = ['# Week 30: Interview prep — AI Systems system design (Week 30)', ''];
-      document.querySelectorAll('[data-key]').forEach(el => {
-        const label = el.previousElementSibling?.textContent || el.id;
-        lines.push('## ' + label, el.value || '(empty)', '');
-      });
-      navigator.clipboard.writeText(lines.join('\n')).then(() => {
-        status.textContent = 'Copied to clipboard';
-      });
-    };
-  </script>
-</body>
-</html>
+<script>
+const PREFIX='workbook-';
+document.querySelectorAll('[data-key]').forEach(el=>{
+  const k=PREFIX+el.dataset.key; if(localStorage.getItem(k)) el.value=localStorage.getItem(k);
+  el.addEventListener('input',()=>localStorage.setItem(k,el.value));
+});
+document.getElementById('copy').onclick=()=>{
+  const t=document.getElementById('ship').value;
+  navigator.clipboard.writeText('# Week 30\n\n'+t);
+};
+document.getElementById('clear').onclick=()=>{
+  if(confirm('Clear?')) document.querySelectorAll('[data-key]').forEach(el=>{localStorage.removeItem(PREFIX+el.dataset.key);el.value='';});
+};
+</script></body></html>

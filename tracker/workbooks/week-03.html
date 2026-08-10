@@ -1,156 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Week 3 workbook — AI Systems roadmap</title>
-  <style>
-:root {
-  --bg:#0d1117;--surface:#161b22;--surface2:#1c2129;--border:#30363d;
-  --text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--success:#3fb950;
-  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-}
+<html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Week 3 — Wire agent → Okta MCP for identity-aware answers</title>
+<style>
+:root{--bg:#0d1117;--surface:#161b22;--surface2:#1c2129;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--success:#3fb950;--warn:#d29922;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.55}
 .wrap{max-width:760px;margin:0 auto;padding:20px 16px 64px}
-.top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
-.top a{color:var(--accent);text-decoration:none;font-size:.9rem}
-.top a:hover{text-decoration:underline}
-h1{font-size:1.35rem;margin:6px 0 4px}
-.sub{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.top a{color:var(--accent);text-decoration:none;font-size:.9rem;margin-right:14px}
+h1{font-size:1.35rem;margin:8px 0}
+.sub{color:var(--muted);font-size:.92rem;margin-bottom:16px}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px}
-.card h2{font-size:.95rem;margin-bottom:8px;color:var(--accent)}
-.steps{margin:0 0 12px 18px;color:var(--muted);font-size:.88rem}
-.steps li{margin-bottom:4px}
+.card h2{font-size:.95rem;color:var(--accent);margin-bottom:8px}
+ul{margin:0 0 10px 18px;color:var(--muted);font-size:.88rem}
+.done li{margin-bottom:4px}
 .field{margin-bottom:12px}
-.field label{display:block;font-size:.85rem;margin-bottom:4px;color:var(--muted)}
-.field input,.field textarea{width:100%;background:var(--surface2);border:1px solid var(--border);
-  border-radius:8px;color:var(--text);padding:8px 10px;font:inherit;font-size:.9rem}
-.field textarea{min-height:88px;resize:vertical}
-.links{margin-top:10px;font-size:.85rem}
-.links a{color:var(--accent);margin-right:12px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
-button{background:var(--surface2);border:1px solid var(--border);color:var(--text);
-  padding:8px 14px;border-radius:8px;cursor:pointer;font:inherit;font-size:.88rem}
-button:hover{border-color:var(--accent)}
+.field label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:4px}
+.field textarea{width:100%;min-height:72px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px 10px;font:inherit}
+.phase{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--warn);margin-bottom:8px}
+.phase.capstone{color:#a371f7;border-color:#a371f7}
+.phase.portfolio{color:var(--success);border-color:var(--success)}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+button{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 14px;border-radius:8px;cursor:pointer}
 button.primary{border-color:var(--accent);color:var(--accent)}
-.saved{font-size:12px;color:var(--success);margin-left:8px}
+.project-link{display:inline-block;margin:8px 0;padding:10px 14px;border:1px solid var(--accent);border-radius:8px;color:var(--accent);text-decoration:none;font-weight:600}
 </style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="top">
-      <a href="../index.html">← Dashboard</a>
-      <a href="../../phases/phase-1/README.md" target="_blank" rel="noopener">Phase guide</a>
-    </div>
-    <p style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">Week 3 workbook</p>
-    <h1>SaaS onboarding + MDM friction (MDM platform fleet)</h1>
-    
-    <p class="sub">Fill in each section below. Progress auto-saves in this browser. Copy finished output into <code>study-notes/weeks/</code> when ready to commit.</p>
-    <div class="actions">
-      <button type="button" class="primary" id="copy-md">Copy as Markdown</button>
-      <button type="button" id="clear-week">Clear saved draft</button>
-      <span class="saved" id="save-status"></span>
-    </div>
-    <section class="card" id="mon">
-  <h2>Monday — Friction</h2>
-  <p class="sub" style="margin-bottom:10px">Expand inventory: SaaS onboarding + macOS requests.</p>
-  <ul class='steps'><li>Add MDM ticket types to friction list (~600 device fleet context)</li><li>SaaS onboarding: app provisioning, SSO assignment, license</li><li>Cross-check: overlaps with access-request candidate?</li><li>Update study-notes/week-01-friction-inventory.md</li></ul>
-  <div class="field">
-  <label for="mdm_saas">MDM + SaaS friction additions</label>
-  <textarea id="mdm_saas" data-key="w3-mon-mdm_saas" placeholder=""></textarea>
+</head><body><div class="wrap">
+<div class="top"><a href="../index.html">← Dashboard</a></div>
+<span class="phase mini">mini · week 3</span>
+<h1>Wire agent → Okta MCP for identity-aware answers</h1>
+<p class="sub">Ship one concrete artifact this week in the repo. Check each item, commit, then mark the week done on the dashboard.</p>
+<a class="project-link" href="https://meerzah.github.io/ai-systems-portfolio/projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Open projects/01-it-helpdesk-agent/ →</a>
+<div class="card"><h2>Build this week</h2><ul><li>Connect helpdesk agent to Okta MCP tools</li><li>Add system prompt rule: identity lookups are read-only</li><li>Test: group membership question + user status question</li></ul></div>
+<div class="card"><h2>Done when</h2><ul class="done"><li>Agent calls Okta tool for at least 2 query types</li><li>Escalation when write/action requested</li></ul></div>
+<div class="card"><h2>Ship notes</h2>
+<div class="field"><label>What I committed (paths + PR/commit hash)</label>
+<textarea id="ship" data-key="w3-ship" placeholder="e.g. projects/01-it-helpdesk-agent/runbooks/vpn.md — commit abc123"></textarea></div>
+<div class="field"><label>Blockers / next week prep</label>
+<textarea id="blockers" data-key="w3-blockers"></textarea></div>
 </div>
-  
-</section><section class="card" id="tue">
-  <h2>Tuesday — Workflow</h2>
-  <p class="sub" style="margin-bottom:10px">Multi-step onboarding workflow draft.</p>
-  <ul class='steps'><li>Trigger: new hire or role change ticket</li><li>Steps: Okta groups → SaaS SSO → MDM profile (if applicable)</li><li>HITL: manager confirms role before group grants</li><li>Reference endpoint control service if endpoint/cloud touchpoints involved</li></ul>
-  <div class="field">
-  <label for="onboarding">Multi-step onboarding workflow</label>
-  <textarea id="onboarding" data-key="w3-tue-onboarding" placeholder=""></textarea>
+<div class="btnrow">
+<button type="button" class="primary" id="copy">Copy ship summary</button>
+<button type="button" id="clear">Clear draft</button>
 </div>
-  
-</section><section class="card" id="wed">
-  <h2>Wednesday — Identity</h2>
-  <p class="sub" style="margin-bottom:10px">Joiner/mover group patterns.</p>
-  <ul class='steps'><li>Document functionalTeam / ABAC group naming you use (pattern level)</li><li>Read projects/06-cipher/SHIP-PLAN.md — how CIPHER will compute deltas</li><li>Interview frame: CIPHER in development, not shipped</li><li>List groups that must NEVER be agent-writable</li></ul>
-  <div class="field">
-  <label for="scim">SCIM vs manual provisioning notes</label>
-  <textarea id="scim" data-key="w3-wed-scim" placeholder=""></textarea>
 </div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/projects/06-cipher/SHIP-PLAN.md" target="_blank" rel="noopener">projects/06-cipher/SHIP-PLAN.md</a></div>
-</section><section class="card" id="thu">
-  <h2>Thursday — Agent</h2>
-  <p class="sub" style="margin-bottom:10px">Helpdesk agent for MDM/SSO questions.</p>
-  <ul class='steps'><li>Test agent on: VPN, MDM platform enrollment, Okta Verify troubleshooting</li><li>Document 3 runbook gaps to add to RAG corpus</li><li>Escalation rule: device compliance → human MDM admin</li></ul>
-  <div class="field">
-  <label for="routing">Agent routing rules draft</label>
-  <textarea id="routing" data-key="w3-thu-routing" placeholder=""></textarea>
-</div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">projects/01-it-helpdesk-agent/</a></div>
-</section><section class="card" id="fri">
-  <h2>Friday — Measure</h2>
-  <p class="sub" style="margin-bottom:10px">Onboarding workflow timing.</p>
-  <ul class='steps'><li>Sample 3 recent onboarding tickets — hours to complete all steps</li><li>Identify parallelizable vs sequential steps</li><li>Metric: steps_automated vs manual</li></ul>
-  <div class="field">
-  <label for="overlap">Overlap analysis with Unit 1 pick</label>
-  <textarea id="overlap" data-key="w3-fri-overlap" placeholder=""></textarea>
-</div>
-  
-</section><section class="card" id="sat">
-  <h2>Saturday — Prove</h2>
-  <p class="sub" style="margin-bottom:10px">Add 3 runbook snippets to helpdesk agent test corpus.</p>
-  <ul class='steps'><li>Extend local runbook markdown or note paths for RAG</li><li>Re-run 3 failing queries from Week 1</li><li>Log results in study-notes/</li></ul>
-  <div class="field">
-  <label for="compare">Compare 3 ticket types side-by-side</label>
-  <textarea id="compare" data-key="w3-sat-compare" placeholder=""></textarea>
-</div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">projects/01-it-helpdesk-agent/</a></div>
-</section><section class="card" id="sun">
-  <h2>Sunday — Prove</h2>
-  <p class="sub" style="margin-bottom:10px">Consolidate Month 1 prep for capstone week.</p>
-  <ul class='steps'><li>Checklist: friction list, workflow v2, baseline metrics, agent test log</li><li>Gap list for Week 4 capstone</li></ul>
-  <div class="field">
-  <label for="decision">Confirm or change automation candidate</label>
-  <textarea id="decision" data-key="w3-sun-decision" placeholder=""></textarea>
-</div>
-  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/tracker/months.json" target="_blank" rel="noopener">tracker/months.json Month 1</a></div>
-</section>
-  </div>
-  <script>
-    const WEEK = 3;
-    const PREFIX = `workbook-w${WEEK}-`;
-    const status = document.getElementById('save-status');
-
-    document.querySelectorAll('[data-key]').forEach(el => {
-      const key = PREFIX + el.id;
-      const saved = localStorage.getItem(key);
-      if (saved) el.value = saved;
-      el.addEventListener('input', () => {
-        localStorage.setItem(key, el.value);
-        status.textContent = 'Saved';
-        setTimeout(() => { status.textContent = ''; }, 1500);
-      });
-    });
-
-    document.getElementById('clear-week').onclick = () => {
-      if (!confirm('Clear all saved fields for week ' + WEEK + '?')) return;
-      document.querySelectorAll('[data-key]').forEach(el => {
-        localStorage.removeItem(PREFIX + el.id);
-        el.value = '';
-      });
-    };
-
-    document.getElementById('copy-md').onclick = () => {
-      const lines = ['# Week 3: SaaS onboarding + MDM friction (MDM platform fleet)', ''];
-      document.querySelectorAll('[data-key]').forEach(el => {
-        const label = el.previousElementSibling?.textContent || el.id;
-        lines.push('## ' + label, el.value || '(empty)', '');
-      });
-      navigator.clipboard.writeText(lines.join('\n')).then(() => {
-        status.textContent = 'Copied to clipboard';
-      });
-    };
-  </script>
-</body>
-</html>
+<script>
+const PREFIX='workbook-';
+document.querySelectorAll('[data-key]').forEach(el=>{
+  const k=PREFIX+el.dataset.key; if(localStorage.getItem(k)) el.value=localStorage.getItem(k);
+  el.addEventListener('input',()=>localStorage.setItem(k,el.value));
+});
+document.getElementById('copy').onclick=()=>{
+  const t=document.getElementById('ship').value;
+  navigator.clipboard.writeText('# Week 3\n\n'+t);
+};
+document.getElementById('clear').onclick=()=>{
+  if(confirm('Clear?')) document.querySelectorAll('[data-key]').forEach(el=>{localStorage.removeItem(PREFIX+el.dataset.key);el.value='';});
+};
+</script></body></html>

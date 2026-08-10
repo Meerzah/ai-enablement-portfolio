@@ -1,187 +1,119 @@
 {
   "title": "AI Systems / Agentic Ops Roadmap",
-  "subtitle": "Identity-backed automation → AI agents for internal ops",
+  "subtitle": "20 weekly mini-projects → 4-week capstone → portfolio + interview",
   "careerFocus": "Move 1 — AI Systems",
   "repoName": "ai-systems-portfolio",
   "pagesBase": "https://meerzah.github.io/ai-systems-portfolio",
   "currentWeek": 1,
   "currentPhase": 1,
   "currentUnit": 1,
-  "currentUnitLabel": "Friction map → pick automation target",
+  "currentUnitLabel": "Mini-project: helpdesk agent + runbooks",
   "weeksTotal": 36,
   "hoursPerWeek": "12–15",
   "resume": "Kamaal_Mirza_Resume_Serval.docx",
   "positioning": "Systems / automation engineer who builds identity-backed, agent-ready ops workflows with Python, Okta, and AI tooling.",
-  "spine": [
-    { "id": "friction", "label": "Friction", "day": "Mon", "question": "What's the high-volume manual ops request?" },
-    { "id": "workflow", "label": "Workflow", "day": "Tue", "question": "Automate intake → approval → action (HITL where needed)" },
-    { "id": "identity", "label": "Identity", "day": "Wed", "question": "Okta/OAuth/SCIM scoped correctly (incl. agent identities)" },
-    { "id": "agent", "label": "Agent", "day": "Thu", "question": "Where LLM/agent helps vs deterministic automation" },
-    { "id": "measure", "label": "Measure", "day": "Fri", "question": "Deflection, TTR, hours saved, failure/retry rate" },
-    { "id": "prove", "label": "Prove", "day": "Sat–Sun", "question": "Ship one artifact (workflow, bot, runbook, metrics)" }
+  "program": [
+    { "id": "mini", "weeks": "1–20", "label": "Mini-projects", "summary": "One shippable build per week in projects/" },
+    { "id": "capstone", "weeks": "21–24", "label": "Capstone", "summary": "Integrated ops agent platform (projects/08-capstone-ops-agent/)" },
+    { "id": "portfolio", "weeks": "25–36", "label": "Ship + apply", "summary": "Demo, case study, interview prep, applications" }
   ],
   "units": [
     {
       "id": 1,
-      "phase": 1,
+      "phase": "mini",
       "weeks": "1–4",
-      "title": "Friction map + first workflow",
-      "focus": "Service desk ticket counts → pick access OR triage candidate → workflow diagram",
-      "capstone": "study-notes/weeks/week-01-friction-inventory.md",
-      "deliverables": [
-        "Top 3 frictions with real ticket counts",
-        "One workflow diagram (intake → HITL → action)",
-        "Baseline metrics plan (no fake %)",
-        "Run helpdesk agent — 5 test queries logged"
-      ],
-      "artifacts": [
-        "tracker/workbooks/week-01.html",
-        "study-notes/weeks/week-01-friction-inventory.md",
-        "projects/01-it-helpdesk-agent/README.md"
-      ]
+      "title": "Agent + identity foundations",
+      "focus": "Run helpdesk agent, Okta MCP, wire them together, write escalation policy",
+      "capstone": "projects/08-capstone-ops-agent/README.md",
+      "deliverables": ["Runnable agent with runbooks", "MCP read tools", "Agent + MCP integration", "escalation-policy.md"],
+      "artifacts": ["projects/01-it-helpdesk-agent/README.md", "projects/02-okta-mcp-server/README.md", "tracker/workbooks/week-01.html"]
     },
     {
       "id": 2,
-      "phase": 1,
+      "phase": "mini",
       "weeks": "5–8",
-      "title": "Identity-scoped automation",
-      "focus": "Document production access-governance + Okta path; CIPHER ship plan Phase 1",
-      "capstone": "study-notes/week-05-access-workflow.md + projects/06-cipher/",
-      "deliverables": [
-        "Production access-grant flow documented",
-        "Audit log schema (who, what, when, ticket_id)",
-        "CIPHER Phase 1 design (architected — not shipped)",
-        "Okta MCP read-only demo script"
-      ],
-      "artifacts": ["projects/06-cipher/SHIP-PLAN.md", "projects/02-okta-mcp-server/"]
+      "title": "Prompts, logging, evals",
+      "focus": "Playbooks, structured logs, tool schemas, first eval harness",
+      "deliverables": ["it-ops prompt playbook", "query JSONL logs", "tool schemas", "5 eval cases"],
+      "artifacts": ["projects/04-prompt-playbooks/README.md", "projects/01-it-helpdesk-agent/README.md"]
     },
     {
       "id": 3,
-      "phase": 1,
+      "phase": "mini",
       "weeks": "9–12",
-      "title": "Agent-assisted triage POC",
-      "focus": "Case study: helpdesk agent + Okta MCP + HITL — honest POC status",
-      "capstone": "study-notes/agentic-case-study.md",
-      "deliverables": [
-        "10 eval cases with pass/fail log",
-        "HITL sequence diagram",
-        "Escalation policy doc",
-        "2-min portfolio demo script"
-      ],
-      "artifacts": ["projects/01-it-helpdesk-agent/", "projects/02-okta-mcp-server/"]
+      "title": "HITL + API + audit",
+      "focus": "Approval gate mock, FastAPI wrapper, audit schema, idempotency",
+      "deliverables": ["HITL flow doc", "POST /query API", "audit events", "webhook idempotency"],
+      "artifacts": ["projects/01-it-helpdesk-agent/README.md", "projects/05-adoption-dashboard/README.md"]
     },
     {
       "id": 4,
-      "phase": 2,
+      "phase": "mini",
       "weeks": "13–16",
-      "title": "Workflow reliability",
-      "focus": "Workflow reliability patterns + ALIUS offboarding design + runbooks",
-      "capstone": "study-notes/runbooks/access-grant-failure.md",
-      "deliverables": [
-        "Idempotency design for webhooks",
-        "Slack alert payload for failures",
-        "ALIUS architecture review complete",
-        "MTTR baseline for automation failures"
-      ],
-      "artifacts": ["projects/07-alius/ARCHITECTURE.md", "workflow automation + endpoint control (shipped)"]
+      "title": "Reliability + rollout + metrics",
+      "focus": "Failure alerts, Agentspace checklist, adoption events, dashboard stub",
+      "deliverables": ["failure-alerts.md", "rollout checklist", "events-schema.md", "usage query script"],
+      "artifacts": ["projects/03-agentspace-rollout/README.md", "projects/05-adoption-dashboard/README.md"]
     },
     {
       "id": 5,
-      "phase": 2,
+      "phase": "mini",
       "weeks": "17–20",
-      "title": "Agent tool-use + evals",
-      "focus": "Tool schemas, 20 eval cases, guardrails for helpdesk agent",
-      "capstone": "study-notes/evals/eval_cases.csv + eval runner notes",
-      "deliverables": [
-        "JSON schemas for rag_tool + okta_tool",
-        "eval_cases.csv (10–20 rows)",
-        "escalation-policy.md",
-        "Raw pass/fail log — no invented accuracy"
-      ],
-      "artifacts": ["projects/01-it-helpdesk-agent/tools/"]
+      "title": "Integration + capstone prep",
+      "focus": "KB index, end-to-end demo, capstone architecture scaffold",
+      "deliverables": ["ops-kb-index.md", "demo-script.md", "capstone ARCHITECTURE.md", "15 eval cases"],
+      "artifacts": ["projects/08-capstone-ops-agent/README.md"]
     },
     {
       "id": 6,
-      "phase": 2,
+      "phase": "capstone",
       "weeks": "21–24",
-      "title": "Knowledge base for ops",
-      "focus": "Runbook corpus for RAG + grounding rules + demo script",
-      "capstone": "study-notes/ops-kb-index.md + updated case study",
-      "deliverables": [
-        "2+ new runbook snippets in agent corpus",
-        "KB index with owners",
-        "Fallback when no KB match",
-        "End-to-end demo script"
-      ],
-      "artifacts": ["projects/01-it-helpdesk-agent/"]
+      "title": "Capstone — Ops Agent Platform",
+      "focus": "Assemble, HITL enforce, audit/metrics, Cloud Run POC + case study",
+      "capstone": "projects/08-capstone-ops-agent/",
+      "deliverables": ["One-command local run", "HITL blocks writes", "Full observability", "Deploy POC + case study"],
+      "artifacts": ["projects/08-capstone-ops-agent/README.md"]
     },
     {
       "id": 7,
-      "phase": 3,
+      "phase": "portfolio",
       "weeks": "25–28",
-      "title": "Metrics + consulting packaging",
-      "focus": "Real metrics baseline + consulting one-pager (a)(b)(c)",
-      "capstone": "study-notes/consulting-one-pager.md + metrics-baseline.md",
-      "deliverables": [
-        "Hours-saved formula with real volume",
-        "Adoption dashboard event schema",
-        "Consulting offers (a)(b)(c) scoped",
-        "5-min platform-bridge rehearsal"
-      ],
-      "artifacts": ["projects/05-adoption-dashboard/", "CONTEXT.md"]
+      "title": "Polish + package",
+      "focus": "Demo polish, consulting one-pager, metrics baseline",
+      "deliverables": ["2-min demo", "consulting-one-pager.md", "metrics-baseline.md"],
+      "artifacts": ["projects/08-capstone-ops-agent/README.md", "CONTEXT.md"]
     },
     {
       "id": 8,
-      "phase": 3,
+      "phase": "portfolio",
       "weeks": "29–32",
-      "title": "Interview wave 1",
-      "focus": "AI Systems system designs + STAR + company research",
-      "capstone": "interview-prep/answers/ + timed design docs",
-      "deliverables": [
-        "4 timed system design writeups",
-        "STAR stories filled (Slack automation, workflow automation, case study)",
-        "4 company research notes",
-        "Resume bullets updated"
-      ],
-      "artifacts": ["interview-prep/system-design-template.md", "Kamaal_Mirza_Resume_Serval.docx"]
+      "title": "Interview prep",
+      "focus": "System designs, STAR, mock interviews",
+      "deliverables": ["2 timed designs", "behavioral-star.md", "mock block"],
+      "artifacts": ["interview-prep/system-design-template.md"]
     },
     {
       "id": 9,
-      "phase": 3,
+      "phase": "portfolio",
       "weeks": "33–36",
       "title": "Apply + iterate",
-      "focus": "Wave 1 applications to AI Systems roles",
-      "capstone": "study-notes/apply-retro.md + apply tracker",
-      "deliverables": [
-        "Apply tracker with 3+ targets",
-        "LinkedIn + GitHub aligned to AI Systems",
-        "Case study refined from mock feedback",
-        "1+ applications submitted"
-      ],
-      "artifacts": ["interview-prep/answers/wave-1-checklist.md", "README.md"]
+      "focus": "Applications, outreach, program retro",
+      "deliverables": ["3 targets", "1+ applications", "program-retro.md"],
+      "artifacts": ["interview-prep/answers/wave-1-checklist.md"]
     }
   ],
   "applicationWaves": [
-    { "id": 0, "label": "Wave 0", "when": "Now", "focus": "Resume + LinkedIn; friction inventory + helpdesk agent demo" },
-    { "id": 1, "label": "Wave 1", "when": "Month 3+", "focus": "AI automation startups; case study + portfolio walkthrough" },
-    { "id": 2, "label": "Wave 2", "when": "Month 6+", "focus": "Senior IC / consulting pipeline active" }
+    { "id": 0, "label": "Build", "when": "Weeks 1–20", "focus": "Mini-projects in projects/" },
+    { "id": 1, "label": "Capstone", "when": "Weeks 21–24", "focus": "Integrated ops agent platform" },
+    { "id": 2, "label": "Apply", "when": "Weeks 29+", "focus": "Capstone demo in interviews" }
   ],
   "portfolio": {
-    "shipped": ["Slack intake → ticket automation", "Workflow automation", "GCP Cloud Run control plane", "Okta access request automation"],
-    "projects": [
-      { "id": "01", "path": "projects/01-it-helpdesk-agent/", "label": "IT Helpdesk Agent", "status": "portfolio demo" },
-      { "id": "02", "path": "projects/02-okta-mcp-server/", "label": "Okta MCP Server", "status": "portfolio demo" },
-      { "id": "03", "path": "projects/03-agentspace-rollout/", "label": "Agentspace Rollout", "status": "in progress" },
-      { "id": "04", "path": "projects/04-prompt-playbooks/", "label": "Prompt Playbooks", "status": "portfolio demo" },
-      { "id": "05", "path": "projects/05-adoption-dashboard/", "label": "Adoption Dashboard", "status": "in progress" },
-      { "id": "06", "path": "projects/06-cipher/", "label": "CIPHER", "status": "in development" },
-      { "id": "07", "path": "projects/07-alius/", "label": "ALIUS", "status": "planning" }
-    ],
-    "week1ProveArtifact": "projects/01-it-helpdesk-agent/"
+    "capstone": "projects/08-capstone-ops-agent/",
+    "week1Project": "projects/01-it-helpdesk-agent/README.md"
   },
   "counters": {
     "weeksCompleted": 0,
-    "capstonesCompleted": 0,
-    "proveArtifacts": 0
+    "miniProjectsShipped": 0,
+    "capstoneComplete": false
   }
 }

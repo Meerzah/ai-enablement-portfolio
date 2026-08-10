@@ -24,9 +24,20 @@
     .pill.warn { border-color: var(--warn); color: var(--warn); }
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 14px; }
     .card h2 { font-size: .85rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 10px; }
-    .spine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
-    .spine-item { background: var(--surface2); border-radius: 8px; padding: 8px 10px; border: 1px solid var(--border); font-size: 12px; }
-    .spine-item strong { display: block; color: var(--accent); font-size: 13px; }
+    .project-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; background: var(--surface2); }
+    .project-card h3 { font-size: 1rem; margin-bottom: 10px; color: var(--accent); }
+    .project-card .phase-tag { font-size: 11px; color: var(--warn); margin-bottom: 8px; display: inline-block; }
+    .project-card .phase-tag.capstone { color: var(--purple); }
+    .project-card .phase-tag.portfolio { color: var(--success); }
+    .project-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0; }
+    .project-links a {
+      display: inline-block; padding: 10px 14px; border-radius: 8px;
+      border: 1px solid var(--accent); color: var(--accent); text-decoration: none; font-weight: 600; font-size: .88rem;
+    }
+    .project-links a.primary { background: var(--accent); color: #0d1117; }
+    .program-grid { display: grid; gap: 8px; }
+    .program-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; font-size: .88rem; }
+    .program-item strong { color: var(--accent); }
     .week-nav { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
     .week-nav button { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 6px 12px; border-radius: 8px; cursor: pointer; }
     .week-nav button:hover { border-color: var(--accent); }
@@ -89,8 +100,8 @@
     <div class="meta-row" id="meta-pills"></div>
 
     <div class="card">
-      <h2>Weekly spine</h2>
-      <div class="spine-grid" id="spine-grid"></div>
+      <h2>Program</h2>
+      <div class="program-grid" id="program-grid"></div>
     </div>
 
     <div class="card">
@@ -99,8 +110,8 @@
     </div>
 
     <div class="card">
-      <h2>This week</h2>
-      <p class="how-it-works"><strong>How to use this:</strong> Open the <strong>week workbook</strong> — fill-in worksheets with real outputs. Use this page to track daily completion. Copy finished work into <code>study-notes/weeks/</code> and commit.</p>
+      <h2>This week — mini project</h2>
+      <p class="how-it-works"><strong>One build per week.</strong> Open the project folder, ship the artifact, check <em>Done when</em>, commit to GitHub, then mark the week complete.</p>
       <div class="week-nav">
         <button type="button" id="prev-week">←</button>
         <select id="week-select"></select>
@@ -110,10 +121,10 @@
       <p id="week-title" style="margin-bottom:12px;font-size:.95rem"></p>
       <div id="workbook-cta"></div>
       <div id="capstone-banner"></div>
-      <div id="days"></div>
+      <div id="mini-project"></div>
     </div>
 
-    <footer>Progress saved in browser localStorage · <a href="../">Home</a> · <a href="workbooks/week-01.html">Week 1 workbook</a> · <a href="../study-notes/weeks/README.md">Study outputs</a></footer>
+    <footer>Progress saved in browser · <a href="../">Home</a> · <a href="../projects/08-capstone-ops-agent/README.md">Capstone</a></footer>
   </div>
 
   <script>
@@ -131,9 +142,9 @@
     let pagesBase = "";
     let githubBase = "";
 
-    function storageKey(week, day) { return `aisystems-w${week}-${day}`; }
-    function loadChecks(week, day) { return localStorage.getItem(storageKey(week, day)) === "1"; }
-    function saveCheck(week, day, val) { localStorage.setItem(storageKey(week, day), val ? "1" : "0"); }
+    function weekStorageKey(week) { return `aisystems-week-${week}-done`; }
+    function loadWeekDone(week) { return localStorage.getItem(weekStorageKey(week)) === "1"; }
+    function saveWeekDone(week, val) { localStorage.setItem(weekStorageKey(week), val ? "1" : "0"); }
 
     function linkBase() {
       const local = location.hostname === "localhost" || location.hostname === "127.0.0.1";
@@ -181,7 +192,7 @@
       pagesBase = (progress.pagesBase || "..").replace(/\/$/, "");
       githubBase = `https://github.com/${progress.repoName || "Meerzah/ai-systems-portfolio"}/blob/main`;
       renderHeader();
-      renderSpine();
+      renderProgram();
       renderUnits();
       renderWeekSelector();
       renderWeek(currentWeek);
@@ -199,9 +210,10 @@
         `<span class="pill ${i===0?'accent':''}">${p}</span>`).join("");
     }
 
-    function renderSpine() {
-      document.getElementById("spine-grid").innerHTML = (progress.spine || []).map(s =>
-        `<div class="spine-item"><strong>${s.day}</strong>${s.label}<br><span style="color:var(--muted);font-size:11px">${s.question}</span></div>`
+    function renderProgram() {
+      const items = progress.program || [];
+      document.getElementById("program-grid").innerHTML = items.map(p =>
+        `<div class="program-item"><strong>${p.label}</strong> (W${p.weeks}) — ${p.summary}</div>`
       ).join("");
     }
 
@@ -247,54 +259,58 @@
     function renderWeek(n) {
       const w = weeksData.weeks.find(x => x.week === n);
       if (!w) return;
-      document.getElementById("week-title").textContent = w.title + (w.capstoneTitle ? ` — Capstone: ${w.capstoneTitle}` : "");
+      document.getElementById("week-title").textContent = w.title;
 
       const wb = document.getElementById("workbook-cta");
       if (w.workbook) {
         wb.innerHTML = `<div class="workbook-cta">
-          <a href="${w.workbook}">Open Week ${n} workbook →</a>
-          <span>Fill-in worksheets for Mon–Sun. Auto-saves in browser. Copy to study-notes when done.</span>
+          <a href="${w.workbook}">Build sheet →</a>
+          <span>Track ship notes and blockers while you code.</span>
         </div>`;
       } else wb.innerHTML = "";
+
       const typePill = document.getElementById("week-type-pill");
-      if (w.capstoneWeek) { typePill.textContent = "Capstone week"; typePill.className = "pill accent"; }
-      else if (w.interviewPrep) { typePill.textContent = "Interview prep Fri"; typePill.className = "pill warn"; }
-      else { typePill.textContent = "Normal week"; typePill.className = "pill"; }
+      if (w.phase === "capstone") { typePill.textContent = "Capstone build"; typePill.className = "pill accent"; }
+      else if (w.phase === "portfolio") { typePill.textContent = "Portfolio lane"; typePill.className = "pill warn"; }
+      else { typePill.textContent = "Mini-project"; typePill.className = "pill"; }
 
       const capBanner = document.getElementById("capstone-banner");
-      if (w.capstoneWeek && monthsData.months) {
-        const m = monthsData.months[w.month - 1];
-        capBanner.innerHTML = m ? `<div class="capstone card" style="margin-bottom:12px"><strong>Month ${w.month} rubric</strong><ul class="steps">${m.rubric.map(r=>`<li>${r}</li>`).join("")}</ul></div>` : "";
+      if (w.phase === "capstone") {
+        capBanner.innerHTML = `<div class="capstone card" style="margin-bottom:12px"><strong>Month 6 capstone</strong> — integrate mini-projects into <a href="${resolveHref('projects/08-capstone-ops-agent/')}" target="_blank" rel="noopener" style="color:var(--purple)">projects/08-capstone-ops-agent/</a></div>`;
       } else capBanner.innerHTML = "";
 
-      const daysEl = document.getElementById("days");
-      daysEl.innerHTML = DAY_ORDER.map(dk => {
-        const d = w.days[dk];
-        if (!d) return "";
-        const sec = d.section || "prove";
-        const isToday = n === progress.currentWeek && dk === TODAY_KEY;
-        const checked = loadChecks(n, dk);
-        return `<div class="day-block ${isToday ? 'today open' : checked ? 'open' : ''}" data-day="${dk}">
-            <div class="day-head" onclick="this.parentElement.classList.toggle('open')">
-              <span class="day-name">${DAY_LABELS[dk]}</span>
-              <span class="section-tag ${SECTION_COLORS[sec]||''}">${d.label || sec}</span>
-              <span style="margin-left:auto;font-size:12px;color:var(--muted)">${checked ? '✓ done' : ''}</span>
-            </div>
-            <div class="day-body">
-              <p class="guide">${d.guide || ""}</p>
-              ${d.steps?.length ? `<ul class="steps">${d.steps.map(s=>`<li>${s}</li>`).join("")}</ul>` : ""}
-              ${d.proveLink ? `<a class="prove-link" href="${resolveHref(d.proveLink) || '#'}" target="_blank" rel="noopener">→ Open: ${d.proveLink}</a>` : ""}
-              ${d.resources?.length ? `<p class="resource-links" style="font-size:12px;color:var(--muted);margin-top:8px">Resources: ${d.resources.map(linkResource).join(" ")}</p>` : ""}
-              <label class="check-row"><input type="checkbox" data-w="${n}" data-d="${dk}" ${checked?"checked":""} /> Mark complete</label>
-            </div>
-          </div>`;
-      }).join("");
+      const mp = w.miniProject;
+      const done = loadWeekDone(n);
+      if (!mp) {
+        document.getElementById("mini-project").innerHTML = "";
+        return;
+      }
 
-      daysEl.querySelectorAll("input[type=checkbox]").forEach(cb => {
-        cb.addEventListener("change", (e) => {
-          saveCheck(+e.target.dataset.w, e.target.dataset.d, e.target.checked);
-          renderWeek(n);
-        });
+      const projectHref = resolveHref(mp.path);
+      const build = (mp.build || []).map(s => `<li>${s}</li>`).join("");
+      const doneWhen = (mp.doneWhen || []).map(s => `<li>${s}</li>`).join("");
+
+      document.getElementById("mini-project").innerHTML = `
+        <div class="project-card">
+          <span class="phase-tag ${w.phase || 'mini'}">${w.phase || 'mini'}</span>
+          <h3>${mp.name || w.title}</h3>
+          <div class="project-links">
+            ${projectHref ? `<a class="primary" href="${projectHref}" target="_blank" rel="noopener">Open ${mp.path} →</a>` : ""}
+            ${w.workbook ? `<a href="${w.workbook}">Build sheet</a>` : ""}
+          </div>
+          <p style="font-size:.85rem;color:var(--muted);margin-bottom:8px"><strong style="color:var(--text)">Build this week</strong></p>
+          <ul class="steps">${build}</ul>
+          <p style="font-size:.85rem;color:var(--muted);margin:12px 0 8px"><strong style="color:var(--text)">Done when</strong></p>
+          <ul class="steps">${doneWhen}</ul>
+          <label class="check-row" style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border)">
+            <input type="checkbox" id="week-done" ${done ? "checked" : ""} />
+            Week ${n} shipped — committed to repo
+          </label>
+        </div>`;
+
+      document.getElementById("week-done").addEventListener("change", (e) => {
+        saveWeekDone(n, e.target.checked);
+        renderWeek(n);
       });
     }
 

@@ -1,11 +1,11 @@
-# Phase 3 — Apply lane (Weeks 25–36)
+# Phase 3 — Portfolio + apply (Weeks 25–36)
 
-**Goal:** Interview, apply, iterate — AI Systems roles.
+**Goal:** Demo the capstone, write the case study, interview, apply.
 
-| Unit | Weeks | Focus |
-|------|-------|-------|
-| 7 | 25–28 | Metrics + consulting menu |
-| 8 | 29–32 | Interview prep (Fri from Week 30) |
-| 9 | 33–36 | Wave 1–2 applications |
+| Weeks | Focus |
+|-------|--------|
+| 25–28 | Demo polish, consulting one-pager, metrics baseline |
+| 29–32 | System design practice, STAR, mock interviews |
+| 33–36 | Applications, outreach, program retro |
 
-Target roles: Automation Engineer, AI Systems Engineer, Internal Tools / AI Ops — not generic IT automation shops.
+Lead with **projects/08-capstone-ops-agent/** in every interview — honest POC status.

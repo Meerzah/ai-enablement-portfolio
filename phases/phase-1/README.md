@@ -1,28 +1,19 @@
-# Phase 1 — 90-day sprint (Weeks 1–12)
+# Phase 1 — Mini-projects (Weeks 1–20)
 
-**Goal:** Friction map → identity-backed workflow → agentic triage POC (honest status).
+**Goal:** Ship one concrete build per week in `projects/`. Each week has a project folder, build steps, and definition of done on the [dashboard](https://meerzah.github.io/ai-systems-portfolio/tracker/).
 
-**Career focus:** Move 1 prep · Wave 0 → Wave 1
+## Month-by-month
 
----
+| Month | Weeks | Theme |
+|-------|-------|--------|
+| 1 | 1–4 | Agent + Okta MCP + escalation policy |
+| 2 | 5–8 | Playbooks, logging, tool schemas, evals |
+| 3 | 9–12 | HITL mock, FastAPI, audit log, idempotency |
+| 4 | 13–16 | Failure alerts, rollout checklist, metrics |
+| 5 | 17–20 | KB index, integration demo, capstone scaffold |
 
-## Units
+**Month 6 (weeks 21–24):** Capstone — see `projects/08-capstone-ops-agent/` and `phases/phase-2/README.md`.
 
-| Unit | Weeks | Spine focus | Capstone |
-|------|-------|-------------|----------|
-| 1 | 1–4 | Friction → Workflow map | Ops friction inventory + workflow diagram |
-| 2 | 5–8 | Identity + audit | Okta group grant workflow + audit trail |
-| 3 | 9–12 | Agent + Measure + Prove | Agentic IT case study draft |
+## Week 1 starting point
 
----
-
-## Weekly checklist (normal weeks)
-
-- [ ] **Mon — Friction:** High-volume manual request identified with real volume data
-- [ ] **Tue — Workflow:** Intake → approval → action diagram with HITL gates
-- [ ] **Wed — Identity:** Okta/Lumos scope + audit fields defined
-- [ ] **Thu — Agent:** LLM vs deterministic steps documented (POC framing)
-- [ ] **Fri — Measure:** Baseline metrics plan (no invented KPIs)
-- [ ] **Sat–Sun — Prove:** One artifact shipped
-
-Capstone weeks (4, 8, 12): see `tracker/months.json` rubric.
+Open [Week 1 on the dashboard](https://meerzah.github.io/ai-systems-portfolio/tracker/) → **Open projects/01-it-helpdesk-agent/** → ship runbooks + prove log.
