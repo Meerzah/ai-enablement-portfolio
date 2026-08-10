@@ -1,54 +1,59 @@
-# Capstone — Integrated Ops Agent Platform
+# Capstone — Agentic IT Ops Platform
 
-**Status:** Portfolio capstone (POC) · builds on mini-projects 01–05  
-**Timeline:** Weeks 21–24 of the [36-week roadmap](https://meerzah.github.io/ai-systems-portfolio/tracker/)
+**Competencies:** harness + identity + endpoint + enablement + workflow + ops  
+**Timeline:** Weeks 21–24 · See [CURRICULUM.md](../CURRICULUM.md)
 
 ## What this is
 
-The capstone merges your weekly mini-projects into one demo-ready platform:
+One integrated platform that demonstrates **AI Systems Engineering** for internal IT — not a chatbot demo.
 
 ```
-HTTP API (FastAPI)
-    └── ADK helpdesk agent
-            ├── RAG (runbooks)
-            ├── Okta MCP (read-only identity)
-            ├── HITL approval gate (before side effects)
-            ├── Audit log + adoption events
-            └── Eval suite (15+ cases)
+                    ┌─────────────────────────────────┐
+                    │  HTTP API + webhook intake       │
+                    └───────────────┬─────────────────┘
+                                    │
+                    ┌───────────────▼─────────────────┐
+                    │  ADK agent (harness)             │
+                    │  · RAG runbooks                  │
+                    │  · Okta MCP (read-only)          │
+                    │  · HITL before writes            │
+                    │  · Endpoint policy stub (09)     │
+                    └───────────────┬─────────────────┘
+                                    │
+          ┌─────────────────────────┼─────────────────────────┐
+          ▼                         ▼                         ▼
+   Audit log (identity)    Adoption events (enablement)   Eval suite (ops)
 ```
 
-This is **not** production deployment at your employer — honest POC for portfolio and interviews.
+## Pillar integration
 
-## What migrates from mini-projects
+| Pillar | Source mini-projects | Capstone module |
+|--------|---------------------|-----------------|
+| Agent harness | 01, evals W13–14 | Core agent + tools |
+| Identity | 02, 06, W5–7 | MCP + audit + HITL |
+| Endpoint | 09, 07 | Policy check stub |
+| Enablement | 03, 04, 05 | Metrics + KB index |
+| Workflow | W9–11 | API + webhooks |
+| Ops | W13–14, logging | Evals + alerts |
 
-| Source | Capstone component |
-|--------|-------------------|
-| `01-it-helpdesk-agent` | Agent core, RAG, evals, escalation policy |
-| `02-okta-mcp-server` | Identity tools (read-only) |
-| `05-adoption-dashboard` | Event schema + usage metrics script |
-| Weeks 10–14 docs | HITL flow, reliability, failure alerts |
+## Capstone weeks
 
-## Capstone weeks (21–24)
-
-| Week | Focus |
-|------|--------|
-| 21 | Assemble services; one local start command |
-| 22 | HITL enforcement; block unapproved writes |
-| 23 | Audit + observability wired end-to-end |
-| 24 | Deploy POC (Cloud Run) + case study draft |
+| Week | Ship |
+|------|------|
+| 21 | One-command local run; 5 evals pass |
+| 22 | HITL + audit on every query |
+| 23 | Endpoint policy + metrics wired |
+| 24 | Cloud Run POC + `capstone-case-study.md` |
 
 ## Definition of done
 
-- [ ] Single README with architecture diagram
-- [ ] `docker compose up` or `./scripts/run-local.sh` works
-- [ ] Eval suite runs with logged pass/fail (no fake accuracy %)
-- [ ] `study-notes/capstone-case-study.md` published
-- [ ] Demo script under 2 minutes
+- [ ] All seven competencies represented in ARCHITECTURE.md
+- [ ] Eval suite with logged pass/fail (no fake accuracy)
+- [ ] Honest status: portfolio POC, not employer production
+- [ ] 2-minute demo script rehearsed
 
-## Getting started (Week 21)
+## Start (Week 21)
 
-1. Copy patterns from `projects/01-it-helpdesk-agent/` into this folder
-2. Add `ARCHITECTURE.md` before writing code
-3. Port eval_cases.csv first — tests drive integration
-
-See [dashboard Week 21](https://meerzah.github.io/ai-systems-portfolio/tracker/workbooks/week-21.html).
+1. Read [CURRICULUM.md](../CURRICULUM.md) skills checklist  
+2. Copy patterns from `01-it-helpdesk-agent`  
+3. Port `eval_cases.csv` first — tests drive integration  

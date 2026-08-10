@@ -54,7 +54,8 @@ profile = {
 | 05 | [Adoption Dashboard](./projects/05-adoption-dashboard) | BigQuery · Logging | In progress | AI tool usage metrics |
 | 06 | [CIPHER](./projects/06-cipher) | Okta · Cloud Run · Jira | In development | ABAC mover automation (design + ship plan) |
 | 07 | [ALIUS](./projects/07-alius) | Cloud Run · Firestore | Planning | Offboarding orchestration blueprint |
-| 08 | [Capstone — Ops Agent Platform](./projects/08-capstone-ops-agent) | ADK · MCP · FastAPI · Cloud Run | Weeks 21–24 | Integrated platform from mini-projects |
+| 08 | [Capstone — Ops Agent Platform](./projects/08-capstone-ops-agent) | ADK · MCP · FastAPI · Cloud Run | Weeks 21–24 | All 7 competencies integrated |
+| 09 | [Endpoint AI Governance](./projects/09-endpoint-ai-governance) | MDM policy · fleet AI | Weeks 17–18 | Endpoint + enablement pillar |
 
 **Status key:** *Portfolio demo* = public repo runnable code · *In development/planning* = AppLovin platform work (honest labels in interviews)
 
@@ -62,13 +63,25 @@ profile = {
 
 ### Study roadmap
 
-**20 weekly mini-projects** (ship code/docs in `projects/`) → **4-week capstone** at month 6 (`projects/08-capstone-ops-agent/`) → portfolio + interview lane.
+Research-backed **[CURRICULUM.md](./CURRICULUM.md)** — seven competencies for AI Systems roles:
+
+**Identity · Endpoints · AI enablement · Agent harness · Workflow automation · Observability · Portfolio**
 
 | Phase | Weeks | What you ship |
 |-------|-------|---------------|
-| Mini-projects | 1–20 | One build per week — agent, MCP, evals, HITL, API, metrics |
-| Capstone | 21–24 | Integrated ops agent platform |
-| Portfolio | 25–36 | Demo, case study, interview, apply |
+| Foundation | 1–4 | Agent + Okta MCP + guardrails |
+| Identity + enablement | 5–8 | Agent identity, audit, CIPHER design, playbooks |
+| Workflow | 9–12 | HITL, API, webhooks, tool schemas |
+| Evals + platform | 13–16 | 15 eval cases, rollout checklist, metrics |
+| Endpoint + prep | 17–20 | AI governance on endpoints, capstone architecture |
+| **Capstone** | **21–24** | **`projects/08-capstone-ops-agent/`** |
+| Portfolio | 25–36 | Case study, interview, apply |
+
+| Resource | Link |
+|----------|------|
+| Competency model | [`CURRICULUM.md`](./CURRICULUM.md) |
+| Weekly dashboard | [`tracker/`](./tracker/) |
+| Interview prep | [`interview-prep/`](./interview-prep/) |
 
 ---
 

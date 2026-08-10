@@ -1,115 +1,90 @@
 {
-  "title": "AI Systems / Agentic Ops Roadmap",
-  "subtitle": "20 weekly mini-projects → 4-week capstone → portfolio + interview",
+  "title": "AI Systems Engineering Roadmap",
+  "subtitle": "Identity · endpoints · AI enablement · agent harness → 6-month capstone",
   "careerFocus": "Move 1 — AI Systems",
   "repoName": "ai-systems-portfolio",
   "pagesBase": "https://meerzah.github.io/ai-systems-portfolio",
+  "curriculum": "CURRICULUM.md",
   "currentWeek": 1,
   "currentPhase": 1,
   "currentUnit": 1,
-  "currentUnitLabel": "Mini-project: helpdesk agent + runbooks",
+  "currentUnitLabel": "Week 1: helpdesk agent + runbooks",
   "weeksTotal": 36,
   "hoursPerWeek": "12–15",
-  "resume": "Kamaal_Mirza_Resume_Serval.docx",
-  "positioning": "Systems / automation engineer who builds identity-backed, agent-ready ops workflows with Python, Okta, and AI tooling.",
+  "competencies": [
+    { "id": "harness", "label": "Agent harness", "summary": "Tools, RAG, evals, guardrails, ADK/MCP" },
+    { "id": "identity", "label": "Identity & access", "summary": "Okta, SCIM, agent credentials, audit, HITL" },
+    { "id": "endpoint", "label": "Endpoint & fleet", "summary": "MDM, AI tool policy, offboarding orchestration" },
+    { "id": "enablement", "label": "AI enablement", "summary": "Rollout, playbooks, KB, adoption metrics" },
+    { "id": "workflow", "label": "Workflow automation", "summary": "Intake→approval→action, APIs, webhooks" },
+    { "id": "ops", "label": "Observability & ops", "summary": "Logs, evals, alerts, honest metrics" },
+    { "id": "portfolio", "label": "Portfolio & interview", "summary": "Case study, system design, apply" }
+  ],
   "program": [
-    { "id": "mini", "weeks": "1–20", "label": "Mini-projects", "summary": "One shippable build per week in projects/" },
-    { "id": "capstone", "weeks": "21–24", "label": "Capstone", "summary": "Integrated ops agent platform (projects/08-capstone-ops-agent/)" },
-    { "id": "portfolio", "weeks": "25–36", "label": "Ship + apply", "summary": "Demo, case study, interview prep, applications" }
+    { "id": "foundation", "weeks": "1–4", "label": "Agent + MCP foundation", "competencies": ["harness", "identity"] },
+    { "id": "identity", "weeks": "5–8", "label": "Identity + audit + playbooks", "competencies": ["identity", "enablement"] },
+    { "id": "workflow", "weeks": "9–12", "label": "HITL + API + reliability", "competencies": ["workflow", "harness"] },
+    { "id": "enablement", "weeks": "13–16", "label": "Evals + rollout + metrics", "competencies": ["ops", "enablement"] },
+    { "id": "endpoint", "weeks": "17–20", "label": "Endpoint + integration", "competencies": ["endpoint", "harness"] },
+    { "id": "capstone", "weeks": "21–24", "label": "Capstone build", "competencies": ["harness", "identity", "endpoint", "workflow", "ops"] },
+    { "id": "portfolio", "weeks": "25–36", "label": "Ship + apply", "competencies": ["portfolio"] }
   ],
   "units": [
     {
       "id": 1,
-      "phase": "mini",
       "weeks": "1–4",
-      "title": "Agent + identity foundations",
-      "focus": "Run helpdesk agent, Okta MCP, wire them together, write escalation policy",
-      "capstone": "projects/08-capstone-ops-agent/README.md",
-      "deliverables": ["Runnable agent with runbooks", "MCP read tools", "Agent + MCP integration", "escalation-policy.md"],
-      "artifacts": ["projects/01-it-helpdesk-agent/README.md", "projects/02-okta-mcp-server/README.md", "tracker/workbooks/week-01.html"]
+      "title": "Agent harness + MCP",
+      "focus": "Run agent, Okta read tools, escalation policy",
+      "artifacts": ["projects/01-it-helpdesk-agent/README.md", "projects/02-okta-mcp-server/README.md", "CURRICULUM.md"]
     },
     {
       "id": 2,
-      "phase": "mini",
       "weeks": "5–8",
-      "title": "Prompts, logging, evals",
-      "focus": "Playbooks, structured logs, tool schemas, first eval harness",
-      "deliverables": ["it-ops prompt playbook", "query JSONL logs", "tool schemas", "5 eval cases"],
-      "artifacts": ["projects/04-prompt-playbooks/README.md", "projects/01-it-helpdesk-agent/README.md"]
+      "title": "Identity + enablement",
+      "focus": "Agent identity design, audit schema, CIPHER design, prompt playbooks",
+      "artifacts": ["study-notes/wif-agent-identity-design.md", "projects/06-cipher/SHIP-PLAN.md", "projects/04-prompt-playbooks/"]
     },
     {
       "id": 3,
-      "phase": "mini",
       "weeks": "9–12",
-      "title": "HITL + API + audit",
-      "focus": "Approval gate mock, FastAPI wrapper, audit schema, idempotency",
-      "deliverables": ["HITL flow doc", "POST /query API", "audit events", "webhook idempotency"],
-      "artifacts": ["projects/01-it-helpdesk-agent/README.md", "projects/05-adoption-dashboard/README.md"]
+      "title": "Workflow automation",
+      "focus": "HITL, FastAPI, webhooks, tool schemas",
+      "artifacts": ["projects/01-it-helpdesk-agent/docs/"]
     },
     {
       "id": 4,
-      "phase": "mini",
       "weeks": "13–16",
-      "title": "Reliability + rollout + metrics",
-      "focus": "Failure alerts, Agentspace checklist, adoption events, dashboard stub",
-      "deliverables": ["failure-alerts.md", "rollout checklist", "events-schema.md", "usage query script"],
-      "artifacts": ["projects/03-agentspace-rollout/README.md", "projects/05-adoption-dashboard/README.md"]
+      "title": "Evals + enablement platform",
+      "focus": "15 eval cases, Agentspace rollout, adoption dashboard",
+      "artifacts": ["projects/01-it-helpdesk-agent/evals/", "projects/03-agentspace-rollout/", "projects/05-adoption-dashboard/"]
     },
     {
       "id": 5,
-      "phase": "mini",
       "weeks": "17–20",
-      "title": "Integration + capstone prep",
-      "focus": "KB index, end-to-end demo, capstone architecture scaffold",
-      "deliverables": ["ops-kb-index.md", "demo-script.md", "capstone ARCHITECTURE.md", "15 eval cases"],
-      "artifacts": ["projects/08-capstone-ops-agent/README.md"]
+      "title": "Endpoint + capstone prep",
+      "focus": "AI governance on endpoints, ALIUS design, E2E demo, capstone architecture",
+      "artifacts": ["projects/09-endpoint-ai-governance/README.md", "projects/07-alius/ARCHITECTURE.md", "projects/08-capstone-ops-agent/"]
     },
     {
       "id": 6,
-      "phase": "capstone",
       "weeks": "21–24",
-      "title": "Capstone — Ops Agent Platform",
-      "focus": "Assemble, HITL enforce, audit/metrics, Cloud Run POC + case study",
+      "title": "Capstone — Agentic IT Ops Platform",
+      "focus": "Assemble all pillars; deploy POC; case study",
       "capstone": "projects/08-capstone-ops-agent/",
-      "deliverables": ["One-command local run", "HITL blocks writes", "Full observability", "Deploy POC + case study"],
-      "artifacts": ["projects/08-capstone-ops-agent/README.md"]
+      "artifacts": ["projects/08-capstone-ops-agent/README.md", "study-notes/capstone-case-study.md"]
     },
     {
       "id": 7,
-      "phase": "portfolio",
-      "weeks": "25–28",
-      "title": "Polish + package",
-      "focus": "Demo polish, consulting one-pager, metrics baseline",
-      "deliverables": ["2-min demo", "consulting-one-pager.md", "metrics-baseline.md"],
-      "artifacts": ["projects/08-capstone-ops-agent/README.md", "CONTEXT.md"]
-    },
-    {
-      "id": 8,
-      "phase": "portfolio",
-      "weeks": "29–32",
-      "title": "Interview prep",
-      "focus": "System designs, STAR, mock interviews",
-      "deliverables": ["2 timed designs", "behavioral-star.md", "mock block"],
-      "artifacts": ["interview-prep/system-design-template.md"]
-    },
-    {
-      "id": 9,
-      "phase": "portfolio",
-      "weeks": "33–36",
-      "title": "Apply + iterate",
-      "focus": "Applications, outreach, program retro",
-      "deliverables": ["3 targets", "1+ applications", "program-retro.md"],
-      "artifacts": ["interview-prep/answers/wave-1-checklist.md"]
+      "weeks": "25–36",
+      "title": "Portfolio + interview + apply",
+      "focus": "Demo, consulting one-pager, system designs, applications",
+      "artifacts": ["interview-prep/", "study-notes/consulting-one-pager.md"]
     }
-  ],
-  "applicationWaves": [
-    { "id": 0, "label": "Build", "when": "Weeks 1–20", "focus": "Mini-projects in projects/" },
-    { "id": 1, "label": "Capstone", "when": "Weeks 21–24", "focus": "Integrated ops agent platform" },
-    { "id": 2, "label": "Apply", "when": "Weeks 29+", "focus": "Capstone demo in interviews" }
   ],
   "portfolio": {
     "capstone": "projects/08-capstone-ops-agent/",
-    "week1Project": "projects/01-it-helpdesk-agent/README.md"
+    "startHere": "projects/01-it-helpdesk-agent/README.md",
+    "curriculum": "CURRICULUM.md"
   },
   "counters": {
     "weeksCompleted": 0,

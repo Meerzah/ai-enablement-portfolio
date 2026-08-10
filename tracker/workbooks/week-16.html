@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 16 — Adoption metrics event schema</title>
+<title>Week 16 — Adoption metrics + usage dashboard stub</title>
 <style>
 :root{--bg:#0d1117;--surface:#161b22;--surface2:#1c2129;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--success:#3fb950;--warn:#d29922;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -28,11 +28,11 @@ button.primary{border-color:var(--accent);color:var(--accent)}
 </head><body><div class="wrap">
 <div class="top"><a href="../index.html">← Dashboard</a></div>
 <span class="phase mini">mini · week 16</span>
-<h1>Adoption metrics event schema</h1>
+<h1>Adoption metrics + usage dashboard stub</h1>
 <p class="sub">Ship one concrete artifact this week in the repo. Check each item, commit, then mark the week done on the dashboard.</p>
 <a class="project-link" href="https://meerzah.github.io/ai-systems-portfolio/projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">Open projects/05-adoption-dashboard/ →</a>
-<div class="card"><h2>Build this week</h2><ul><li>Define events: query_submitted, tool_called, escalated, approved</li><li>Map to BigQuery-friendly fields</li><li>Emit sample events from agent logging</li></ul></div>
-<div class="card"><h2>Done when</h2><ul class="done"><li>events-schema.md</li><li>Sample JSONL aligned with Week 6 logs</li></ul></div>
+<div class="card"><h2>Build this week</h2><ul><li>events-schema.md: query_submitted, tool_called, escalated, approved</li><li>Script: queries/day + escalation rate from sample logs only</li><li>README: how to run on test data</li></ul></div>
+<div class="card"><h2>Done when</h2><ul class="done"><li>Schema + script run on your test logs</li><li>Screenshot or terminal output saved</li></ul></div>
 <div class="card"><h2>Ship notes</h2>
 <div class="field"><label>What I committed (paths + PR/commit hash)</label>
 <textarea id="ship" data-key="w16-ship" placeholder="e.g. projects/01-it-helpdesk-agent/runbooks/vpn.md — commit abc123"></textarea></div>

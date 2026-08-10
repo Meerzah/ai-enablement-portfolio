@@ -1,335 +1,376 @@
 {
-  "schema": "mini-project-roadmap-v1",
+  "schema": "competency-roadmap-v2",
+  "competencies": [
+    "harness",
+    "identity",
+    "endpoint",
+    "enablement",
+    "workflow",
+    "ops",
+    "portfolio"
+  ],
   "program": {
-    "weeks1to20": "Weekly mini-projects \u2014 shippable portfolio artifacts",
-    "weeks21to24": "Capstone \u2014 integrated ops agent platform",
-    "weeks25to36": "Demo, case study, interview, apply"
+    "weeks1to4": "Agent harness + MCP (competency: harness, identity)",
+    "weeks5to8": "Identity depth + enablement playbooks",
+    "weeks9to12": "Workflow automation + tool schemas",
+    "weeks13to16": "Evals + enablement rollout + metrics",
+    "weeks17to20": "Endpoint governance + KB + capstone prep",
+    "weeks21to24": "Capstone \u2014 Agentic IT Ops Platform",
+    "weeks25to36": "Portfolio, interview, apply"
   },
   "weeks": [
     {
       "week": 1,
       "month": 1,
+      "competency": "harness",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Run the helpdesk agent + extend runbook corpus",
+      "title": "Run helpdesk agent + extend runbook corpus",
       "workbook": "workbooks/week-01.html",
       "miniProject": {
-        "name": "Run the helpdesk agent + extend runbook corpus",
+        "name": "Run helpdesk agent + extend runbook corpus",
         "path": "projects/01-it-helpdesk-agent/",
+        "competency": "harness",
         "build": [
-          "Clone repo; run agent locally per README",
-          "Add 2 new Markdown runbooks (VPN + SSO or MDM)",
-          "Run 5 test queries; log pass vs escalate in README or notes"
+          "Set up Python venv; install requirements.txt",
+          "Add 2 Markdown runbooks (VPN, SSO, or MDM)",
+          "Run 5 test queries; log results"
         ],
         "doneWhen": [
-          "Agent runs without errors",
-          "2 runbooks committed under runbooks/ or docs/",
-          "5-query log saved in study-notes/weeks/week-01-prove-log.md"
+          "Agent starts (or document blocker + workaround in prove log)",
+          "2 runbooks committed",
+          "study-notes/weeks/week-01-prove-log.md filled"
         ]
       }
     },
     {
       "week": 2,
       "month": 1,
+      "competency": "identity",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Okta MCP server \u2014 read-only identity queries",
+      "title": "Okta MCP \u2014 read-only identity tools",
       "workbook": "workbooks/week-02.html",
       "miniProject": {
-        "name": "Okta MCP server \u2014 read-only identity queries",
+        "name": "Okta MCP \u2014 read-only identity tools",
         "path": "projects/02-okta-mcp-server/",
+        "competency": "identity",
         "build": [
-          "Configure read-only Okta API token (preview org or sandbox)",
-          "Implement or verify list_users + get_user_groups tools",
-          "Run 3 MCP queries from Claude/Cursor or MCP inspector"
+          "Configure read-only Okta API token (preview/sandbox org)",
+          "Verify list_users + get_group_members tools",
+          "Document 3 sample queries (redact PII)"
         ],
         "doneWhen": [
-          "MCP server starts and registers tools",
-          "3 sample queries documented with outputs (redact PII)"
+          "MCP server runs",
+          "3 queries logged in project README or notes"
         ]
       }
     },
     {
       "week": 3,
       "month": 1,
+      "competency": "harness",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Wire agent \u2192 Okta MCP for identity-aware answers",
+      "title": "Connect agent \u2192 Okta MCP (read-only)",
       "workbook": "workbooks/week-03.html",
       "miniProject": {
-        "name": "Wire agent \u2192 Okta MCP for identity-aware answers",
+        "name": "Connect agent \u2192 Okta MCP (read-only)",
         "path": "projects/01-it-helpdesk-agent/",
+        "competency": "harness",
         "build": [
-          "Connect helpdesk agent to Okta MCP tools",
-          "Add system prompt rule: identity lookups are read-only",
-          "Test: group membership question + user status question"
+          "Wire agent to Okta MCP tools",
+          "System prompt: identity lookups read-only; escalate writes",
+          "Test group membership + user status queries"
         ],
         "doneWhen": [
-          "Agent calls Okta tool for at least 2 query types",
-          "Escalation when write/action requested"
+          "2+ identity query types work",
+          "Write attempt triggers escalation"
         ]
       }
     },
     {
       "week": 4,
       "month": 1,
+      "competency": "harness",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Escalation policy + agent guardrails doc",
+      "title": "Escalation policy + agent guardrails",
       "workbook": "workbooks/week-04.html",
       "miniProject": {
-        "name": "Escalation policy + agent guardrails doc",
+        "name": "Escalation policy + agent guardrails",
         "path": "projects/01-it-helpdesk-agent/",
+        "competency": "harness",
         "build": [
-          "Write escalation-policy.md: when agent must refuse or hand off",
-          "Add 3 must-escalate + 3 safe-to-answer examples",
-          "Update agent prompt to cite policy"
+          "Write docs/escalation-policy.md",
+          "3 must-escalate + 3 safe-to-answer examples",
+          "Update agent system prompt to cite policy"
         ],
         "doneWhen": [
           "escalation-policy.md committed",
-          "1 test query per category logged"
+          "6 examples tested and logged"
         ]
       }
     },
     {
       "week": 5,
       "month": 2,
+      "competency": "identity",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "IT intake prompt playbook",
+      "title": "Agent identity design (WIF / SPIFFE concepts)",
       "workbook": "workbooks/week-05.html",
       "miniProject": {
-        "name": "IT intake prompt playbook",
-        "path": "projects/04-prompt-playbooks/",
+        "name": "Agent identity design (WIF / SPIFFE concepts)",
+        "path": "study-notes/wif-agent-identity-design.md",
+        "competency": "identity",
         "build": [
-          "Draft teams/it-ops.md intake prompts for non-technical requesters",
-          "Cover access request + device issue + how-to question",
-          "Add copy-paste Slack/form field labels"
+          "Read GCP Agent Identity overview",
+          "Update wif-agent-identity-design.md: human vs NHI vs agent principal",
+          "Diagram: read-only MCP vs write via approved workflow"
         ],
         "doneWhen": [
-          "it-ops.md committed with 3 prompt templates",
-          "Linked from project README"
+          "Design doc updated",
+          "Least-privilege table for capstone tools"
         ]
       }
     },
     {
       "week": 6,
       "month": 2,
+      "competency": "identity",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Structured query logging for the agent",
+      "title": "Audit log schema for automated actions",
       "workbook": "workbooks/week-06.html",
       "miniProject": {
-        "name": "Structured query logging for the agent",
-        "path": "projects/01-it-helpdesk-agent/",
+        "name": "Audit log schema for automated actions",
+        "path": "projects/05-adoption-dashboard/",
+        "competency": "identity",
         "build": [
-          "Log each query: timestamp, query, tools_used, outcome, latency_ms",
-          "JSON lines to logs/queries.jsonl (gitignore secrets)",
-          "Add README section on log format"
+          "Define audit event: actor, action, resource, ticket_id, approved_by, timestamp",
+          "Add schema.md + sample JSON events",
+          "Map fields to future capstone audit writer"
         ],
         "doneWhen": [
-          "10 sample log lines from real test runs",
-          "No PII or tokens in committed logs"
+          "schema.md committed",
+          "3 sample events from mock approval flow"
         ]
       }
     },
     {
       "week": 7,
       "month": 2,
+      "competency": "identity",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Tool JSON schemas + agent tool manifest",
+      "title": "Access automation design (CIPHER Phase 1)",
       "workbook": "workbooks/week-07.html",
       "miniProject": {
-        "name": "Tool JSON schemas + agent tool manifest",
-        "path": "projects/01-it-helpdesk-agent/",
+        "name": "Access automation design (CIPHER Phase 1)",
+        "path": "projects/06-cipher/",
+        "competency": "identity",
         "build": [
-          "Document JSON schema for rag_tool and okta_tool inputs/outputs",
-          "Add tools/README.md with contract for each tool",
-          "Validate one happy-path + one error-path call"
+          "Read SHIP-PLAN.md; complete Phase 1 checklist items you can do in design",
+          "Document intake \u2192 HITL \u2192 Okta write boundary",
+          "Honest status: architected, not production shipped"
         ],
         "doneWhen": [
-          "tools/README.md with schemas",
-          "Agent respects schema on malformed tool args"
+          "Phase 1 section updated in SHIP-PLAN or design note",
+          "Sequence diagram added"
         ]
       }
     },
     {
       "week": 8,
       "month": 2,
+      "competency": "enablement",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Eval harness \u2014 first 5 cases",
+      "title": "IT intake prompt playbook",
       "workbook": "workbooks/week-08.html",
       "miniProject": {
-        "name": "Eval harness \u2014 first 5 cases",
-        "path": "projects/01-it-helpdesk-agent/",
+        "name": "IT intake prompt playbook",
+        "path": "projects/04-prompt-playbooks/",
+        "competency": "enablement",
         "build": [
-          "Create evals/eval_cases.csv: query, expected_behavior, pass/fail",
-          "Add 5 rows: 3 runbook, 2 identity read",
-          "Run manually; log results in evals/results.md"
+          "Complete teams/it-ops.md: access, device, how-to prompts",
+          "Slack/form field labels for non-technical requesters",
+          "Link from project README"
         ],
         "doneWhen": [
-          "eval_cases.csv committed (5 rows)",
-          "results.md with honest pass/fail \u2014 no invented accuracy %"
+          "3 prompt templates committed",
+          "Usable by a non-engineer"
         ]
       }
     },
     {
       "week": 9,
       "month": 3,
+      "competency": "workflow",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Eval harness \u2014 expand to 15 cases",
+      "title": "HITL approval gate \u2014 mock implementation",
       "workbook": "workbooks/week-09.html",
       "miniProject": {
-        "name": "Eval harness \u2014 expand to 15 cases",
+        "name": "HITL approval gate \u2014 mock implementation",
         "path": "projects/01-it-helpdesk-agent/",
+        "competency": "workflow",
         "build": [
-          "Add 10 edge cases: ambiguous, OOO approver, privilege escalation attempt",
-          "Update results.md after full run",
-          "Note top 3 failures to fix before capstone"
+          "docs/hitl-flow.md with sequence diagram",
+          "Mock approval: CLI y/n or Slack Block Kit draft",
+          "Block side-effect without approval"
         ],
         "doneWhen": [
-          "15 rows in eval_cases.csv",
-          "Failure list with fix plan"
+          "Demo: action blocked without approval",
+          "Diagram committed"
         ]
       }
     },
     {
       "week": 10,
       "month": 3,
+      "competency": "workflow",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "HITL approval gate \u2014 mock implementation",
+      "title": "HTTP API wrapper for the agent",
       "workbook": "workbooks/week-10.html",
       "miniProject": {
-        "name": "HITL approval gate \u2014 mock implementation",
+        "name": "HTTP API wrapper for the agent",
         "path": "projects/01-it-helpdesk-agent/",
+        "competency": "workflow",
         "build": [
-          "Design flow: agent proposes action \u2192 human approves \u2192 execute",
-          "Mock with CLI y/n or Slack Block Kit draft (no prod webhook required)",
-          "Sequence diagram in docs/hitl-flow.md"
+          "FastAPI POST /query with Pydantic models",
+          "Return answer + tools_used + escalated flag",
+          "curl example in README"
         ],
         "doneWhen": [
-          "docs/hitl-flow.md with diagram",
-          "Mock demo: blocked action without approval"
+          "/query works locally",
+          "Health check endpoint"
         ]
       }
     },
     {
       "week": 11,
       "month": 3,
+      "competency": "workflow",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "HTTP API wrapper for the agent",
+      "title": "Idempotent webhook handler",
       "workbook": "workbooks/week-11.html",
       "miniProject": {
-        "name": "HTTP API wrapper for the agent",
+        "name": "Idempotent webhook handler",
         "path": "projects/01-it-helpdesk-agent/",
+        "competency": "workflow",
         "build": [
-          "FastAPI POST /query endpoint wrapping agent",
-          "Request/response Pydantic models",
-          "curl example in README"
+          "POST /hooks/ticket with Idempotency-Key header",
+          "docs/reliability.md: retry + duplicate handling",
+          "Test duplicate POST returns same response"
         ],
         "doneWhen": [
-          "/query returns answer + tools_used",
-          "Health check endpoint"
+          "Reliability doc + test log"
         ]
       }
     },
     {
       "week": 12,
       "month": 3,
+      "competency": "harness",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Audit log schema + write path",
+      "title": "Tool schemas + manifest",
       "workbook": "workbooks/week-12.html",
       "miniProject": {
-        "name": "Audit log schema + write path",
-        "path": "projects/05-adoption-dashboard/",
+        "name": "Tool schemas + manifest",
+        "path": "projects/01-it-helpdesk-agent/tools/",
+        "competency": "harness",
         "build": [
-          "Define audit event: actor, action, resource, ticket_id, timestamp, approved_by",
-          "Implement file or Firestore stub writer",
-          "Wire one mock approved action to audit log"
+          "tools/README.md with JSON schemas for each tool",
+          "Happy path + error path test per tool",
+          "Agent handles malformed args gracefully"
         ],
         "doneWhen": [
-          "schema.md committed",
-          "Sample audit events from test run"
+          "Schema doc committed",
+          "Error path logged"
         ]
       }
     },
     {
       "week": 13,
       "month": 4,
+      "competency": "ops",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Idempotent webhook handler pattern",
+      "title": "Eval harness \u2014 5 cases",
       "workbook": "workbooks/week-13.html",
       "miniProject": {
-        "name": "Idempotent webhook handler pattern",
+        "name": "Eval harness \u2014 5 cases",
         "path": "projects/01-it-helpdesk-agent/",
+        "competency": "ops",
         "build": [
-          "Add webhook stub POST /hooks/ticket with idempotency key header",
-          "Document retry behavior in docs/reliability.md",
-          "Test duplicate delivery returns same response"
+          "evals/eval_cases.csv: query, expected_behavior, pass/fail",
+          "5 rows: runbook + identity read",
+          "evals/results.md with honest outcomes"
         ],
         "doneWhen": [
-          "docs/reliability.md",
-          "Duplicate POST test logged"
+          "CSV + results committed",
+          "No invented accuracy %"
         ]
       }
     },
     {
       "week": 14,
       "month": 4,
+      "competency": "ops",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Failure alerts \u2014 design + test payload",
+      "title": "Eval harness \u2014 expand to 15 cases",
       "workbook": "workbooks/week-14.html",
       "miniProject": {
-        "name": "Failure alerts \u2014 design + test payload",
+        "name": "Eval harness \u2014 expand to 15 cases",
         "path": "projects/01-it-helpdesk-agent/",
+        "competency": "ops",
         "build": [
-          "Define Slack alert JSON for agent/tool failures",
-          "Simulate failure path; print alert payload",
-          "Runbook snippet: what on-call does"
+          "Add edge cases: privilege escalation, ambiguous user, KB miss",
+          "Top 3 failures \u2192 fix plan before capstone"
         ],
         "doneWhen": [
-          "docs/failure-alerts.md with sample payload",
-          "Runbook linked from alert template"
+          "15 rows in CSV",
+          "Failure analysis in results.md"
         ]
       }
     },
     {
       "week": 15,
       "month": 4,
+      "competency": "enablement",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Agentspace rollout checklist v1",
+      "title": "Agentspace / team rollout checklist",
       "workbook": "workbooks/week-15.html",
       "miniProject": {
-        "name": "Agentspace rollout checklist v1",
+        "name": "Agentspace / team rollout checklist",
         "path": "projects/03-agentspace-rollout/",
+        "competency": "enablement",
         "build": [
-          "Complete rollout checklist for 1 team (identity + data scope)",
-          "Pilot success criteria (adoption, not fake CSAT)",
-          "Risk register: 3 items + mitigations"
+          "Rollout checklist: identity scope, data boundaries, pilot criteria",
+          "Risk register: 3 items + mitigations",
+          "Success metrics you can actually measure"
         ],
         "doneWhen": [
           "checklist.md committed",
@@ -340,131 +381,143 @@
     {
       "week": 16,
       "month": 4,
+      "competency": "enablement",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Adoption metrics event schema",
+      "title": "Adoption metrics + usage dashboard stub",
       "workbook": "workbooks/week-16.html",
       "miniProject": {
-        "name": "Adoption metrics event schema",
+        "name": "Adoption metrics + usage dashboard stub",
         "path": "projects/05-adoption-dashboard/",
+        "competency": "enablement",
         "build": [
-          "Define events: query_submitted, tool_called, escalated, approved",
-          "Map to BigQuery-friendly fields",
-          "Emit sample events from agent logging"
+          "events-schema.md: query_submitted, tool_called, escalated, approved",
+          "Script: queries/day + escalation rate from sample logs only",
+          "README: how to run on test data"
         ],
         "doneWhen": [
-          "events-schema.md",
-          "Sample JSONL aligned with Week 6 logs"
+          "Schema + script run on your test logs",
+          "Screenshot or terminal output saved"
         ]
       }
     },
     {
       "week": 17,
       "month": 5,
+      "competency": "endpoint",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Usage dashboard stub",
+      "title": "Endpoint AI governance policy",
       "workbook": "workbooks/week-17.html",
       "miniProject": {
-        "name": "Usage dashboard stub",
-        "path": "projects/05-adoption-dashboard/",
+        "name": "Endpoint AI governance policy",
+        "path": "projects/09-endpoint-ai-governance/",
+        "competency": "endpoint",
         "build": [
-          "Simple script or SQL: queries per day, escalation rate (from logs)",
-          "No invented numbers \u2014 use your test log data only",
-          "Screenshot or terminal output in docs/"
+          "POLICY.md: approved vs prohibited AI tool categories",
+          "MDM-ROLLOUT-CHECKLIST.md (generic, no employer URLs)",
+          "Link identity groups \u2192 allowed tool tiers"
         ],
         "doneWhen": [
-          "Query script runs on sample logs",
-          "README updated with how to run"
+          "Both docs committed",
+          "No internal employer data"
         ]
       }
     },
     {
       "week": 18,
       "month": 5,
+      "competency": "endpoint",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Ops KB index + grounding rules",
+      "title": "Offboarding orchestration design (ALIUS)",
       "workbook": "workbooks/week-18.html",
       "miniProject": {
-        "name": "Ops KB index + grounding rules",
-        "path": "projects/01-it-helpdesk-agent/",
+        "name": "Offboarding orchestration design (ALIUS)",
+        "path": "projects/07-alius/",
+        "competency": "endpoint",
         "build": [
-          "study-notes/ops-kb-index.md listing runbooks + owners",
-          "Grounding rules: cite source, say when KB miss",
-          "Update agent prompt with citation format"
+          "Review ARCHITECTURE.md",
+          "Add diagram: device wipe + Okta deactivate + SaaS revoke order",
+          "Note where agent assists vs deterministic steps"
         ],
         "doneWhen": [
-          "ops-kb-index.md committed",
-          "Agent cites runbook in 2 test answers"
+          "Updated architecture section",
+          "Honest planning status"
         ]
       }
     },
     {
       "week": 19,
       "month": 5,
+      "competency": "enablement",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "End-to-end integration demo",
+      "title": "Ops KB index + grounding rules",
       "workbook": "workbooks/week-19.html",
       "miniProject": {
-        "name": "End-to-end integration demo",
+        "name": "Ops KB index + grounding rules",
         "path": "projects/01-it-helpdesk-agent/",
+        "competency": "enablement",
         "build": [
-          "Scripted demo: runbook Q \u2192 identity Q \u2192 escalation \u2192 HITL mock \u2192 audit log",
-          "Record terminal session or write demo-script.md step-by-step",
-          "2-minute talk track"
+          "study-notes/ops-kb-index.md listing runbooks + owners",
+          "Agent cites source in 2 test answers",
+          "Fallback behavior when KB miss"
         ],
         "doneWhen": [
-          "demo-script.md",
-          "All components touched in one flow"
+          "KB index committed",
+          "Citation examples logged"
         ]
       }
     },
     {
       "week": 20,
       "month": 5,
+      "competency": "harness",
       "phase": "mini",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Capstone scaffold + architecture",
+      "title": "E2E demo + capstone scaffold",
       "workbook": "workbooks/week-20.html",
       "miniProject": {
-        "name": "Capstone scaffold + architecture",
+        "name": "E2E demo + capstone scaffold",
         "path": "projects/08-capstone-ops-agent/",
+        "competency": "harness",
         "build": [
-          "Create capstone repo folder with ARCHITECTURE.md",
-          "Diagram: API + agent + MCP + HITL + audit + metrics",
-          "List what migrates from mini-projects 01\u201305"
+          "ARCHITECTURE.md: all 7 competencies mapped to components",
+          "demo-script.md: runbook Q \u2192 identity Q \u2192 HITL \u2192 audit",
+          "Repo layout scaffold (folders + README)"
         ],
         "doneWhen": [
-          "projects/08-capstone-ops-agent/ committed",
-          "Architecture reviewed against eval failures from W9"
+          "Architecture + demo script committed",
+          "Eval failures from W14 addressed in plan"
         ]
       }
     },
     {
       "week": 21,
       "month": 6,
+      "competency": "harness",
       "phase": "capstone",
       "capstoneWeek": true,
       "interviewPrep": false,
-      "title": "Capstone W1 \u2014 Core platform assembly",
+      "title": "Capstone W1 \u2014 Assemble platform",
       "workbook": "workbooks/week-21.html",
       "miniProject": {
-        "name": "Capstone W1 \u2014 Core platform assembly",
+        "name": "Capstone W1 \u2014 Assemble platform",
         "path": "projects/08-capstone-ops-agent/",
+        "competency": "harness",
         "build": [
-          "Merge agent + MCP + FastAPI into capstone service layout",
-          "Single docker-compose or local run script",
-          "Port eval suite to capstone repo"
+          "Merge agent + MCP + FastAPI into capstone layout",
+          "One local run script or docker-compose",
+          "Port eval suite"
         ],
         "doneWhen": [
-          "One command starts API + agent",
+          "Single start command",
           "5 eval cases pass in capstone repo"
         ]
       }
@@ -472,192 +525,198 @@
     {
       "week": 22,
       "month": 6,
+      "competency": "identity",
       "phase": "capstone",
       "capstoneWeek": true,
       "interviewPrep": false,
-      "title": "Capstone W2 \u2014 HITL + policy enforcement",
+      "title": "Capstone W2 \u2014 Identity + HITL enforcement",
       "workbook": "workbooks/week-22.html",
       "miniProject": {
-        "name": "Capstone W2 \u2014 HITL + policy enforcement",
+        "name": "Capstone W2 \u2014 Identity + HITL enforcement",
         "path": "projects/08-capstone-ops-agent/",
+        "competency": "identity",
         "build": [
-          "Implement approval gate before any side-effect tool",
-          "Load escalation-policy.md as enforced rules",
-          "Reject privilege escalation test cases"
+          "HITL gate before side effects",
+          "Audit log on every query",
+          "Reject privilege escalation eval cases"
         ],
         "doneWhen": [
-          "Unapproved writes blocked in tests",
-          "Approval flow in ARCHITECTURE.md updated"
+          "Unapproved writes blocked",
+          "Audit samples logged"
         ]
       }
     },
     {
       "week": 23,
       "month": 6,
+      "competency": "endpoint",
       "phase": "capstone",
       "capstoneWeek": true,
       "interviewPrep": false,
-      "title": "Capstone W3 \u2014 Audit trail + observability",
+      "title": "Capstone W3 \u2014 Endpoint policy + observability",
       "workbook": "workbooks/week-23.html",
       "miniProject": {
-        "name": "Capstone W3 \u2014 Audit trail + observability",
+        "name": "Capstone W3 \u2014 Endpoint policy + observability",
         "path": "projects/08-capstone-ops-agent/",
+        "competency": "endpoint",
         "build": [
-          "Wire audit log + adoption events on every query",
-          "Failure alert hook on tool errors",
+          "Wire endpoint policy stub from projects/09",
+          "Adoption events + failure alerts",
           "Dashboard script reads capstone logs"
         ],
         "doneWhen": [
-          "Audit + metrics emitted for full demo flow",
-          "Reliability docs ported from mini-projects"
+          "Policy check in demo flow",
+          "Metrics emitted"
         ]
       }
     },
     {
       "week": 24,
       "month": 6,
+      "competency": "ops",
       "phase": "capstone",
       "capstoneWeek": true,
       "interviewPrep": false,
-      "title": "Capstone W4 \u2014 Deploy POC + case study draft",
+      "title": "Capstone W4 \u2014 Deploy POC + case study",
       "workbook": "workbooks/week-24.html",
       "miniProject": {
-        "name": "Capstone W4 \u2014 Deploy POC + case study draft",
+        "name": "Capstone W4 \u2014 Deploy POC + case study",
         "path": "projects/08-capstone-ops-agent/",
+        "competency": "ops",
         "build": [
           "Cloud Run deploy POC (or documented deploy script)",
-          "study-notes/capstone-case-study.md \u2014 honest POC status",
-          "Update portfolio README with capstone link"
+          "study-notes/capstone-case-study.md",
+          "Update portfolio README"
         ],
         "doneWhen": [
-          "Deploy instructions in capstone README",
-          "Case study: problem \u2192 architecture \u2192 eval results \u2192 limits"
+          "Deploy instructions",
+          "Case study with honest limits"
         ]
       }
     },
     {
       "week": 25,
       "month": 7,
+      "competency": "portfolio",
       "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Capstone demo polish + 2-min walkthrough",
+      "title": "Capstone demo polish (2 min)",
       "workbook": "workbooks/week-25.html",
       "miniProject": {
-        "name": "Capstone demo polish + 2-min walkthrough",
+        "name": "Capstone demo polish (2 min)",
         "path": "projects/08-capstone-ops-agent/",
+        "competency": "portfolio",
         "build": [
-          "Record or script demo",
-          "Fix top 3 eval failures",
-          "README hero section"
+          "Rehearse demo-script.md",
+          "Fix top 3 eval failures"
         ],
         "doneWhen": [
-          "demo-script.md updated",
-          "README has architecture diagram"
+          "Demo under 2 minutes",
+          "README diagram"
         ]
       }
     },
     {
       "week": 26,
       "month": 7,
+      "competency": "portfolio",
       "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Portfolio narrative + LinkedIn post draft",
+      "title": "Portfolio narrative",
       "workbook": "workbooks/week-26.html",
       "miniProject": {
-        "name": "Portfolio narrative + LinkedIn post draft",
-        "path": "study-notes/",
+        "name": "Portfolio narrative",
+        "path": "study-notes/platform-projects/platform-bridge.md",
+        "competency": "portfolio",
         "build": [
-          "Write platform-bridge.md update",
-          "Link shipped work + capstone",
-          "Draft LinkedIn post"
+          "Update platform-bridge.md",
+          "LinkedIn draft"
         ],
         "doneWhen": [
-          "platform-bridge.md committed",
-          "Post draft in study-notes/"
+          "Narrative links shipped work + capstone"
         ]
       }
     },
     {
       "week": 27,
       "month": 7,
+      "competency": "portfolio",
       "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Consulting one-pager (offers a/b/c)",
+      "title": "Consulting one-pager",
       "workbook": "workbooks/week-27.html",
       "miniProject": {
-        "name": "Consulting one-pager (offers a/b/c)",
+        "name": "Consulting one-pager",
         "path": "CONTEXT.md",
+        "competency": "portfolio",
         "build": [
-          "study-notes/consulting-one-pager.md",
-          "Scope fixed-fee offers from CONTEXT",
-          "No invented client metrics"
+          "study-notes/consulting-one-pager.md from offers (a)(b)(c)"
         ],
         "doneWhen": [
-          "One-pager committed",
-          "3 offers scoped"
+          "3 offers scoped with deliverables"
         ]
       }
     },
     {
       "week": 28,
       "month": 7,
+      "competency": "ops",
       "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Metrics baseline documentation",
+      "title": "Metrics baseline doc",
       "workbook": "workbooks/week-28.html",
       "miniProject": {
-        "name": "Metrics baseline documentation",
+        "name": "Metrics baseline doc",
         "path": "projects/05-adoption-dashboard/",
+        "competency": "ops",
         "build": [
-          "study-notes/metrics-baseline.md",
-          "Hours-saved formula with YOUR volume only",
-          "Tie to capstone logs"
+          "study-notes/metrics-baseline.md from real volume only"
         ],
         "doneWhen": [
-          "Baseline doc with real numbers or TBD placeholders"
+          "Formula documented, no fake %"
         ]
       }
     },
     {
       "week": 29,
       "month": 8,
+      "competency": "portfolio",
       "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "System design practice #1 \u2014 access automation",
+      "title": "System design #1 \u2014 access automation",
       "workbook": "workbooks/week-29.html",
       "miniProject": {
-        "name": "System design practice #1 \u2014 access automation",
+        "name": "System design #1 \u2014 access automation",
         "path": "interview-prep/",
+        "competency": "portfolio",
         "build": [
-          "45-min timed design: access request automation",
-          "Use system-design-template.md",
-          "Save to interview-prep/answers/"
+          "45-min timed design \u2192 interview-prep/answers/"
         ],
         "doneWhen": [
-          "Written design doc committed"
+          "Written design committed"
         ]
       }
     },
     {
       "week": 30,
       "month": 8,
+      "competency": "portfolio",
       "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "System design practice #2 \u2014 agent identity",
+      "title": "System design #2 \u2014 agent identity platform",
       "workbook": "workbooks/week-30.html",
       "miniProject": {
-        "name": "System design practice #2 \u2014 agent identity",
+        "name": "System design #2 \u2014 agent identity platform",
         "path": "interview-prep/",
+        "competency": "portfolio",
         "build": [
-          "Timed design: agent service accounts + WIF",
-          "Reference wif-agent-identity-design.md",
-          "Save answer"
+          "Timed design: WIF + MCP + HITL"
         ],
         "doneWhen": [
           "Design doc committed"
@@ -667,18 +726,19 @@
     {
       "week": 31,
       "month": 8,
+      "competency": "portfolio",
       "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "STAR stories + resume bullets",
+      "title": "STAR stories + resume",
       "workbook": "workbooks/week-31.html",
       "miniProject": {
-        "name": "STAR stories + resume bullets",
+        "name": "STAR stories + resume",
         "path": "interview-prep/answers/behavioral-star.md",
+        "competency": "portfolio",
         "build": [
-          "Fill STAR for Slack automation, capstone, identity work",
-          "Update resume bullets",
-          "Align to AI Systems framing"
+          "STAR: automation, capstone, identity",
+          "Resume bullets"
         ],
         "doneWhen": [
           "behavioral-star.md updated"
@@ -688,6 +748,7 @@
     {
       "week": 32,
       "month": 8,
+      "competency": "portfolio",
       "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": true,
@@ -696,101 +757,102 @@
       "miniProject": {
         "name": "Mock interview block",
         "path": "interview-prep/",
+        "competency": "portfolio",
         "build": [
-          "1 system design aloud",
+          "1 design aloud",
           "1 STAR aloud",
-          "1 capstone demo rehearsal"
+          "Capstone demo"
         ],
         "doneWhen": [
-          "Self-score rubric in wave-1-checklist.md"
+          "Self-score in wave-1-checklist.md"
         ]
       }
     },
     {
       "week": 33,
       "month": 9,
+      "competency": "portfolio",
       "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "Apply tracker + 3 targets",
+      "title": "Apply tracker \u2014 3 targets",
       "workbook": "workbooks/week-33.html",
       "miniProject": {
-        "name": "Apply tracker + 3 targets",
+        "name": "Apply tracker \u2014 3 targets",
         "path": "interview-prep/answers/wave-1-checklist.md",
+        "competency": "portfolio",
         "build": [
-          "Company research notes",
-          "Tailor resume per target",
-          "Apply tracker spreadsheet or md table"
+          "Company research",
+          "Tailored resume bullets"
         ],
         "doneWhen": [
-          "3 companies researched",
-          "Tracker started"
+          "3 companies documented"
         ]
       }
     },
     {
       "week": 34,
       "month": 9,
+      "competency": "portfolio",
       "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "Submit applications + outreach",
+      "title": "Submit applications",
       "workbook": "workbooks/week-34.html",
       "miniProject": {
-        "name": "Submit applications + outreach",
+        "name": "Submit applications",
         "path": "interview-prep/",
+        "competency": "portfolio",
         "build": [
-          "Submit 1+ applications",
-          "1 LinkedIn outreach",
-          "Refine case study from any feedback"
+          "1+ applications",
+          "Outreach"
         ],
         "doneWhen": [
-          "Apply log updated",
-          "Case study v2 if needed"
+          "Apply log updated"
         ]
       }
     },
     {
       "week": 35,
       "month": 9,
+      "competency": "portfolio",
       "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "Portfolio retro + next quarter plan",
+      "title": "Program retro",
       "workbook": "workbooks/week-35.html",
       "miniProject": {
-        "name": "Portfolio retro + next quarter plan",
+        "name": "Program retro",
         "path": "study-notes/",
+        "competency": "portfolio",
         "build": [
-          "study-notes/program-retro.md",
-          "What shipped vs planned",
-          "Next 90-day focus"
+          "study-notes/program-retro.md"
         ],
         "doneWhen": [
-          "Retro committed",
-          "README counters honest"
+          "Retro + next quarter plan"
         ]
       }
     },
     {
       "week": 36,
       "month": 9,
+      "competency": "portfolio",
       "phase": "portfolio",
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "Program complete \u2014 maintain cadence",
+      "title": "Maintain cadence",
       "workbook": "workbooks/week-36.html",
       "miniProject": {
-        "name": "Program complete \u2014 maintain cadence",
+        "name": "Maintain cadence",
         "path": "projects/08-capstone-ops-agent/",
+        "competency": "portfolio",
         "build": [
-          "Keep capstone runnable",
-          "Monthly eval re-run",
-          "Iterate from interview feedback"
+          "Re-run evals monthly",
+          "Keep capstone runnable"
         ],
         "doneWhen": [
-          "Capstone still runs",
-          "Next milestone defined"
+          "Capstone runs",
+          "Next milestone set"
         ]
       }
     }

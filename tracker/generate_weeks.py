@@ -22,6 +22,7 @@ def build_week(week: int) -> dict:
     w: dict = {
         "week": week,
         "month": month,
+        "competency": plan.get("competency", mp.get("competency")),
         "phase": plan["phase"],
         "capstoneWeek": week in {21, 22, 23, 24},
         "interviewPrep": week >= 29,
@@ -30,6 +31,7 @@ def build_week(week: int) -> dict:
         "miniProject": {
             "name": plan["title"],
             "path": mp["path"],
+            "competency": mp.get("competency", plan.get("competency", "harness")),
             "build": mp["build"],
             "doneWhen": mp["doneWhen"],
         },
@@ -39,11 +41,16 @@ def build_week(week: int) -> dict:
 
 def main() -> None:
     data = {
-        "schema": "mini-project-roadmap-v1",
+        "schema": "competency-roadmap-v2",
+        "competencies": ["harness", "identity", "endpoint", "enablement", "workflow", "ops", "portfolio"],
         "program": {
-            "weeks1to20": "Weekly mini-projects — shippable portfolio artifacts",
-            "weeks21to24": "Capstone — integrated ops agent platform",
-            "weeks25to36": "Demo, case study, interview, apply",
+            "weeks1to4": "Agent harness + MCP (competency: harness, identity)",
+            "weeks5to8": "Identity depth + enablement playbooks",
+            "weeks9to12": "Workflow automation + tool schemas",
+            "weeks13to16": "Evals + enablement rollout + metrics",
+            "weeks17to20": "Endpoint governance + KB + capstone prep",
+            "weeks21to24": "Capstone — Agentic IT Ops Platform",
+            "weeks25to36": "Portfolio, interview, apply",
         },
         "weeks": [build_week(w) for w in range(1, 37)],
     }

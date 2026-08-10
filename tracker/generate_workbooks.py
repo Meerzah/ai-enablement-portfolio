@@ -47,6 +47,7 @@ def render(week: dict) -> str:
     n = week["week"]
     mp = week["miniProject"]
     phase = week.get("phase", "mini")
+    comp = mp.get("competency", week.get("competency", ""))
     phase_class = phase
     title = html.escape(week["title"])
     path = mp["path"]
@@ -61,7 +62,7 @@ def render(week: dict) -> str:
 <style>{STYLE}</style>
 </head><body><div class="wrap">
 <div class="top"><a href="../index.html">← Dashboard</a></div>
-<span class="phase {phase_class}">{html.escape(phase)} · week {n}</span>
+<span class="phase {phase_class}">{html.escape(phase)} · {html.escape(comp)} · week {n}</span>
 <h1>{title}</h1>
 <p class="sub">Ship one concrete artifact this week in the repo. Check each item, commit, then mark the week done on the dashboard.</p>
 <a class="project-link" href="{href}" target="_blank" rel="noopener">Open {html.escape(path)} →</a>

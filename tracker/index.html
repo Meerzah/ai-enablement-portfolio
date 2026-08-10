@@ -124,7 +124,7 @@
       <div id="mini-project"></div>
     </div>
 
-    <footer>Progress saved in browser · <a href="../">Home</a> · <a href="../projects/08-capstone-ops-agent/README.md">Capstone</a></footer>
+    <footer>Progress saved in browser · <a href="../">Home</a> · <a href="../CURRICULUM.md">Curriculum</a> · <a href="../projects/08-capstone-ops-agent/README.md">Capstone</a></footer>
   </div>
 
   <script>
@@ -213,7 +213,7 @@
     function renderProgram() {
       const items = progress.program || [];
       document.getElementById("program-grid").innerHTML = items.map(p =>
-        `<div class="program-item"><strong>${p.label}</strong> (W${p.weeks}) — ${p.summary}</div>`
+        `<div class="program-item"><strong>${p.label}</strong> (W${p.weeks})<br><span style="color:var(--muted);font-size:12px">${(p.competencies||[]).join(" · ")}</span></div>`
       ).join("");
     }
 
@@ -292,7 +292,7 @@
 
       document.getElementById("mini-project").innerHTML = `
         <div class="project-card">
-          <span class="phase-tag ${w.phase || 'mini'}">${w.phase || 'mini'}</span>
+          <span class="phase-tag ${w.phase || 'mini'}">${w.phase || 'mini'} · ${mp.competency || w.competency || 'build'}</span>
           <h3>${mp.name || w.title}</h3>
           <div class="project-links">
             ${projectHref ? `<a class="primary" href="${projectHref}" target="_blank" rel="noopener">Open ${mp.path} →</a>` : ""}

@@ -15,7 +15,7 @@ cd ai-systems-portfolio
 # → http://127.0.0.1:8765/tracker/
 ```
 
-The dashboard uses **Friction → Workflow → Identity → Agent → Measure → Prove** each week. Progress saves in browser localStorage.
+The dashboard tracks **one mini-project per week** aligned to [CURRICULUM.md](./CURRICULUM.md). Progress saves in browser localStorage.
 
 ## For running portfolio code
 
