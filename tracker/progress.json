@@ -1,0 +1,120 @@
+{
+  "title": "AI Systems / Agentic Ops Roadmap",
+  "subtitle": "Identity-backed automation → AI agents for internal ops",
+  "careerFocus": "Move 1 — AI Systems / Serval-shaped roles",
+  "repoName": "ai-systems-portfolio",
+  "pagesBase": "https://meerzah.github.io/ai-systems-portfolio",
+  "currentWeek": 1,
+  "currentPhase": 1,
+  "currentUnit": 1,
+  "currentUnitLabel": "Friction → Workflow map",
+  "weeksTotal": 36,
+  "hoursPerWeek": "12–15",
+  "resume": "Kamaal_Mirza_Resume_Serval.docx",
+  "positioning": "Systems / automation engineer who builds identity-backed, agent-ready ops workflows with Python, Okta, and AI tooling.",
+  "spine": [
+    { "id": "friction", "label": "Friction", "day": "Mon", "question": "What's the high-volume manual ops request?" },
+    { "id": "workflow", "label": "Workflow", "day": "Tue", "question": "Automate intake → approval → action (HITL where needed)" },
+    { "id": "identity", "label": "Identity", "day": "Wed", "question": "Okta/OAuth/SCIM scoped correctly (incl. agent identities)" },
+    { "id": "agent", "label": "Agent", "day": "Thu", "question": "Where LLM/agent helps vs deterministic automation" },
+    { "id": "measure", "label": "Measure", "day": "Fri", "question": "Deflection, TTR, hours saved, failure/retry rate" },
+    { "id": "prove", "label": "Prove", "day": "Sat–Sun", "question": "Ship one artifact (workflow, bot, runbook, metrics)" }
+  ],
+  "units": [
+    {
+      "id": 1,
+      "phase": 1,
+      "weeks": "1–4",
+      "title": "Friction map + first workflow",
+      "focus": "Catalog top manual ops requests; draft intake→approval→action for one high-volume ticket type",
+      "capstone": "Ops friction inventory + workflow diagram"
+    },
+    {
+      "id": 2,
+      "phase": 1,
+      "weeks": "5–8",
+      "title": "Identity-scoped automation",
+      "focus": "Okta group grants, Lumos patterns, audit logging for one workflow",
+      "capstone": "Access grant workflow with identity audit trail"
+    },
+    {
+      "id": 3,
+      "phase": 1,
+      "weeks": "9–12",
+      "title": "Agent-assisted triage POC",
+      "focus": "Where LLM helps routing/KB vs deterministic steps; HITL approval gates",
+      "capstone": "Agentic IT workflow case study draft (triage + Okta + audit)"
+    },
+    {
+      "id": 4,
+      "phase": 2,
+      "weeks": "13–16",
+      "title": "Workflow reliability",
+      "focus": "Retries, idempotency, failure alerts, runbooks",
+      "capstone": "Reliability checklist for one production workflow"
+    },
+    {
+      "id": 5,
+      "phase": 2,
+      "weeks": "17–20",
+      "title": "Agent tool-use + evals",
+      "focus": "Tool schemas, guardrails, eval sets for triage prompts",
+      "capstone": "Small eval harness for one ops agent path"
+    },
+    {
+      "id": 6,
+      "phase": 2,
+      "weeks": "21–24",
+      "title": "Knowledge base for ops",
+      "focus": "KB structure, grounding, when not to use RAG",
+      "capstone": "Ops KB slice wired into triage POC"
+    },
+    {
+      "id": 7,
+      "phase": 3,
+      "weeks": "25–28",
+      "title": "Metrics + consulting packaging",
+      "focus": "Real ops metrics; package consulting offers (a)(b)(c)",
+      "capstone": "Consulting one-pager + metrics baseline"
+    },
+    {
+      "id": 8,
+      "phase": 3,
+      "weeks": "29–32",
+      "title": "Interview wave 1",
+      "focus": "Serval-shaped roles; system design for internal ops automation",
+      "capstone": "Mock interviews + portfolio walkthrough"
+    },
+    {
+      "id": 9,
+      "phase": 3,
+      "weeks": "33–36",
+      "title": "Apply + iterate",
+      "focus": "Wave 1 applications; refine case study from feedback",
+      "capstone": "Program capstone — portfolio + apply tracker"
+    }
+  ],
+  "applicationWaves": [
+    { "id": 0, "label": "Wave 0", "when": "Now", "focus": "Resume + LinkedIn; portfolio case draft" },
+    { "id": 1, "label": "Wave 1", "when": "Month 3+", "focus": "Serval-shaped startups; AI ops / internal tools" },
+    { "id": 2, "label": "Wave 2", "when": "Month 6+", "focus": "Senior IC / FDE automation; consulting" }
+  ],
+  "portfolio": {
+    "shipped": ["Slack App Governance → Jira", "n8n ops workflows", "Argus GCP Cloud Run", "Okta + Lumos access automation"],
+    "projects": [
+      { "id": "01", "path": "projects/01-it-helpdesk-agent/", "label": "IT Helpdesk Agent", "status": "portfolio demo" },
+      { "id": "02", "path": "projects/02-okta-mcp-server/", "label": "Okta MCP Server", "status": "portfolio demo" },
+      { "id": "03", "path": "projects/03-agentspace-rollout/", "label": "Agentspace Rollout", "status": "in progress" },
+      { "id": "04", "path": "projects/04-prompt-playbooks/", "label": "Prompt Playbooks", "status": "portfolio demo" },
+      { "id": "05", "path": "projects/05-adoption-dashboard/", "label": "Adoption Dashboard", "status": "in progress" },
+      { "id": "06", "path": "projects/06-cipher/", "label": "CIPHER", "status": "in development" },
+      { "id": "07", "path": "projects/07-alius/", "label": "ALIUS", "status": "planning" }
+    ],
+    "week1ProveArtifact": "projects/01-it-helpdesk-agent/"
+  },
+  "counters": {
+    "weeksCompleted": 0,
+    "capstonesCompleted": 0,
+    "proveArtifacts": 0
+  }
+}

@@ -1,0 +1,3807 @@
+{
+  "schema": "ai-systems-spine-v1",
+  "spine": [
+    "friction",
+    "workflow",
+    "identity",
+    "agent",
+    "measure",
+    "prove"
+  ],
+  "weeks": [
+    {
+      "week": 1,
+      "month": 1,
+      "title": "Ops friction inventory",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 1: Map manual ops friction \u2014 Ops friction inventory.",
+          "steps": [
+            "List high-volume requests related to access requests, ticket triage, SaaS onboarding",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Ops friction inventory.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Ops friction inventory \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for ops friction inventory",
+          "steps": [
+            "Review or extend prove artifact: projects/01-it-helpdesk-agent/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/01-it-helpdesk-agent/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/01-it-helpdesk-agent/"
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Review or extend prove artifact: projects/01-it-helpdesk-agent/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/01-it-helpdesk-agent/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/01-it-helpdesk-agent/"
+        }
+      }
+    },
+    {
+      "week": 2,
+      "month": 1,
+      "title": "Ops friction inventory",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 2: Map manual ops friction \u2014 Ops friction inventory.",
+          "steps": [
+            "List high-volume requests related to access requests, ticket triage, SaaS onboarding",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Ops friction inventory.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Ops friction inventory \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for ops friction inventory",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 3,
+      "month": 1,
+      "title": "Ops friction inventory",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 3: Map manual ops friction \u2014 Ops friction inventory.",
+          "steps": [
+            "List high-volume requests related to access requests, ticket triage, SaaS onboarding",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Ops friction inventory.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Ops friction inventory \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for ops friction inventory",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 4,
+      "month": 1,
+      "title": "Ops friction inventory",
+      "capstoneWeek": true,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Review",
+          "guide": "Month 1 capstone prep: Ops friction inventory",
+          "steps": [
+            "Review Mon\u2013Wed notes from weeks this month",
+            "Gap list for capstone"
+          ],
+          "resources": [
+            "tracker/months.json"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Review",
+          "guide": "Consolidate workflow drafts",
+          "steps": [
+            "Merge best workflow diagram",
+            "Confirm HITL gates"
+          ],
+          "resources": []
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Review",
+          "guide": "Identity + audit checklist",
+          "steps": [
+            "Verify least privilege",
+            "Audit log schema ready"
+          ],
+          "resources": []
+        },
+        "thu": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Build: Ops friction inventory",
+          "steps": [
+            "List top 10 manual IT/ops requests by volume",
+            "Pick one candidate for automation (ticket triage or access request)"
+          ],
+          "resources": [
+            "tracker/months.json rubric"
+          ]
+        },
+        "fri": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Continue capstone build",
+          "steps": [
+            "Draft intake \u2192 approval \u2192 action with HITL gates marked",
+            "Identify Okta/Lumos touchpoints and audit log requirements"
+          ],
+          "resources": []
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Capstone ship",
+          "guide": "Ship capstone artifact",
+          "steps": [
+            "Demo or doc walkthrough",
+            "Honest status label"
+          ],
+          "resources": []
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Capstone retro",
+          "guide": "Retro + next month preview",
+          "steps": [
+            "What shipped vs planned",
+            "Update portfolio bullets"
+          ],
+          "resources": []
+        }
+      },
+      "capstoneTitle": "Friction map + first workflow diagram"
+    },
+    {
+      "week": 5,
+      "month": 2,
+      "title": "Identity-backed access workflow",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 5: Map manual ops friction \u2014 Identity-backed access workflow.",
+          "steps": [
+            "List high-volume requests related to Okta groups, Lumos, SCIM, audit logs",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Identity-backed access workflow.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Identity-backed access workflow \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for identity-backed access workflow",
+          "steps": [
+            "Review or extend prove artifact: projects/06-cipher/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/06-cipher/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/06-cipher/"
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Review or extend prove artifact: projects/06-cipher/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/06-cipher/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/06-cipher/"
+        }
+      }
+    },
+    {
+      "week": 6,
+      "month": 2,
+      "title": "Identity-backed access workflow",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 6: Map manual ops friction \u2014 Identity-backed access workflow.",
+          "steps": [
+            "List high-volume requests related to Okta groups, Lumos, SCIM, audit logs",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Identity-backed access workflow.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Identity-backed access workflow \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for identity-backed access workflow",
+          "steps": [
+            "Review or extend prove artifact: projects/06-cipher/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/06-cipher/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/06-cipher/"
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Review or extend prove artifact: projects/06-cipher/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/06-cipher/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/06-cipher/"
+        }
+      }
+    },
+    {
+      "week": 7,
+      "month": 2,
+      "title": "Identity-backed access workflow",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 7: Map manual ops friction \u2014 Identity-backed access workflow.",
+          "steps": [
+            "List high-volume requests related to Okta groups, Lumos, SCIM, audit logs",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Identity-backed access workflow.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Identity-backed access workflow \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for identity-backed access workflow",
+          "steps": [
+            "Review or extend prove artifact: projects/06-cipher/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/06-cipher/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/06-cipher/"
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Review or extend prove artifact: projects/06-cipher/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/06-cipher/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/06-cipher/"
+        }
+      }
+    },
+    {
+      "week": 8,
+      "month": 2,
+      "title": "Identity-backed access workflow",
+      "capstoneWeek": true,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Review",
+          "guide": "Month 2 capstone prep: Identity-backed access workflow",
+          "steps": [
+            "Review Mon\u2013Wed notes from weeks this month",
+            "Gap list for capstone"
+          ],
+          "resources": [
+            "tracker/months.json"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Review",
+          "guide": "Consolidate workflow drafts",
+          "steps": [
+            "Merge best workflow diagram",
+            "Confirm HITL gates"
+          ],
+          "resources": []
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Review",
+          "guide": "Identity + audit checklist",
+          "steps": [
+            "Verify least privilege",
+            "Audit log schema ready"
+          ],
+          "resources": []
+        },
+        "thu": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Build: Identity-backed access workflow",
+          "steps": [
+            "Document Lumos/Okta pattern already shipped at AppLovin",
+            "Design group grant with least-privilege + manager approval"
+          ],
+          "resources": [
+            "tracker/months.json rubric"
+          ]
+        },
+        "fri": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Continue capstone build",
+          "steps": [
+            "Specify BigQuery or Firestore audit fields (no fake metrics)",
+            "Link to projects/06-cipher/ ship plan (architected, not shipped)"
+          ],
+          "resources": []
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Capstone ship",
+          "guide": "Ship capstone artifact",
+          "steps": [
+            "Demo or doc walkthrough",
+            "Honest status label"
+          ],
+          "resources": []
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Capstone retro",
+          "guide": "Retro + next month preview",
+          "steps": [
+            "What shipped vs planned",
+            "Update portfolio bullets"
+          ],
+          "resources": []
+        }
+      },
+      "capstoneTitle": "Okta group grant workflow + audit trail design"
+    },
+    {
+      "week": 9,
+      "month": 3,
+      "title": "Agentic triage POC",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 9: Map manual ops friction \u2014 Agentic triage POC.",
+          "steps": [
+            "List high-volume requests related to LLM routing vs deterministic steps, HITL",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Agentic triage POC.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Agentic triage POC \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for agentic triage poc",
+          "steps": [
+            "Review or extend prove artifact: projects/01-it-helpdesk-agent/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/01-it-helpdesk-agent/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/01-it-helpdesk-agent/"
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Review or extend prove artifact: projects/01-it-helpdesk-agent/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/01-it-helpdesk-agent/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/01-it-helpdesk-agent/"
+        }
+      }
+    },
+    {
+      "week": 10,
+      "month": 3,
+      "title": "Agentic triage POC",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 10: Map manual ops friction \u2014 Agentic triage POC.",
+          "steps": [
+            "List high-volume requests related to LLM routing vs deterministic steps, HITL",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Agentic triage POC.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Agentic triage POC \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for agentic triage poc",
+          "steps": [
+            "Review or extend prove artifact: projects/02-okta-mcp-server/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/02-okta-mcp-server/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/02-okta-mcp-server/"
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Review or extend prove artifact: projects/02-okta-mcp-server/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/02-okta-mcp-server/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/02-okta-mcp-server/"
+        }
+      }
+    },
+    {
+      "week": 11,
+      "month": 3,
+      "title": "Agentic triage POC",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 11: Map manual ops friction \u2014 Agentic triage POC.",
+          "steps": [
+            "List high-volume requests related to LLM routing vs deterministic steps, HITL",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Agentic triage POC.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Agentic triage POC \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for agentic triage poc",
+          "steps": [
+            "Review or extend prove artifact: projects/01-it-helpdesk-agent/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/01-it-helpdesk-agent/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/01-it-helpdesk-agent/"
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Review or extend prove artifact: projects/01-it-helpdesk-agent/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/01-it-helpdesk-agent/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/01-it-helpdesk-agent/"
+        }
+      }
+    },
+    {
+      "week": 12,
+      "month": 3,
+      "title": "Agentic triage POC",
+      "capstoneWeek": true,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Review",
+          "guide": "Month 3 capstone prep: Agentic triage POC",
+          "steps": [
+            "Review Mon\u2013Wed notes from weeks this month",
+            "Gap list for capstone"
+          ],
+          "resources": [
+            "tracker/months.json"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Review",
+          "guide": "Consolidate workflow drafts",
+          "steps": [
+            "Merge best workflow diagram",
+            "Confirm HITL gates"
+          ],
+          "resources": []
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Review",
+          "guide": "Identity + audit checklist",
+          "steps": [
+            "Verify least privilege",
+            "Audit log schema ready"
+          ],
+          "resources": []
+        },
+        "thu": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Build: Agentic triage POC",
+          "steps": [
+            "Separate deterministic steps from LLM-assisted triage/routing",
+            "Define HITL approval before any Okta write"
+          ],
+          "resources": [
+            "tracker/months.json rubric"
+          ]
+        },
+        "fri": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Continue capstone build",
+          "steps": [
+            "Document failure/retry behavior",
+            "Walk through projects/01-it-helpdesk-agent + 02-okta-mcp-server"
+          ],
+          "resources": []
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Capstone ship",
+          "guide": "Ship capstone artifact",
+          "steps": [
+            "Demo or doc walkthrough",
+            "Honest status label"
+          ],
+          "resources": []
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Capstone retro",
+          "guide": "Retro + next month preview",
+          "steps": [
+            "What shipped vs planned",
+            "Update portfolio bullets"
+          ],
+          "resources": []
+        }
+      },
+      "capstoneTitle": "Case study draft: triage + Okta grant + audit"
+    },
+    {
+      "week": 13,
+      "month": 4,
+      "title": "Workflow reliability",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 13: Map manual ops friction \u2014 Workflow reliability.",
+          "steps": [
+            "List high-volume requests related to retries, idempotency, alerting, runbooks",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Workflow reliability.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Workflow reliability \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for workflow reliability",
+          "steps": [
+            "Review or extend prove artifact: projects/07-alius/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/07-alius/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/07-alius/"
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Review or extend prove artifact: projects/07-alius/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/07-alius/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/07-alius/"
+        }
+      }
+    },
+    {
+      "week": 14,
+      "month": 4,
+      "title": "Workflow reliability",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 14: Map manual ops friction \u2014 Workflow reliability.",
+          "steps": [
+            "List high-volume requests related to retries, idempotency, alerting, runbooks",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Workflow reliability.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Workflow reliability \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for workflow reliability",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 15,
+      "month": 4,
+      "title": "Workflow reliability",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 15: Map manual ops friction \u2014 Workflow reliability.",
+          "steps": [
+            "List high-volume requests related to retries, idempotency, alerting, runbooks",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Workflow reliability.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Workflow reliability \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for workflow reliability",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 16,
+      "month": 4,
+      "title": "Workflow reliability",
+      "capstoneWeek": true,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Review",
+          "guide": "Month 4 capstone prep: Workflow reliability",
+          "steps": [
+            "Review Mon\u2013Wed notes from weeks this month",
+            "Gap list for capstone"
+          ],
+          "resources": [
+            "tracker/months.json"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Review",
+          "guide": "Consolidate workflow drafts",
+          "steps": [
+            "Merge best workflow diagram",
+            "Confirm HITL gates"
+          ],
+          "resources": []
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Review",
+          "guide": "Identity + audit checklist",
+          "steps": [
+            "Verify least privilege",
+            "Audit log schema ready"
+          ],
+          "resources": []
+        },
+        "thu": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Build: Workflow reliability",
+          "steps": [
+            "Idempotency and retry policy documented",
+            "Alerting on failure paths (Slack)"
+          ],
+          "resources": [
+            "tracker/months.json rubric"
+          ]
+        },
+        "fri": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Continue capstone build",
+          "steps": [
+            "Runbook for on-call handoff",
+            "Measure baseline: time-to-resolve before automation (real numbers only)"
+          ],
+          "resources": []
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Capstone ship",
+          "guide": "Ship capstone artifact",
+          "steps": [
+            "Demo or doc walkthrough",
+            "Honest status label"
+          ],
+          "resources": []
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Capstone retro",
+          "guide": "Retro + next month preview",
+          "steps": [
+            "What shipped vs planned",
+            "Update portfolio bullets"
+          ],
+          "resources": []
+        }
+      },
+      "capstoneTitle": "Reliability runbook for one workflow"
+    },
+    {
+      "week": 17,
+      "month": 5,
+      "title": "Agent tool-use + evals",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 17: Map manual ops friction \u2014 Agent tool-use + evals.",
+          "steps": [
+            "List high-volume requests related to tool schemas, guardrails, eval sets",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Agent tool-use + evals.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Agent tool-use + evals \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for agent tool-use + evals",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 18,
+      "month": 5,
+      "title": "Agent tool-use + evals",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 18: Map manual ops friction \u2014 Agent tool-use + evals.",
+          "steps": [
+            "List high-volume requests related to tool schemas, guardrails, eval sets",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Agent tool-use + evals.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Agent tool-use + evals \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for agent tool-use + evals",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 19,
+      "month": 5,
+      "title": "Agent tool-use + evals",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 19: Map manual ops friction \u2014 Agent tool-use + evals.",
+          "steps": [
+            "List high-volume requests related to tool schemas, guardrails, eval sets",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Agent tool-use + evals.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Agent tool-use + evals \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for agent tool-use + evals",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 20,
+      "month": 5,
+      "title": "Agent tool-use + evals",
+      "capstoneWeek": true,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Review",
+          "guide": "Month 5 capstone prep: Agent tool-use + evals",
+          "steps": [
+            "Review Mon\u2013Wed notes from weeks this month",
+            "Gap list for capstone"
+          ],
+          "resources": [
+            "tracker/months.json"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Review",
+          "guide": "Consolidate workflow drafts",
+          "steps": [
+            "Merge best workflow diagram",
+            "Confirm HITL gates"
+          ],
+          "resources": []
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Review",
+          "guide": "Identity + audit checklist",
+          "steps": [
+            "Verify least privilege",
+            "Audit log schema ready"
+          ],
+          "resources": []
+        },
+        "thu": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Build: Agent tool-use + evals",
+          "steps": [
+            "Tool schema for ticket lookup / KB search",
+            "10+ eval cases (happy path + edge)"
+          ],
+          "resources": [
+            "tracker/months.json rubric"
+          ]
+        },
+        "fri": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Continue capstone build",
+          "steps": [
+            "Document when agent must escalate to human",
+            "No claim of production deployment"
+          ],
+          "resources": []
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Capstone ship",
+          "guide": "Ship capstone artifact",
+          "steps": [
+            "Demo or doc walkthrough",
+            "Honest status label"
+          ],
+          "resources": []
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Capstone retro",
+          "guide": "Retro + next month preview",
+          "steps": [
+            "What shipped vs planned",
+            "Update portfolio bullets"
+          ],
+          "resources": []
+        }
+      },
+      "capstoneTitle": "Eval harness for triage agent path"
+    },
+    {
+      "week": 21,
+      "month": 6,
+      "title": "Ops knowledge base",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 21: Map manual ops friction \u2014 Ops knowledge base.",
+          "steps": [
+            "List high-volume requests related to grounding, KB structure, fallback",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Ops knowledge base.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Ops knowledge base \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for ops knowledge base",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 22,
+      "month": 6,
+      "title": "Ops knowledge base",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 22: Map manual ops friction \u2014 Ops knowledge base.",
+          "steps": [
+            "List high-volume requests related to grounding, KB structure, fallback",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Ops knowledge base.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Ops knowledge base \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for ops knowledge base",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 23,
+      "month": 6,
+      "title": "Ops knowledge base",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 23: Map manual ops friction \u2014 Ops knowledge base.",
+          "steps": [
+            "List high-volume requests related to grounding, KB structure, fallback",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Ops knowledge base.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Ops knowledge base \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for ops knowledge base",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 24,
+      "month": 6,
+      "title": "Ops knowledge base",
+      "capstoneWeek": true,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Review",
+          "guide": "Month 6 capstone prep: Ops knowledge base",
+          "steps": [
+            "Review Mon\u2013Wed notes from weeks this month",
+            "Gap list for capstone"
+          ],
+          "resources": [
+            "tracker/months.json"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Review",
+          "guide": "Consolidate workflow drafts",
+          "steps": [
+            "Merge best workflow diagram",
+            "Confirm HITL gates"
+          ],
+          "resources": []
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Review",
+          "guide": "Identity + audit checklist",
+          "steps": [
+            "Verify least privilege",
+            "Audit log schema ready"
+          ],
+          "resources": []
+        },
+        "thu": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Build: Ops knowledge base",
+          "steps": [
+            "Structure KB for IT ops (not generic RAG demo)",
+            "Grounding rules and citation in agent responses"
+          ],
+          "resources": [
+            "tracker/months.json rubric"
+          ]
+        },
+        "fri": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Continue capstone build",
+          "steps": [
+            "Fallback when KB miss",
+            "Update projects/07-alius/ design from reliability learnings"
+          ],
+          "resources": []
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Capstone ship",
+          "guide": "Ship capstone artifact",
+          "steps": [
+            "Demo or doc walkthrough",
+            "Honest status label"
+          ],
+          "resources": []
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Capstone retro",
+          "guide": "Retro + next month preview",
+          "steps": [
+            "What shipped vs planned",
+            "Update portfolio bullets"
+          ],
+          "resources": []
+        }
+      },
+      "capstoneTitle": "KB slice integrated into triage flow"
+    },
+    {
+      "week": 25,
+      "month": 7,
+      "title": "Metrics + consulting",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 25: Map manual ops friction \u2014 Metrics + consulting.",
+          "steps": [
+            "List high-volume requests related to TTR, hours saved, consulting offers",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Metrics + consulting.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Metrics + consulting \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for metrics + consulting",
+          "steps": [
+            "Review or extend prove artifact: projects/05-adoption-dashboard/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/05-adoption-dashboard/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/05-adoption-dashboard/"
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Review or extend prove artifact: projects/05-adoption-dashboard/",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "projects/05-adoption-dashboard/",
+            "README.md portfolio section"
+          ],
+          "proveLink": "projects/05-adoption-dashboard/"
+        }
+      }
+    },
+    {
+      "week": 26,
+      "month": 7,
+      "title": "Metrics + consulting",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 26: Map manual ops friction \u2014 Metrics + consulting.",
+          "steps": [
+            "List high-volume requests related to TTR, hours saved, consulting offers",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Metrics + consulting.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Metrics + consulting \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for metrics + consulting",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 27,
+      "month": 7,
+      "title": "Metrics + consulting",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 27: Map manual ops friction \u2014 Metrics + consulting.",
+          "steps": [
+            "List high-volume requests related to TTR, hours saved, consulting offers",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Metrics + consulting.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Metrics + consulting \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for metrics + consulting",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 28,
+      "month": 7,
+      "title": "Metrics + consulting",
+      "capstoneWeek": true,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Review",
+          "guide": "Month 7 capstone prep: Metrics + consulting menu",
+          "steps": [
+            "Review Mon\u2013Wed notes from weeks this month",
+            "Gap list for capstone"
+          ],
+          "resources": [
+            "tracker/months.json"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Review",
+          "guide": "Consolidate workflow drafts",
+          "steps": [
+            "Merge best workflow diagram",
+            "Confirm HITL gates"
+          ],
+          "resources": []
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Review",
+          "guide": "Identity + audit checklist",
+          "steps": [
+            "Verify least privilege",
+            "Audit log schema ready"
+          ],
+          "resources": []
+        },
+        "thu": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Build: Metrics + consulting menu",
+          "steps": [
+            "Define measurable ops KPIs you can actually collect",
+            "Package (a)(b)(c) from CONTEXT.md with fixed-fee framing"
+          ],
+          "resources": [
+            "tracker/months.json rubric"
+          ]
+        },
+        "fri": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Continue capstone build",
+          "steps": [
+            "Hours-saved estimate methodology \u2014 no invented deflection %",
+            "LinkedIn post draft on identity-backed automation"
+          ],
+          "resources": []
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Capstone ship",
+          "guide": "Ship capstone artifact",
+          "steps": [
+            "Demo or doc walkthrough",
+            "Honest status label"
+          ],
+          "resources": []
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Capstone retro",
+          "guide": "Retro + next month preview",
+          "steps": [
+            "What shipped vs planned",
+            "Update portfolio bullets"
+          ],
+          "resources": []
+        }
+      },
+      "capstoneTitle": "Consulting one-pager (Okta audit, access automation, AI triage bot)"
+    },
+    {
+      "week": 29,
+      "month": 8,
+      "title": "Interview prep \u2014 AI Systems",
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 29: Map manual ops friction \u2014 Interview prep \u2014 AI Systems.",
+          "steps": [
+            "List high-volume requests related to Serval-shaped system design, STAR stories",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Interview prep \u2014 AI Systems.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Interview prep \u2014 AI Systems \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Measure",
+          "guide": "Define metrics you can actually measure \u2014 no invented KPIs.",
+          "steps": [
+            "Baseline: manual time-to-resolve or ticket volume (real)",
+            "Target metrics: hours saved, retry rate, approval latency",
+            "How you'll capture data (Jira, BigQuery, workflow logs)",
+            "Skip deflection % unless you have a measurement plan"
+          ],
+          "resources": [
+            "tracker/progress.json counters"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for interview prep \u2014 ai systems",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 30,
+      "month": 8,
+      "title": "Interview prep \u2014 AI Systems",
+      "capstoneWeek": false,
+      "interviewPrep": true,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 30: Map manual ops friction \u2014 Interview prep \u2014 AI Systems.",
+          "steps": [
+            "List high-volume requests related to Serval-shaped system design, STAR stories",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Interview prep \u2014 AI Systems.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Interview prep \u2014 AI Systems \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Interview prep",
+          "guide": "Week 30: Serval-shaped interview practice",
+          "steps": [
+            "One system design: internal ops automation (45 min timed)",
+            "One STAR from shipped work (Slack app, n8n, Argus, Okta)",
+            "Research one target company (Serval or AI ops team)",
+            "Update portfolio narrative from mock feedback"
+          ],
+          "resources": [
+            "CONTEXT.md target companies",
+            "interview-prep/system-design-template.md"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for interview prep \u2014 ai systems",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 31,
+      "month": 8,
+      "title": "Interview prep \u2014 AI Systems",
+      "capstoneWeek": false,
+      "interviewPrep": true,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 31: Map manual ops friction \u2014 Interview prep \u2014 AI Systems.",
+          "steps": [
+            "List high-volume requests related to Serval-shaped system design, STAR stories",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Interview prep \u2014 AI Systems.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Interview prep \u2014 AI Systems \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Interview prep",
+          "guide": "Week 31: Serval-shaped interview practice",
+          "steps": [
+            "One system design: internal ops automation (45 min timed)",
+            "One STAR from shipped work (Slack app, n8n, Argus, Okta)",
+            "Research one target company (Serval or AI ops team)",
+            "Update portfolio narrative from mock feedback"
+          ],
+          "resources": [
+            "CONTEXT.md target companies",
+            "interview-prep/system-design-template.md"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for interview prep \u2014 ai systems",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 32,
+      "month": 8,
+      "title": "Interview prep \u2014 AI Systems",
+      "capstoneWeek": true,
+      "interviewPrep": true,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Review",
+          "guide": "Month 8 capstone prep: Interview prep \u2014 AI Systems",
+          "steps": [
+            "Review Mon\u2013Wed notes from weeks this month",
+            "Gap list for capstone"
+          ],
+          "resources": [
+            "tracker/months.json"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Review",
+          "guide": "Consolidate workflow drafts",
+          "steps": [
+            "Merge best workflow diagram",
+            "Confirm HITL gates"
+          ],
+          "resources": []
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Review",
+          "guide": "Identity + audit checklist",
+          "steps": [
+            "Verify least privilege",
+            "Audit log schema ready"
+          ],
+          "resources": []
+        },
+        "thu": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Build: Interview prep \u2014 AI Systems",
+          "steps": [
+            "Practice: design Serval-like ticket automation",
+            "Practice: Okta + agent identity for service accounts"
+          ],
+          "resources": [
+            "tracker/months.json rubric"
+          ]
+        },
+        "fri": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Continue capstone build",
+          "steps": [
+            "STAR stories from Slack app, n8n, Argus",
+            "Timed mock: access-request automation system design"
+          ],
+          "resources": []
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Capstone ship",
+          "guide": "Ship capstone artifact",
+          "steps": [
+            "Demo or doc walkthrough",
+            "Honest status label"
+          ],
+          "resources": []
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Capstone retro",
+          "guide": "Retro + next month preview",
+          "steps": [
+            "What shipped vs planned",
+            "Update portfolio bullets"
+          ],
+          "resources": []
+        }
+      },
+      "capstoneTitle": "Mock system designs for internal ops automation"
+    },
+    {
+      "week": 33,
+      "month": 9,
+      "title": "Program capstone",
+      "capstoneWeek": false,
+      "interviewPrep": true,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 33: Map manual ops friction \u2014 Program capstone.",
+          "steps": [
+            "List high-volume requests related to portfolio, apply tracker, iterate",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Program capstone.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Program capstone \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Interview prep",
+          "guide": "Week 33: Serval-shaped interview practice",
+          "steps": [
+            "One system design: internal ops automation (45 min timed)",
+            "One STAR from shipped work (Slack app, n8n, Argus, Okta)",
+            "Research one target company (Serval or AI ops team)",
+            "Update portfolio narrative from mock feedback"
+          ],
+          "resources": [
+            "CONTEXT.md target companies",
+            "interview-prep/system-design-template.md"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for program capstone",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 34,
+      "month": 9,
+      "title": "Program capstone",
+      "capstoneWeek": false,
+      "interviewPrep": true,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 34: Map manual ops friction \u2014 Program capstone.",
+          "steps": [
+            "List high-volume requests related to portfolio, apply tracker, iterate",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Program capstone.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Program capstone \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Interview prep",
+          "guide": "Week 34: Serval-shaped interview practice",
+          "steps": [
+            "One system design: internal ops automation (45 min timed)",
+            "One STAR from shipped work (Slack app, n8n, Argus, Okta)",
+            "Research one target company (Serval or AI ops team)",
+            "Update portfolio narrative from mock feedback"
+          ],
+          "resources": [
+            "CONTEXT.md target companies",
+            "interview-prep/system-design-template.md"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for program capstone",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 35,
+      "month": 9,
+      "title": "Program capstone",
+      "capstoneWeek": false,
+      "interviewPrep": true,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Friction",
+          "guide": "Week 35: Map manual ops friction \u2014 Program capstone.",
+          "steps": [
+            "List high-volume requests related to portfolio, apply tracker, iterate",
+            "Quantify frequency (ticket counts, Slack pings \u2014 real data only)",
+            "Note approval bottlenecks and identity touchpoints",
+            "Pick one friction point to deepen Tue\u2013Sun"
+          ],
+          "resources": [
+            "CONTEXT.md",
+            "phases/phase-1/README.md"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Workflow",
+          "guide": "Design intake \u2192 approval \u2192 action for Program capstone.",
+          "steps": [
+            "Draw workflow: trigger, intake form/Slack, approvers, actions",
+            "Mark human-in-the-loop gates before destructive actions",
+            "Compare to existing n8n or Slack app patterns you shipped",
+            "List integrations needed (Jira, Okta, Lumos)"
+          ],
+          "resources": [
+            "Shipped: Slack App Governance",
+            "n8n internal workflows"
+          ]
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Identity",
+          "guide": "Scope Okta/OAuth/SCIM correctly; plan for future agent service accounts.",
+          "steps": [
+            "Map groups/apps touched by this workflow",
+            "Apply least privilege \u2014 no standing admin grants",
+            "Define audit fields (who, what, when, ticket id)",
+            "Note agent identity pattern: WIF or scoped OAuth vs long-lived keys"
+          ],
+          "resources": [
+            "Okta SCIM docs",
+            "CONTEXT.md consulting (a)(b)"
+          ]
+        },
+        "thu": {
+          "section": "agent",
+          "label": "Agent",
+          "guide": "Where LLM/agent helps for Program capstone \u2014 vs deterministic automation.",
+          "steps": [
+            "List steps that must stay deterministic (Okta writes, deletes)",
+            "Identify triage/KB/routing suitable for LLM assist",
+            "Define escalation when confidence is low",
+            "Do not claim production agent experience \u2014 label POC"
+          ],
+          "resources": [
+            "Claude API tool use docs",
+            "MCP patterns"
+          ]
+        },
+        "fri": {
+          "section": "measure",
+          "label": "Interview prep",
+          "guide": "Week 35: Serval-shaped interview practice",
+          "steps": [
+            "One system design: internal ops automation (45 min timed)",
+            "One STAR from shipped work (Slack app, n8n, Argus, Okta)",
+            "Research one target company (Serval or AI ops team)",
+            "Update portfolio narrative from mock feedback"
+          ],
+          "resources": [
+            "CONTEXT.md target companies",
+            "interview-prep/system-design-template.md"
+          ]
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Artifact for program capstone",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Prove",
+          "guide": "Weekly mini: Polish + notes for portfolio",
+          "steps": [
+            "Ship one artifact (diagram, bot stub, runbook, screenshot)",
+            "Commit or save to study-notes/ with date",
+            "Update dashboard prove counter if tracking",
+            "1-paragraph learnings for interview stories"
+          ],
+          "resources": [
+            "README.md portfolio section"
+          ]
+        }
+      }
+    },
+    {
+      "week": 36,
+      "month": 9,
+      "title": "Program capstone",
+      "capstoneWeek": true,
+      "interviewPrep": true,
+      "days": {
+        "mon": {
+          "section": "friction",
+          "label": "Review",
+          "guide": "Month 9 capstone prep: Program capstone",
+          "steps": [
+            "Review Mon\u2013Wed notes from weeks this month",
+            "Gap list for capstone"
+          ],
+          "resources": [
+            "tracker/months.json"
+          ]
+        },
+        "tue": {
+          "section": "workflow",
+          "label": "Review",
+          "guide": "Consolidate workflow drafts",
+          "steps": [
+            "Merge best workflow diagram",
+            "Confirm HITL gates"
+          ],
+          "resources": []
+        },
+        "wed": {
+          "section": "identity",
+          "label": "Review",
+          "guide": "Identity + audit checklist",
+          "steps": [
+            "Verify least privilege",
+            "Audit log schema ready"
+          ],
+          "resources": []
+        },
+        "thu": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Build: Program capstone",
+          "steps": [
+            "Single narrative: shipped work + agentic case study",
+            "Apply tracker with Serval-shaped targets"
+          ],
+          "resources": [
+            "tracker/months.json rubric"
+          ]
+        },
+        "fri": {
+          "section": "prove",
+          "label": "Capstone build",
+          "guide": "Continue capstone build",
+          "steps": [
+            "Consulting pipeline or Wave 2 roles",
+            "Retrospective: what to deepen in the next quarter"
+          ],
+          "resources": []
+        },
+        "sat": {
+          "section": "prove",
+          "label": "Capstone ship",
+          "guide": "Ship capstone artifact",
+          "steps": [
+            "Demo or doc walkthrough",
+            "Honest status label"
+          ],
+          "resources": []
+        },
+        "sun": {
+          "section": "prove",
+          "label": "Capstone retro",
+          "guide": "Retro + next month preview",
+          "steps": [
+            "What shipped vs planned",
+            "Update portfolio bullets"
+          ],
+          "resources": []
+        }
+      },
+      "capstoneTitle": "Portfolio walkthrough + apply tracker"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "id": "nhi-governance",
+      "number": 1,
+      "title": "Design a scalable NHI governance system",
+      "prompt": "Inventory, lifecycle, auto-revoke on offboarding, dormant detection. 10K service accounts, 500 engineers.",
+      "targetMonth": 7,
+      "targetWeek": 28,
+      "template": "/interview-prep/system-design-template.md",
+      "platformTie": "CIPHER"
+    },
+    {
+      "id": "offboarding-pipeline",
+      "number": 2,
+      "title": "Design an event-driven offboarding pipeline",
+      "prompt": "Triggered by HR deactivation, 20+ downstream systems, failures/retries, full audit trail. 50 offboardings/day peak.",
+      "targetMonth": 8,
+      "targetWeek": 32,
+      "template": "/interview-prep/system-design-template.md",
+      "platformTie": "ALIUS architecture blueprint (planning)"
+    },
+    {
+      "id": "agent-identity-broker",
+      "number": 3,
+      "title": "Design an agent identity broker",
+      "prompt": "Short-lived scoped credentials for AI agents at runtime based on declared task. Cloud Run. 1000 concurrent agents.",
+      "targetMonth": 6,
+      "targetWeek": 24,
+      "template": "/interview-prep/system-design-template.md",
+      "platformTie": "WIF design + agentic ops case study"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "months": [
+    {
+      "month": 1,
+      "weeks": "1–4",
+      "title": "Ops friction inventory",
+      "capstone": "Friction map + first workflow diagram",
+      "rubric": [
+        "List top 10 manual IT/ops requests by volume",
+        "Pick one candidate for automation (ticket triage or access request)",
+        "Draft intake → approval → action with HITL gates marked",
+        "Identify Okta/Lumos touchpoints and audit log requirements"
+      ],
+      "wave": "Wave 0 — align resume to AI Systems positioning"
+    },
+    {
+      "month": 2,
+      "weeks": "5–8",
+      "title": "Identity-backed access workflow",
+      "capstone": "Okta group grant workflow + audit trail design",
+      "rubric": [
+        "Document Lumos/Okta pattern already shipped at AppLovin",
+        "Design group grant with least-privilege + manager approval",
+        "Specify BigQuery or Firestore audit fields (no fake metrics)",
+        "Link to projects/06-cipher/ ship plan (architected, not shipped)"
+      ],
+      "wave": "Wave 0 — portfolio outline"
+    },
+    {
+      "month": 3,
+      "weeks": "9–12",
+      "title": "Agentic triage POC",
+      "capstone": "Case study draft: triage + Okta grant + audit",
+      "rubric": [
+        "Separate deterministic steps from LLM-assisted triage/routing",
+        "Define HITL approval before any Okta write",
+        "Document failure/retry behavior",
+        "Walk through projects/01-it-helpdesk-agent + 02-okta-mcp-server"
+      ],
+      "wave": "Wave 1 — begin Serval-shaped outreach"
+    },
+    {
+      "month": 4,
+      "weeks": "13–16",
+      "title": "Workflow reliability",
+      "capstone": "Reliability runbook for one workflow",
+      "rubric": [
+        "Idempotency and retry policy documented",
+        "Alerting on failure paths (Slack)",
+        "Runbook for on-call handoff",
+        "Measure baseline: time-to-resolve before automation (real numbers only)"
+      ]
+    },
+    {
+      "month": 5,
+      "weeks": "17–20",
+      "title": "Agent tool-use + evals",
+      "capstone": "Eval harness for triage agent path",
+      "rubric": [
+        "Tool schema for ticket lookup / KB search",
+        "10+ eval cases (happy path + edge)",
+        "Document when agent must escalate to human",
+        "No claim of production deployment"
+      ]
+    },
+    {
+      "month": 6,
+      "weeks": "21–24",
+      "title": "Ops knowledge base",
+      "capstone": "KB slice integrated into triage flow",
+      "rubric": [
+        "Structure KB for IT ops (not generic RAG demo)",
+        "Grounding rules and citation in agent responses",
+        "Fallback when KB miss",
+        "Update projects/07-alius/ design from reliability learnings"
+      ],
+      "wave": "Wave 2 — senior IC / consulting packaging"
+    },
+    {
+      "month": 7,
+      "weeks": "25–28",
+      "title": "Metrics + consulting menu",
+      "capstone": "Consulting one-pager (Okta audit, access automation, AI triage bot)",
+      "rubric": [
+        "Define measurable ops KPIs you can actually collect",
+        "Package (a)(b)(c) from CONTEXT.md with fixed-fee framing",
+        "Hours-saved estimate methodology — no invented deflection %",
+        "LinkedIn post draft on identity-backed automation"
+      ]
+    },
+    {
+      "month": 8,
+      "weeks": "29–32",
+      "title": "Interview prep — AI Systems",
+      "capstone": "Mock system designs for internal ops automation",
+      "rubric": [
+        "Practice: design Serval-like ticket automation",
+        "Practice: Okta + agent identity for service accounts",
+        "STAR stories from Slack app, n8n, Argus",
+        "Timed mock: access-request automation system design"
+      ],
+      "wave": "Wave 1 active applications"
+    },
+    {
+      "month": 9,
+      "weeks": "33–36",
+      "title": "Program capstone",
+      "capstone": "Portfolio walkthrough + apply tracker",
+      "rubric": [
+        "Single narrative: shipped work + agentic case study",
+        "Apply tracker with Serval-shaped targets",
+        "Consulting pipeline or Wave 2 roles",
+        "Retrospective: what to deepen in the next quarter"
+      ],
+      "wave": "Wave 2"
+    }
+  ]
+}
