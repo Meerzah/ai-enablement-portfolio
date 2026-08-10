@@ -39,8 +39,8 @@ Google ADK Agent
 ## Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ai-enablement-portfolio
-cd projects/01-it-helpdesk-agent
+git clone https://github.com/Meerzah/ai-systems-portfolio.git
+cd ai-systems-portfolio/projects/01-it-helpdesk-agent
 pip install -r requirements.txt
 
 # Set env vars

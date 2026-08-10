@@ -1,60 +1,253 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 34 — Submit applications</title>
+<title>Week 34 build sheet — Submit applications</title>
 <style>
-:root{--bg:#0d1117;--surface:#161b22;--surface2:#1c2129;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--success:#3fb950;--warn:#d29922;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+:root{
+  --bg:#09090b;--surface:#111113;--surface2:#18181b;--border:#27272a;
+  --text:#fafafa;--muted:#a1a1aa;--accent:#6366f1;--accent2:#14b8a6;
+  --success:#22c55e;--warn:#f59e0b;--font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.55}
-.wrap{max-width:760px;margin:0 auto;padding:20px 16px 64px}
-.top a{color:var(--accent);text-decoration:none;font-size:.9rem;margin-right:14px}
-h1{font-size:1.35rem;margin:8px 0}
-.sub{color:var(--muted);font-size:.92rem;margin-bottom:16px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px}
-.card h2{font-size:.95rem;color:var(--accent);margin-bottom:8px}
-ul{margin:0 0 10px 18px;color:var(--muted);font-size:.88rem}
-.done li{margin-bottom:4px}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
+.shell{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+@media(max-width:860px){.shell{grid-template-columns:1fr}}
+.side{background:var(--surface);border-right:1px solid var(--border);padding:20px 16px;display:flex;flex-direction:column;gap:16px}
+@media(max-width:860px){.side{border-right:none;border-bottom:1px solid var(--border)}}
+.side label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#71717a}
+.side h2{font-size:15px;font-weight:650;margin-top:4px}
+.back{font-size:13px;color:#818cf8;text-decoration:none}
+.back:hover{text-decoration:underline}
+.stat-row{display:grid;gap:10px}
+.stat{padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface2)}
+.stat strong{display:block;font-size:18px;color:var(--accent2)}
+.stat span{font-size:11px;color:var(--muted)}
+.progress-wrap{padding:4px 0}
+.progress-track{height:6px;background:#27272a;border-radius:999px;overflow:hidden;margin-top:8px}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px;transition:width .25s}
+.side-actions{display:flex;flex-direction:column;gap:8px;margin-top:auto}
+.side-actions a,.side-actions button{
+  display:block;width:100%;text-align:center;padding:10px 12px;border-radius:8px;font-size:13px;font-weight:600;
+  text-decoration:none;border:1px solid var(--border);background:var(--surface2);color:var(--text);cursor:pointer;
+}
+.side-actions a.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.main{padding:24px 28px 48px;max-width:920px}
+.crumb{font-size:12px;color:#71717a;margin-bottom:8px}
+.crumb span{color:var(--accent)}
+h1{font-size:22px;font-weight:650;letter-spacing:-.02em;margin-bottom:10px;max-width:640px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tag{font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid #3f3f46;color:#d4d4d8}
+.tag.p{border-color:var(--accent);color:#a5b4fc}
+.tag.cap{border-color:#a855f7;color:#d8b4fe}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.panel h2{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#71717a;margin-bottom:12px}
+.checklist{list-style:none;display:grid;gap:8px}
+.checklist li{
+  display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;border:1px solid var(--border);
+  background:var(--surface);font-size:13px;color:#e4e4e7;cursor:pointer;transition:border-color .15s,background .15s;
+}
+.checklist li:hover{border-color:#52525b}
+.checklist li.done{border-color:#14532d;background:#052e16;color:#bbf7d0}
+.checklist input{margin-top:2px;width:16px;height:16px;accent-color:var(--success);flex-shrink:0;cursor:pointer}
+.checklist label{cursor:pointer;flex:1}
+.ship{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.ship h2{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#71717a;margin-bottom:12px}
 .field{margin-bottom:12px}
-.field label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:4px}
-.field textarea{width:100%;min-height:72px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px 10px;font:inherit}
-.phase{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--warn);margin-bottom:8px}
-.phase.capstone{color:#a371f7;border-color:#a371f7}
-.phase.portfolio{color:var(--success);border-color:var(--success)}
-.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
-button{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 14px;border-radius:8px;cursor:pointer}
-button.primary{border-color:var(--accent);color:var(--accent)}
-.project-link{display:inline-block;margin:8px 0;padding:10px 14px;border:1px solid var(--accent);border-radius:8px;color:var(--accent);text-decoration:none;font-weight:600}
+.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.field input,.field textarea{
+  width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);
+  padding:10px 12px;font:inherit;font-size:13px;
+}
+.field textarea{min-height:88px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px}
+.toolbar button{
+  padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text);
+  font:inherit;font-size:13px;font-weight:600;cursor:pointer;
+}
+.toolbar button.primary{background:var(--accent2);border-color:var(--accent2);color:#042f2e}
+.toolbar button.ghost{color:#a1a1aa}
+.setup{
+  margin-top:16px;padding:12px 14px;border-radius:8px;border:1px dashed #3f3f46;background:#0c0c0e;
+  font-size:12px;color:#71717a;
+}
+.setup code{color:#a5b4fc;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;word-break:break-all}
+.toast{
+  position:fixed;bottom:20px;right:20px;padding:10px 14px;border-radius:8px;background:#14532d;color:#bbf7d0;
+  font-size:13px;border:1px solid #166534;opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.toast.show{opacity:1}
 </style>
-</head><body><div class="wrap">
-<div class="top"><a href="../index.html">← Dashboard</a></div>
-<span class="phase portfolio">portfolio · week 34</span>
-<h1>Submit applications</h1>
-<p class="sub">Ship one concrete artifact this week in the repo. Check each item, commit, then mark the week done on the dashboard.</p>
-<a class="project-link" href="https://meerzah.github.io/ai-systems-portfolio/interview-prep/README.md" target="_blank" rel="noopener">Open interview-prep/ →</a>
-<div class="card"><h2>Build this week</h2><ul><li>1+ applications</li><li>Outreach</li></ul></div>
-<div class="card"><h2>Done when</h2><ul class="done"><li>Apply log updated</li></ul></div>
-<div class="card"><h2>Ship notes</h2>
-<div class="field"><label>What I committed (paths + PR/commit hash)</label>
-<textarea id="ship" data-key="w34-ship" placeholder="e.g. projects/01-it-helpdesk-agent/runbooks/vpn.md — commit abc123"></textarea></div>
-<div class="field"><label>Blockers / next week prep</label>
-<textarea id="blockers" data-key="w34-blockers"></textarea></div>
+</head><body>
+<div class="shell">
+  <aside class="side">
+    <div>
+      <label>Build sheet</label>
+      <h2>Week 34</h2>
+      <a class="back" href="../choose-layout.html">← Dashboard</a>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><strong id="pct">0%</strong><span>tasks complete</span></div>
+      <div class="stat"><strong id="done-count">0</strong><span>of 3 checked</span></div>
+    </div>
+    <div class="progress-wrap">
+      <label>Progress</label>
+      <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
+    </div>
+    <div class="side-actions">
+      <a class="primary" href="https://meerzah.github.io/ai-systems-portfolio/interview-prep/README.md" target="_blank" rel="noopener">Open project →</a>
+      <a href="https://meerzah.github.io/ai-systems-portfolio/interview-prep/" target="_blank" rel="noopener">View on GitHub Pages</a>
+      <button type="button" id="copy-all">Copy week summary</button>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="crumb">Week <span>34</span> · portfolio · portfolio</div>
+    <h1>Submit applications</h1>
+    <div class="tags">
+      <span class="tag ">portfolio</span>
+      <span class="tag">portfolio</span>
+      <span class="tag">interview-prep/</span>
+    </div>
+    <div class="grid">
+      <section class="panel">
+        <h2>Build this week (2)</h2>
+        <ul class="checklist" id="build-list">
+          <li data-item="w34-build-0"><input type="checkbox" id="w34-build-0" data-key="w34-build-0" /><label for="w34-build-0">1+ applications</label></li>
+<li data-item="w34-build-1"><input type="checkbox" id="w34-build-1" data-key="w34-build-1" /><label for="w34-build-1">Outreach</label></li>
+        </ul>
+      </section>
+      <section class="panel">
+        <h2>Done when (1)</h2>
+        <ul class="checklist" id="done-list">
+          <li data-item="w34-done-0"><input type="checkbox" id="w34-done-0" data-key="w34-done-0" /><label for="w34-done-0">Apply log updated</label></li>
+        </ul>
+      </section>
+    </div>
+    <section class="ship">
+      <h2>Ship log</h2>
+      <div class="field">
+        <label>Commit or PR link</label>
+        <input id="commit" data-key="w34-commit" placeholder="https://github.com/Meerzah/ai-systems-portfolio/commit/abc123" />
+      </div>
+      <div class="field">
+        <label>Files / paths you changed</label>
+        <textarea id="files" data-key="w34-files" placeholder="projects/01-it-helpdesk-agent/runbooks/vpn.md&#10;study-notes/weeks/week-34-prove-log.md"></textarea>
+      </div>
+      <div class="field">
+        <label>Blockers or notes for next week</label>
+        <textarea id="notes" data-key="w34-notes" placeholder="What slowed you down? What to prep for week 35?"></textarea>
+      </div>
+      <div class="setup">
+        Clone the repo once, then work inside the project folder:<br/>
+        <code>git clone https://github.com/Meerzah/ai-systems-portfolio.git && cd ai-systems-portfolio/interview-prep</code>
+      </div>
+    </section>
+    <div class="toolbar">
+      <button type="button" class="primary" id="copy-all-2">Copy ship summary</button>
+      <button type="button" id="check-build">Check all build steps</button>
+      <button type="button" id="clear" class="ghost">Reset sheet</button>
+    </div>
+  </main>
 </div>
-<div class="btnrow">
-<button type="button" class="primary" id="copy">Copy ship summary</button>
-<button type="button" id="clear">Clear draft</button>
-</div>
-</div>
+<div class="toast" id="toast">Copied to clipboard</div>
 <script>
-const PREFIX='workbook-';
-document.querySelectorAll('[data-key]').forEach(el=>{
-  const k=PREFIX+el.dataset.key; if(localStorage.getItem(k)) el.value=localStorage.getItem(k);
-  el.addEventListener('input',()=>localStorage.setItem(k,el.value));
-});
-document.getElementById('copy').onclick=()=>{
-  const t=document.getElementById('ship').value;
-  navigator.clipboard.writeText('# Week 34\n\n'+t);
+const PREFIX = "workbook-34-";
+const TOTAL = 3;
+
+function storageKey(el) {
+  return PREFIX + el.dataset.key;
+}
+
+function loadFields() {
+  document.querySelectorAll("[data-key]").forEach(el => {
+    const k = storageKey(el);
+    if (el.type === "checkbox") {
+      el.checked = localStorage.getItem(k) === "1";
+    } else if (localStorage.getItem(k)) {
+      el.value = localStorage.getItem(k);
+    }
+    el.addEventListener("change", persist);
+    el.addEventListener("input", persist);
+  });
+}
+
+function persist(e) {
+  const el = e.target;
+  const k = storageKey(el);
+  if (el.type === "checkbox") localStorage.setItem(k, el.checked ? "1" : "0");
+  else localStorage.setItem(k, el.value);
+  syncProgress();
+}
+
+function syncProgress() {
+  const boxes = [...document.querySelectorAll('input[type="checkbox"][data-key]')];
+  const done = boxes.filter(b => b.checked).length;
+  const pct = TOTAL ? Math.round((done / TOTAL) * 100) : 0;
+  document.getElementById("pct").textContent = pct + "%";
+  document.getElementById("done-count").textContent = String(done);
+  document.getElementById("bar").style.width = pct + "%";
+  boxes.forEach(b => {
+    const li = b.closest("li");
+    if (li) li.classList.toggle("done", b.checked);
+  });
+}
+
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 1800);
+}
+
+function buildSummary() {
+  const lines = ["# Week 34 — Submit applications", ""];
+  lines.push("## Build this week");
+  document.querySelectorAll("#build-list input[type=checkbox]").forEach(b => {
+    const label = b.closest("li")?.querySelector("label")?.textContent || "";
+    lines.push(`- [${b.checked ? "x" : " "}] ${label}`);
+  });
+  lines.push("", "## Done when");
+  document.querySelectorAll("#done-list input[type=checkbox]").forEach(b => {
+    const label = b.closest("li")?.querySelector("label")?.textContent || "";
+    lines.push(`- [${b.checked ? "x" : " "}] ${label}`);
+  });
+  const commit = document.getElementById("commit").value.trim();
+  const files = document.getElementById("files").value.trim();
+  const notes = document.getElementById("notes").value.trim();
+  lines.push("", "## Ship log");
+  if (commit) lines.push(`- Commit/PR: ${commit}`);
+  if (files) lines.push(`- Files:\n${files.split("\n").map(l => "  - " + l).join("\n")}`);
+  if (notes) lines.push(`- Notes: ${notes}`);
+  lines.push("", `Repo: https://github.com/Meerzah/ai-systems-portfolio.git`);
+  return lines.join("\n");
+}
+
+function copySummary() {
+  navigator.clipboard.writeText(buildSummary()).then(() => toast("Copied to clipboard"));
+}
+
+document.getElementById("copy-all").onclick = copySummary;
+document.getElementById("copy-all-2").onclick = copySummary;
+document.getElementById("check-build").onclick = () => {
+  document.querySelectorAll("#build-list input[type=checkbox]").forEach(b => {
+    b.checked = true;
+    localStorage.setItem(storageKey(b), "1");
+  });
+  syncProgress();
 };
-document.getElementById('clear').onclick=()=>{
-  if(confirm('Clear?')) document.querySelectorAll('[data-key]').forEach(el=>{localStorage.removeItem(PREFIX+el.dataset.key);el.value='';});
+document.getElementById("clear").onclick = () => {
+  if (!confirm("Clear all checkboxes and notes for this week?")) return;
+  document.querySelectorAll("[data-key]").forEach(el => {
+    localStorage.removeItem(storageKey(el));
+    if (el.type === "checkbox") el.checked = false;
+    else el.value = "";
+  });
+  syncProgress();
 };
-</script></body></html>
+
+loadFields();
+syncProgress();
+</script>
+</body></html>
