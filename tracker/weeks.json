@@ -1,5 +1,5 @@
 {
-  "schema": "ai-systems-spine-v2-real",
+  "schema": "ai-systems-spine-v3-workbooks",
   "spine": [
     "friction",
     "workflow",
@@ -27,8 +27,8 @@
             "Pick ONE candidate for this unit: access request OR ticket triage"
           ],
           "resources": [
-            "CONTEXT.md shipped work",
-            "IT service desk project"
+            "CONTEXT.md",
+            "study-notes/weeks/week-01-friction-inventory.md"
           ]
         },
         "tue": {
@@ -42,7 +42,7 @@
             "Output: one-page workflow diagram (Excalidraw/Mermaid OK)"
           ],
           "resources": [
-            "Shipped: Slack intake workflow \u2192 Jira",
+            "study-notes/weeks/week-01-friction-inventory.md",
             "phases/phase-1/README.md"
           ]
         },
@@ -98,7 +98,7 @@
             "Clone repo, set up projects/01-it-helpdesk-agent per README",
             "Run 5 queries: 3 IT runbook questions + 2 identity lookups via Okta MCP",
             "Screenshot or log: which answered correctly vs escalated",
-            "Save notes to study-notes/week-01-prove.md"
+            "Save notes to study-notes/weeks/week-01-prove-log.md"
           ],
           "resources": [
             "projects/01-it-helpdesk-agent/",
@@ -111,16 +111,17 @@
           "label": "Prove",
           "guide": "Polish friction inventory draft.",
           "steps": [
-            "Write study-notes/week-01-friction-inventory.md: top 3 frictions + chosen candidate",
+            "Complete study-notes/weeks/week-01-friction-inventory.md from workbook output",
             "Link workflow diagram from Tue",
             "One paragraph: why this candidate fits AI Systems portfolio narrative"
           ],
           "resources": [
-            "study-notes/week-01-friction-inventory.md (create)"
+            "study-notes/weeks/week-01-friction-inventory.md"
           ],
-          "proveLink": "projects/01-it-helpdesk-agent/"
+          "proveLink": "study-notes/weeks/week-01-friction-inventory.md"
         }
-      }
+      },
+      "workbook": "workbooks/week-01.html"
     },
     {
       "week": 2,
@@ -211,7 +212,7 @@
             "Add to portfolio narrative draft"
           ],
           "resources": [
-            "study-notes/week-02-workflow.md"
+            "study-notes/weeks/week-02-workflow.md"
           ]
         },
         "sun": {
@@ -227,7 +228,8 @@
             "projects/04-prompt-playbooks/"
           ]
         }
-      }
+      },
+      "workbook": "workbooks/week-02.html"
     },
     {
       "week": 3,
@@ -328,7 +330,8 @@
             "tracker/months.json Month 1"
           ]
         }
-      }
+      },
+      "workbook": "workbooks/week-03.html"
     },
     {
       "week": 4,
@@ -418,7 +421,8 @@
           ]
         }
       },
-      "capstoneTitle": "Friction map + first workflow diagram"
+      "capstoneTitle": "Friction map + first workflow diagram",
+      "workbook": "workbooks/week-04.html"
     },
     {
       "week": 5,
@@ -519,7 +523,8 @@
           ],
           "proveLink": "projects/06-cipher/"
         }
-      }
+      },
+      "workbook": "workbooks/week-05.html"
     },
     {
       "week": 6,
@@ -618,7 +623,8 @@
           ],
           "proveLink": "projects/06-cipher/"
         }
-      }
+      },
+      "workbook": "workbooks/week-06.html"
     },
     {
       "week": 7,
@@ -709,7 +715,8 @@
             "tracker/months.json"
           ]
         }
-      }
+      },
+      "workbook": "workbooks/week-07.html"
     },
     {
       "week": 8,
@@ -799,7 +806,8 @@
           ]
         }
       },
-      "capstoneTitle": "Okta group grant workflow + audit trail design"
+      "capstoneTitle": "Okta group grant workflow + audit trail design",
+      "workbook": "workbooks/week-08.html"
     },
     {
       "week": 9,
@@ -898,7 +906,8 @@
           ],
           "proveLink": "projects/01-it-helpdesk-agent/"
         }
-      }
+      },
+      "workbook": "workbooks/week-09.html"
     },
     {
       "week": 10,
@@ -992,7 +1001,8 @@
           "resources": [],
           "proveLink": "projects/02-okta-mcp-server/"
         }
-      }
+      },
+      "workbook": "workbooks/week-10.html"
     },
     {
       "week": 11,
@@ -1087,7 +1097,8 @@
           ],
           "proveLink": "projects/01-it-helpdesk-agent/"
         }
-      }
+      },
+      "workbook": "workbooks/week-11.html"
     },
     {
       "week": 12,
@@ -1177,7 +1188,8 @@
           ]
         }
       },
-      "capstoneTitle": "Case study draft: triage + Okta grant + audit"
+      "capstoneTitle": "Case study draft: triage + Okta grant + audit",
+      "workbook": "workbooks/week-12.html"
     },
     {
       "week": 13,
@@ -1270,7 +1282,8 @@
           ],
           "proveLink": "projects/07-alius/"
         }
-      }
+      },
+      "workbook": "workbooks/week-13.html"
     },
     {
       "week": 14,
@@ -1366,7 +1379,8 @@
           ],
           "proveLink": "projects/07-alius/"
         }
-      }
+      },
+      "workbook": "workbooks/week-14.html"
     },
     {
       "week": 15,
@@ -1449,7 +1463,8 @@
             "tracker/months.json"
           ]
         }
-      }
+      },
+      "workbook": "workbooks/week-15.html"
     },
     {
       "week": 16,
@@ -1539,7 +1554,8 @@
           ]
         }
       },
-      "capstoneTitle": "Reliability runbook for one workflow"
+      "capstoneTitle": "Reliability runbook for one workflow",
+      "workbook": "workbooks/week-16.html"
     },
     {
       "week": 17,
@@ -1621,7 +1637,8 @@
           ],
           "resources": []
         }
-      }
+      },
+      "workbook": "workbooks/week-17.html"
     },
     {
       "week": 18,
@@ -1702,7 +1719,8 @@
             "study-notes/agentic-case-study.md"
           ]
         }
-      }
+      },
+      "workbook": "workbooks/week-18.html"
     },
     {
       "week": 19,
@@ -1779,7 +1797,8 @@
             "tracker/months.json"
           ]
         }
-      }
+      },
+      "workbook": "workbooks/week-19.html"
     },
     {
       "week": 20,
@@ -1869,7 +1888,8 @@
           ]
         }
       },
-      "capstoneTitle": "Eval harness for triage agent path"
+      "capstoneTitle": "Eval harness for triage agent path",
+      "workbook": "workbooks/week-20.html"
     },
     {
       "week": 21,
@@ -1950,7 +1970,8 @@
           ],
           "resources": []
         }
-      }
+      },
+      "workbook": "workbooks/week-21.html"
     },
     {
       "week": 22,
@@ -2028,7 +2049,8 @@
           ],
           "resources": []
         }
-      }
+      },
+      "workbook": "workbooks/week-22.html"
     },
     {
       "week": 23,
@@ -2109,7 +2131,8 @@
             "tracker/months.json"
           ]
         }
-      }
+      },
+      "workbook": "workbooks/week-23.html"
     },
     {
       "week": 24,
@@ -2199,7 +2222,8 @@
           ]
         }
       },
-      "capstoneTitle": "KB slice integrated into triage flow"
+      "capstoneTitle": "KB slice integrated into triage flow",
+      "workbook": "workbooks/week-24.html"
     },
     {
       "week": 25,
@@ -2288,7 +2312,8 @@
           ],
           "proveLink": "projects/05-adoption-dashboard/"
         }
-      }
+      },
+      "workbook": "workbooks/week-25.html"
     },
     {
       "week": 26,
@@ -2372,7 +2397,8 @@
             "interview-prep/answers/wave-1-checklist.md"
           ]
         }
-      }
+      },
+      "workbook": "workbooks/week-26.html"
     },
     {
       "week": 27,
@@ -2455,7 +2481,8 @@
             "tracker/months.json"
           ]
         }
-      }
+      },
+      "workbook": "workbooks/week-27.html"
     },
     {
       "week": 28,
@@ -2545,7 +2572,8 @@
           ]
         }
       },
-      "capstoneTitle": "Consulting one-pager (Okta audit, access automation, AI triage bot)"
+      "capstoneTitle": "Consulting one-pager (Okta audit, access automation, AI triage bot)",
+      "workbook": "workbooks/week-28.html"
     },
     {
       "week": 29,
@@ -2637,7 +2665,8 @@
           ],
           "resources": []
         }
-      }
+      },
+      "workbook": "workbooks/week-29.html"
     },
     {
       "week": 30,
@@ -2729,7 +2758,8 @@
           ],
           "resources": []
         }
-      }
+      },
+      "workbook": "workbooks/week-30.html"
     },
     {
       "week": 31,
@@ -2821,7 +2851,8 @@
           ],
           "resources": []
         }
-      }
+      },
+      "workbook": "workbooks/week-31.html"
     },
     {
       "week": 32,
@@ -2911,7 +2942,8 @@
           ]
         }
       },
-      "capstoneTitle": "Mock system designs for internal ops automation"
+      "capstoneTitle": "Mock system designs for internal ops automation",
+      "workbook": "workbooks/week-32.html"
     },
     {
       "week": 33,
@@ -2994,7 +3026,8 @@
           ],
           "resources": []
         }
-      }
+      },
+      "workbook": "workbooks/week-33.html"
     },
     {
       "week": 34,
@@ -3077,7 +3110,8 @@
           ],
           "resources": []
         }
-      }
+      },
+      "workbook": "workbooks/week-34.html"
     },
     {
       "week": 35,
@@ -3160,7 +3194,8 @@
           ],
           "resources": []
         }
-      }
+      },
+      "workbook": "workbooks/week-35.html"
     },
     {
       "week": 36,
@@ -3250,7 +3285,8 @@
           ]
         }
       },
-      "capstoneTitle": "Portfolio walkthrough + apply tracker"
+      "capstoneTitle": "Portfolio walkthrough + apply tracker",
+      "workbook": "workbooks/week-36.html"
     }
   ]
 }

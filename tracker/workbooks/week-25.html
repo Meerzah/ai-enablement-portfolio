@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Week 25 workbook — AI Systems roadmap</title>
+  <style>
+:root {
+  --bg:#0d1117;--surface:#161b22;--surface2:#1c2129;--border:#30363d;
+  --text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--success:#3fb950;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 64px}
+.top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.top a{color:var(--accent);text-decoration:none;font-size:.9rem}
+.top a:hover{text-decoration:underline}
+h1{font-size:1.35rem;margin:6px 0 4px}
+.sub{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.card h2{font-size:.95rem;margin-bottom:8px;color:var(--accent)}
+.steps{margin:0 0 12px 18px;color:var(--muted);font-size:.88rem}
+.steps li{margin-bottom:4px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:.85rem;margin-bottom:4px;color:var(--muted)}
+.field input,.field textarea{width:100%;background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;color:var(--text);padding:8px 10px;font:inherit;font-size:.9rem}
+.field textarea{min-height:88px;resize:vertical}
+.links{margin-top:10px;font-size:.85rem}
+.links a{color:var(--accent);margin-right:12px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+button{background:var(--surface2);border:1px solid var(--border);color:var(--text);
+  padding:8px 14px;border-radius:8px;cursor:pointer;font:inherit;font-size:.88rem}
+button:hover{border-color:var(--accent)}
+button.primary{border-color:var(--accent);color:var(--accent)}
+.saved{font-size:12px;color:var(--success);margin-left:8px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <a href="../index.html">← Dashboard</a>
+      <a href="../../phases/phase-3/README.md" target="_blank" rel="noopener">Phase guide</a>
+    </div>
+    <p style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">Week 25 workbook</p>
+    <h1>Metrics baseline + adoption dashboard</h1>
+    
+    <p class="sub">Fill in each section below. Progress auto-saves in this browser. Copy finished output into <code>study-notes/weeks/</code> when ready to commit.</p>
+    <div class="actions">
+      <button type="button" class="primary" id="copy-md">Copy as Markdown</button>
+      <button type="button" id="clear-week">Clear saved draft</button>
+      <span class="saved" id="save-status"></span>
+    </div>
+    <section class="card" id="mon">
+  <h2>Monday — Friction</h2>
+  <p class="sub" style="margin-bottom:10px">No visibility into automation value.</p>
+  <ul class='steps'><li>What can&#x27;t you measure today?</li><li>Gap list for leadership story</li></ul>
+  <div class="field">
+  <label for="notes">Your output for today</label>
+  <textarea id="notes" data-key="w25-mon-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
+</div>
+  
+</section><section class="card" id="tue">
+  <h2>Tuesday — Workflow</h2>
+  <p class="sub" style="margin-bottom:10px">Adoption dashboard data model.</p>
+  <ul class='steps'><li>Read projects/05-adoption-dashboard/README.md</li><li>Events: query, approval, grant, failure</li><li>BigQuery or Logging sink</li></ul>
+  <div class="field">
+  <label for="notes">Your output for today</label>
+  <textarea id="notes" data-key="w25-tue-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
+</div>
+  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">projects/05-adoption-dashboard/</a></div>
+</section><section class="card" id="wed">
+  <h2>Wednesday — Identity</h2>
+  <p class="sub" style="margin-bottom:10px">PII in metrics.</p>
+  <ul class='steps'><li>Hash user IDs in logs</li><li>Aggregate only for dashboards</li></ul>
+  <div class="field">
+  <label for="notes">Your output for today</label>
+  <textarea id="notes" data-key="w25-wed-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
+</div>
+  
+</section><section class="card" id="thu">
+  <h2>Thursday — Agent</h2>
+  <p class="sub" style="margin-bottom:10px">Log agent sessions for dashboard.</p>
+  <ul class='steps'><li>Schema: timestamp, tools, outcome, duration</li></ul>
+  <div class="field">
+  <label for="notes">Your output for today</label>
+  <textarea id="notes" data-key="w25-thu-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
+</div>
+  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">projects/05-adoption-dashboard/</a></div>
+</section><section class="card" id="fri">
+  <h2>Friday — Measure</h2>
+  <p class="sub" style="margin-bottom:10px">Hours saved calculation.</p>
+  <ul class='steps'><li>Formula: (manual_min - automated_min) * volume</li><li>Document assumptions — real volume only</li></ul>
+  <div class="field">
+  <label for="notes">Your output for today</label>
+  <textarea id="notes" data-key="w25-fri-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
+</div>
+  
+</section><section class="card" id="sat">
+  <h2>Saturday — Prove</h2>
+  <p class="sub" style="margin-bottom:10px">Metrics one-pager.</p>
+  <ul class='steps'><li>study-notes/metrics-baseline.md</li><li>3 metrics you can collect this quarter</li></ul>
+  <div class="field">
+  <label for="notes">Your output for today</label>
+  <textarea id="notes" data-key="w25-sat-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
+</div>
+  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">projects/05-adoption-dashboard/</a> <a href="https://meerzah.github.io/ai-systems-portfolio/projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">→ Prove: projects/05-adoption-dashboard/</a></div>
+</section><section class="card" id="sun">
+  <h2>Sunday — Prove</h2>
+  <p class="sub" style="margin-bottom:10px">Consulting offer (a) outline.</p>
+  <ul class='steps'><li>Okta JML audit — scope from CONTEXT.md</li><li>Fixed-fee structure draft</li></ul>
+  <div class="field">
+  <label for="notes">Your output for today</label>
+  <textarea id="notes" data-key="w25-sun-notes" placeholder="Write findings, diagrams, and decisions here."></textarea>
+</div>
+  <div class='links'><strong style='color:var(--muted);font-size:12px'>Open: </strong><a href="https://meerzah.github.io/ai-systems-portfolio/CONTEXT.md" target="_blank" rel="noopener">CONTEXT.md</a> <a href="https://meerzah.github.io/ai-systems-portfolio/projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">→ Prove: projects/05-adoption-dashboard/</a></div>
+</section>
+  </div>
+  <script>
+    const WEEK = 25;
+    const PREFIX = `workbook-w${WEEK}-`;
+    const status = document.getElementById('save-status');
+
+    document.querySelectorAll('[data-key]').forEach(el => {
+      const key = PREFIX + el.id;
+      const saved = localStorage.getItem(key);
+      if (saved) el.value = saved;
+      el.addEventListener('input', () => {
+        localStorage.setItem(key, el.value);
+        status.textContent = 'Saved';
+        setTimeout(() => { status.textContent = ''; }, 1500);
+      });
+    });
+
+    document.getElementById('clear-week').onclick = () => {
+      if (!confirm('Clear all saved fields for week ' + WEEK + '?')) return;
+      document.querySelectorAll('[data-key]').forEach(el => {
+        localStorage.removeItem(PREFIX + el.id);
+        el.value = '';
+      });
+    };
+
+    document.getElementById('copy-md').onclick = () => {
+      const lines = ['# Week 25: Metrics baseline + adoption dashboard', ''];
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const label = el.previousElementSibling?.textContent || el.id;
+        lines.push('## ' + label, el.value || '(empty)', '');
+      });
+      navigator.clipboard.writeText(lines.join('\n')).then(() => {
+        status.textContent = 'Copied to clipboard';
+      });
+    };
+  </script>
+</body>
+</html>

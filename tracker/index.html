@@ -53,6 +53,20 @@
     .capstone { border-left: 3px solid var(--purple); padding-left: 12px; margin-top: 8px; font-size: .9rem; }
     .prove-link { display: inline-block; margin: 8px 0; padding: 8px 12px; border-radius: 8px; background: var(--surface2); border: 1px solid var(--accent); color: var(--accent); text-decoration: none; font-size: .88rem; }
     .prove-link:hover { background: #1f3a5f; }
+    .workbook-cta {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+      margin-bottom: 14px; padding: 12px 14px; border-radius: var(--radius);
+      background: #1f3a5f; border: 1px solid var(--today-border);
+    }
+    .workbook-cta a {
+      display: inline-block; padding: 10px 16px; border-radius: 8px;
+      background: var(--accent); color: #0d1117; text-decoration: none; font-weight: 600; font-size: .9rem;
+    }
+    .workbook-cta a:hover { filter: brightness(1.08); }
+    .workbook-cta span { font-size: .85rem; color: var(--muted); flex: 1; min-width: 200px; }
+    .how-it-works { font-size: .88rem; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
+    .how-it-works strong { color: var(--text); }
+    .resource-links a { color: var(--accent); margin-right: 10px; }
     .unit-list { list-style: none; }
     .unit-list li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: .9rem; }
     .unit-list li:last-child { border-bottom: none; }
@@ -86,6 +100,7 @@
 
     <div class="card">
       <h2>This week</h2>
+      <p class="how-it-works"><strong>How to use this:</strong> Open the <strong>week workbook</strong> — fill-in worksheets with real outputs. Use this page to track daily completion. Copy finished work into <code>study-notes/weeks/</code> and commit.</p>
       <div class="week-nav">
         <button type="button" id="prev-week">←</button>
         <select id="week-select"></select>
@@ -93,11 +108,12 @@
         <span class="pill" id="week-type-pill"></span>
       </div>
       <p id="week-title" style="margin-bottom:12px;font-size:.95rem"></p>
+      <div id="workbook-cta"></div>
       <div id="capstone-banner"></div>
       <div id="days"></div>
     </div>
 
-    <footer>Progress saved in browser localStorage · <a href="../">Home</a> · <a href="../projects/01-it-helpdesk-agent/">Projects</a></footer>
+    <footer>Progress saved in browser localStorage · <a href="../">Home</a> · <a href="workbooks/week-01.html">Week 1 workbook</a> · <a href="../study-notes/weeks/README.md">Study outputs</a></footer>
   </div>
 
   <script>
@@ -112,10 +128,48 @@
 
     let progress = {}, weeksData = {}, monthsData = {};
     let currentWeek = 1;
+    let pagesBase = "";
+    let githubBase = "";
 
     function storageKey(week, day) { return `aisystems-w${week}-${day}`; }
     function loadChecks(week, day) { return localStorage.getItem(storageKey(week, day)) === "1"; }
     function saveCheck(week, day, val) { localStorage.setItem(storageKey(week, day), val ? "1" : "0"); }
+
+    function linkBase() {
+      const local = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+      return local ? ".." : pagesBase;
+    }
+
+    function resolveHref(raw) {
+      if (!raw) return null;
+      let p = raw.trim();
+      if (p.includes("(") && !p.includes("/")) return null;
+      if (p.startsWith("http")) return p;
+      p = p.split(/\s+\+/)[0].split(/\s+/)[0];
+      const base = linkBase();
+      if (/\.(md|html|json|py|tsx?|csv)$/i.test(p)) return `${base}/${p}`;
+      if (p.startsWith("tracker/")) return `${base}/${p}`;
+      if (p.includes("/")) return `${base}/${p.replace(/\/$/, "")}/README.md`;
+      if (p.endsWith(".md")) return `${base}/${p}`;
+      return null;
+    }
+
+    function linkHtml(raw, label) {
+      const href = resolveHref(raw);
+      const text = label || raw;
+      if (!href) return `<span>${text}</span>`;
+      return `<a href="${href}" target="_blank" rel="noopener">${text}</a>`;
+    }
+
+    function parseCapstoneLinks(text) {
+      if (!text) return "";
+      const parts = text.split(/\s+\+\s+/);
+      return parts.map(part => {
+        const href = resolveHref(part);
+        if (href) return `<a href="${href}" target="_blank" rel="noopener" style="color:var(--purple)">${part}</a>`;
+        return part;
+      }).join(" + ");
+    }
 
     async function load() {
       [progress, weeksData, monthsData] = await Promise.all([
@@ -124,6 +178,8 @@
         fetch("months.json").then(r => r.json())
       ]);
       currentWeek = progress.currentWeek || 1;
+      pagesBase = (progress.pagesBase || "..").replace(/\/$/, "");
+      githubBase = `https://github.com/${progress.repoName || "Meerzah/ai-systems-portfolio"}/blob/main`;
       renderHeader();
       renderSpine();
       renderUnits();
@@ -154,15 +210,18 @@
       document.getElementById("unit-list").innerHTML = (progress.units || []).map(u => {
         const isActive = u.id === cur;
         const deliverables = (u.deliverables || []).map(d => `<li>${d}</li>`).join("");
-        const artifacts = (u.artifacts || []).map(a =>
-          `<a href="../${a}" style="color:var(--accent);margin-right:8px">${a}</a>`
-        ).join("");
+        const artifacts = (u.artifacts || []).map(a => {
+          const href = resolveHref(a);
+          return href
+            ? `<a href="${href}" target="_blank" rel="noopener" style="color:var(--accent);margin-right:8px">${a}</a>`
+            : `<span style="color:var(--muted);margin-right:8px">${a}</span>`;
+        }).join("");
         const detail = isActive && (deliverables || u.capstone) ? `
           <div class="unit-detail">
             <div style="color:var(--muted);margin-bottom:4px">${u.focus}</div>
             ${deliverables ? `<strong style="font-size:12px">Deliverables</strong><ul>${deliverables}</ul>` : ""}
-            ${u.capstone ? `<div class="unit-capstone">Capstone: ${u.capstone}</div>` : ""}
-            ${artifacts ? `<div class="unit-artifacts">Artifacts: ${artifacts}</div>` : ""}
+            ${u.capstone ? `<div class="unit-capstone">Capstone: ${parseCapstoneLinks(u.capstone)}</div>` : ""}
+            ${artifacts ? `<div class="unit-artifacts">Open: ${artifacts}</div>` : ""}
           </div>` : `<br><span style="color:var(--muted);font-size:12px">${u.focus}</span>`;
         return `<li class="${isActive ? 'active' : ''}"><strong>Unit ${u.id}</strong> (W${u.weeks}) — ${u.title}${detail}</li>`;
       }).join("");
@@ -182,15 +241,21 @@
     }
 
     function linkResource(r) {
-      if (r.startsWith("http")) return `<a href="${r}" style="color:var(--accent)">${r}</a>`;
-      if (r.includes("/") || r.endsWith(".md")) return `<a href="../${r}" style="color:var(--accent)">${r}</a>`;
-      return r;
+      return linkHtml(r, r);
     }
 
     function renderWeek(n) {
       const w = weeksData.weeks.find(x => x.week === n);
       if (!w) return;
       document.getElementById("week-title").textContent = w.title + (w.capstoneTitle ? ` — Capstone: ${w.capstoneTitle}` : "");
+
+      const wb = document.getElementById("workbook-cta");
+      if (w.workbook) {
+        wb.innerHTML = `<div class="workbook-cta">
+          <a href="${w.workbook}">Open Week ${n} workbook →</a>
+          <span>Fill-in worksheets for Mon–Sun. Auto-saves in browser. Copy to study-notes when done.</span>
+        </div>`;
+      } else wb.innerHTML = "";
       const typePill = document.getElementById("week-type-pill");
       if (w.capstoneWeek) { typePill.textContent = "Capstone week"; typePill.className = "pill accent"; }
       else if (w.interviewPrep) { typePill.textContent = "Interview prep Fri"; typePill.className = "pill warn"; }
@@ -218,8 +283,8 @@
             <div class="day-body">
               <p class="guide">${d.guide || ""}</p>
               ${d.steps?.length ? `<ul class="steps">${d.steps.map(s=>`<li>${s}</li>`).join("")}</ul>` : ""}
-              ${d.proveLink ? `<a class="prove-link" href="../${d.proveLink}">→ Prove artifact: ${d.proveLink}</a>` : ""}
-              ${d.resources?.length ? `<p style="font-size:12px;color:var(--muted);margin-top:8px">Resources: ${d.resources.map(linkResource).join(", ")}</p>` : ""}
+              ${d.proveLink ? `<a class="prove-link" href="${resolveHref(d.proveLink) || '#'}" target="_blank" rel="noopener">→ Open: ${d.proveLink}</a>` : ""}
+              ${d.resources?.length ? `<p class="resource-links" style="font-size:12px;color:var(--muted);margin-top:8px">Resources: ${d.resources.map(linkResource).join(" ")}</p>` : ""}
               <label class="check-row"><input type="checkbox" data-w="${n}" data-d="${dk}" ${checked?"checked":""} /> Mark complete</label>
             </div>
           </div>`;

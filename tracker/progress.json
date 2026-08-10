@@ -27,14 +27,18 @@
       "weeks": "1–4",
       "title": "Friction map + first workflow",
       "focus": "Service desk ticket counts → pick access OR triage candidate → workflow diagram",
-      "capstone": "study-notes/week-01-friction-inventory.md + workflow diagram",
+      "capstone": "study-notes/weeks/week-01-friction-inventory.md",
       "deliverables": [
         "Top 3 frictions with real ticket counts",
         "One workflow diagram (intake → HITL → action)",
         "Baseline metrics plan (no fake %)",
         "Run helpdesk agent — 5 test queries logged"
       ],
-      "artifacts": ["study-notes/week-01-friction-inventory.md", "projects/01-it-helpdesk-agent/"]
+      "artifacts": [
+        "tracker/workbooks/week-01.html",
+        "study-notes/weeks/week-01-friction-inventory.md",
+        "projects/01-it-helpdesk-agent/README.md"
+      ]
     },
     {
       "id": 2,

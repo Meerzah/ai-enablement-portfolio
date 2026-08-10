@@ -108,6 +108,7 @@ def build_week(week: int) -> dict:
         "month": month_num,
         "capstoneWeek": week in CAPSTONE_WEEKS,
         "interviewPrep": week >= 30,
+        "workbook": f"workbooks/week-{week:02d}.html",
     }
 
     if week in CAPSTONE_WEEKS:
