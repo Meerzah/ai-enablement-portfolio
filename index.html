@@ -4,33 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI Systems / Agentic Ops Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0d1117; --surface: #161b22; --border: #30363d;
-      --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
-      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --bg: #f6f5f2; --surface: #fff; --ink: #141414; --muted: #6b6b6b;
+      --line: #e6e4df; --accent: #0d7377;
+      --font: "DM Sans", system-ui, sans-serif;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: var(--font); background: var(--bg); color: var(--text);
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      padding: 24px;
+      font-family: var(--font); background:
+        radial-gradient(900px 420px at 10% -10%, #e8f4f4 0%, transparent 55%),
+        radial-gradient(700px 360px at 100% 0%, #f1efe8 0%, transparent 50%),
+        var(--bg);
+      color: var(--ink); min-height: 100vh;
+      display: flex; align-items: center; justify-content: center; padding: 24px;
     }
     .card {
       max-width: 560px; width: 100%; background: var(--surface);
-      border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px;
+      border: 1px solid var(--line); border-radius: 18px; padding: 36px 32px;
+      box-shadow: 0 1px 2px rgba(20,20,20,.04), 0 12px 32px rgba(20,20,20,.05);
     }
-    .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
-    h1 { font-size: 1.5rem; margin: 8px 0 6px; font-weight: 650; }
-    .subtitle { color: var(--muted); font-size: .95rem; margin-bottom: 28px; line-height: 1.5; }
+    .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; }
+    h1 { font-size: 1.7rem; margin: 10px 0 8px; font-weight: 700; letter-spacing: -.03em; line-height: 1.2; }
+    .subtitle { color: var(--muted); font-size: .98rem; margin-bottom: 28px; line-height: 1.5; }
     nav { display: flex; flex-direction: column; gap: 10px; }
     a.nav-link {
-      display: block; padding: 14px 16px; border-radius: 8px;
-      border: 1px solid var(--border); color: var(--text); text-decoration: none;
-      transition: border-color .15s;
+      display: block; padding: 16px 18px; border-radius: 14px;
+      border: 1px solid var(--line); color: var(--ink); text-decoration: none; background: #faf9f6;
+      transition: border-color .15s, background .15s;
     }
-    a.nav-link:hover { border-color: var(--accent); }
-    a.nav-link strong { display: block; color: var(--accent); margin-bottom: 2px; }
+    a.nav-link:hover { border-color: var(--accent); background: #e6f3f3; }
+    a.nav-link strong { display: block; color: var(--accent); margin-bottom: 3px; font-size: .95rem; }
     a.nav-link span { font-size: .85rem; color: var(--muted); }
     footer { margin-top: 24px; font-size: 12px; color: var(--muted); text-align: center; }
     footer a { color: var(--accent); }
@@ -40,27 +47,27 @@
   <div class="card">
     <p class="eyebrow">Meerzah · AI Systems portfolio</p>
     <h1>Agentic ops, identity-as-code &amp; cloud delivery</h1>
-    <p class="subtitle">Weekly themes → mini-projects → flagship Agentic Ops Control Plane. Okta Terraform, GCP IaC, MCP, HITL, evals.</p>
+    <p class="subtitle">Weekly themes with study, resources, and build guides — culminating in a flagship Agentic Ops Control Plane.</p>
     <nav>
       <a class="nav-link" href="tracker/">
         <strong>Weekly dashboard</strong>
-        <span>36-week themes · M1–M8 products · flagship capstone</span>
+        <span>Study · resources · build · ship for each week</span>
+      </a>
+      <a class="nav-link" href="tracker/workbooks/week-01.html">
+        <strong>Week 1 guide</strong>
+        <span>Curriculum + day-by-day steps for the helpdesk agent</span>
       </a>
       <a class="nav-link" href="projects/08-capstone-ops-agent/">
         <strong>Flagship control plane</strong>
-        <span>Hiring-manager demo integrating identity, agents, and delivery</span>
+        <span>End-to-end hiring-manager demo</span>
       </a>
       <a class="nav-link" href="projects/11-okta-iac/">
         <strong>Okta Identity-as-Code</strong>
-        <span>Terraform groups, apps, policies — sandbox topology</span>
-      </a>
-      <a class="nav-link" href="projects/10-platform-foundation/">
-        <strong>Platform foundation</strong>
-        <span>GCP Terraform + CI path for Cloud Run agents</span>
+        <span>Terraform groups, apps, policies</span>
       </a>
       <a class="nav-link" href="interview-prep/">
         <strong>Interview prep</strong>
-        <span>System design templates + practice answers</span>
+        <span>System design templates + answers</span>
       </a>
     </nav>
     <footer>

@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from daily_plans import build_daily_plan
+from week_guides import get_guide
 from week_plans import get_week_plan
 
 OUT = Path(__file__).parent / "weeks.json"
@@ -19,6 +20,7 @@ def build_week(week: int) -> dict:
 
     month = min((week - 1) // 4 + 1, 9)
     mp = plan["miniProject"]
+    guide = get_guide(week)
 
     w: dict = {
         "week": week,
@@ -28,6 +30,10 @@ def build_week(week: int) -> dict:
         "theme": plan.get("theme", plan["title"]),
         "learn": plan.get("learn", ""),
         "feeds": plan.get("feeds", mp.get("feeds", [])),
+        "objectives": guide["objectives"],
+        "study": guide["study"],
+        "resources": guide["resources"],
+        "timeHint": guide["timeHint"],
         "capstoneWeek": week in {21, 22, 23, 24},
         "interviewPrep": week >= 29,
         "title": plan["title"],

@@ -1,30 +1,32 @@
 # Week 1 — Friction inventory
 
-> Copy content from the [Week 1 workbook](https://meerzah.github.io/ai-systems-portfolio/tracker/workbooks/week-01.html) when complete, or fill in directly here and commit.
+**Theme:** Ops friction → agent scope  
+**Project:** `projects/01-it-helpdesk-agent/`
 
-## Top 3 frictions
+Use this before building. Goal: decide what the agent should answer vs escalate.
 
-| Rank | Category | Volume (30d) | Avg minutes | Notes |
-|------|----------|--------------|-------------|-------|
-| 1 | | | | |
-| 2 | | | | |
-| 3 | | | | |
+## High-volume questions (fill 5+)
 
-## Chosen automation candidate
+| # | Question / request | Volume (guess OK) | Agent answer? | Escalate? | Notes |
+|---|--------------------|-------------------|---------------|-----------|-------|
+| 1 | | | Y/N | Y/N | |
+| 2 | | | Y/N | Y/N | |
+| 3 | | | Y/N | Y/N | |
+| 4 | | | Y/N | Y/N | |
+| 5 | | | Y/N | Y/N | |
 
-**Pick (one):** access request OR ticket triage
+## Runbooks to write this week
 
-**Why this one:**
+1. _________________________________ (e.g. VPN)
+2. _________________________________ (e.g. SSO / MDM)
 
-## Workflow link
+## Scope rule (one sentence)
 
-See `week-02-workflow.md` (Tue diagram) or paste Mermaid below:
+> The agent may _________________________________; it must escalate _________________________________.
 
-```mermaid
-flowchart LR
-  intake --> validate --> approve --> execute
-```
+## Study checklist
 
-## Portfolio narrative (1 paragraph)
-
-Why this candidate fits your AI Systems story:
+- [ ] Read `projects/01-it-helpdesk-agent/README.md`
+- [ ] Skim Google ADK docs (tool-calling overview)
+- [ ] Skim MCP intro
+- [ ] Complete table above before coding

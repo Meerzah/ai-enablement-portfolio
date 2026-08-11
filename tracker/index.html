@@ -3,144 +3,226 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Systems / Agentic Ops Roadmap</title>
+  <title>AI Systems Roadmap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0d1117; --surface: #161b22; --surface2: #1c2129; --border: #30363d;
-      --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
-      --today: #1f3a5f; --today-border: #388bfd;
-      --success: #3fb950; --warn: #d29922; --purple: #a371f7; --orange: #f0883e;
-      --radius: 10px; --font: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --bg: #f6f5f2;
+      --surface: #ffffff;
+      --ink: #141414;
+      --muted: #6b6b6b;
+      --line: #e6e4df;
+      --accent: #0d7377;
+      --accent-soft: #e6f3f3;
+      --warn: #9a6b2f;
+      --radius: 14px;
+      --shadow: 0 1px 2px rgba(20,20,20,.04), 0 8px 24px rgba(20,20,20,.04);
+      --font: "DM Sans", system-ui, sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, monospace;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.55; }
-    .wrap { max-width: 720px; margin: 0 auto; padding: 20px 16px 64px; }
-    .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
-    h1 { font-size: 1.45rem; font-weight: 650; margin: 4px 0 6px; }
-    .subtitle { color: var(--muted); font-size: .95rem; margin-bottom: 16px; }
-    .meta-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-    .pill { font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); }
-    .pill.accent { border-color: var(--accent); color: var(--accent); }
-    .pill.warn { border-color: var(--warn); color: var(--warn); }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 14px; }
-    .card h2 { font-size: .85rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 10px; }
-    .project-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; background: var(--surface2); }
-    .project-card h3 { font-size: 1rem; margin-bottom: 10px; color: var(--accent); }
-    .project-card .phase-tag { font-size: 11px; color: var(--warn); margin-bottom: 8px; display: inline-block; }
-    .project-card .phase-tag.capstone { color: var(--purple); }
-    .project-card .phase-tag.portfolio { color: var(--success); }
-    .project-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0; }
-    .project-links a {
-      display: inline-block; padding: 10px 14px; border-radius: 8px;
-      border: 1px solid var(--accent); color: var(--accent); text-decoration: none; font-weight: 600; font-size: .88rem;
+    body {
+      font-family: var(--font);
+      background:
+        radial-gradient(900px 420px at 10% -10%, #e8f4f4 0%, transparent 55%),
+        radial-gradient(700px 360px at 100% 0%, #f1efe8 0%, transparent 50%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      min-height: 100vh;
     }
-    .project-links a.primary { background: var(--accent); color: #0d1117; }
-    .program-grid { display: grid; gap: 8px; }
-    .program-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; font-size: .88rem; }
-    .program-item strong { color: var(--accent); }
-    .week-nav { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
-    .week-nav button { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 6px 12px; border-radius: 8px; cursor: pointer; }
-    .week-nav button:hover { border-color: var(--accent); }
-    .week-nav select { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 6px 10px; border-radius: 8px; }
-    .day-block { border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; }
-    .day-block.today { border-color: var(--today-border); background: var(--today); }
-    .day-head { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: var(--surface2); cursor: pointer; }
-    .day-block.today .day-head { background: #24364f; }
-    .day-name { font-weight: 600; min-width: 36px; text-transform: capitalize; }
-    .section-tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--bg); color: var(--purple); }
-    .section-tag.friction { color: var(--orange); }
-    .section-tag.workflow { color: var(--accent); }
-    .section-tag.identity { color: var(--success); }
-    .section-tag.agent { color: var(--purple); }
-    .section-tag.measure { color: var(--warn); }
-    .section-tag.prove { color: #ff7b72; }
-    .day-body { padding: 12px 14px 14px; display: none; border-top: 1px solid var(--border); }
-    .day-block.open .day-body { display: block; }
-    .guide { margin-bottom: 10px; font-size: .92rem; }
-    .steps { margin: 0 0 10px 18px; font-size: .88rem; color: var(--muted); }
-    .steps li { margin-bottom: 4px; }
-    .check-row { display: flex; align-items: flex-start; gap: 8px; margin-top: 8px; font-size: .88rem; }
-    .check-row input { margin-top: 4px; accent-color: var(--accent); }
-    .capstone { border-left: 3px solid var(--purple); padding-left: 12px; margin-top: 8px; font-size: .9rem; }
-    .prove-link { display: inline-block; margin: 8px 0; padding: 8px 12px; border-radius: 8px; background: var(--surface2); border: 1px solid var(--accent); color: var(--accent); text-decoration: none; font-size: .88rem; }
-    .prove-link:hover { background: #1f3a5f; }
-    .workbook-cta {
-      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
-      margin-bottom: 14px; padding: 12px 14px; border-radius: var(--radius);
-      background: #1f3a5f; border: 1px solid var(--today-border);
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .shell { max-width: 980px; margin: 0 auto; padding: 28px 20px 72px; }
+    header.top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 16px; flex-wrap: wrap; margin-bottom: 28px;
     }
-    .workbook-cta a {
-      display: inline-block; padding: 10px 16px; border-radius: 8px;
-      background: var(--accent); color: #0d1117; text-decoration: none; font-weight: 600; font-size: .9rem;
+    .brand { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+    h1 { font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 700; letter-spacing: -.03em; margin-top: 6px; }
+    .sub { color: var(--muted); margin-top: 6px; max-width: 46ch; font-size: .95rem; }
+    .top-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .top-links a {
+      font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none;
     }
-    .workbook-cta a:hover { filter: brightness(1.08); }
-    .workbook-cta span { font-size: .85rem; color: var(--muted); flex: 1; min-width: 200px; }
-    .how-it-works { font-size: .88rem; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
-    .how-it-works strong { color: var(--text); }
-    .resource-links a { color: var(--accent); margin-right: 10px; }
-    .unit-list { list-style: none; }
-    .unit-list li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: .9rem; }
-    .unit-list li:last-child { border-bottom: none; }
-    .unit-list .active { color: var(--accent); }
-    .unit-list .active > strong { font-weight: 650; }
-    .unit-detail { margin-top: 8px; padding: 10px 12px; background: var(--surface2); border-radius: 8px; border: 1px solid var(--border); font-size: .85rem; }
-    .unit-detail ul { margin: 6px 0 0 18px; color: var(--muted); }
-    .unit-detail li { margin-bottom: 3px; }
-    .unit-capstone { margin-top: 8px; font-size: 12px; color: var(--purple); }
-    .unit-artifacts { margin-top: 6px; font-size: 12px; }
-    footer { margin-top: 24px; font-size: 12px; color: var(--muted); text-align: center; }
-    footer a { color: var(--accent); }
+    .top-links a:hover { border-color: var(--accent); color: var(--accent); }
+    .week-bar {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      padding: 12px 14px; background: var(--surface); border: 1px solid var(--line);
+      border-radius: 999px; box-shadow: var(--shadow); margin-bottom: 22px;
+    }
+    .week-bar button, .week-bar select {
+      font: inherit; border: 1px solid var(--line); background: var(--bg);
+      color: var(--ink); border-radius: 999px; padding: 8px 12px; cursor: pointer;
+    }
+    .week-bar button:hover { border-color: var(--accent); }
+    .week-bar select { min-width: 220px; }
+    .pill {
+      font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 999px;
+      background: var(--accent-soft); color: var(--accent);
+    }
+    .pill.muted { background: #f0efeb; color: var(--muted); }
+    .pill.warn { background: #f7efdf; color: var(--warn); }
+    .hero {
+      background: var(--surface); border: 1px solid var(--line); border-radius: calc(var(--radius) + 4px);
+      padding: 28px 28px 24px; box-shadow: var(--shadow); margin-bottom: 18px;
+    }
+    .hero .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .hero h2 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); letter-spacing: -.03em; line-height: 1.2; }
+    .hero .learn { margin-top: 10px; color: var(--muted); font-size: 1rem; max-width: 62ch; }
+    .hero .time { margin-top: 14px; font-size: 13px; color: var(--muted); font-family: var(--mono); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 11px 16px; border-radius: 999px; font-size: 14px; font-weight: 650;
+      border: 1px solid transparent; text-decoration: none; cursor: pointer;
+    }
+    .btn-primary { background: var(--ink); color: #fff; }
+    .btn-primary:hover { background: #000; text-decoration: none; }
+    .btn-ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+    .grid {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 14px; margin-bottom: 14px;
+    }
+    @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+    .panel {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 20px 22px; box-shadow: var(--shadow);
+    }
+    .panel h3 {
+      font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--muted); font-weight: 700; margin-bottom: 12px;
+    }
+    .panel ol, .panel ul { margin: 0 0 0 18px; color: var(--ink); font-size: .94rem; }
+    .panel li { margin-bottom: 8px; }
+    .panel li::marker { color: var(--accent); }
+    .resources { display: flex; flex-direction: column; gap: 8px; }
+    .res {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line);
+      background: var(--bg); text-decoration: none; color: var(--ink);
+    }
+    .res:hover { border-color: var(--accent); background: var(--accent-soft); text-decoration: none; }
+    .res strong { font-size: .92rem; font-weight: 650; }
+    .res span { font-size: 12px; color: var(--muted); font-family: var(--mono); }
+    .build-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    @media (max-width: 820px) { .build-grid { grid-template-columns: 1fr; } }
+    .check-list { list-style: none; margin: 0; }
+    .check-list li {
+      position: relative; padding: 10px 0 10px 28px; border-bottom: 1px solid var(--line);
+      font-size: .94rem; color: var(--ink);
+    }
+    .check-list li:last-child { border-bottom: none; }
+    .check-list li::before {
+      content: ""; position: absolute; left: 0; top: 14px; width: 14px; height: 14px;
+      border-radius: 4px; border: 1.5px solid #c9c6bf; background: #fff;
+    }
+    .path {
+      display: inline-block; margin-top: 4px; font-family: var(--mono); font-size: 12px;
+      color: var(--muted); background: var(--bg); padding: 4px 8px; border-radius: 6px;
+    }
+    .ship {
+      display: flex; align-items: center; gap: 10px; margin-top: 16px; padding-top: 14px;
+      border-top: 1px solid var(--line); font-size: .92rem; font-weight: 500;
+    }
+    .ship input { width: 18px; height: 18px; accent-color: var(--accent); }
+    .program {
+      margin-top: 8px; border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--surface); overflow: hidden;
+    }
+    .program summary {
+      cursor: pointer; list-style: none; padding: 16px 20px; font-weight: 650; font-size: .95rem;
+    }
+    .program summary::-webkit-details-marker { display: none; }
+    .program-body { padding: 0 20px 18px; display: grid; gap: 8px; }
+    .program-item {
+      display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+      padding: 12px 14px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line);
+      font-size: .88rem;
+    }
+    .program-item span { color: var(--muted); }
+    footer {
+      margin-top: 28px; text-align: center; color: var(--muted); font-size: 12px;
+    }
+    .feeds { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .feed {
+      font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      padding: 4px 8px; border-radius: 6px; background: var(--ink); color: #fff;
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <p class="eyebrow">Career roadmap</p>
-    <h1 id="title">Loading…</h1>
-    <p class="subtitle" id="subtitle"></p>
-    <div class="meta-row" id="meta-pills"></div>
-
-    <div class="card">
-      <h2>Program</h2>
-      <div class="program-grid" id="program-grid"></div>
-    </div>
-
-    <div class="card">
-      <h2>Current unit</h2>
-      <ul class="unit-list" id="unit-list"></ul>
-    </div>
-
-    <div class="card">
-      <h2>This week — mini project</h2>
-      <p class="how-it-works"><strong>One build per week.</strong> Open the project folder, ship the artifact, check <em>Done when</em>, commit to GitHub, then mark the week complete.</p>
-      <div class="week-nav">
-        <button type="button" id="prev-week">←</button>
-        <select id="week-select"></select>
-        <button type="button" id="next-week">→</button>
-        <span class="pill" id="week-type-pill"></span>
+  <div class="shell">
+    <header class="top">
+      <div>
+        <div class="brand">AI Systems · Agentic Ops</div>
+        <h1 id="title">Weekly roadmap</h1>
+        <p class="sub" id="subtitle">Theme → study → build → ship</p>
       </div>
-      <p id="week-title" style="margin-bottom:12px;font-size:.95rem"></p>
-      <div id="workbook-cta"></div>
-      <div id="capstone-banner"></div>
-      <div id="mini-project"></div>
+      <div class="top-links">
+        <a href="../">Home</a>
+        <a href="../CURRICULUM.md">Curriculum</a>
+        <a href="../projects/08-capstone-ops-agent/README.md">Flagship</a>
+      </div>
+    </header>
+
+    <div class="week-bar">
+      <button type="button" id="prev-week" aria-label="Previous week">←</button>
+      <select id="week-select" aria-label="Select week"></select>
+      <button type="button" id="next-week" aria-label="Next week">→</button>
+      <span class="pill" id="week-type-pill">Mini-project</span>
+      <span class="pill muted" id="progress-pill"></span>
     </div>
 
-    <footer>Progress saved in browser · <a href="../">Home</a> · <a href="../CURRICULUM.md">Curriculum</a> · <a href="../projects/08-capstone-ops-agent/README.md">Capstone</a></footer>
+    <section class="hero" id="hero"></section>
+
+    <div class="grid">
+      <section class="panel">
+        <h3>Study &amp; prep</h3>
+        <ol id="study-list"></ol>
+      </section>
+      <section class="panel">
+        <h3>Resources</h3>
+        <div class="resources" id="resource-list"></div>
+      </section>
+    </div>
+
+    <div class="build-grid">
+      <section class="panel">
+        <h3>Objectives</h3>
+        <ul class="check-list" id="objectives-list"></ul>
+      </section>
+      <section class="panel">
+        <h3>Build this week</h3>
+        <ul class="check-list" id="build-list"></ul>
+        <p class="path" id="project-path"></p>
+      </section>
+    </div>
+
+    <section class="panel" style="margin-bottom:14px">
+      <h3>Done when</h3>
+      <ul class="check-list" id="done-list"></ul>
+      <label class="ship">
+        <input type="checkbox" id="week-done" />
+        <span>Week shipped — committed to GitHub</span>
+      </label>
+    </section>
+
+    <details class="program">
+      <summary>Program map</summary>
+      <div class="program-body" id="program-grid"></div>
+    </details>
+
+    <footer>Progress saved in this browser · <a href="https://meerzah.github.io/ai-systems-portfolio/tracker/">Live dashboard</a></footer>
   </div>
 
   <script>
-    const SECTION_COLORS = {
-      friction: "friction", workflow: "workflow", identity: "identity",
-      agent: "agent", measure: "measure", prove: "prove"
-    };
-    const DAY_ORDER = ["mon","tue","wed","thu","fri","sat","sun"];
-    const DAY_LABELS = { mon:"Mon", tue:"Tue", wed:"Wed", thu:"Thu", fri:"Fri", sat:"Sat", sun:"Sun" };
-    const TODAY = new Date().getDay();
-    const TODAY_KEY = ["sun","mon","tue","wed","thu","fri","sat"][TODAY];
-
-    let progress = {}, weeksData = {}, monthsData = {};
+    let progress = {}, weeksData = {};
     let currentWeek = 1;
     let pagesBase = "";
-    let githubBase = "";
 
     function weekStorageKey(week) { return `aisystems-week-${week}-done`; }
     function loadWeekDone(week) { return localStorage.getItem(weekStorageKey(week)) === "1"; }
@@ -148,52 +230,42 @@
 
     function linkBase() {
       const local = location.hostname === "localhost" || location.hostname === "127.0.0.1";
-      return local ? ".." : pagesBase;
+      return local ? ".." : (pagesBase || "..").replace(/\/$/, "");
     }
 
     function resolveHref(raw) {
       if (!raw) return null;
-      let p = raw.trim();
-      if (p.includes("(") && !p.includes("/")) return null;
+      let p = String(raw).trim();
       if (p.startsWith("http")) return p;
-      p = p.split(/\s+\+/)[0].split(/\s+/)[0];
+      if (p.startsWith("../")) return p;
       const base = linkBase();
-      if (/\.(md|html|json|py|tsx?|csv)$/i.test(p)) return `${base}/${p}`;
-      if (p.startsWith("tracker/")) return `${base}/${p}`;
-      if (p.includes("/")) return `${base}/${p.replace(/\/$/, "")}/README.md`;
-      if (p.endsWith(".md")) return `${base}/${p}`;
+      if (/\.(md|html|json|py|yml|yaml|csv)$/i.test(p)) return `${base}/${p.replace(/^\.\.\//, "")}`;
+      if (p.includes("/")) {
+        const clean = p.replace(/\/$/, "").replace(/^\.\.\//, "");
+        if (/\.(md|html)$/i.test(clean)) return `${base}/${clean}`;
+        return `${base}/${clean}/README.md`;
+      }
       return null;
     }
 
-    function linkHtml(raw, label) {
-      const href = resolveHref(raw);
-      const text = label || raw;
-      if (!href) return `<span>${text}</span>`;
-      return `<a href="${href}" target="_blank" rel="noopener">${text}</a>`;
-    }
-
-    function parseCapstoneLinks(text) {
-      if (!text) return "";
-      const parts = text.split(/\s+\+\s+/);
-      return parts.map(part => {
-        const href = resolveHref(part);
-        if (href) return `<a href="${href}" target="_blank" rel="noopener" style="color:var(--purple)">${part}</a>`;
-        return part;
-      }).join(" + ");
+    function esc(s) {
+      return String(s || "").replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[c]));
     }
 
     async function load() {
-      [progress, weeksData, monthsData] = await Promise.all([
-        fetch("progress.json").then(r => r.json()),
-        fetch("weeks.json").then(r => r.json()),
-        fetch("months.json").then(r => r.json())
+      [progress, weeksData] = await Promise.all([
+        fetch("progress.json").then((r) => r.json()),
+        fetch("weeks.json").then((r) => r.json()),
       ]);
       currentWeek = progress.currentWeek || 1;
-      pagesBase = (progress.pagesBase || "..").replace(/\/$/, "");
-      githubBase = `https://github.com/${progress.repoName || "Meerzah/ai-systems-portfolio"}/blob/main`;
-      renderHeader();
+      pagesBase = (progress.pagesBase || "").replace(/\/$/, "");
+      document.getElementById("title").textContent = progress.title || "AI Systems Roadmap";
+      document.getElementById("subtitle").textContent = progress.subtitle || "";
+      document.getElementById("progress-pill").textContent =
+        `Week ${progress.currentWeek || 1} of ${progress.weeksTotal || 36}`;
       renderProgram();
-      renderUnits();
       renderWeekSelector();
       renderWeek(currentWeek);
       document.getElementById("prev-week").onclick = () => goWeek(currentWeek - 1);
@@ -201,128 +273,84 @@
       document.getElementById("week-select").onchange = (e) => goWeek(+e.target.value);
     }
 
-    function renderHeader() {
-      document.getElementById("title").textContent = progress.title;
-      document.getElementById("subtitle").textContent = progress.subtitle;
-      const pills = [progress.careerFocus,
-        `Week ${progress.currentWeek} · Phase ${progress.currentPhase}`, progress.currentUnitLabel];
-      document.getElementById("meta-pills").innerHTML = pills.map((p,i) =>
-        `<span class="pill ${i===0?'accent':''}">${p}</span>`).join("");
-    }
-
     function renderProgram() {
-      const items = progress.program || [];
-      document.getElementById("program-grid").innerHTML = items.map(p =>
-        `<div class="program-item"><strong>${p.label}</strong> (W${p.weeks})<br><span style="color:var(--muted);font-size:12px">${(p.competencies||[]).join(" · ")}</span></div>`
+      document.getElementById("program-grid").innerHTML = (progress.program || []).map((p) =>
+        `<div class="program-item"><strong>${esc(p.label)}</strong><span>W${esc(p.weeks)} · ${(p.competencies || []).join(" · ")}</span></div>`
       ).join("");
     }
 
-    function renderUnits() {
-      const cur = progress.currentUnit || 1;
-      document.getElementById("unit-list").innerHTML = (progress.units || []).map(u => {
-        const isActive = u.id === cur;
-        const deliverables = (u.deliverables || []).map(d => `<li>${d}</li>`).join("");
-        const artifacts = (u.artifacts || []).map(a => {
-          const href = resolveHref(a);
-          return href
-            ? `<a href="${href}" target="_blank" rel="noopener" style="color:var(--accent);margin-right:8px">${a}</a>`
-            : `<span style="color:var(--muted);margin-right:8px">${a}</span>`;
-        }).join("");
-        const detail = isActive && (deliverables || u.capstone) ? `
-          <div class="unit-detail">
-            <div style="color:var(--muted);margin-bottom:4px">${u.focus}</div>
-            ${deliverables ? `<strong style="font-size:12px">Deliverables</strong><ul>${deliverables}</ul>` : ""}
-            ${u.capstone ? `<div class="unit-capstone">Capstone: ${parseCapstoneLinks(u.capstone)}</div>` : ""}
-            ${artifacts ? `<div class="unit-artifacts">Open: ${artifacts}</div>` : ""}
-          </div>` : `<br><span style="color:var(--muted);font-size:12px">${u.focus}</span>`;
-        return `<li class="${isActive ? 'active' : ''}"><strong>Unit ${u.id}</strong> (W${u.weeks}) — ${u.title}${detail}</li>`;
-      }).join("");
-    }
-
     function renderWeekSelector() {
-      document.getElementById("week-select").innerHTML = weeksData.weeks.map(w =>
-        `<option value="${w.week}">Week ${w.week}${w.capstoneWeek ? ' ★ capstone' : ''}</option>`
+      document.getElementById("week-select").innerHTML = (weeksData.weeks || []).map((w) =>
+        `<option value="${w.week}">Week ${w.week} — ${esc(w.theme || w.title)}</option>`
       ).join("");
     }
 
     function goWeek(n) {
       n = Math.max(1, Math.min(36, n));
       currentWeek = n;
-      document.getElementById("week-select").value = n;
+      document.getElementById("week-select").value = String(n);
       renderWeek(n);
     }
 
-    function linkResource(r) {
-      return linkHtml(r, r);
+    function listHtml(items, ordered) {
+      const tag = ordered ? "ol" : "ul";
+      if (!items || !items.length) return `<${tag}><li>See project README</li></${tag}>`;
+      return items.map((x) => `<li>${esc(x)}</li>`).join("");
     }
 
     function renderWeek(n) {
-      const w = weeksData.weeks.find(x => x.week === n);
+      const w = (weeksData.weeks || []).find((x) => x.week === n);
       if (!w) return;
-      document.getElementById("week-title").textContent = w.title;
-
-      const wb = document.getElementById("workbook-cta");
-      if (w.workbook) {
-        wb.innerHTML = `<div class="workbook-cta">
-          <a href="${w.workbook}">Build sheet →</a>
-          <span>Track ship notes and blockers while you code.</span>
-        </div>`;
-      } else wb.innerHTML = "";
-
+      const mp = w.miniProject || {};
       const typePill = document.getElementById("week-type-pill");
-      if (w.phase === "capstone") { typePill.textContent = "Capstone build"; typePill.className = "pill accent"; }
-      else if (w.phase === "portfolio") { typePill.textContent = "Portfolio lane"; typePill.className = "pill warn"; }
+      if (w.phase === "capstone") { typePill.textContent = "Capstone"; typePill.className = "pill"; }
+      else if (w.phase === "portfolio") { typePill.textContent = "Portfolio"; typePill.className = "pill warn"; }
       else { typePill.textContent = "Mini-project"; typePill.className = "pill"; }
 
-      const capBanner = document.getElementById("capstone-banner");
-      if (w.phase === "capstone") {
-        capBanner.innerHTML = `<div class="capstone card" style="margin-bottom:12px"><strong>Month 6 capstone</strong> — integrate mini-projects into <a href="${resolveHref('projects/08-capstone-ops-agent/')}" target="_blank" rel="noopener" style="color:var(--purple)">projects/08-capstone-ops-agent/</a></div>`;
-      } else capBanner.innerHTML = "";
-
-      const mp = w.miniProject;
-      const done = loadWeekDone(n);
-      if (!mp) {
-        document.getElementById("mini-project").innerHTML = "";
-        return;
-      }
-
       const projectHref = resolveHref(mp.path);
-      const build = (mp.build || []).map(s => `<li>${s}</li>`).join("");
-      const doneWhen = (mp.doneWhen || []).map(s => `<li>${s}</li>`).join("");
+      const workbookHref = w.workbook || null;
+      const feeds = (w.feeds || mp.feeds || []).map((f) => `<span class="feed">${esc(f)}</span>`).join("");
 
-      const theme = w.theme || mp.theme || "";
-      const learn = w.learn || mp.learn || "";
-      const feeds = (w.feeds || mp.feeds || []).join(", ");
-
-      document.getElementById("mini-project").innerHTML = `
-        <div class="project-card">
-          <span class="phase-tag ${w.phase || 'mini'}">${w.phase || 'mini'} · ${mp.competency || w.competency || 'build'}</span>
-          <h3>${mp.name || w.title}</h3>
-          ${theme ? `<p style="font-size:.9rem;margin:0 0 6px"><strong style="color:var(--text)">Theme:</strong> <span style="color:var(--muted)">${theme}</span></p>` : ""}
-          ${learn ? `<p style="font-size:.85rem;color:var(--muted);margin:0 0 10px"><strong style="color:var(--text)">Learn:</strong> ${learn}</p>` : ""}
-          ${feeds ? `<p style="font-size:.8rem;color:var(--purple);margin:0 0 10px">Feeds: ${feeds}</p>` : ""}
-          <div class="project-links">
-            ${projectHref ? `<a class="primary" href="${projectHref}" target="_blank" rel="noopener">Open ${mp.path} →</a>` : ""}
-            ${w.workbook ? `<a href="${w.workbook}">Build sheet</a>` : ""}
-          </div>
-          <p style="font-size:.85rem;color:var(--muted);margin-bottom:8px"><strong style="color:var(--text)">Build this week</strong></p>
-          <ul class="steps">${build}</ul>
-          <p style="font-size:.85rem;color:var(--muted);margin:12px 0 8px"><strong style="color:var(--text)">Done when</strong></p>
-          <ul class="steps">${doneWhen}</ul>
-          <label class="check-row" style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border)">
-            <input type="checkbox" id="week-done" ${done ? "checked" : ""} />
-            Week ${n} shipped — committed to repo
-          </label>
+      document.getElementById("hero").innerHTML = `
+        <div class="meta">
+          <span class="pill muted">Week ${n}</span>
+          <span class="pill muted">${esc(w.competency || mp.competency || "")}</span>
+        </div>
+        <h2>${esc(w.theme || w.title)}</h2>
+        <p class="learn">${esc(w.learn || "")}</p>
+        <div class="feeds">${feeds}</div>
+        <p class="time">${esc(w.timeHint || progress.hoursPerWeek || "12–15 hrs")}</p>
+        <div class="hero-actions">
+          ${workbookHref ? `<a class="btn btn-primary" href="${esc(workbookHref)}">Open week guide →</a>` : ""}
+          ${projectHref ? `<a class="btn btn-ghost" href="${esc(projectHref)}" target="_blank" rel="noopener">Open project</a>` : ""}
         </div>`;
 
-      document.getElementById("week-done").addEventListener("change", (e) => {
+      document.getElementById("study-list").innerHTML = listHtml(w.study, true);
+      document.getElementById("objectives-list").innerHTML = listHtml(w.objectives, false);
+      document.getElementById("build-list").innerHTML = listHtml(mp.build, false);
+      document.getElementById("done-list").innerHTML = listHtml(mp.doneWhen, false);
+      document.getElementById("project-path").textContent = mp.path || "";
+
+      const resources = w.resources || [];
+      document.getElementById("resource-list").innerHTML = resources.length
+        ? resources.map((r) => {
+            const href = resolveHref(r.url) || r.url;
+            return `<a class="res" href="${esc(href)}" target="_blank" rel="noopener">
+              <strong>${esc(r.title)}</strong><span>open</span>
+            </a>`;
+          }).join("")
+        : `<div class="res"><strong>Curriculum</strong><span>CURRICULUM.md</span></div>`;
+
+      const done = loadWeekDone(n);
+      const box = document.getElementById("week-done");
+      box.checked = done;
+      box.onchange = (e) => {
         saveWeekDone(n, e.target.checked);
-        renderWeek(n);
-      });
+      };
     }
 
-    load().catch(err => {
-      document.getElementById("title").textContent = "Failed to load tracker data";
+    load().catch((err) => {
+      document.getElementById("title").textContent = "Failed to load";
       document.getElementById("subtitle").textContent = err.message;
     });
   </script>
