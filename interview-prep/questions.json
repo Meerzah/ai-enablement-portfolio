@@ -29,6 +29,27 @@
       "targetWeek": 24,
       "template": "/interview-prep/system-design-template.md",
       "platformTie": "WIF design + agentic ops case study"
+    },
+    {
+      "id": "okta-iac-scim-boundary",
+      "number": 4,
+      "title": "Design Okta-as-code with SCIM lifecycle",
+      "prompt": "Terraform manages groups, apps, and policies. HRIS drives joiner/mover/leaver via SCIM. Agents propose group membership changes with HITL. How do you prevent drift, avoid TF-managing all prod users, and keep agents scoped to IaC-known groups?",
+      "targetMonth": 8,
+      "targetWeek": 29,
+      "template": "/interview-prep/system-design-template.md",
+      "platformTie": "projects/11-okta-iac + CIPHER + capstone HITL",
+      "answerDraft": "/interview-prep/answers/okta-iac-scim-boundary.md"
+    },
+    {
+      "id": "agent-hosting-run-vs-gke",
+      "number": 5,
+      "title": "Cloud Run vs GKE for an ops agent platform",
+      "prompt": "Internal ops agent with FastAPI intake, MCP tools, HITL approvals, and eval harness. Choose Cloud Run vs GKE, justify identity (WIF), progressive delivery, and observability for LLM cost/latency. 500 RPS peak query traffic.",
+      "targetMonth": 7,
+      "targetWeek": 30,
+      "template": "/interview-prep/system-design-template.md",
+      "platformTie": "projects/10-platform-foundation + study-notes/cloud-platform/run-vs-gke.md"
     }
   ]
 }

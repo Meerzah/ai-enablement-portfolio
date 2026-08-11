@@ -84,9 +84,12 @@ function renderAMain(n) {
     </div>
     <div class="a-crumb">Week <span>${n}</span> · ${TD.escapeHtml(phase ? phase.label : "")} · ${TD.escapeHtml(w.competency || "")}</div>
     <h1>${TD.escapeHtml(w.title)}</h1>
+    ${w.theme ? `<p style="color:#a1a1aa;font-size:14px;margin:0 0 8px"><strong style="color:#e4e4e7">Theme:</strong> ${TD.escapeHtml(w.theme)}</p>` : ""}
+    ${w.learn ? `<p style="color:#71717a;font-size:13px;margin:0 0 12px"><strong style="color:#a1a1aa">Learn:</strong> ${TD.escapeHtml(w.learn)}</p>` : ""}
     <div class="a-tags">
       <span class="tag tag-accent">${TD.escapeHtml(TD.phaseLabel(w))}</span>
       <span class="tag">${TD.escapeHtml(TD.competencyLabel(w.competency || mp?.competency))}</span>
+      ${(w.feeds || []).map((f) => `<span class="tag">${TD.escapeHtml(f)}</span>`).join("")}
       <span class="tag">${TD.escapeHtml(TD.progress.hoursPerWeek || "12–15")} hrs/wk</span>
     </div>
     ${capstone}

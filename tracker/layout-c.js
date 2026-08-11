@@ -80,9 +80,12 @@ function renderCRight(n) {
   document.getElementById("c-right").innerHTML = `
     <div class="label">Week ${n} · ${TD.escapeHtml(w.competency || "")}</div>
     <h1>${TD.escapeHtml(w.title)}</h1>
+    ${w.theme ? `<p style="color:#a1a1aa;font-size:13px;margin:0 0 8px">Theme: ${TD.escapeHtml(w.theme)}</p>` : ""}
+    ${w.learn ? `<p style="color:#71717a;font-size:12px;margin:0 0 12px">Learn: ${TD.escapeHtml(w.learn)}</p>` : ""}
     <div class="a-tags" style="margin-bottom:16px">
       <span class="tag tag-accent">${TD.escapeHtml(TD.phaseLabel(w))}</span>
       <span class="tag">${TD.escapeHtml(TD.competencyLabel(w.competency))}</span>
+      ${(w.feeds || []).map((f) => `<span class="tag">${TD.escapeHtml(f)}</span>`).join("")}
     </div>
     <div class="a-actions" style="margin-bottom:16px">${TD.renderWeekActions(w)}</div>
     <div class="col-box" style="margin-bottom:12px"><h3>Build</h3><ul>${build || "<li>See README</li>"}</ul></div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 5 — Agent identity design (WIF / SPIFFE concepts)</title>
+<title>Week 5 — Okta topology as code — groups</title>
 <style>
 :root{
   --bg:#09090b;--surface:#111113;--surface2:#18181b;--border:#27272a;
@@ -90,16 +90,16 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   <aside class="side">
     <div>
       <label>Week 5 workbook</label>
-      <h2>Agent identity design (WIF / SPIFFE concepts)</h2>
+      <h2>Okta topology as code — groups</h2>
       <a class="back" href="../choose-layout.html">← Dashboard</a>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
-      <a class="primary" href="https://meerzah.github.io/ai-systems-portfolio/study-notes/wif-agent-identity-design.md" target="_blank" rel="noopener">Open project →</a>
+      <a class="primary" href="https://meerzah.github.io/ai-systems-portfolio/projects/11-okta-iac/README.md" target="_blank" rel="noopener">Open project →</a>
       <a href="https://github.com/Meerzah/ai-systems-portfolio.git" target="_blank" rel="noopener">Clone repo</a>
     </div>
   </aside>
@@ -115,7 +115,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   </main>
 </div>
 <script>
-const PLAN = {"week": 5, "title": "Agent identity design (WIF / SPIFFE concepts)", "path": "study-notes/wif-agent-identity-design.md", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/study-notes/wif-agent-identity-design.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Read GCP Agent Identity overview", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Update wif-agent-identity-design.md: human vs NHI vs agent principal", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Diagram: read-only MCP vs write via approved workflow", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Design doc updated", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Least-privilege table for capstone tools", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
+const PLAN = {"week": 5, "title": "Okta topology as code — groups", "path": "projects/11-okta-iac/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/11-okta-iac/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Scaffold providers.tf + modules/groups for sandbox Okta org", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Define app-access + role groups (e.g. agent-read-identity, role-it-approvers)", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Write docs/ACCESS-TOPOLOGY.md diagram", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "terraform plan succeeds against sandbox", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Groups module applied (or plan committed with apply notes)", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "ACCESS-TOPOLOGY.md committed", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

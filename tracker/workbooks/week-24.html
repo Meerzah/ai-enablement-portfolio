@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 24 — Capstone W4 — Deploy POC + case study</title>
+<title>Week 24 — Capstone W4 — Deliver cloud + identity</title>
 <style>
 :root{
   --bg:#09090b;--surface:#111113;--surface2:#18181b;--border:#27272a;
@@ -90,12 +90,12 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   <aside class="side">
     <div>
       <label>Week 24 workbook</label>
-      <h2>Capstone W4 — Deploy POC + case study</h2>
+      <h2>Capstone W4 — Deliver cloud + identity</h2>
       <a class="back" href="../choose-layout.html">← Dashboard</a>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -115,7 +115,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   </main>
 </div>
 <script>
-const PLAN = {"week": 24, "title": "Capstone W4 — Deploy POC + case study", "path": "projects/08-capstone-ops-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/08-capstone-ops-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Cloud Run deploy POC (or documented deploy script)", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "study-notes/capstone-case-study.md", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Update portfolio README", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Deploy instructions", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Case study with honest limits", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
+const PLAN = {"week": 24, "title": "Capstone W4 — Deliver cloud + identity", "path": "projects/08-capstone-ops-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/08-capstone-ops-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Cloud Run deploy via projects/10-platform-foundation (or documented script)", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Confirm Okta IaC CI plan path still valid", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "study-notes/capstone-case-study.md with honest limits", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Deploy instructions", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Case study committed", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Portfolio README updated", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

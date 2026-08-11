@@ -1,0 +1,36 @@
+# Week 16 deliverable — terraform plan for Okta IaC (sandbox credentials required).
+name: okta-iac-plan
+
+on:
+  pull_request:
+    paths:
+      - "projects/11-okta-iac/**"
+  workflow_dispatch:
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/11-okta-iac
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.5.7"
+      - name: Terraform fmt
+        run: terraform fmt -check -recursive
+      - name: Terraform init (no backend)
+        run: terraform init -backend=false
+        working-directory: projects/11-okta-iac/envs/sandbox
+      - name: Terraform validate
+        run: terraform validate
+        working-directory: projects/11-okta-iac/envs/sandbox
+      # Uncomment when OKTA_* secrets are configured in the repo:
+      # - name: Terraform plan
+      #   env:
+      #     OKTA_ORG_NAME: ${{ secrets.OKTA_ORG_NAME }}
+      #     OKTA_BASE_URL: ${{ secrets.OKTA_BASE_URL }}
+      #     OKTA_API_TOKEN: ${{ secrets.OKTA_API_TOKEN }}
+      #   run: terraform plan -input=false
+      #   working-directory: projects/11-okta-iac/envs/sandbox

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 8 — IT intake prompt playbook</title>
+<title>Week 8 — GCP secrets + platform IaC skeleton</title>
 <style>
 :root{
   --bg:#09090b;--surface:#111113;--surface2:#18181b;--border:#27272a;
@@ -90,16 +90,16 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   <aside class="side">
     <div>
       <label>Week 8 workbook</label>
-      <h2>IT intake prompt playbook</h2>
+      <h2>GCP secrets + platform IaC skeleton</h2>
       <a class="back" href="../choose-layout.html">← Dashboard</a>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
-      <a class="primary" href="https://meerzah.github.io/ai-systems-portfolio/projects/04-prompt-playbooks/README.md" target="_blank" rel="noopener">Open project →</a>
+      <a class="primary" href="https://meerzah.github.io/ai-systems-portfolio/projects/10-platform-foundation/README.md" target="_blank" rel="noopener">Open project →</a>
       <a href="https://github.com/Meerzah/ai-systems-portfolio.git" target="_blank" rel="noopener">Clone repo</a>
     </div>
   </aside>
@@ -115,7 +115,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   </main>
 </div>
 <script>
-const PLAN = {"week": 8, "title": "IT intake prompt playbook", "path": "projects/04-prompt-playbooks/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/04-prompt-playbooks/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Complete teams/it-ops.md: access, device, how-to prompts", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Slack/form field labels for non-technical requesters", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Link from project README", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "3 prompt templates committed", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Usable by a non-engineer", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
+const PLAN = {"week": 8, "title": "GCP secrets + platform IaC skeleton", "path": "projects/10-platform-foundation/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/10-platform-foundation/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Scaffold Terraform: SA + Secret Manager placeholders for agent/Okta creds", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Document WIF / no-SA-keys pattern in README", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Link pattern for Okta API token → Secret Manager (sandbox)", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Terraform stub validates (terraform init/validate)", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Secrets pattern documented", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "No credentials committed", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

@@ -95,7 +95,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 5 steps</span>
+      <span id="step-count">0 of 6 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -115,7 +115,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   </main>
 </div>
 <script>
-const PLAN = {"week": 25, "title": "Capstone demo polish (2 min)", "path": "projects/08-capstone-ops-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/08-capstone-ops-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Rehearse demo-script.md", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Fix top 3 eval failures", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "done-0", "text": "Demo under 2 minutes", "kind": "done"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-1", "text": "README diagram", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": []}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
+const PLAN = {"week": 25, "title": "Capstone demo polish (2 min)", "path": "projects/08-capstone-ops-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/08-capstone-ops-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Rehearse demo-script.md", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Fix top 3 eval failures", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "README architecture diagram", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Demo under 2 minutes", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "README diagram", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

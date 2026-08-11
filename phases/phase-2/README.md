@@ -1,14 +1,10 @@
-# Phase 2 — Capstone (Weeks 21–24)
+# Phase 2 — Identity-as-code + platform stub (Weeks 5–8)
 
-**Goal:** Integrate mini-projects into `projects/08-capstone-ops-agent/` — a demo-ready ops agent platform.
+| Week | Theme | Ship |
+|------|-------|------|
+| 5 | Okta topology as code | `11-okta-iac` groups + ACCESS-TOPOLOGY |
+| 6 | Apps + policies as code | apps/policies modules |
+| 7 | Access automation boundary | sandbox users + AGENT-CONTRACT + CIPHER note |
+| 8 | GCP secrets + IaC skeleton | `10-platform-foundation` stub |
 
-| Week | Ship |
-|------|------|
-| 21 | Core assembly — one local start command |
-| 22 | HITL enforcement |
-| 23 | Audit + observability |
-| 24 | Cloud Run POC + case study |
-
-See [capstone README](../projects/08-capstone-ops-agent/README.md).
-
-Weeks 25–36: polish, interview, apply — `phases/phase-3/README.md`.
+**Capstone later:** Week 21–24 assemble · see phase guides and dashboard.

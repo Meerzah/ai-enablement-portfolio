@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 16 — Adoption metrics + usage dashboard stub</title>
+<title>Week 16 — CI for identity + agent</title>
 <style>
 :root{
   --bg:#09090b;--surface:#111113;--surface2:#18181b;--border:#27272a;
@@ -90,7 +90,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   <aside class="side">
     <div>
       <label>Week 16 workbook</label>
-      <h2>Adoption metrics + usage dashboard stub</h2>
+      <h2>CI for identity + agent</h2>
       <a class="back" href="../choose-layout.html">← Dashboard</a>
     </div>
     <div class="stat">
@@ -99,7 +99,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
-      <a class="primary" href="https://meerzah.github.io/ai-systems-portfolio/projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">Open project →</a>
+      <a class="primary" href="https://meerzah.github.io/ai-systems-portfolio/projects/11-okta-iac/README.md" target="_blank" rel="noopener">Open project →</a>
       <a href="https://github.com/Meerzah/ai-systems-portfolio.git" target="_blank" rel="noopener">Clone repo</a>
     </div>
   </aside>
@@ -115,7 +115,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   </main>
 </div>
 <script>
-const PLAN = {"week": 16, "title": "Adoption metrics + usage dashboard stub", "path": "projects/05-adoption-dashboard/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/05-adoption-dashboard/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "events-schema.md: query_submitted, tool_called, escalated, approved", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Script: queries/day + escalation rate from sample logs only", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "README: how to run on test data", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Schema + script run on your test logs", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Screenshot or terminal output saved", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
+const PLAN = {"week": 16, "title": "CI for identity + agent", "path": "projects/11-okta-iac/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/11-okta-iac/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "GitHub Actions workflow: terraform fmt/validate/plan for 11-okta-iac", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "CI job: lint/test (or build) for agent/API project", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Document required secrets (OKTA_*, GCP) — never commit values", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "CI workflow files committed", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Plan job documented as green or blocked with reason", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

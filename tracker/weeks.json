@@ -1,5 +1,5 @@
 {
-  "schema": "competency-roadmap-v2",
+  "schema": "competency-roadmap-v3",
   "competencies": [
     "harness",
     "identity",
@@ -7,15 +7,27 @@
     "enablement",
     "workflow",
     "ops",
+    "platform",
     "portfolio"
   ],
+  "products": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "capstone"
+  ],
   "program": {
-    "weeks1to4": "Agent harness + MCP (competency: harness, identity)",
-    "weeks5to8": "Identity depth + enablement playbooks",
-    "weeks9to12": "Workflow automation + tool schemas",
-    "weeks13to16": "Evals + enablement rollout + metrics",
-    "weeks17to20": "Endpoint governance + KB + capstone prep",
-    "weeks21to24": "Capstone \u2014 Agentic IT Ops Platform",
+    "weeks1to4": "Agent harness + Okta MCP foundation",
+    "weeks5to8": "Okta Identity-as-Code + GCP platform stub",
+    "weeks9to12": "HITL + API + webhooks + containers",
+    "weeks13to16": "Evals + event stream + CI (Okta TF + agent)",
+    "weeks17to20": "Endpoint governance + Run vs GKE + architecture freeze",
+    "weeks21to24": "Flagship \u2014 Agentic Ops Control Plane",
     "weeks25to36": "Portfolio, interview, apply"
   },
   "weeks": [
@@ -24,21 +36,31 @@
       "month": 1,
       "competency": "harness",
       "phase": "mini",
+      "theme": "Ops friction \u2192 agent scope",
+      "learn": "High-volume IT friction; when agent helps vs deterministic automation",
+      "feeds": [
+        "M1"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Run helpdesk agent + extend runbook corpus",
+      "title": "Ops friction \u2192 agent scope",
       "workbook": "workbooks/week-01.html",
       "miniProject": {
-        "name": "Run helpdesk agent + extend runbook corpus",
+        "name": "Ops friction \u2192 agent scope",
         "path": "projects/01-it-helpdesk-agent/",
         "competency": "harness",
+        "theme": "Ops friction \u2192 agent scope",
+        "learn": "High-volume IT friction; when agent helps vs deterministic automation",
+        "feeds": [
+          "M1"
+        ],
         "build": [
           "Set up Python venv; install requirements.txt",
           "Add 2 Markdown runbooks (VPN, SSO, or MDM)",
-          "Run 5 test queries; log results"
+          "Run 5 test queries; log results in prove log"
         ],
         "doneWhen": [
-          "Agent starts (or document blocker + workaround in prove log)",
+          "Agent starts (or document blocker + workaround)",
           "2 runbooks committed",
           "study-notes/weeks/week-01-prove-log.md filled"
         ]
@@ -75,7 +97,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Run 5 test queries; log results",
+              "text": "Run 5 test queries; log results in prove log",
               "kind": "build"
             }
           ]
@@ -87,7 +109,7 @@
           "steps": [
             {
               "id": "done-0",
-              "text": "Agent starts (or document blocker + workaround in prove log)",
+              "text": "Agent starts (or document blocker + workaround)",
               "kind": "done"
             }
           ]
@@ -135,14 +157,24 @@
       "month": 1,
       "competency": "identity",
       "phase": "mini",
+      "theme": "Identity tools for agents",
+      "learn": "MCP tool design; read-only Okta scopes; least-privilege tokens",
+      "feeds": [
+        "M2"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Okta MCP \u2014 read-only identity tools",
+      "title": "Identity tools for agents (Okta MCP)",
       "workbook": "workbooks/week-02.html",
       "miniProject": {
-        "name": "Okta MCP \u2014 read-only identity tools",
+        "name": "Identity tools for agents (Okta MCP)",
         "path": "projects/02-okta-mcp-server/",
         "competency": "identity",
+        "theme": "Identity tools for agents",
+        "learn": "MCP tool design; read-only Okta scopes; least-privilege tokens",
+        "feeds": [
+          "M2"
+        ],
         "build": [
           "Configure read-only Okta API token (preview/sandbox org)",
           "Verify list_users + get_group_members tools",
@@ -239,14 +271,26 @@
       "month": 1,
       "competency": "harness",
       "phase": "mini",
+      "theme": "Agent \u2194 identity wiring",
+      "learn": "Tool schemas; write escalation; agent never writes Okta directly",
+      "feeds": [
+        "M1",
+        "M2"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Connect agent \u2192 Okta MCP (read-only)",
+      "title": "Agent \u2194 Okta MCP wiring",
       "workbook": "workbooks/week-03.html",
       "miniProject": {
-        "name": "Connect agent \u2192 Okta MCP (read-only)",
+        "name": "Agent \u2194 Okta MCP wiring",
         "path": "projects/01-it-helpdesk-agent/",
         "competency": "harness",
+        "theme": "Agent \u2194 identity wiring",
+        "learn": "Tool schemas; write escalation; agent never writes Okta directly",
+        "feeds": [
+          "M1",
+          "M2"
+        ],
         "build": [
           "Wire agent to Okta MCP tools",
           "System prompt: identity lookups read-only; escalate writes",
@@ -343,14 +387,24 @@
       "month": 1,
       "competency": "harness",
       "phase": "mini",
+      "theme": "Guardrails as product",
+      "learn": "Escalation policy as a shippable artifact, not a prompt footnote",
+      "feeds": [
+        "M1"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Escalation policy + agent guardrails",
+      "title": "Guardrails as product",
       "workbook": "workbooks/week-04.html",
       "miniProject": {
-        "name": "Escalation policy + agent guardrails",
+        "name": "Guardrails as product",
         "path": "projects/01-it-helpdesk-agent/",
         "competency": "harness",
+        "theme": "Guardrails as product",
+        "learn": "Escalation policy as a shippable artifact, not a prompt footnote",
+        "feeds": [
+          "M1"
+        ],
         "build": [
           "Write docs/escalation-policy.md",
           "3 must-escalate + 3 safe-to-answer examples",
@@ -447,22 +501,33 @@
       "month": 2,
       "competency": "identity",
       "phase": "mini",
+      "theme": "Okta topology as code",
+      "learn": "Okta Terraform provider; groups + group rules as access topology",
+      "feeds": [
+        "M8"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Agent identity design (WIF / SPIFFE concepts)",
+      "title": "Okta topology as code \u2014 groups",
       "workbook": "workbooks/week-05.html",
       "miniProject": {
-        "name": "Agent identity design (WIF / SPIFFE concepts)",
-        "path": "study-notes/wif-agent-identity-design.md",
+        "name": "Okta topology as code \u2014 groups",
+        "path": "projects/11-okta-iac/",
         "competency": "identity",
+        "theme": "Okta topology as code",
+        "learn": "Okta Terraform provider; groups + group rules as access topology",
+        "feeds": [
+          "M8"
+        ],
         "build": [
-          "Read GCP Agent Identity overview",
-          "Update wif-agent-identity-design.md: human vs NHI vs agent principal",
-          "Diagram: read-only MCP vs write via approved workflow"
+          "Scaffold providers.tf + modules/groups for sandbox Okta org",
+          "Define app-access + role groups (e.g. agent-read-identity, role-it-approvers)",
+          "Write docs/ACCESS-TOPOLOGY.md diagram"
         ],
         "doneWhen": [
-          "Design doc updated",
-          "Least-privilege table for capstone tools"
+          "terraform plan succeeds against sandbox",
+          "Groups module applied (or plan committed with apply notes)",
+          "ACCESS-TOPOLOGY.md committed"
         ]
       },
       "days": [
@@ -473,7 +538,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "Read GCP Agent Identity overview",
+              "text": "Scaffold providers.tf + modules/groups for sandbox Okta org",
               "kind": "build"
             }
           ]
@@ -485,7 +550,7 @@
           "steps": [
             {
               "id": "build-1",
-              "text": "Update wif-agent-identity-design.md: human vs NHI vs agent principal",
+              "text": "Define app-access + role groups (e.g. agent-read-identity, role-it-approvers)",
               "kind": "build"
             }
           ]
@@ -497,7 +562,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Diagram: read-only MCP vs write via approved workflow",
+              "text": "Write docs/ACCESS-TOPOLOGY.md diagram",
               "kind": "build"
             }
           ]
@@ -509,7 +574,7 @@
           "steps": [
             {
               "id": "done-0",
-              "text": "Design doc updated",
+              "text": "terraform plan succeeds against sandbox",
               "kind": "done"
             }
           ]
@@ -521,7 +586,7 @@
           "steps": [
             {
               "id": "done-1",
-              "text": "Least-privilege table for capstone tools",
+              "text": "Groups module applied (or plan committed with apply notes)",
               "kind": "done"
             }
           ]
@@ -530,7 +595,13 @@
           "day": "sat",
           "label": "Saturday",
           "short": "Sat",
-          "steps": []
+          "steps": [
+            {
+              "id": "done-2",
+              "text": "ACCESS-TOPOLOGY.md committed",
+              "kind": "done"
+            }
+          ]
         },
         {
           "day": "sun",
@@ -551,22 +622,33 @@
       "month": 2,
       "competency": "identity",
       "phase": "mini",
+      "theme": "Apps + policies as code",
+      "learn": "App integrations, group assignments, sign-on/MFA policies in Terraform",
+      "feeds": [
+        "M8"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Audit log schema for automated actions",
+      "title": "Okta apps + policies as code",
       "workbook": "workbooks/week-06.html",
       "miniProject": {
-        "name": "Audit log schema for automated actions",
-        "path": "projects/05-adoption-dashboard/",
+        "name": "Okta apps + policies as code",
+        "path": "projects/11-okta-iac/",
         "competency": "identity",
+        "theme": "Apps + policies as code",
+        "learn": "App integrations, group assignments, sign-on/MFA policies in Terraform",
+        "feeds": [
+          "M8"
+        ],
         "build": [
-          "Define audit event: actor, action, resource, ticket_id, approved_by, timestamp",
-          "Add schema.md + sample JSON events",
-          "Map fields to future capstone audit writer"
+          "Add modules/apps (OIDC or SAML stub) + group assignments",
+          "Add modules/policies for sign-on / MFA resources provider supports",
+          "Document API-manageable vs console-only policy gaps"
         ],
         "doneWhen": [
-          "schema.md committed",
-          "3 sample events from mock approval flow"
+          "Apps + policies modules present",
+          "terraform plan shows expected resources",
+          "Policy gap notes in README or docs/"
         ]
       },
       "days": [
@@ -577,7 +659,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "Define audit event: actor, action, resource, ticket_id, approved_by, timestamp",
+              "text": "Add modules/apps (OIDC or SAML stub) + group assignments",
               "kind": "build"
             }
           ]
@@ -589,7 +671,7 @@
           "steps": [
             {
               "id": "build-1",
-              "text": "Add schema.md + sample JSON events",
+              "text": "Add modules/policies for sign-on / MFA resources provider supports",
               "kind": "build"
             }
           ]
@@ -601,7 +683,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Map fields to future capstone audit writer",
+              "text": "Document API-manageable vs console-only policy gaps",
               "kind": "build"
             }
           ]
@@ -613,7 +695,7 @@
           "steps": [
             {
               "id": "done-0",
-              "text": "schema.md committed",
+              "text": "Apps + policies modules present",
               "kind": "done"
             }
           ]
@@ -625,7 +707,7 @@
           "steps": [
             {
               "id": "done-1",
-              "text": "3 sample events from mock approval flow",
+              "text": "terraform plan shows expected resources",
               "kind": "done"
             }
           ]
@@ -634,7 +716,13 @@
           "day": "sat",
           "label": "Saturday",
           "short": "Sat",
-          "steps": []
+          "steps": [
+            {
+              "id": "done-2",
+              "text": "Policy gap notes in README or docs/",
+              "kind": "done"
+            }
+          ]
         },
         {
           "day": "sun",
@@ -655,22 +743,33 @@
       "month": 2,
       "competency": "identity",
       "phase": "mini",
+      "theme": "Access automation boundary",
+      "learn": "TF owns topology; SCIM/agent owns user lifecycle; CIPHER design tie-in",
+      "feeds": [
+        "M8"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Access automation design (CIPHER Phase 1)",
+      "title": "Access automation boundary + sandbox users",
       "workbook": "workbooks/week-07.html",
       "miniProject": {
-        "name": "Access automation design (CIPHER Phase 1)",
-        "path": "projects/06-cipher/",
+        "name": "Access automation boundary + sandbox users",
+        "path": "projects/11-okta-iac/",
         "competency": "identity",
+        "theme": "Access automation boundary",
+        "learn": "TF owns topology; SCIM/agent owns user lifecycle; CIPHER design tie-in",
+        "feeds": [
+          "M8"
+        ],
         "build": [
-          "Read SHIP-PLAN.md; complete Phase 1 checklist items you can do in design",
-          "Document intake \u2192 HITL \u2192 Okta write boundary",
-          "Honest status: architected, not production shipped"
+          "Add modules/users_sandbox with tf-demo-* users only",
+          "Write docs/AGENT-CONTRACT.md (groups MCP may read; writes need HITL)",
+          "Update projects/06-cipher design: TF topology vs automation membership"
         ],
         "doneWhen": [
-          "Phase 1 section updated in SHIP-PLAN or design note",
-          "Sequence diagram added"
+          "Sandbox users module + boundary documented in README",
+          "AGENT-CONTRACT.md committed",
+          "CIPHER sequence note updated (honest architected status)"
         ]
       },
       "days": [
@@ -681,7 +780,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "Read SHIP-PLAN.md; complete Phase 1 checklist items you can do in design",
+              "text": "Add modules/users_sandbox with tf-demo-* users only",
               "kind": "build"
             }
           ]
@@ -693,7 +792,7 @@
           "steps": [
             {
               "id": "build-1",
-              "text": "Document intake \u2192 HITL \u2192 Okta write boundary",
+              "text": "Write docs/AGENT-CONTRACT.md (groups MCP may read; writes need HITL)",
               "kind": "build"
             }
           ]
@@ -705,7 +804,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Honest status: architected, not production shipped",
+              "text": "Update projects/06-cipher design: TF topology vs automation membership",
               "kind": "build"
             }
           ]
@@ -717,7 +816,7 @@
           "steps": [
             {
               "id": "done-0",
-              "text": "Phase 1 section updated in SHIP-PLAN or design note",
+              "text": "Sandbox users module + boundary documented in README",
               "kind": "done"
             }
           ]
@@ -729,7 +828,7 @@
           "steps": [
             {
               "id": "done-1",
-              "text": "Sequence diagram added",
+              "text": "AGENT-CONTRACT.md committed",
               "kind": "done"
             }
           ]
@@ -738,7 +837,13 @@
           "day": "sat",
           "label": "Saturday",
           "short": "Sat",
-          "steps": []
+          "steps": [
+            {
+              "id": "done-2",
+              "text": "CIPHER sequence note updated (honest architected status)",
+              "kind": "done"
+            }
+          ]
         },
         {
           "day": "sun",
@@ -757,24 +862,35 @@
     {
       "week": 8,
       "month": 2,
-      "competency": "enablement",
+      "competency": "platform",
       "phase": "mini",
+      "theme": "Secrets + GCP IaC skeleton",
+      "learn": "Secret Manager, SA roles, WIF concepts; never plaintext Okta tokens in git",
+      "feeds": [
+        "M6"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "IT intake prompt playbook",
+      "title": "GCP secrets + platform IaC skeleton",
       "workbook": "workbooks/week-08.html",
       "miniProject": {
-        "name": "IT intake prompt playbook",
-        "path": "projects/04-prompt-playbooks/",
-        "competency": "enablement",
+        "name": "GCP secrets + platform IaC skeleton",
+        "path": "projects/10-platform-foundation/",
+        "competency": "platform",
+        "theme": "Secrets + GCP IaC skeleton",
+        "learn": "Secret Manager, SA roles, WIF concepts; never plaintext Okta tokens in git",
+        "feeds": [
+          "M6"
+        ],
         "build": [
-          "Complete teams/it-ops.md: access, device, how-to prompts",
-          "Slack/form field labels for non-technical requesters",
-          "Link from project README"
+          "Scaffold Terraform: SA + Secret Manager placeholders for agent/Okta creds",
+          "Document WIF / no-SA-keys pattern in README",
+          "Link pattern for Okta API token \u2192 Secret Manager (sandbox)"
         ],
         "doneWhen": [
-          "3 prompt templates committed",
-          "Usable by a non-engineer"
+          "Terraform stub validates (terraform init/validate)",
+          "Secrets pattern documented",
+          "No credentials committed"
         ]
       },
       "days": [
@@ -785,7 +901,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "Complete teams/it-ops.md: access, device, how-to prompts",
+              "text": "Scaffold Terraform: SA + Secret Manager placeholders for agent/Okta creds",
               "kind": "build"
             }
           ]
@@ -797,7 +913,7 @@
           "steps": [
             {
               "id": "build-1",
-              "text": "Slack/form field labels for non-technical requesters",
+              "text": "Document WIF / no-SA-keys pattern in README",
               "kind": "build"
             }
           ]
@@ -809,7 +925,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Link from project README",
+              "text": "Link pattern for Okta API token \u2192 Secret Manager (sandbox)",
               "kind": "build"
             }
           ]
@@ -821,7 +937,7 @@
           "steps": [
             {
               "id": "done-0",
-              "text": "3 prompt templates committed",
+              "text": "Terraform stub validates (terraform init/validate)",
               "kind": "done"
             }
           ]
@@ -833,7 +949,7 @@
           "steps": [
             {
               "id": "done-1",
-              "text": "Usable by a non-engineer",
+              "text": "Secrets pattern documented",
               "kind": "done"
             }
           ]
@@ -842,7 +958,13 @@
           "day": "sat",
           "label": "Saturday",
           "short": "Sat",
-          "steps": []
+          "steps": [
+            {
+              "id": "done-2",
+              "text": "No credentials committed",
+              "kind": "done"
+            }
+          ]
         },
         {
           "day": "sun",
@@ -863,18 +985,28 @@
       "month": 3,
       "competency": "workflow",
       "phase": "mini",
+      "theme": "HITL before side effects",
+      "learn": "Approval gate patterns; propose add-to-group against IaC-known groups",
+      "feeds": [
+        "M3"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "HITL approval gate \u2014 mock implementation",
+      "title": "HITL before side effects",
       "workbook": "workbooks/week-09.html",
       "miniProject": {
-        "name": "HITL approval gate \u2014 mock implementation",
+        "name": "HITL before side effects",
         "path": "projects/01-it-helpdesk-agent/",
         "competency": "workflow",
+        "theme": "HITL before side effects",
+        "learn": "Approval gate patterns; propose add-to-group against IaC-known groups",
+        "feeds": [
+          "M3"
+        ],
         "build": [
           "docs/hitl-flow.md with sequence diagram",
           "Mock approval: CLI y/n or Slack Block Kit draft",
-          "Block side-effect without approval"
+          "Block side-effect (e.g. group add) without approval"
         ],
         "doneWhen": [
           "Demo: action blocked without approval",
@@ -913,7 +1045,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Block side-effect without approval",
+              "text": "Block side-effect (e.g. group add) without approval",
               "kind": "build"
             }
           ]
@@ -967,14 +1099,24 @@
       "month": 3,
       "competency": "workflow",
       "phase": "mini",
+      "theme": "Agent as a service",
+      "learn": "HTTP contracts with Pydantic; health + query API",
+      "feeds": [
+        "M3"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "HTTP API wrapper for the agent",
+      "title": "Agent as a service (FastAPI)",
       "workbook": "workbooks/week-10.html",
       "miniProject": {
-        "name": "HTTP API wrapper for the agent",
+        "name": "Agent as a service (FastAPI)",
         "path": "projects/01-it-helpdesk-agent/",
         "competency": "workflow",
+        "theme": "Agent as a service",
+        "learn": "HTTP contracts with Pydantic; health + query API",
+        "feeds": [
+          "M3"
+        ],
         "build": [
           "FastAPI POST /query with Pydantic models",
           "Return answer + tools_used + escalated flag",
@@ -1071,6 +1213,11 @@
       "month": 3,
       "competency": "workflow",
       "phase": "mini",
+      "theme": "Webhook reliability",
+      "learn": "Idempotency-Key, retries, duplicate handling for intake",
+      "feeds": [
+        "M3"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
       "title": "Idempotent webhook handler",
@@ -1079,6 +1226,11 @@
         "name": "Idempotent webhook handler",
         "path": "projects/01-it-helpdesk-agent/",
         "competency": "workflow",
+        "theme": "Webhook reliability",
+        "learn": "Idempotency-Key, retries, duplicate handling for intake",
+        "feeds": [
+          "M3"
+        ],
         "build": [
           "POST /hooks/ticket with Idempotency-Key header",
           "docs/reliability.md: retry + duplicate handling",
@@ -1166,24 +1318,36 @@
     {
       "week": 12,
       "month": 3,
-      "competency": "harness",
+      "competency": "platform",
       "phase": "mini",
+      "theme": "Containerize the control plane",
+      "learn": "Docker multi-stage builds; compose for agent + MCP",
+      "feeds": [
+        "M1",
+        "M6"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Tool schemas + manifest",
+      "title": "Containerize the control plane",
       "workbook": "workbooks/week-12.html",
       "miniProject": {
-        "name": "Tool schemas + manifest",
-        "path": "projects/01-it-helpdesk-agent/tools/",
-        "competency": "harness",
+        "name": "Containerize the control plane",
+        "path": "projects/01-it-helpdesk-agent/",
+        "competency": "platform",
+        "theme": "Containerize the control plane",
+        "learn": "Docker multi-stage builds; compose for agent + MCP",
+        "feeds": [
+          "M1",
+          "M6"
+        ],
         "build": [
-          "tools/README.md with JSON schemas for each tool",
-          "Happy path + error path test per tool",
-          "Agent handles malformed args gracefully"
+          "Dockerfile (multi-stage) for agent API",
+          "docker-compose.yml: agent + MCP (or documented stub)",
+          "One-command local run documented in README"
         ],
         "doneWhen": [
-          "Schema doc committed",
-          "Error path logged"
+          "compose up (or documented equivalent) works",
+          "No secrets in image"
         ]
       },
       "days": [
@@ -1194,7 +1358,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "tools/README.md with JSON schemas for each tool",
+              "text": "Dockerfile (multi-stage) for agent API",
               "kind": "build"
             }
           ]
@@ -1206,7 +1370,7 @@
           "steps": [
             {
               "id": "build-1",
-              "text": "Happy path + error path test per tool",
+              "text": "docker-compose.yml: agent + MCP (or documented stub)",
               "kind": "build"
             }
           ]
@@ -1218,7 +1382,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Agent handles malformed args gracefully",
+              "text": "One-command local run documented in README",
               "kind": "build"
             }
           ]
@@ -1230,7 +1394,7 @@
           "steps": [
             {
               "id": "done-0",
-              "text": "Schema doc committed",
+              "text": "compose up (or documented equivalent) works",
               "kind": "done"
             }
           ]
@@ -1242,7 +1406,7 @@
           "steps": [
             {
               "id": "done-1",
-              "text": "Error path logged",
+              "text": "No secrets in image",
               "kind": "done"
             }
           ]
@@ -1272,6 +1436,11 @@
       "month": 4,
       "competency": "ops",
       "phase": "mini",
+      "theme": "Eval harness (core)",
+      "learn": "Golden cases for tool-use; honest pass/fail \u2014 no invented accuracy %",
+      "feeds": [
+        "M4"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
       "title": "Eval harness \u2014 5 cases",
@@ -1280,6 +1449,11 @@
         "name": "Eval harness \u2014 5 cases",
         "path": "projects/01-it-helpdesk-agent/",
         "competency": "ops",
+        "theme": "Eval harness (core)",
+        "learn": "Golden cases for tool-use; honest pass/fail \u2014 no invented accuracy %",
+        "feeds": [
+          "M4"
+        ],
         "build": [
           "evals/eval_cases.csv: query, expected_behavior, pass/fail",
           "5 rows: runbook + identity read",
@@ -1376,16 +1550,26 @@
       "month": 4,
       "competency": "ops",
       "phase": "mini",
+      "theme": "Eval harness (adversarial)",
+      "learn": "Privilege escalation, KB miss, ambiguous user cases",
+      "feeds": [
+        "M4"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Eval harness \u2014 expand to 15 cases",
+      "title": "Eval harness \u2014 adversarial 15",
       "workbook": "workbooks/week-14.html",
       "miniProject": {
-        "name": "Eval harness \u2014 expand to 15 cases",
+        "name": "Eval harness \u2014 adversarial 15",
         "path": "projects/01-it-helpdesk-agent/",
         "competency": "ops",
+        "theme": "Eval harness (adversarial)",
+        "learn": "Privilege escalation, KB miss, ambiguous user cases",
+        "feeds": [
+          "M4"
+        ],
         "build": [
-          "Add edge cases: privilege escalation, ambiguous user, KB miss",
+          "Expand to 15 cases including escalation + KB miss",
           "Top 3 failures \u2192 fix plan before capstone"
         ],
         "doneWhen": [
@@ -1401,7 +1585,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "Add edge cases: privilege escalation, ambiguous user, KB miss",
+              "text": "Expand to 15 cases including escalation + KB miss",
               "kind": "build"
             }
           ]
@@ -1471,127 +1655,33 @@
     {
       "week": 15,
       "month": 4,
-      "competency": "enablement",
+      "competency": "ops",
       "phase": "mini",
+      "theme": "Unified ops event stream",
+      "learn": "One schema for query/tool/approve/fail; Pub/Sub or log pipeline stub",
+      "feeds": [
+        "M5"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Agentspace / team rollout checklist",
+      "title": "Unified ops event stream",
       "workbook": "workbooks/week-15.html",
       "miniProject": {
-        "name": "Agentspace / team rollout checklist",
-        "path": "projects/03-agentspace-rollout/",
-        "competency": "enablement",
-        "build": [
-          "Rollout checklist: identity scope, data boundaries, pilot criteria",
-          "Risk register: 3 items + mitigations",
-          "Success metrics you can actually measure"
-        ],
-        "doneWhen": [
-          "checklist.md committed",
-          "Pilot scope documented"
-        ]
-      },
-      "days": [
-        {
-          "day": "mon",
-          "label": "Monday",
-          "short": "Mon",
-          "steps": [
-            {
-              "id": "build-0",
-              "text": "Rollout checklist: identity scope, data boundaries, pilot criteria",
-              "kind": "build"
-            }
-          ]
-        },
-        {
-          "day": "tue",
-          "label": "Tuesday",
-          "short": "Tue",
-          "steps": [
-            {
-              "id": "build-1",
-              "text": "Risk register: 3 items + mitigations",
-              "kind": "build"
-            }
-          ]
-        },
-        {
-          "day": "wed",
-          "label": "Wednesday",
-          "short": "Wed",
-          "steps": [
-            {
-              "id": "build-2",
-              "text": "Success metrics you can actually measure",
-              "kind": "build"
-            }
-          ]
-        },
-        {
-          "day": "thu",
-          "label": "Thursday",
-          "short": "Thu",
-          "steps": [
-            {
-              "id": "done-0",
-              "text": "checklist.md committed",
-              "kind": "done"
-            }
-          ]
-        },
-        {
-          "day": "fri",
-          "label": "Friday",
-          "short": "Fri",
-          "steps": [
-            {
-              "id": "done-1",
-              "text": "Pilot scope documented",
-              "kind": "done"
-            }
-          ]
-        },
-        {
-          "day": "sat",
-          "label": "Saturday",
-          "short": "Sat",
-          "steps": []
-        },
-        {
-          "day": "sun",
-          "label": "Sunday",
-          "short": "Sun",
-          "steps": [
-            {
-              "id": "wrap",
-              "text": "Review the week, then mark it complete on the dashboard",
-              "kind": "wrap"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "week": 16,
-      "month": 4,
-      "competency": "enablement",
-      "phase": "mini",
-      "capstoneWeek": false,
-      "interviewPrep": false,
-      "title": "Adoption metrics + usage dashboard stub",
-      "workbook": "workbooks/week-16.html",
-      "miniProject": {
-        "name": "Adoption metrics + usage dashboard stub",
+        "name": "Unified ops event stream",
         "path": "projects/05-adoption-dashboard/",
-        "competency": "enablement",
+        "competency": "ops",
+        "theme": "Unified ops event stream",
+        "learn": "One schema for query/tool/approve/fail; Pub/Sub or log pipeline stub",
+        "feeds": [
+          "M5"
+        ],
         "build": [
           "events-schema.md: query_submitted, tool_called, escalated, approved",
-          "Script: queries/day + escalation rate from sample logs only",
-          "README: how to run on test data"
+          "Publisher stub (Pub/Sub or structured log) + sample events",
+          "Dashboard script from sample logs only"
         ],
         "doneWhen": [
-          "Schema + script run on your test logs",
+          "Schema + script run on test data",
           "Screenshot or terminal output saved"
         ]
       },
@@ -1615,7 +1705,7 @@
           "steps": [
             {
               "id": "build-1",
-              "text": "Script: queries/day + escalation rate from sample logs only",
+              "text": "Publisher stub (Pub/Sub or structured log) + sample events",
               "kind": "build"
             }
           ]
@@ -1627,7 +1717,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "README: how to run on test data",
+              "text": "Dashboard script from sample logs only",
               "kind": "build"
             }
           ]
@@ -1639,7 +1729,7 @@
           "steps": [
             {
               "id": "done-0",
-              "text": "Schema + script run on your test logs",
+              "text": "Schema + script run on test data",
               "kind": "done"
             }
           ]
@@ -1677,10 +1767,131 @@
       ]
     },
     {
+      "week": 16,
+      "month": 4,
+      "competency": "platform",
+      "phase": "mini",
+      "theme": "CI for identity + agent",
+      "learn": "GitHub Actions: terraform plan on Okta IaC + lint/test/build agent image",
+      "feeds": [
+        "M6",
+        "M8"
+      ],
+      "capstoneWeek": false,
+      "interviewPrep": false,
+      "title": "CI for identity + agent",
+      "workbook": "workbooks/week-16.html",
+      "miniProject": {
+        "name": "CI for identity + agent",
+        "path": "projects/11-okta-iac/",
+        "competency": "platform",
+        "theme": "CI for identity + agent",
+        "learn": "GitHub Actions: terraform plan on Okta IaC + lint/test/build agent image",
+        "feeds": [
+          "M6",
+          "M8"
+        ],
+        "build": [
+          "GitHub Actions workflow: terraform fmt/validate/plan for 11-okta-iac",
+          "CI job: lint/test (or build) for agent/API project",
+          "Document required secrets (OKTA_*, GCP) \u2014 never commit values"
+        ],
+        "doneWhen": [
+          "CI workflow files committed",
+          "Plan job documented as green or blocked with reason"
+        ]
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "GitHub Actions workflow: terraform fmt/validate/plan for 11-okta-iac",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "CI job: lint/test (or build) for agent/API project",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Document required secrets (OKTA_*, GCP) \u2014 never commit values",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "CI workflow files committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Plan job documented as green or blocked with reason",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "week": 17,
       "month": 5,
       "competency": "endpoint",
       "phase": "mini",
+      "theme": "Endpoint AI governance",
+      "learn": "MDM policy tiers; shadow AI; link identity groups \u2192 tool tiers",
+      "feeds": [
+        "capstone"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
       "title": "Endpoint AI governance policy",
@@ -1689,10 +1900,15 @@
         "name": "Endpoint AI governance policy",
         "path": "projects/09-endpoint-ai-governance/",
         "competency": "endpoint",
+        "theme": "Endpoint AI governance",
+        "learn": "MDM policy tiers; shadow AI; link identity groups \u2192 tool tiers",
+        "feeds": [
+          "capstone"
+        ],
         "build": [
           "POLICY.md: approved vs prohibited AI tool categories",
           "MDM-ROLLOUT-CHECKLIST.md (generic, no employer URLs)",
-          "Link identity groups \u2192 allowed tool tiers"
+          "Map Okta groups from 11-okta-iac to allowed tool tiers"
         ],
         "doneWhen": [
           "Both docs committed",
@@ -1731,7 +1947,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Link identity groups \u2192 allowed tool tiers",
+              "text": "Map Okta groups from 11-okta-iac to allowed tool tiers",
               "kind": "build"
             }
           ]
@@ -1785,18 +2001,28 @@
       "month": 5,
       "competency": "endpoint",
       "phase": "mini",
+      "theme": "Offboarding orchestration",
+      "learn": "Deterministic vs agent-assisted steps; revoke TF-managed app groups",
+      "feeds": [
+        "capstone"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Offboarding orchestration design (ALIUS)",
+      "title": "Offboarding orchestration (ALIUS)",
       "workbook": "workbooks/week-18.html",
       "miniProject": {
-        "name": "Offboarding orchestration design (ALIUS)",
+        "name": "Offboarding orchestration (ALIUS)",
         "path": "projects/07-alius/",
         "competency": "endpoint",
+        "theme": "Offboarding orchestration",
+        "learn": "Deterministic vs agent-assisted steps; revoke TF-managed app groups",
+        "feeds": [
+          "capstone"
+        ],
         "build": [
           "Review ARCHITECTURE.md",
-          "Add diagram: device wipe + Okta deactivate + SaaS revoke order",
-          "Note where agent assists vs deterministic steps"
+          "Diagram: device wipe + Okta deactivate + SaaS revoke order",
+          "Note where agent assists vs deterministic; reference M8 groups"
         ],
         "doneWhen": [
           "Updated architecture section",
@@ -1823,7 +2049,7 @@
           "steps": [
             {
               "id": "build-1",
-              "text": "Add diagram: device wipe + Okta deactivate + SaaS revoke order",
+              "text": "Diagram: device wipe + Okta deactivate + SaaS revoke order",
               "kind": "build"
             }
           ]
@@ -1835,7 +2061,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Note where agent assists vs deterministic steps",
+              "text": "Note where agent assists vs deterministic; reference M8 groups",
               "kind": "build"
             }
           ]
@@ -1887,24 +2113,34 @@
     {
       "week": 19,
       "month": 5,
-      "competency": "enablement",
+      "competency": "platform",
       "phase": "mini",
+      "theme": "Cloud Run vs Kubernetes",
+      "learn": "K8s literacy (kind or GKE Autopilot touch) + when Cloud Run wins for agents",
+      "feeds": [
+        "M6"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Ops KB index + grounding rules",
+      "title": "Cloud Run vs Kubernetes literacy",
       "workbook": "workbooks/week-19.html",
       "miniProject": {
-        "name": "Ops KB index + grounding rules",
-        "path": "projects/01-it-helpdesk-agent/",
-        "competency": "enablement",
+        "name": "Cloud Run vs Kubernetes literacy",
+        "path": "study-notes/cloud-platform/",
+        "competency": "platform",
+        "theme": "Cloud Run vs Kubernetes",
+        "learn": "K8s literacy (kind or GKE Autopilot touch) + when Cloud Run wins for agents",
+        "feeds": [
+          "M6"
+        ],
         "build": [
-          "study-notes/ops-kb-index.md listing runbooks + owners",
-          "Agent cites source in 2 test answers",
-          "Fallback behavior when KB miss"
+          "Write study-notes/cloud-platform/run-vs-gke.md tradeoff memo",
+          "Optional: kind or GKE Autopilot hello deploy notes",
+          "Recommend default hosting for capstone agent (Cloud Run)"
         ],
         "doneWhen": [
-          "KB index committed",
-          "Citation examples logged"
+          "Tradeoff memo committed",
+          "Clear hosting recommendation for capstone"
         ]
       },
       "days": [
@@ -1915,7 +2151,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "study-notes/ops-kb-index.md listing runbooks + owners",
+              "text": "Write study-notes/cloud-platform/run-vs-gke.md tradeoff memo",
               "kind": "build"
             }
           ]
@@ -1927,7 +2163,7 @@
           "steps": [
             {
               "id": "build-1",
-              "text": "Agent cites source in 2 test answers",
+              "text": "Optional: kind or GKE Autopilot hello deploy notes",
               "kind": "build"
             }
           ]
@@ -1939,7 +2175,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Fallback behavior when KB miss",
+              "text": "Recommend default hosting for capstone agent (Cloud Run)",
               "kind": "build"
             }
           ]
@@ -1951,7 +2187,7 @@
           "steps": [
             {
               "id": "done-0",
-              "text": "KB index committed",
+              "text": "Tradeoff memo committed",
               "kind": "done"
             }
           ]
@@ -1963,7 +2199,7 @@
           "steps": [
             {
               "id": "done-1",
-              "text": "Citation examples logged",
+              "text": "Clear hosting recommendation for capstone",
               "kind": "done"
             }
           ]
@@ -1993,17 +2229,27 @@
       "month": 5,
       "competency": "harness",
       "phase": "mini",
+      "theme": "Capstone architecture freeze",
+      "learn": "Map M1\u2013M8 into one control plane; freeze demo script",
+      "feeds": [
+        "capstone"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "E2E demo + capstone scaffold",
+      "title": "Capstone architecture freeze",
       "workbook": "workbooks/week-20.html",
       "miniProject": {
-        "name": "E2E demo + capstone scaffold",
+        "name": "Capstone architecture freeze",
         "path": "projects/08-capstone-ops-agent/",
         "competency": "harness",
+        "theme": "Capstone architecture freeze",
+        "learn": "Map M1\u2013M8 into one control plane; freeze demo script",
+        "feeds": [
+          "capstone"
+        ],
         "build": [
-          "ARCHITECTURE.md: all 7 competencies mapped to components",
-          "demo-script.md: runbook Q \u2192 identity Q \u2192 HITL \u2192 audit",
+          "ARCHITECTURE.md: M1\u2013M8 mapped to components",
+          "demo-script.md: Okta TF \u2192 runbook Q \u2192 identity Q \u2192 HITL \u2192 audit \u2192 metrics",
           "Repo layout scaffold (folders + README)"
         ],
         "doneWhen": [
@@ -2019,7 +2265,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "ARCHITECTURE.md: all 7 competencies mapped to components",
+              "text": "ARCHITECTURE.md: M1\u2013M8 mapped to components",
               "kind": "build"
             }
           ]
@@ -2031,7 +2277,7 @@
           "steps": [
             {
               "id": "build-1",
-              "text": "demo-script.md: runbook Q \u2192 identity Q \u2192 HITL \u2192 audit",
+              "text": "demo-script.md: Okta TF \u2192 runbook Q \u2192 identity Q \u2192 HITL \u2192 audit \u2192 metrics",
               "kind": "build"
             }
           ]
@@ -2097,18 +2343,28 @@
       "month": 6,
       "competency": "harness",
       "phase": "capstone",
+      "theme": "Assemble control plane",
+      "learn": "Integrate agent, MCP, HITL, evals; MCP reads TF-managed sandbox groups",
+      "feeds": [
+        "capstone"
+      ],
       "capstoneWeek": true,
       "interviewPrep": false,
-      "title": "Capstone W1 \u2014 Assemble platform",
+      "title": "Capstone W1 \u2014 Assemble control plane",
       "workbook": "workbooks/week-21.html",
       "miniProject": {
-        "name": "Capstone W1 \u2014 Assemble platform",
+        "name": "Capstone W1 \u2014 Assemble control plane",
         "path": "projects/08-capstone-ops-agent/",
         "competency": "harness",
+        "theme": "Assemble control plane",
+        "learn": "Integrate agent, MCP, HITL, evals; MCP reads TF-managed sandbox groups",
+        "feeds": [
+          "capstone"
+        ],
         "build": [
           "Merge agent + MCP + FastAPI into capstone layout",
           "One local run script or docker-compose",
-          "Port eval suite"
+          "Port eval suite; MCP queries TF-managed sandbox groups"
         ],
         "doneWhen": [
           "Single start command",
@@ -2147,7 +2403,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Port eval suite",
+              "text": "Port eval suite; MCP queries TF-managed sandbox groups",
               "kind": "build"
             }
           ]
@@ -2201,6 +2457,11 @@
       "month": 6,
       "competency": "identity",
       "phase": "capstone",
+      "theme": "Enforce identity + HITL",
+      "learn": "Unapproved writes blocked; propose changes only against IaC-known groups",
+      "feeds": [
+        "capstone"
+      ],
       "capstoneWeek": true,
       "interviewPrep": false,
       "title": "Capstone W2 \u2014 Identity + HITL enforcement",
@@ -2209,10 +2470,15 @@
         "name": "Capstone W2 \u2014 Identity + HITL enforcement",
         "path": "projects/08-capstone-ops-agent/",
         "competency": "identity",
+        "theme": "Enforce identity + HITL",
+        "learn": "Unapproved writes blocked; propose changes only against IaC-known groups",
+        "feeds": [
+          "capstone"
+        ],
         "build": [
           "HITL gate before side effects",
           "Audit log on every query",
-          "Reject privilege escalation eval cases"
+          "Reject privilege escalation; only IaC-known groups in write proposals"
         ],
         "doneWhen": [
           "Unapproved writes blocked",
@@ -2251,7 +2517,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Reject privilege escalation eval cases",
+              "text": "Reject privilege escalation; only IaC-known groups in write proposals",
               "kind": "build"
             }
           ]
@@ -2303,24 +2569,36 @@
     {
       "week": 23,
       "month": 6,
-      "competency": "endpoint",
+      "competency": "ops",
       "phase": "capstone",
+      "theme": "Observability + policy",
+      "learn": "Endpoint policy stub; OTel/metrics; SLO sketch; event plane",
+      "feeds": [
+        "M7",
+        "capstone"
+      ],
       "capstoneWeek": true,
       "interviewPrep": false,
-      "title": "Capstone W3 \u2014 Endpoint policy + observability",
+      "title": "Capstone W3 \u2014 Observability + policy",
       "workbook": "workbooks/week-23.html",
       "miniProject": {
-        "name": "Capstone W3 \u2014 Endpoint policy + observability",
+        "name": "Capstone W3 \u2014 Observability + policy",
         "path": "projects/08-capstone-ops-agent/",
-        "competency": "endpoint",
+        "competency": "ops",
+        "theme": "Observability + policy",
+        "learn": "Endpoint policy stub; OTel/metrics; SLO sketch; event plane",
+        "feeds": [
+          "M7",
+          "capstone"
+        ],
         "build": [
           "Wire endpoint policy stub from projects/09",
-          "Adoption events + failure alerts",
-          "Dashboard script reads capstone logs"
+          "Structured logs + OTel/metrics stub + short SLO note",
+          "Adoption/event plane reads capstone logs"
         ],
         "doneWhen": [
           "Policy check in demo flow",
-          "Metrics emitted"
+          "Metrics + SLO note present"
         ]
       },
       "days": [
@@ -2343,7 +2621,7 @@
           "steps": [
             {
               "id": "build-1",
-              "text": "Adoption events + failure alerts",
+              "text": "Structured logs + OTel/metrics stub + short SLO note",
               "kind": "build"
             }
           ]
@@ -2355,7 +2633,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Dashboard script reads capstone logs",
+              "text": "Adoption/event plane reads capstone logs",
               "kind": "build"
             }
           ]
@@ -2379,7 +2657,7 @@
           "steps": [
             {
               "id": "done-1",
-              "text": "Metrics emitted",
+              "text": "Metrics + SLO note present",
               "kind": "done"
             }
           ]
@@ -2407,24 +2685,39 @@
     {
       "week": 24,
       "month": 6,
-      "competency": "ops",
+      "competency": "platform",
       "phase": "capstone",
+      "theme": "Deliver cloud + identity",
+      "learn": "GCP Terraform + CI \u2192 Cloud Run; Okta TF plan in CI; honest case study",
+      "feeds": [
+        "M6",
+        "M8",
+        "capstone"
+      ],
       "capstoneWeek": true,
       "interviewPrep": false,
-      "title": "Capstone W4 \u2014 Deploy POC + case study",
+      "title": "Capstone W4 \u2014 Deliver cloud + identity",
       "workbook": "workbooks/week-24.html",
       "miniProject": {
-        "name": "Capstone W4 \u2014 Deploy POC + case study",
+        "name": "Capstone W4 \u2014 Deliver cloud + identity",
         "path": "projects/08-capstone-ops-agent/",
-        "competency": "ops",
+        "competency": "platform",
+        "theme": "Deliver cloud + identity",
+        "learn": "GCP Terraform + CI \u2192 Cloud Run; Okta TF plan in CI; honest case study",
+        "feeds": [
+          "M6",
+          "M8",
+          "capstone"
+        ],
         "build": [
-          "Cloud Run deploy POC (or documented deploy script)",
-          "study-notes/capstone-case-study.md",
-          "Update portfolio README"
+          "Cloud Run deploy via projects/10-platform-foundation (or documented script)",
+          "Confirm Okta IaC CI plan path still valid",
+          "study-notes/capstone-case-study.md with honest limits"
         ],
         "doneWhen": [
           "Deploy instructions",
-          "Case study with honest limits"
+          "Case study committed",
+          "Portfolio README updated"
         ]
       },
       "days": [
@@ -2435,7 +2728,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "Cloud Run deploy POC (or documented deploy script)",
+              "text": "Cloud Run deploy via projects/10-platform-foundation (or documented script)",
               "kind": "build"
             }
           ]
@@ -2447,7 +2740,7 @@
           "steps": [
             {
               "id": "build-1",
-              "text": "study-notes/capstone-case-study.md",
+              "text": "Confirm Okta IaC CI plan path still valid",
               "kind": "build"
             }
           ]
@@ -2459,7 +2752,7 @@
           "steps": [
             {
               "id": "build-2",
-              "text": "Update portfolio README",
+              "text": "study-notes/capstone-case-study.md with honest limits",
               "kind": "build"
             }
           ]
@@ -2483,7 +2776,7 @@
           "steps": [
             {
               "id": "done-1",
-              "text": "Case study with honest limits",
+              "text": "Case study committed",
               "kind": "done"
             }
           ]
@@ -2492,7 +2785,13 @@
           "day": "sat",
           "label": "Saturday",
           "short": "Sat",
-          "steps": []
+          "steps": [
+            {
+              "id": "done-2",
+              "text": "Portfolio README updated",
+              "kind": "done"
+            }
+          ]
         },
         {
           "day": "sun",
@@ -2513,6 +2812,11 @@
       "month": 7,
       "competency": "portfolio",
       "phase": "portfolio",
+      "theme": "Demo polish",
+      "learn": "Hiring-manager demo: Okta IaC \u2192 agent \u2192 HITL \u2192 audit \u2192 Cloud Run",
+      "feeds": [
+        "capstone"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
       "title": "Capstone demo polish (2 min)",
@@ -2521,9 +2825,15 @@
         "name": "Capstone demo polish (2 min)",
         "path": "projects/08-capstone-ops-agent/",
         "competency": "portfolio",
+        "theme": "Demo polish",
+        "learn": "Hiring-manager demo: Okta IaC \u2192 agent \u2192 HITL \u2192 audit \u2192 Cloud Run",
+        "feeds": [
+          "capstone"
+        ],
         "build": [
           "Rehearse demo-script.md",
-          "Fix top 3 eval failures"
+          "Fix top 3 eval failures",
+          "README architecture diagram"
         ],
         "doneWhen": [
           "Demo under 2 minutes",
@@ -2561,9 +2871,9 @@
           "short": "Wed",
           "steps": [
             {
-              "id": "done-0",
-              "text": "Demo under 2 minutes",
-              "kind": "done"
+              "id": "build-2",
+              "text": "README architecture diagram",
+              "kind": "build"
             }
           ]
         },
@@ -2573,8 +2883,8 @@
           "short": "Thu",
           "steps": [
             {
-              "id": "done-1",
-              "text": "README diagram",
+              "id": "done-0",
+              "text": "Demo under 2 minutes",
               "kind": "done"
             }
           ]
@@ -2583,7 +2893,13 @@
           "day": "fri",
           "label": "Friday",
           "short": "Fri",
-          "steps": []
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "README diagram",
+              "kind": "done"
+            }
+          ]
         },
         {
           "day": "sat",
@@ -2610,6 +2926,11 @@
       "month": 7,
       "competency": "portfolio",
       "phase": "portfolio",
+      "theme": "Portfolio narrative",
+      "learn": "One story: shipped work + M1\u2013M8 + flagship control plane",
+      "feeds": [
+        "capstone"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
       "title": "Portfolio narrative",
@@ -2618,12 +2939,17 @@
         "name": "Portfolio narrative",
         "path": "study-notes/platform-projects/platform-bridge.md",
         "competency": "portfolio",
+        "theme": "Portfolio narrative",
+        "learn": "One story: shipped work + M1\u2013M8 + flagship control plane",
+        "feeds": [
+          "capstone"
+        ],
         "build": [
           "Update platform-bridge.md",
-          "LinkedIn draft"
+          "LinkedIn draft linking minis + capstone"
         ],
         "doneWhen": [
-          "Narrative links shipped work + capstone"
+          "Narrative links shipped work + M1\u2013M8 + capstone"
         ]
       },
       "days": [
@@ -2646,7 +2972,7 @@
           "steps": [
             {
               "id": "build-1",
-              "text": "LinkedIn draft",
+              "text": "LinkedIn draft linking minis + capstone",
               "kind": "build"
             }
           ]
@@ -2658,7 +2984,7 @@
           "steps": [
             {
               "id": "done-0",
-              "text": "Narrative links shipped work + capstone",
+              "text": "Narrative links shipped work + M1\u2013M8 + capstone",
               "kind": "done"
             }
           ]
@@ -2700,19 +3026,29 @@
       "month": 7,
       "competency": "portfolio",
       "phase": "portfolio",
+      "theme": "Recruiter one-pager",
+      "learn": "Technical portfolio summary (not consulting-first)",
+      "feeds": [
+        "capstone"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Consulting one-pager",
+      "title": "Recruiter technical one-pager",
       "workbook": "workbooks/week-27.html",
       "miniProject": {
-        "name": "Consulting one-pager",
-        "path": "CONTEXT.md",
+        "name": "Recruiter technical one-pager",
+        "path": "study-notes/",
         "competency": "portfolio",
+        "theme": "Recruiter one-pager",
+        "learn": "Technical portfolio summary (not consulting-first)",
+        "feeds": [
+          "capstone"
+        ],
         "build": [
-          "study-notes/consulting-one-pager.md from offers (a)(b)(c)"
+          "study-notes/recruiter-one-pager.md: flagship + 8 minis + stack"
         ],
         "doneWhen": [
-          "3 offers scoped with deliverables"
+          "One-pager committed and linked from README"
         ]
       },
       "days": [
@@ -2723,7 +3059,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "study-notes/consulting-one-pager.md from offers (a)(b)(c)",
+              "text": "study-notes/recruiter-one-pager.md: flagship + 8 minis + stack",
               "kind": "build"
             }
           ]
@@ -2735,7 +3071,7 @@
           "steps": [
             {
               "id": "done-0",
-              "text": "3 offers scoped with deliverables",
+              "text": "One-pager committed and linked from README",
               "kind": "done"
             }
           ]
@@ -2783,14 +3119,24 @@
       "month": 7,
       "competency": "ops",
       "phase": "portfolio",
+      "theme": "Metrics honesty pass",
+      "learn": "Baseline formulas from real volume only",
+      "feeds": [
+        "M5"
+      ],
       "capstoneWeek": false,
       "interviewPrep": false,
-      "title": "Metrics baseline doc",
+      "title": "Metrics honesty pass",
       "workbook": "workbooks/week-28.html",
       "miniProject": {
-        "name": "Metrics baseline doc",
+        "name": "Metrics honesty pass",
         "path": "projects/05-adoption-dashboard/",
         "competency": "ops",
+        "theme": "Metrics honesty pass",
+        "learn": "Baseline formulas from real volume only",
+        "feeds": [
+          "M5"
+        ],
         "build": [
           "study-notes/metrics-baseline.md from real volume only"
         ],
@@ -2866,16 +3212,26 @@
       "month": 8,
       "competency": "portfolio",
       "phase": "portfolio",
+      "theme": "System design: Okta-as-code",
+      "learn": "TF topology vs SCIM lifecycle; agent HITL for membership",
+      "feeds": [
+        "M8"
+      ],
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "System design #1 \u2014 access automation",
+      "title": "System design #1 \u2014 Okta-as-code + SCIM",
       "workbook": "workbooks/week-29.html",
       "miniProject": {
-        "name": "System design #1 \u2014 access automation",
+        "name": "System design #1 \u2014 Okta-as-code + SCIM",
         "path": "interview-prep/",
         "competency": "portfolio",
+        "theme": "System design: Okta-as-code",
+        "learn": "TF topology vs SCIM lifecycle; agent HITL for membership",
+        "feeds": [
+          "M8"
+        ],
         "build": [
-          "45-min timed design \u2192 interview-prep/answers/"
+          "45-min timed design \u2192 interview-prep/answers/okta-iac-scim-boundary.md"
         ],
         "doneWhen": [
           "Written design committed"
@@ -2889,7 +3245,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "45-min timed design \u2192 interview-prep/answers/",
+              "text": "45-min timed design \u2192 interview-prep/answers/okta-iac-scim-boundary.md",
               "kind": "build"
             }
           ]
@@ -2949,16 +3305,26 @@
       "month": 8,
       "competency": "portfolio",
       "phase": "portfolio",
+      "theme": "System design: agent hosting",
+      "learn": "WIF + MCP + HITL; Cloud Run vs GKE for agent workloads",
+      "feeds": [
+        "M6"
+      ],
       "capstoneWeek": false,
       "interviewPrep": true,
-      "title": "System design #2 \u2014 agent identity platform",
+      "title": "System design #2 \u2014 agent identity + Cloud Run vs GKE",
       "workbook": "workbooks/week-30.html",
       "miniProject": {
-        "name": "System design #2 \u2014 agent identity platform",
+        "name": "System design #2 \u2014 agent identity + Cloud Run vs GKE",
         "path": "interview-prep/",
         "competency": "portfolio",
+        "theme": "System design: agent hosting",
+        "learn": "WIF + MCP + HITL; Cloud Run vs GKE for agent workloads",
+        "feeds": [
+          "M6"
+        ],
         "build": [
-          "Timed design: WIF + MCP + HITL"
+          "Timed design: WIF + MCP + HITL + hosting tradeoff"
         ],
         "doneWhen": [
           "Design doc committed"
@@ -2972,7 +3338,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "Timed design: WIF + MCP + HITL",
+              "text": "Timed design: WIF + MCP + HITL + hosting tradeoff",
               "kind": "build"
             }
           ]
@@ -3032,6 +3398,11 @@
       "month": 8,
       "competency": "portfolio",
       "phase": "portfolio",
+      "theme": "STAR + resume",
+      "learn": "Bullets for Okta TF, MCP, HITL, GCP delivery, capstone",
+      "feeds": [
+        "capstone"
+      ],
       "capstoneWeek": false,
       "interviewPrep": true,
       "title": "STAR stories + resume",
@@ -3040,8 +3411,13 @@
         "name": "STAR stories + resume",
         "path": "interview-prep/answers/behavioral-star.md",
         "competency": "portfolio",
+        "theme": "STAR + resume",
+        "learn": "Bullets for Okta TF, MCP, HITL, GCP delivery, capstone",
+        "feeds": [
+          "capstone"
+        ],
         "build": [
-          "STAR: automation, capstone, identity",
+          "STAR: automation, Okta IaC, capstone",
           "Resume bullets"
         ],
         "doneWhen": [
@@ -3056,7 +3432,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "STAR: automation, capstone, identity",
+              "text": "STAR: automation, Okta IaC, capstone",
               "kind": "build"
             }
           ]
@@ -3122,6 +3498,11 @@
       "month": 8,
       "competency": "portfolio",
       "phase": "portfolio",
+      "theme": "Mock interview",
+      "learn": "Design aloud + STAR + 2-min capstone demo",
+      "feeds": [
+        "capstone"
+      ],
       "capstoneWeek": false,
       "interviewPrep": true,
       "title": "Mock interview block",
@@ -3130,6 +3511,11 @@
         "name": "Mock interview block",
         "path": "interview-prep/",
         "competency": "portfolio",
+        "theme": "Mock interview",
+        "learn": "Design aloud + STAR + 2-min capstone demo",
+        "feeds": [
+          "capstone"
+        ],
         "build": [
           "1 design aloud",
           "1 STAR aloud",
@@ -3219,6 +3605,11 @@
       "month": 9,
       "competency": "portfolio",
       "phase": "portfolio",
+      "theme": "Target companies",
+      "learn": "AI Systems / agentic ops / internal AI platform roles",
+      "feeds": [
+        "capstone"
+      ],
       "capstoneWeek": false,
       "interviewPrep": true,
       "title": "Apply tracker \u2014 3 targets",
@@ -3227,6 +3618,11 @@
         "name": "Apply tracker \u2014 3 targets",
         "path": "interview-prep/answers/wave-1-checklist.md",
         "competency": "portfolio",
+        "theme": "Target companies",
+        "learn": "AI Systems / agentic ops / internal AI platform roles",
+        "feeds": [
+          "capstone"
+        ],
         "build": [
           "Company research",
           "Tailored resume bullets"
@@ -3309,6 +3705,11 @@
       "month": 9,
       "competency": "portfolio",
       "phase": "portfolio",
+      "theme": "Submit applications",
+      "learn": "Apply with portfolio links (dashboard + capstone + Okta IaC)",
+      "feeds": [
+        "capstone"
+      ],
       "capstoneWeek": false,
       "interviewPrep": true,
       "title": "Submit applications",
@@ -3317,6 +3718,11 @@
         "name": "Submit applications",
         "path": "interview-prep/",
         "competency": "portfolio",
+        "theme": "Submit applications",
+        "learn": "Apply with portfolio links (dashboard + capstone + Okta IaC)",
+        "feeds": [
+          "capstone"
+        ],
         "build": [
           "1+ applications",
           "Outreach"
@@ -3399,6 +3805,11 @@
       "month": 9,
       "competency": "portfolio",
       "phase": "portfolio",
+      "theme": "Program retro",
+      "learn": "What elevated positioning; next-quarter hardening",
+      "feeds": [
+        "capstone"
+      ],
       "capstoneWeek": false,
       "interviewPrep": true,
       "title": "Program retro",
@@ -3407,6 +3818,11 @@
         "name": "Program retro",
         "path": "study-notes/",
         "competency": "portfolio",
+        "theme": "Program retro",
+        "learn": "What elevated positioning; next-quarter hardening",
+        "feeds": [
+          "capstone"
+        ],
         "build": [
           "study-notes/program-retro.md"
         ],
@@ -3482,6 +3898,12 @@
       "month": 9,
       "competency": "portfolio",
       "phase": "portfolio",
+      "theme": "Keep-alive",
+      "learn": "Re-run evals; terraform plan clean on sandbox; keep capstone runnable",
+      "feeds": [
+        "capstone",
+        "M8"
+      ],
       "capstoneWeek": false,
       "interviewPrep": true,
       "title": "Maintain cadence",
@@ -3490,12 +3912,20 @@
         "name": "Maintain cadence",
         "path": "projects/08-capstone-ops-agent/",
         "competency": "portfolio",
+        "theme": "Keep-alive",
+        "learn": "Re-run evals; terraform plan clean on sandbox; keep capstone runnable",
+        "feeds": [
+          "capstone",
+          "M8"
+        ],
         "build": [
-          "Re-run evals monthly",
+          "Re-run evals",
+          "terraform plan on 11-okta-iac sandbox",
           "Keep capstone runnable"
         ],
         "doneWhen": [
           "Capstone runs",
+          "Okta plan clean or drift notes",
           "Next milestone set"
         ]
       },
@@ -3507,7 +3937,7 @@
           "steps": [
             {
               "id": "build-0",
-              "text": "Re-run evals monthly",
+              "text": "Re-run evals",
               "kind": "build"
             }
           ]
@@ -3519,7 +3949,7 @@
           "steps": [
             {
               "id": "build-1",
-              "text": "Keep capstone runnable",
+              "text": "terraform plan on 11-okta-iac sandbox",
               "kind": "build"
             }
           ]
@@ -3530,9 +3960,9 @@
           "short": "Wed",
           "steps": [
             {
-              "id": "done-0",
-              "text": "Capstone runs",
-              "kind": "done"
+              "id": "build-2",
+              "text": "Keep capstone runnable",
+              "kind": "build"
             }
           ]
         },
@@ -3542,8 +3972,8 @@
           "short": "Thu",
           "steps": [
             {
-              "id": "done-1",
-              "text": "Next milestone set",
+              "id": "done-0",
+              "text": "Capstone runs",
               "kind": "done"
             }
           ]
@@ -3552,13 +3982,25 @@
           "day": "fri",
           "label": "Friday",
           "short": "Fri",
-          "steps": []
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Okta plan clean or drift notes",
+              "kind": "done"
+            }
+          ]
         },
         {
           "day": "sat",
           "label": "Saturday",
           "short": "Sat",
-          "steps": []
+          "steps": [
+            {
+              "id": "done-2",
+              "text": "Next milestone set",
+              "kind": "done"
+            }
+          ]
         },
         {
           "day": "sun",

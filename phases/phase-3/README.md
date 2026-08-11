@@ -1,11 +1,8 @@
-# Phase 3 — Portfolio + apply (Weeks 25–36)
+# Phase 3 — Capstone + portfolio (Weeks 21–36)
 
-**Goal:** Demo the capstone, write the case study, interview, apply.
+| Block | Weeks | Focus |
+|-------|-------|-------|
+| Capstone | 21–24 | Flagship Agentic Ops Control Plane |
+| Portfolio | 25–36 | Demo, narrative, Okta-as-code design, apply |
 
-| Weeks | Focus |
-|-------|--------|
-| 25–28 | Demo polish, consulting one-pager, metrics baseline |
-| 29–32 | System design practice, STAR, mock interviews |
-| 33–36 | Applications, outreach, program retro |
-
-Lead with **projects/08-capstone-ops-agent/** in every interview — honest POC status.
+Full weekly themes: [CURRICULUM.md](../../CURRICULUM.md) · [tracker](../../tracker/).

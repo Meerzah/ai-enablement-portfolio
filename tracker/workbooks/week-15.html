@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 15 — Agentspace / team rollout checklist</title>
+<title>Week 15 — Unified ops event stream</title>
 <style>
 :root{
   --bg:#09090b;--surface:#111113;--surface2:#18181b;--border:#27272a;
@@ -90,7 +90,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   <aside class="side">
     <div>
       <label>Week 15 workbook</label>
-      <h2>Agentspace / team rollout checklist</h2>
+      <h2>Unified ops event stream</h2>
       <a class="back" href="../choose-layout.html">← Dashboard</a>
     </div>
     <div class="stat">
@@ -99,7 +99,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
-      <a class="primary" href="https://meerzah.github.io/ai-systems-portfolio/projects/03-agentspace-rollout/README.md" target="_blank" rel="noopener">Open project →</a>
+      <a class="primary" href="https://meerzah.github.io/ai-systems-portfolio/projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">Open project →</a>
       <a href="https://github.com/Meerzah/ai-systems-portfolio.git" target="_blank" rel="noopener">Clone repo</a>
     </div>
   </aside>
@@ -115,7 +115,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   </main>
 </div>
 <script>
-const PLAN = {"week": 15, "title": "Agentspace / team rollout checklist", "path": "projects/03-agentspace-rollout/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/03-agentspace-rollout/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Rollout checklist: identity scope, data boundaries, pilot criteria", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Risk register: 3 items + mitigations", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Success metrics you can actually measure", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "checklist.md committed", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Pilot scope documented", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
+const PLAN = {"week": 15, "title": "Unified ops event stream", "path": "projects/05-adoption-dashboard/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/05-adoption-dashboard/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "events-schema.md: query_submitted, tool_called, escalated, approved", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Publisher stub (Pub/Sub or structured log) + sample events", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Dashboard script from sample logs only", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Schema + script run on test data", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Screenshot or terminal output saved", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

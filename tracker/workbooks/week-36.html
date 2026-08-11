@@ -95,7 +95,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 5 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -115,7 +115,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
   </main>
 </div>
 <script>
-const PLAN = {"week": 36, "title": "Maintain cadence", "path": "projects/08-capstone-ops-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/08-capstone-ops-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Re-run evals monthly", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Keep capstone runnable", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "done-0", "text": "Capstone runs", "kind": "done"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-1", "text": "Next milestone set", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": []}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
+const PLAN = {"week": 36, "title": "Maintain cadence", "path": "projects/08-capstone-ops-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/08-capstone-ops-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Re-run evals", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "terraform plan on 11-okta-iac sandbox", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Keep capstone runnable", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Capstone runs", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Okta plan clean or drift notes", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Next milestone set", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

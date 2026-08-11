@@ -2,15 +2,16 @@
 
 # AI Systems / Agentic Ops Portfolio
 
-**Systems engineer → AI-native automation & internal ops agents**
+**Systems engineer → AI-native automation, identity-as-code & cloud delivery**
 
-Identity-backed workflows · Okta · GCP · Google ADK · MCP · Agentspace
+Identity-backed agents · Okta Terraform · GCP · MCP · HITL · CI/CD · observability
 
 <br/>
 
 [![Dashboard](https://img.shields.io/badge/Dashboard-36--week_roadmap-58a6ff?style=flat-square)](./tracker/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-meerzah-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/meerzah)
 [![Google Cloud](https://img.shields.io/badge/Google_Cloud-Vertex_AI-4285F4?style=flat-square&logo=googlecloud&logoColor=white)](https://cloud.google.com/vertex-ai)
+[![Terraform](https://img.shields.io/badge/IaC-Terraform-844FBA?style=flat-square&logo=terraform&logoColor=white)](https://www.terraform.io)
 [![MCP](https://img.shields.io/badge/Protocol-MCP-7F77DD?style=flat-square)](https://modelcontextprotocol.io)
 [![Okta](https://img.shields.io/badge/Identity-Okta-007DC1?style=flat-square&logo=okta&logoColor=white)](https://okta.com)
 
@@ -23,9 +24,9 @@ Identity-backed workflows · Okta · GCP · Google ADK · MCP · Agentspace
 ```python
 profile = {
     "target":    "AI Systems / Agentic Ops Engineer",
-    "stack":     ["Okta", "GCP", "Google ADK", "Vertex AI", "MCP", "n8n", "Python"],
+    "stack":     ["Okta", "Terraform", "GCP", "MCP", "Python", "Cloud Run", "CI/CD"],
     "shipped":   "Slack governance, n8n, Argus, Lumos/Okta at AppLovin",
-    "building":  "Agentic IT workflows with HITL + identity audit",
+    "building":  "Agentic ops control plane + Okta/GCP IaC + HITL + evals",
     "location":  "San Francisco Bay Area, CA",
 }
 ```
@@ -43,39 +44,43 @@ profile = {
 
 ---
 
-### Portfolio projects
+### Portfolio products (mini → flagship)
 
-| # | Project | Stack | Status | Outcome |
-|---|---------|-------|--------|---------|
-| 01 | [IT Helpdesk Agent](./projects/01-it-helpdesk-agent) | Google ADK · Vertex · RAG | Portfolio demo | IT runbook Q&A via CLI + Okta read tools |
-| 02 | [Okta MCP Server](./projects/02-okta-mcp-server) | MCP · Okta API | Portfolio demo | Identity queries via natural language |
-| 03 | [Agentspace Rollout](./projects/03-agentspace-rollout) | Agentspace · Drive | In progress | Rollout playbook for 2 teams |
-| 04 | [Prompt Playbooks](./projects/04-prompt-playbooks) | Markdown · Gemini | Portfolio demo | Reusable prompts for non-technical teams |
-| 05 | [Adoption Dashboard](./projects/05-adoption-dashboard) | BigQuery · Logging | In progress | AI tool usage metrics |
-| 06 | [CIPHER](./projects/06-cipher) | Okta · Cloud Run · Jira | In development | ABAC mover automation (design + ship plan) |
-| 07 | [ALIUS](./projects/07-alius) | Cloud Run · Firestore | Planning | Offboarding orchestration blueprint |
-| 08 | [Capstone — Ops Agent Platform](./projects/08-capstone-ops-agent) | ADK · MCP · FastAPI · Cloud Run | Weeks 21–24 | All 7 competencies integrated |
-| 09 | [Endpoint AI Governance](./projects/09-endpoint-ai-governance) | MDM policy · fleet AI | Weeks 17–18 | Endpoint + enablement pillar |
+| ID | Project | Stack | Status | Outcome |
+|----|---------|-------|--------|---------|
+| M1 | [IT Helpdesk Agent](./projects/01-it-helpdesk-agent) | ADK · Vertex · RAG | Portfolio demo | Tool-using ops agent + guardrails |
+| M2 | [Okta MCP Server](./projects/02-okta-mcp-server) | MCP · Okta API | Portfolio demo | Read-only identity tools for agents |
+| M3 | HITL Approval Gate | FastAPI · webhooks | Weeks 9–11 | Side effects blocked without approval |
+| M4 | Agent Eval & Guardrails | eval CSV | Weeks 13–14 | 15-case regression suite |
+| M5 | [Ops Event Plane](./projects/05-adoption-dashboard) | schema · Pub/Sub stub | In progress | Unified query/tool/approve events |
+| M6 | [Platform Foundation](./projects/10-platform-foundation) | Terraform · GCP · Actions | Scaffold | Cloud Run + secrets + CI |
+| M7 | LLMOps Observability | OTel · SLOs | Capstone | Cost/latency + error-budget notes |
+| M8 | [Okta Identity-as-Code](./projects/11-okta-iac) | Terraform · Okta | Scaffold | Groups, apps, policies as code |
+| **Flagship** | [**Agentic Ops Control Plane**](./projects/08-capstone-ops-agent) | All of the above | Weeks 21–24 | Hiring-manager end-to-end demo |
 
-**Status key:** *Portfolio demo* = public repo runnable code · *In development/planning* = AppLovin platform work (honest labels in interviews)
+Supporting: [Agentspace Rollout](./projects/03-agentspace-rollout) · [Prompt Playbooks](./projects/04-prompt-playbooks) · [CIPHER](./projects/06-cipher) · [ALIUS](./projects/07-alius) · [Endpoint AI Governance](./projects/09-endpoint-ai-governance)
+
+**Status key:** *Portfolio demo* = runnable · *Scaffold* = curriculum-ready stubs · *In development/planning* = AppLovin work (honest labels)
+
+**Okta IaC boundary:** Terraform owns access topology (groups/apps/policies) + sandbox demo users. Production user lifecycle → SCIM/automation.
 
 ---
 
 ### Study roadmap
 
-Research-backed **[CURRICULUM.md](./CURRICULUM.md)** — seven competencies for AI Systems roles:
+**[CURRICULUM.md](./CURRICULUM.md)** — weekly **theme → mini-project → flagship**. Eight competencies:
 
-**Identity · Endpoints · AI enablement · Agent harness · Workflow automation · Observability · Portfolio**
+**Harness · Identity (+ Okta IaC) · Endpoint · Enablement · Workflow · Ops · Cloud platform · Portfolio**
 
 | Phase | Weeks | What you ship |
 |-------|-------|---------------|
 | Foundation | 1–4 | Agent + Okta MCP + guardrails |
-| Identity + enablement | 5–8 | Agent identity, audit, CIPHER design, playbooks |
-| Workflow | 9–12 | HITL, API, webhooks, tool schemas |
-| Evals + platform | 13–16 | 15 eval cases, rollout checklist, metrics |
-| Endpoint + prep | 17–20 | AI governance on endpoints, capstone architecture |
-| **Capstone** | **21–24** | **`projects/08-capstone-ops-agent/`** |
-| Portfolio | 25–36 | Case study, interview, apply |
+| Identity-as-code | 5–8 | Okta TF groups/apps/policies + GCP secrets stub |
+| Workflow + containers | 9–12 | HITL, API, webhooks, Docker |
+| Evals + events + CI | 13–16 | 15 evals, event stream, CI for Okta TF + agent |
+| Endpoint + prep | 17–20 | Endpoint AI policy, Run vs GKE, architecture freeze |
+| **Capstone** | **21–24** | **Flagship Agentic Ops Control Plane** |
+| Portfolio | 25–36 | Demo, narrative, system design, apply |
 
 | Resource | Link |
 |----------|------|
@@ -88,13 +93,13 @@ Research-backed **[CURRICULUM.md](./CURRICULUM.md)** — seven competencies for 
 ### Repo layout
 
 ```
-projects/          # Portfolio code + CIPHER/ALIUS design docs
+projects/          # M1–M8 minis + flagship capstone
 tracker/           # GitHub Pages dashboard + weeks.json
-phases/            # 90-day + 9-month unit guides
+phases/            # Phase guides
 interview-prep/    # System design templates + answers
-study-notes/       # Active notes
+study-notes/       # Active notes (+ cloud-platform/)
 CONTEXT.md         # Targets, consulting offers
-SETUP.md             # Run projects + tracker locally
+SETUP.md           # Run projects + tracker locally
 ```
 
 ---
@@ -103,7 +108,7 @@ SETUP.md             # Run projects + tracker locally
 
 <div align="center">
 
-Open to **AI Systems**, **AI-native automation**, and **internal ops agent** roles.
+Open to **AI Systems**, **agentic ops**, and **internal AI platform** roles.
 
 [![LinkedIn](https://img.shields.io/badge/Connect-meerzah-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/meerzah)
 

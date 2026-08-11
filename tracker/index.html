@@ -290,10 +290,17 @@
       const build = (mp.build || []).map(s => `<li>${s}</li>`).join("");
       const doneWhen = (mp.doneWhen || []).map(s => `<li>${s}</li>`).join("");
 
+      const theme = w.theme || mp.theme || "";
+      const learn = w.learn || mp.learn || "";
+      const feeds = (w.feeds || mp.feeds || []).join(", ");
+
       document.getElementById("mini-project").innerHTML = `
         <div class="project-card">
           <span class="phase-tag ${w.phase || 'mini'}">${w.phase || 'mini'} · ${mp.competency || w.competency || 'build'}</span>
           <h3>${mp.name || w.title}</h3>
+          ${theme ? `<p style="font-size:.9rem;margin:0 0 6px"><strong style="color:var(--text)">Theme:</strong> <span style="color:var(--muted)">${theme}</span></p>` : ""}
+          ${learn ? `<p style="font-size:.85rem;color:var(--muted);margin:0 0 10px"><strong style="color:var(--text)">Learn:</strong> ${learn}</p>` : ""}
+          ${feeds ? `<p style="font-size:.8rem;color:var(--purple);margin:0 0 10px">Feeds: ${feeds}</p>` : ""}
           <div class="project-links">
             ${projectHref ? `<a class="primary" href="${projectHref}" target="_blank" rel="noopener">Open ${mp.path} →</a>` : ""}
             ${w.workbook ? `<a href="${w.workbook}">Build sheet</a>` : ""}

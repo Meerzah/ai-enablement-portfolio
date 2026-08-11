@@ -1,32 +1,44 @@
 {
   "title": "AI Systems Engineering Roadmap",
-  "subtitle": "Identity · endpoints · AI enablement · agent harness → 6-month capstone",
-  "careerFocus": "Move 1 — AI Systems",
+  "subtitle": "Theme → mini-project → flagship control plane · identity-as-code · cloud delivery",
+  "careerFocus": "Move 1 — AI Systems / Agentic Ops",
   "repoName": "ai-systems-portfolio",
   "pagesBase": "https://meerzah.github.io/ai-systems-portfolio",
   "curriculum": "CURRICULUM.md",
   "currentWeek": 1,
   "currentPhase": 1,
   "currentUnit": 1,
-  "currentUnitLabel": "Week 1: helpdesk agent + runbooks",
+  "currentUnitLabel": "Week 1: ops friction → agent scope",
   "weeksTotal": 36,
   "hoursPerWeek": "12–15",
   "competencies": [
     { "id": "harness", "label": "Agent harness", "summary": "Tools, RAG, evals, guardrails, ADK/MCP" },
-    { "id": "identity", "label": "Identity & access", "summary": "Okta, SCIM, agent credentials, audit, HITL" },
+    { "id": "identity", "label": "Identity & access", "summary": "Okta, SCIM, Okta Terraform, agent credentials, audit, HITL" },
     { "id": "endpoint", "label": "Endpoint & fleet", "summary": "MDM, AI tool policy, offboarding orchestration" },
     { "id": "enablement", "label": "AI enablement", "summary": "Rollout, playbooks, KB, adoption metrics" },
     { "id": "workflow", "label": "Workflow automation", "summary": "Intake→approval→action, APIs, webhooks" },
-    { "id": "ops", "label": "Observability & ops", "summary": "Logs, evals, alerts, honest metrics" },
+    { "id": "ops", "label": "Observability & ops", "summary": "Logs, traces, evals, alerts, honest metrics" },
+    { "id": "platform", "label": "Cloud platform & delivery", "summary": "Docker, Terraform GCP, CI/CD, Cloud Run, K8s literacy" },
     { "id": "portfolio", "label": "Portfolio & interview", "summary": "Case study, system design, apply" }
+  ],
+  "products": [
+    { "id": "M1", "label": "Ops Agent Harness", "path": "projects/01-it-helpdesk-agent/" },
+    { "id": "M2", "label": "Okta MCP Server", "path": "projects/02-okta-mcp-server/" },
+    { "id": "M3", "label": "HITL Approval Gate", "path": "projects/01-it-helpdesk-agent/" },
+    { "id": "M4", "label": "Agent Eval & Guardrails", "path": "projects/01-it-helpdesk-agent/evals/" },
+    { "id": "M5", "label": "Ops Event Plane", "path": "projects/05-adoption-dashboard/" },
+    { "id": "M6", "label": "Platform Foundation", "path": "projects/10-platform-foundation/" },
+    { "id": "M7", "label": "LLMOps Observability", "path": "projects/08-capstone-ops-agent/" },
+    { "id": "M8", "label": "Okta Identity-as-Code", "path": "projects/11-okta-iac/" },
+    { "id": "capstone", "label": "Agentic Ops Control Plane", "path": "projects/08-capstone-ops-agent/" }
   ],
   "program": [
     { "id": "foundation", "weeks": "1–4", "label": "Agent + MCP foundation", "competencies": ["harness", "identity"] },
-    { "id": "identity", "weeks": "5–8", "label": "Identity + audit + playbooks", "competencies": ["identity", "enablement"] },
-    { "id": "workflow", "weeks": "9–12", "label": "HITL + API + reliability", "competencies": ["workflow", "harness"] },
-    { "id": "enablement", "weeks": "13–16", "label": "Evals + rollout + metrics", "competencies": ["ops", "enablement"] },
-    { "id": "endpoint", "weeks": "17–20", "label": "Endpoint + integration", "competencies": ["endpoint", "harness"] },
-    { "id": "capstone", "weeks": "21–24", "label": "Capstone build", "competencies": ["harness", "identity", "endpoint", "workflow", "ops"] },
+    { "id": "okta-iac", "weeks": "5–8", "label": "Okta IaC + GCP platform stub", "competencies": ["identity", "platform"] },
+    { "id": "workflow", "weeks": "9–12", "label": "HITL + API + containers", "competencies": ["workflow", "platform"] },
+    { "id": "evals-ci", "weeks": "13–16", "label": "Evals + events + CI", "competencies": ["ops", "platform"] },
+    { "id": "endpoint", "weeks": "17–20", "label": "Endpoint + architecture freeze", "competencies": ["endpoint", "platform", "harness"] },
+    { "id": "capstone", "weeks": "21–24", "label": "Flagship control plane", "competencies": ["harness", "identity", "ops", "platform"] },
     { "id": "portfolio", "weeks": "25–36", "label": "Ship + apply", "competencies": ["portfolio"] }
   ],
   "units": [
@@ -40,36 +52,36 @@
     {
       "id": 2,
       "weeks": "5–8",
-      "title": "Identity + enablement",
-      "focus": "Agent identity design, audit schema, CIPHER design, prompt playbooks",
-      "artifacts": ["study-notes/wif-agent-identity-design.md", "projects/06-cipher/SHIP-PLAN.md", "projects/04-prompt-playbooks/"]
+      "title": "Okta IaC + platform stub",
+      "focus": "Terraform Okta groups/apps/policies; GCP secrets skeleton",
+      "artifacts": ["projects/11-okta-iac/", "projects/10-platform-foundation/", "projects/06-cipher/SHIP-PLAN.md"]
     },
     {
       "id": 3,
       "weeks": "9–12",
-      "title": "Workflow automation",
-      "focus": "HITL, FastAPI, webhooks, tool schemas",
+      "title": "Workflow + containers",
+      "focus": "HITL, FastAPI, webhooks, Docker compose",
       "artifacts": ["projects/01-it-helpdesk-agent/docs/"]
     },
     {
       "id": 4,
       "weeks": "13–16",
-      "title": "Evals + enablement platform",
-      "focus": "15 eval cases, Agentspace rollout, adoption dashboard",
-      "artifacts": ["projects/01-it-helpdesk-agent/evals/", "projects/03-agentspace-rollout/", "projects/05-adoption-dashboard/"]
+      "title": "Evals + events + CI",
+      "focus": "15 eval cases, event stream, CI for Okta TF + agent",
+      "artifacts": ["projects/01-it-helpdesk-agent/evals/", "projects/05-adoption-dashboard/", "projects/11-okta-iac/"]
     },
     {
       "id": 5,
       "weeks": "17–20",
       "title": "Endpoint + capstone prep",
-      "focus": "AI governance on endpoints, ALIUS design, E2E demo, capstone architecture",
-      "artifacts": ["projects/09-endpoint-ai-governance/README.md", "projects/07-alius/ARCHITECTURE.md", "projects/08-capstone-ops-agent/"]
+      "focus": "Endpoint AI policy, ALIUS, Run vs GKE, architecture freeze",
+      "artifacts": ["projects/09-endpoint-ai-governance/README.md", "study-notes/cloud-platform/run-vs-gke.md", "projects/08-capstone-ops-agent/"]
     },
     {
       "id": 6,
       "weeks": "21–24",
-      "title": "Capstone — Agentic IT Ops Platform",
-      "focus": "Assemble all pillars; deploy POC; case study",
+      "title": "Flagship — Agentic Ops Control Plane",
+      "focus": "Assemble M1–M8; deploy POC; case study",
       "capstone": "projects/08-capstone-ops-agent/",
       "artifacts": ["projects/08-capstone-ops-agent/README.md", "study-notes/capstone-case-study.md"]
     },
@@ -77,13 +89,15 @@
       "id": 7,
       "weeks": "25–36",
       "title": "Portfolio + interview + apply",
-      "focus": "Demo, consulting one-pager, system designs, applications",
-      "artifacts": ["interview-prep/", "study-notes/consulting-one-pager.md"]
+      "focus": "Demo, Okta-as-code design, system designs, applications",
+      "artifacts": ["interview-prep/", "study-notes/recruiter-one-pager.md"]
     }
   ],
   "portfolio": {
     "capstone": "projects/08-capstone-ops-agent/",
     "startHere": "projects/01-it-helpdesk-agent/README.md",
+    "oktaIac": "projects/11-okta-iac/",
+    "platform": "projects/10-platform-foundation/",
     "curriculum": "CURRICULUM.md"
   },
   "counters": {

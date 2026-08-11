@@ -3,8 +3,8 @@
     {
       "month": 1,
       "weeks": "1–4",
-      "title": "Agent + identity foundations",
-      "capstone": "Mini-projects 1–4 shipped in projects/01 and projects/02",
+      "title": "Agent + Okta MCP foundation",
+      "capstone": "M1 + M2 shipped — agent, MCP, guardrails",
       "rubric": [
         "Helpdesk agent runs with extended runbooks",
         "Okta MCP read tools working",
@@ -15,97 +15,97 @@
     {
       "month": 2,
       "weeks": "5–8",
-      "title": "Prompts, logging, evals",
-      "capstone": "Mini-projects 5–8 — playbooks + first eval suite",
+      "title": "Okta IaC + GCP platform stub",
+      "capstone": "M8 Okta Terraform + M6 secrets/IAM skeleton",
       "rubric": [
-        "IT ops prompt playbook in projects/04",
-        "Structured query logging",
-        "Tool JSON schemas documented",
-        "5+ eval cases with honest results"
+        "Okta groups module + ACCESS-TOPOLOGY.md",
+        "Apps + policies modules planned/applied in sandbox",
+        "AGENT-CONTRACT + sandbox users boundary",
+        "GCP Secret Manager / SA stub (no secrets in git)"
       ]
     },
     {
       "month": 3,
       "weeks": "9–12",
-      "title": "HITL + API + audit",
-      "capstone": "Mini-projects 9–12 — approval gate + HTTP API",
+      "title": "HITL + API + containers",
+      "capstone": "M3 approval gate + containerized agent",
       "rubric": [
-        "15 eval cases with failure analysis",
         "HITL mock blocks unapproved actions",
         "FastAPI /query endpoint",
-        "Audit log schema + sample events"
+        "Idempotent webhook handler",
+        "Dockerfile + compose one-command run"
       ]
     },
     {
       "month": 4,
       "weeks": "13–16",
-      "title": "Reliability + metrics",
-      "capstone": "Mini-projects 13–16 — alerts + adoption events",
+      "title": "Evals + events + CI",
+      "capstone": "M4 evals + M5 event plane + CI for Okta TF",
       "rubric": [
-        "Idempotent webhook pattern documented",
-        "Failure alert payload + runbook",
-        "Agentspace rollout checklist",
-        "Usage metrics script on sample logs"
+        "15 eval cases with failure analysis",
+        "Unified event schema + sample pipeline",
+        "GitHub Actions terraform plan path for 11-okta-iac",
+        "Agent lint/test or build CI"
       ]
     },
     {
       "month": 5,
       "weeks": "17–20",
-      "title": "Integration + capstone prep",
-      "capstone": "End-to-end demo + projects/08 scaffold",
+      "title": "Endpoint + architecture freeze",
+      "capstone": "Endpoint policy + Run vs GKE + capstone ARCHITECTURE",
       "rubric": [
-        "Ops KB index + grounding rules",
-        "Full integration demo script",
-        "Capstone ARCHITECTURE.md",
-        "All mini-project artifacts linked in capstone README"
+        "Endpoint AI governance docs",
+        "ALIUS architecture update",
+        "Cloud Run vs GKE tradeoff memo",
+        "Capstone architecture + demo script"
       ]
     },
     {
       "month": 6,
       "weeks": "21–24",
-      "title": "Capstone — Ops Agent Platform",
-      "capstone": "projects/08-capstone-ops-agent/ deployable POC",
+      "title": "Flagship Agentic Ops Control Plane",
+      "capstone": "projects/08-capstone-ops-agent/ integrated + Cloud Run POC",
       "rubric": [
-        "One command starts integrated platform",
-        "HITL enforced before side effects",
-        "Audit + metrics on every query",
-        "Cloud Run POC + capstone-case-study.md"
+        "Single start command; 5 evals green",
+        "HITL + audit enforced",
+        "Observability + SLO note",
+        "Deploy path via platform foundation + case study"
       ]
     },
     {
       "month": 7,
       "weeks": "25–28",
-      "title": "Polish + package",
-      "capstone": "2-min demo + consulting one-pager",
+      "title": "Portfolio polish",
+      "capstone": "Demo + narrative + recruiter one-pager + metrics honesty",
       "rubric": [
-        "Capstone demo script rehearsed",
-        "Portfolio narrative updated",
-        "Consulting offers scoped",
-        "Metrics baseline doc (real numbers only)"
+        "2-minute flagship demo",
+        "Platform-bridge narrative",
+        "Recruiter one-pager",
+        "Metrics baseline without invented %"
       ]
     },
     {
       "month": 8,
       "weeks": "29–32",
-      "title": "Interview prep",
-      "capstone": "System designs + STAR stories",
+      "title": "Interview designs + STAR",
+      "capstone": "Okta-as-code design + agent hosting design + STAR",
       "rubric": [
-        "2 timed system design writeups",
-        "behavioral-star.md filled with capstone story",
-        "Mock interview self-score",
-        "Resume bullets aligned"
+        "Okta IaC + SCIM boundary design written",
+        "Cloud Run vs GKE agent design written",
+        "STAR stories + resume bullets",
+        "Mock interview self-score"
       ]
     },
     {
       "month": 9,
       "weeks": "33–36",
-      "title": "Apply + iterate",
-      "capstone": "Applications submitted with capstone demo",
+      "title": "Apply + keep-alive",
+      "capstone": "Applications + retro + maintain runnable portfolio",
       "rubric": [
-        "3 target companies researched",
-        "1+ applications with capstone link",
-        "program-retro.md",
-        "Capstone still runnable"
+        "3 target companies documented",
+        "Applications submitted",
+        "Program retro",
+        "Evals + terraform plan keep-alive"
       ]
     }
   ]

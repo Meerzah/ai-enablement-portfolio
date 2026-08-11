@@ -104,6 +104,8 @@ function renderBBody(n) {
     <div class="b-hero">
       <h1>${TD.escapeHtml(w.title)}</h1>
       <p>Week ${n} · ${TD.escapeHtml(TD.competencyLabel(w.competency))} · ${TD.escapeHtml(mp?.path || "")}</p>
+      ${w.theme ? `<p style="margin-top:6px">Theme: ${TD.escapeHtml(w.theme)}</p>` : ""}
+      ${w.learn ? `<p style="margin-top:4px;opacity:.85">Learn: ${TD.escapeHtml(w.learn)}</p>` : ""}
       <div class="a-actions">${TD.renderWeekActions(w)}</div>
     </div>
     <div class="b-list">
