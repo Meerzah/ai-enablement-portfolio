@@ -1,255 +1,283 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 3 build sheet — Connect agent → Okta MCP (read-only)</title>
+<title>Week 3 — Connect agent → Okta MCP (read-only)</title>
 <style>
 :root{
   --bg:#09090b;--surface:#111113;--surface2:#18181b;--border:#27272a;
   --text:#fafafa;--muted:#a1a1aa;--accent:#6366f1;--accent2:#14b8a6;
-  --success:#22c55e;--warn:#f59e0b;--font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --success:#22c55e;--build:#818cf8;--done:#2dd4bf;--wrap:#f59e0b;
+  --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
-.shell{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
-@media(max-width:860px){.shell{grid-template-columns:1fr}}
-.side{background:var(--surface);border-right:1px solid var(--border);padding:20px 16px;display:flex;flex-direction:column;gap:16px}
-@media(max-width:860px){.side{border-right:none;border-bottom:1px solid var(--border)}}
+.shell{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+@media(max-width:900px){.shell{grid-template-columns:1fr}}
+.side{background:var(--surface);border-right:1px solid var(--border);padding:18px 16px;display:flex;flex-direction:column;gap:14px}
+@media(max-width:900px){.side{border-right:none;border-bottom:1px solid var(--border)}}
 .side label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#71717a}
-.side h2{font-size:15px;font-weight:650;margin-top:4px}
+.side h2{font-size:15px;font-weight:650;margin-top:4px;line-height:1.3}
 .back{font-size:13px;color:#818cf8;text-decoration:none}
 .back:hover{text-decoration:underline}
-.stat-row{display:grid;gap:10px}
 .stat{padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface2)}
-.stat strong{display:block;font-size:18px;color:var(--accent2)}
+.stat strong{display:block;font-size:20px;color:var(--accent2)}
 .stat span{font-size:11px;color:var(--muted)}
-.progress-wrap{padding:4px 0}
 .progress-track{height:6px;background:#27272a;border-radius:999px;overflow:hidden;margin-top:8px}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px;transition:width .25s}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .25s}
 .side-actions{display:flex;flex-direction:column;gap:8px;margin-top:auto}
-.side-actions a,.side-actions button{
-  display:block;width:100%;text-align:center;padding:10px 12px;border-radius:8px;font-size:13px;font-weight:600;
-  text-decoration:none;border:1px solid var(--border);background:var(--surface2);color:var(--text);cursor:pointer;
+.side-actions a{
+  display:block;text-align:center;padding:10px 12px;border-radius:8px;font-size:13px;font-weight:600;
+  text-decoration:none;border:1px solid var(--border);background:var(--surface2);color:var(--text);
 }
 .side-actions a.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-.main{padding:24px 28px 48px;max-width:920px}
-.crumb{font-size:12px;color:#71717a;margin-bottom:8px}
-.crumb span{color:var(--accent)}
-h1{font-size:22px;font-weight:650;letter-spacing:-.02em;margin-bottom:10px;max-width:640px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.tag{font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid #3f3f46;color:#d4d4d8}
-.tag.p{border-color:var(--accent);color:#a5b4fc}
-.tag.cap{border-color:#a855f7;color:#d8b4fe}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}}
-.panel{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
-.panel h2{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#71717a;margin-bottom:12px}
-.checklist{list-style:none;display:grid;gap:8px}
-.checklist li{
-  display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;border:1px solid var(--border);
-  background:var(--surface);font-size:13px;color:#e4e4e7;cursor:pointer;transition:border-color .15s,background .15s;
+.main{padding:20px 24px 40px;display:flex;flex-direction:column;gap:16px;max-width:760px}
+.day-row{display:flex;gap:6px;flex-wrap:wrap}
+.day-btn{
+  min-width:46px;padding:8px 10px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);
+  color:#a1a1aa;font:inherit;font-size:12px;font-weight:600;cursor:pointer;position:relative;
 }
-.checklist li:hover{border-color:#52525b}
-.checklist li.done{border-color:#14532d;background:#052e16;color:#bbf7d0}
-.checklist input{margin-top:2px;width:16px;height:16px;accent-color:var(--success);flex-shrink:0;cursor:pointer}
-.checklist label{cursor:pointer;flex:1}
-.ship{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
-.ship h2{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#71717a;margin-bottom:12px}
-.field{margin-bottom:12px}
-.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
-.field input,.field textarea{
-  width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);
-  padding:10px 12px;font:inherit;font-size:13px;
+.day-btn:hover{border-color:#52525b;color:#e4e4e7}
+.day-btn.on{background:#1e1b4b;border-color:#4338ca;color:#fff}
+.day-btn.done-day{border-color:#14532d;color:#86efac}
+.day-btn.today:not(.on){box-shadow:0 0 0 1px #6366f1 inset}
+.day-btn .dot{
+  position:absolute;top:4px;right:4px;width:6px;height:6px;border-radius:50%;background:var(--success);
 }
-.field textarea{min-height:88px;resize:vertical}
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
-.toolbar{display:flex;flex-wrap:wrap;gap:10px}
-.toolbar button{
-  padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text);
-  font:inherit;font-size:13px;font-weight:600;cursor:pointer;
+.focus{
+  flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:22px 24px;
+  display:flex;flex-direction:column;gap:14px;min-height:280px;
 }
-.toolbar button.primary{background:var(--accent2);border-color:var(--accent2);color:#042f2e}
-.toolbar button.ghost{color:#a1a1aa}
-.setup{
-  margin-top:16px;padding:12px 14px;border-radius:8px;border:1px dashed #3f3f46;background:#0c0c0e;
-  font-size:12px;color:#71717a;
+.focus-meta{font-size:12px;color:#71717a;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.focus-meta span{color:var(--accent)}
+.kind{
+  font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:999px;
+  border:1px solid var(--border);
 }
-.setup code{color:#a5b4fc;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;word-break:break-all}
-.toast{
-  position:fixed;bottom:20px;right:20px;padding:10px 14px;border-radius:8px;background:#14532d;color:#bbf7d0;
-  font-size:13px;border:1px solid #166534;opacity:0;pointer-events:none;transition:opacity .2s;
+.kind.build{color:var(--build);border-color:#4338ca}
+.kind.done{color:var(--done);border-color:#0f766e}
+.kind.wrap{color:var(--wrap);border-color:#b45309}
+.focus h1{font-size:20px;font-weight:650;line-height:1.35;letter-spacing:-.02em}
+.focus p.hint{font-size:13px;color:var(--muted)}
+.focus-check{
+  display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:1px solid var(--border);
+  background:var(--surface);font-size:14px;cursor:pointer;margin-top:auto;
 }
-.toast.show{opacity:1}
+.focus-check.done-box{border-color:#14532d;background:#052e16;color:#bbf7d0}
+.focus-check input{width:18px;height:18px;accent-color:var(--success)}
+.open-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#818cf8;text-decoration:none;font-weight:600}
+.open-link:hover{text-decoration:underline}
+.nav-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.nav-row button{
+  padding:11px 16px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);
+  color:var(--text);font:inherit;font-size:13px;font-weight:600;cursor:pointer;min-width:120px;
+}
+.nav-row button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.nav-row button:disabled{opacity:.4;cursor:not-allowed}
+.nav-center{font-size:13px;color:var(--muted);text-align:center;flex:1}
+.step-dots{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.step-dots button{
+  width:10px;height:10px;border-radius:50%;border:none;padding:0;background:#3f3f46;cursor:pointer;
+}
+.step-dots button.on{background:var(--accent)}
+.step-dots button.done{background:var(--success)}
+.buffer{
+  text-align:center;padding:24px 12px;color:var(--muted);font-size:14px;
+}
+.buffer p{margin-bottom:12px}
 </style>
 </head><body>
 <div class="shell">
   <aside class="side">
     <div>
-      <label>Build sheet</label>
-      <h2>Week 3</h2>
+      <label>Week 3 workbook</label>
+      <h2>Connect agent → Okta MCP (read-only)</h2>
       <a class="back" href="../choose-layout.html">← Dashboard</a>
     </div>
-    <div class="stat-row">
-      <div class="stat"><strong id="pct">0%</strong><span>tasks complete</span></div>
-      <div class="stat"><strong id="done-count">0</strong><span>of 5 checked</span></div>
-    </div>
-    <div class="progress-wrap">
-      <label>Progress</label>
+    <div class="stat">
+      <strong id="pct">0%</strong>
+      <span id="step-count">0 of 6 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
       <a class="primary" href="https://meerzah.github.io/ai-systems-portfolio/projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Open project →</a>
-      <a href="https://meerzah.github.io/ai-systems-portfolio/projects/01-it-helpdesk-agent/" target="_blank" rel="noopener">View on GitHub Pages</a>
-      <button type="button" id="copy-all">Copy week summary</button>
+      <a href="https://github.com/Meerzah/ai-systems-portfolio.git" target="_blank" rel="noopener">Clone repo</a>
     </div>
   </aside>
   <main class="main">
-    <div class="crumb">Week <span>3</span> · mini · harness</div>
-    <h1>Connect agent → Okta MCP (read-only)</h1>
-    <div class="tags">
-      <span class="tag p">mini</span>
-      <span class="tag">harness</span>
-      <span class="tag">projects/01-it-helpdesk-agent/</span>
-    </div>
-    <div class="grid">
-      <section class="panel">
-        <h2>Build this week (3)</h2>
-        <ul class="checklist" id="build-list">
-          <li data-item="w3-build-0"><input type="checkbox" id="w3-build-0" data-key="w3-build-0" /><label for="w3-build-0">Wire agent to Okta MCP tools</label></li>
-<li data-item="w3-build-1"><input type="checkbox" id="w3-build-1" data-key="w3-build-1" /><label for="w3-build-1">System prompt: identity lookups read-only; escalate writes</label></li>
-<li data-item="w3-build-2"><input type="checkbox" id="w3-build-2" data-key="w3-build-2" /><label for="w3-build-2">Test group membership + user status queries</label></li>
-        </ul>
-      </section>
-      <section class="panel">
-        <h2>Done when (2)</h2>
-        <ul class="checklist" id="done-list">
-          <li data-item="w3-done-0"><input type="checkbox" id="w3-done-0" data-key="w3-done-0" /><label for="w3-done-0">2+ identity query types work</label></li>
-<li data-item="w3-done-1"><input type="checkbox" id="w3-done-1" data-key="w3-done-1" /><label for="w3-done-1">Write attempt triggers escalation</label></li>
-        </ul>
-      </section>
-    </div>
-    <section class="ship">
-      <h2>Ship log</h2>
-      <div class="field">
-        <label>Commit or PR link</label>
-        <input id="commit" data-key="w3-commit" placeholder="https://github.com/Meerzah/ai-systems-portfolio/commit/abc123" />
-      </div>
-      <div class="field">
-        <label>Files / paths you changed</label>
-        <textarea id="files" data-key="w3-files" placeholder="projects/01-it-helpdesk-agent/runbooks/vpn.md&#10;study-notes/weeks/week-03-prove-log.md"></textarea>
-      </div>
-      <div class="field">
-        <label>Blockers or notes for next week</label>
-        <textarea id="notes" data-key="w3-notes" placeholder="What slowed you down? What to prep for week 4?"></textarea>
-      </div>
-      <div class="setup">
-        Clone the repo once, then work inside the project folder:<br/>
-        <code>git clone https://github.com/Meerzah/ai-systems-portfolio.git && cd ai-systems-portfolio/projects/01-it-helpdesk-agent</code>
-      </div>
-    </section>
-    <div class="toolbar">
-      <button type="button" class="primary" id="copy-all-2">Copy ship summary</button>
-      <button type="button" id="check-build">Check all build steps</button>
-      <button type="button" id="clear" class="ghost">Reset sheet</button>
+    <div class="day-row" id="day-row"></div>
+    <section class="focus" id="focus"></section>
+    <div class="step-dots" id="step-dots"></div>
+    <div class="nav-row">
+      <button type="button" id="prev">← Previous</button>
+      <div class="nav-center" id="nav-label"></div>
+      <button type="button" class="primary" id="next">Next step →</button>
     </div>
   </main>
 </div>
-<div class="toast" id="toast">Copied to clipboard</div>
 <script>
-const PREFIX = "workbook-3-";
-const TOTAL = 5;
+const PLAN = {"week": 3, "title": "Connect agent → Okta MCP (read-only)", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Wire agent to Okta MCP tools", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "System prompt: identity lookups read-only; escalate writes", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Test group membership + user status queries", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "2+ identity query types work", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Write attempt triggers escalation", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
+const PREFIX = "workbook-" + PLAN.week + "-";
+const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 
-function storageKey(el) {
-  return PREFIX + el.dataset.key;
+let flat = [];
+let cursor = 0;
+
+function storageKey(stepId) {
+  return PREFIX + stepId;
 }
 
-function loadFields() {
-  document.querySelectorAll("[data-key]").forEach(el => {
-    const k = storageKey(el);
-    if (el.type === "checkbox") {
-      el.checked = localStorage.getItem(k) === "1";
-    } else if (localStorage.getItem(k)) {
-      el.value = localStorage.getItem(k);
+function isDone(stepId) {
+  return localStorage.getItem(storageKey(stepId)) === "1";
+}
+
+function setDone(stepId, val) {
+  localStorage.setItem(storageKey(stepId), val ? "1" : "0");
+}
+
+function buildFlat() {
+  flat = [];
+  PLAN.days.forEach(day => {
+    if (!day.steps.length) {
+      flat.push({ day: day.day, dayLabel: day.label, dayShort: day.short, empty: true });
+      return;
     }
-    el.addEventListener("change", persist);
-    el.addEventListener("input", persist);
+    day.steps.forEach((step, i) => {
+      flat.push({
+        day: day.day,
+        dayLabel: day.label,
+        dayShort: day.short,
+        step,
+        stepInDay: i + 1,
+        stepsInDay: day.steps.length,
+      });
+    });
   });
 }
 
-function persist(e) {
-  const el = e.target;
-  const k = storageKey(el);
-  if (el.type === "checkbox") localStorage.setItem(k, el.checked ? "1" : "0");
-  else localStorage.setItem(k, el.value);
-  syncProgress();
+function dayComplete(dayKey) {
+  const day = PLAN.days.find(d => d.day === dayKey);
+  if (!day || !day.steps.length) return true;
+  return day.steps.every(s => isDone(s.id));
 }
 
 function syncProgress() {
-  const boxes = [...document.querySelectorAll('input[type="checkbox"][data-key]')];
-  const done = boxes.filter(b => b.checked).length;
-  const pct = TOTAL ? Math.round((done / TOTAL) * 100) : 0;
+  const total = flat.filter(x => x.step).length;
+  const done = flat.filter(x => x.step && isDone(x.step.id)).length;
+  const pct = total ? Math.round((done / total) * 100) : 0;
   document.getElementById("pct").textContent = pct + "%";
-  document.getElementById("done-count").textContent = String(done);
+  document.getElementById("step-count").textContent = done + " of " + total + " steps";
   document.getElementById("bar").style.width = pct + "%";
-  boxes.forEach(b => {
-    const li = b.closest("li");
-    if (li) li.classList.toggle("done", b.checked);
+}
+
+function renderDayRow() {
+  document.getElementById("day-row").innerHTML = PLAN.days.map(d => {
+    const on = flat[cursor] && flat[cursor].day === d.day;
+    const done = dayComplete(d.day);
+    const today = d.day === TODAY ? " today" : "";
+    const dot = done && d.steps.length ? '<i class="dot"></i>' : "";
+    return `<button type="button" class="day-btn${on ? " on" : ""}${done ? " done-day" : ""}${today}" data-day="${d.day}">${d.short}${dot}</button>`;
+  }).join("");
+  document.querySelectorAll(".day-btn").forEach(btn => {
+    btn.onclick = () => jumpToDay(btn.dataset.day);
   });
 }
 
-function toast(msg) {
-  const t = document.getElementById("toast");
-  t.textContent = msg;
-  t.classList.add("show");
-  setTimeout(() => t.classList.remove("show"), 1800);
+function renderDots() {
+  const item = flat[cursor];
+  if (!item || item.empty) {
+    document.getElementById("step-dots").innerHTML = "";
+    return;
+  }
+  const siblings = flat.filter(x => x.day === item.day && x.step);
+  const idx = siblings.findIndex(x => x.step.id === item.step.id);
+  document.getElementById("step-dots").innerHTML = siblings.map((s, i) => {
+    const cls = i === idx ? "on" : isDone(s.step.id) ? "done" : "";
+    return `<button type="button" class="${cls}" data-id="${s.step.id}" title="Step ${i+1}"></button>`;
+  }).join("");
+  document.querySelectorAll("#step-dots button").forEach(btn => {
+    btn.onclick = () => {
+      const target = flat.findIndex(x => x.step && x.step.id === btn.dataset.id);
+      if (target >= 0) { cursor = target; renderAll(); }
+    };
+  });
 }
 
-function buildSummary() {
-  const lines = ["# Week 3 — Connect agent → Okta MCP (read-only)", ""];
-  lines.push("## Build this week");
-  document.querySelectorAll("#build-list input[type=checkbox]").forEach(b => {
-    const label = b.closest("li")?.querySelector("label")?.textContent || "";
-    lines.push(`- [${b.checked ? "x" : " "}] ${label}`);
-  });
-  lines.push("", "## Done when");
-  document.querySelectorAll("#done-list input[type=checkbox]").forEach(b => {
-    const label = b.closest("li")?.querySelector("label")?.textContent || "";
-    lines.push(`- [${b.checked ? "x" : " "}] ${label}`);
-  });
-  const commit = document.getElementById("commit").value.trim();
-  const files = document.getElementById("files").value.trim();
-  const notes = document.getElementById("notes").value.trim();
-  lines.push("", "## Ship log");
-  if (commit) lines.push(`- Commit/PR: ${commit}`);
-  if (files) lines.push(`- Files:\n${files.split("\n").map(l => "  - " + l).join("\n")}`);
-  if (notes) lines.push(`- Notes: ${notes}`);
-  lines.push("", `Repo: https://github.com/Meerzah/ai-systems-portfolio.git`);
-  return lines.join("\n");
+function kindLabel(kind) {
+  if (kind === "build") return "Build";
+  if (kind === "done") return "Done when";
+  return "Wrap up";
 }
 
-function copySummary() {
-  navigator.clipboard.writeText(buildSummary()).then(() => toast("Copied to clipboard"));
+function renderFocus() {
+  const item = flat[cursor];
+  const el = document.getElementById("focus");
+  if (!item) {
+    el.innerHTML = "<p>No steps for this week.</p>";
+    return;
+  }
+  if (item.empty) {
+    el.innerHTML = `<div class="buffer"><p>Buffer day — nothing scheduled for <strong>${item.dayLabel}</strong>.</p><p>Use this time to catch up or read the project README.</p><a class="open-link" href="${PLAN.projectHref}" target="_blank" rel="noopener">Open project →</a></div>`;
+    document.getElementById("nav-label").textContent = item.dayLabel + " · buffer day";
+    document.getElementById("prev").disabled = cursor === 0;
+    document.getElementById("next").disabled = cursor === flat.length - 1;
+    return;
+  }
+
+  const step = item.step;
+  const done = isDone(step.id);
+  el.innerHTML = `
+    <div class="focus-meta"><span>${item.dayLabel}</span> · Step ${item.stepInDay} of ${item.stepsInDay}</div>
+    <span class="kind ${step.kind}">${kindLabel(step.kind)}</span>
+    <h1>${step.text}</h1>
+    <p class="hint">Work in <code style="color:#a5b4fc">${PLAN.path}</code> — check off when this step is finished.</p>
+    <a class="open-link" href="${PLAN.projectHref}" target="_blank" rel="noopener">Open project folder →</a>
+    <label class="focus-check${done ? " done-box" : ""}" id="check-wrap">
+      <input type="checkbox" id="step-check" ${done ? "checked" : ""} />
+      Mark this step complete
+    </label>`;
+
+  document.getElementById("step-check").onchange = (e) => {
+    setDone(step.id, e.target.checked);
+    if (e.target.checked && cursor < flat.length - 1) {
+      setTimeout(() => { cursor++; renderAll(); }, 350);
+    } else {
+      renderAll();
+    }
+  };
+  document.getElementById("nav-label").textContent =
+    item.dayLabel + " · step " + item.stepInDay + " of " + item.stepsInDay;
+  document.getElementById("prev").disabled = cursor === 0;
+  document.getElementById("next").disabled = cursor === flat.length - 1;
 }
 
-document.getElementById("copy-all").onclick = copySummary;
-document.getElementById("copy-all-2").onclick = copySummary;
-document.getElementById("check-build").onclick = () => {
-  document.querySelectorAll("#build-list input[type=checkbox]").forEach(b => {
-    b.checked = true;
-    localStorage.setItem(storageKey(b), "1");
-  });
+function jumpToDay(dayKey) {
+  const idx = flat.findIndex(x => x.day === dayKey);
+  if (idx >= 0) { cursor = idx; renderAll(); }
+}
+
+function renderAll() {
+  renderDayRow();
+  renderFocus();
+  renderDots();
   syncProgress();
+}
+
+document.getElementById("prev").onclick = () => {
+  if (cursor > 0) { cursor--; renderAll(); }
 };
-document.getElementById("clear").onclick = () => {
-  if (!confirm("Clear all checkboxes and notes for this week?")) return;
-  document.querySelectorAll("[data-key]").forEach(el => {
-    localStorage.removeItem(storageKey(el));
-    if (el.type === "checkbox") el.checked = false;
-    else el.value = "";
-  });
-  syncProgress();
+document.getElementById("next").onclick = () => {
+  if (cursor < flat.length - 1) { cursor++; renderAll(); }
 };
 
-loadFields();
-syncProgress();
+document.addEventListener("keydown", (e) => {
+  if (e.target.matches("input, textarea")) return;
+  if (e.key === "ArrowRight" && cursor < flat.length - 1) { cursor++; renderAll(); }
+  if (e.key === "ArrowLeft" && cursor > 0) { cursor--; renderAll(); }
+});
+
+buildFlat();
+const todayIdx = flat.findIndex(x => x.day === TODAY);
+cursor = todayIdx >= 0 ? todayIdx : 0;
+renderAll();
 </script>
 </body></html>

@@ -42,7 +42,93 @@
           "2 runbooks committed",
           "study-notes/weeks/week-01-prove-log.md filled"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Set up Python venv; install requirements.txt",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Add 2 Markdown runbooks (VPN, SSO, or MDM)",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Run 5 test queries; log results",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Agent starts (or document blocker + workaround in prove log)",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "2 runbooks committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": [
+            {
+              "id": "done-2",
+              "text": "study-notes/weeks/week-01-prove-log.md filled",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 2,
@@ -66,7 +152,87 @@
           "MCP server runs",
           "3 queries logged in project README or notes"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Configure read-only Okta API token (preview/sandbox org)",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Verify list_users + get_group_members tools",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Document 3 sample queries (redact PII)",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "MCP server runs",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "3 queries logged in project README or notes",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 3,
@@ -90,7 +256,87 @@
           "2+ identity query types work",
           "Write attempt triggers escalation"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Wire agent to Okta MCP tools",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "System prompt: identity lookups read-only; escalate writes",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Test group membership + user status queries",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "2+ identity query types work",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Write attempt triggers escalation",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 4,
@@ -114,7 +360,87 @@
           "escalation-policy.md committed",
           "6 examples tested and logged"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Write docs/escalation-policy.md",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "3 must-escalate + 3 safe-to-answer examples",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Update agent system prompt to cite policy",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "escalation-policy.md committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "6 examples tested and logged",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 5,
@@ -138,7 +464,87 @@
           "Design doc updated",
           "Least-privilege table for capstone tools"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Read GCP Agent Identity overview",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Update wif-agent-identity-design.md: human vs NHI vs agent principal",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Diagram: read-only MCP vs write via approved workflow",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Design doc updated",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Least-privilege table for capstone tools",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 6,
@@ -162,7 +568,87 @@
           "schema.md committed",
           "3 sample events from mock approval flow"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Define audit event: actor, action, resource, ticket_id, approved_by, timestamp",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Add schema.md + sample JSON events",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Map fields to future capstone audit writer",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "schema.md committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "3 sample events from mock approval flow",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 7,
@@ -186,7 +672,87 @@
           "Phase 1 section updated in SHIP-PLAN or design note",
           "Sequence diagram added"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Read SHIP-PLAN.md; complete Phase 1 checklist items you can do in design",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Document intake \u2192 HITL \u2192 Okta write boundary",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Honest status: architected, not production shipped",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Phase 1 section updated in SHIP-PLAN or design note",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Sequence diagram added",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 8,
@@ -210,7 +776,87 @@
           "3 prompt templates committed",
           "Usable by a non-engineer"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Complete teams/it-ops.md: access, device, how-to prompts",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Slack/form field labels for non-technical requesters",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Link from project README",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "3 prompt templates committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Usable by a non-engineer",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 9,
@@ -234,7 +880,87 @@
           "Demo: action blocked without approval",
           "Diagram committed"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "docs/hitl-flow.md with sequence diagram",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Mock approval: CLI y/n or Slack Block Kit draft",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Block side-effect without approval",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Demo: action blocked without approval",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Diagram committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 10,
@@ -258,7 +984,87 @@
           "/query works locally",
           "Health check endpoint"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "FastAPI POST /query with Pydantic models",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Return answer + tools_used + escalated flag",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "curl example in README",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "/query works locally",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Health check endpoint",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 11,
@@ -281,7 +1087,81 @@
         "doneWhen": [
           "Reliability doc + test log"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "POST /hooks/ticket with Idempotency-Key header",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "docs/reliability.md: retry + duplicate handling",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Test duplicate POST returns same response",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Reliability doc + test log",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 12,
@@ -305,7 +1185,87 @@
           "Schema doc committed",
           "Error path logged"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "tools/README.md with JSON schemas for each tool",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Happy path + error path test per tool",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Agent handles malformed args gracefully",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Schema doc committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Error path logged",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 13,
@@ -329,7 +1289,87 @@
           "CSV + results committed",
           "No invented accuracy %"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "evals/eval_cases.csv: query, expected_behavior, pass/fail",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "5 rows: runbook + identity read",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "evals/results.md with honest outcomes",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "CSV + results committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "No invented accuracy %",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 14,
@@ -352,7 +1392,81 @@
           "15 rows in CSV",
           "Failure analysis in results.md"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Add edge cases: privilege escalation, ambiguous user, KB miss",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Top 3 failures \u2192 fix plan before capstone",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "15 rows in CSV",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Failure analysis in results.md",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 15,
@@ -376,7 +1490,87 @@
           "checklist.md committed",
           "Pilot scope documented"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Rollout checklist: identity scope, data boundaries, pilot criteria",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Risk register: 3 items + mitigations",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Success metrics you can actually measure",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "checklist.md committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Pilot scope documented",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 16,
@@ -400,7 +1594,87 @@
           "Schema + script run on your test logs",
           "Screenshot or terminal output saved"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "events-schema.md: query_submitted, tool_called, escalated, approved",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Script: queries/day + escalation rate from sample logs only",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "README: how to run on test data",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Schema + script run on your test logs",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Screenshot or terminal output saved",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 17,
@@ -424,7 +1698,87 @@
           "Both docs committed",
           "No internal employer data"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "POLICY.md: approved vs prohibited AI tool categories",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "MDM-ROLLOUT-CHECKLIST.md (generic, no employer URLs)",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Link identity groups \u2192 allowed tool tiers",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Both docs committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "No internal employer data",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 18,
@@ -448,7 +1802,87 @@
           "Updated architecture section",
           "Honest planning status"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Review ARCHITECTURE.md",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Add diagram: device wipe + Okta deactivate + SaaS revoke order",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Note where agent assists vs deterministic steps",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Updated architecture section",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Honest planning status",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 19,
@@ -472,7 +1906,87 @@
           "KB index committed",
           "Citation examples logged"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "study-notes/ops-kb-index.md listing runbooks + owners",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Agent cites source in 2 test answers",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Fallback behavior when KB miss",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "KB index committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Citation examples logged",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 20,
@@ -496,7 +2010,87 @@
           "Architecture + demo script committed",
           "Eval failures from W14 addressed in plan"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "ARCHITECTURE.md: all 7 competencies mapped to components",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "demo-script.md: runbook Q \u2192 identity Q \u2192 HITL \u2192 audit",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Repo layout scaffold (folders + README)",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Architecture + demo script committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Eval failures from W14 addressed in plan",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 21,
@@ -520,7 +2114,87 @@
           "Single start command",
           "5 eval cases pass in capstone repo"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Merge agent + MCP + FastAPI into capstone layout",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "One local run script or docker-compose",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Port eval suite",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Single start command",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "5 eval cases pass in capstone repo",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 22,
@@ -544,7 +2218,87 @@
           "Unapproved writes blocked",
           "Audit samples logged"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "HITL gate before side effects",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Audit log on every query",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Reject privilege escalation eval cases",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Unapproved writes blocked",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Audit samples logged",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 23,
@@ -568,7 +2322,87 @@
           "Policy check in demo flow",
           "Metrics emitted"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Wire endpoint policy stub from projects/09",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Adoption events + failure alerts",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Dashboard script reads capstone logs",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Policy check in demo flow",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Metrics emitted",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 24,
@@ -592,7 +2426,87 @@
           "Deploy instructions",
           "Case study with honest limits"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Cloud Run deploy POC (or documented deploy script)",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "study-notes/capstone-case-study.md",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Update portfolio README",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Deploy instructions",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Case study with honest limits",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 25,
@@ -615,7 +2529,81 @@
           "Demo under 2 minutes",
           "README diagram"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Rehearse demo-script.md",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Fix top 3 eval failures",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Demo under 2 minutes",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "README diagram",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 26,
@@ -637,7 +2625,75 @@
         "doneWhen": [
           "Narrative links shipped work + capstone"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Update platform-bridge.md",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "LinkedIn draft",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Narrative links shipped work + capstone",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": []
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 27,
@@ -658,7 +2714,69 @@
         "doneWhen": [
           "3 offers scoped with deliverables"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "study-notes/consulting-one-pager.md from offers (a)(b)(c)",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "3 offers scoped with deliverables",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": []
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": []
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 28,
@@ -679,7 +2797,69 @@
         "doneWhen": [
           "Formula documented, no fake %"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "study-notes/metrics-baseline.md from real volume only",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Formula documented, no fake %",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": []
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": []
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 29,
@@ -700,7 +2880,69 @@
         "doneWhen": [
           "Written design committed"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "45-min timed design \u2192 interview-prep/answers/",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Written design committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": []
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": []
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 30,
@@ -721,7 +2963,69 @@
         "doneWhen": [
           "Design doc committed"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Timed design: WIF + MCP + HITL",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Design doc committed",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": []
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": []
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 31,
@@ -743,7 +3047,75 @@
         "doneWhen": [
           "behavioral-star.md updated"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "STAR: automation, capstone, identity",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Resume bullets",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "behavioral-star.md updated",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": []
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 32,
@@ -766,7 +3138,81 @@
         "doneWhen": [
           "Self-score in wave-1-checklist.md"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "1 design aloud",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "1 STAR aloud",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "build-2",
+              "text": "Capstone demo",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Self-score in wave-1-checklist.md",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 33,
@@ -788,7 +3234,75 @@
         "doneWhen": [
           "3 companies documented"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Company research",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Tailored resume bullets",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "3 companies documented",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": []
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 34,
@@ -810,7 +3324,75 @@
         "doneWhen": [
           "Apply log updated"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "1+ applications",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Outreach",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Apply log updated",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": []
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 35,
@@ -831,7 +3413,69 @@
         "doneWhen": [
           "Retro + next quarter plan"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "study-notes/program-retro.md",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Retro + next quarter plan",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": []
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": []
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     },
     {
       "week": 36,
@@ -854,7 +3498,81 @@
           "Capstone runs",
           "Next milestone set"
         ]
-      }
+      },
+      "days": [
+        {
+          "day": "mon",
+          "label": "Monday",
+          "short": "Mon",
+          "steps": [
+            {
+              "id": "build-0",
+              "text": "Re-run evals monthly",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "tue",
+          "label": "Tuesday",
+          "short": "Tue",
+          "steps": [
+            {
+              "id": "build-1",
+              "text": "Keep capstone runnable",
+              "kind": "build"
+            }
+          ]
+        },
+        {
+          "day": "wed",
+          "label": "Wednesday",
+          "short": "Wed",
+          "steps": [
+            {
+              "id": "done-0",
+              "text": "Capstone runs",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "thu",
+          "label": "Thursday",
+          "short": "Thu",
+          "steps": [
+            {
+              "id": "done-1",
+              "text": "Next milestone set",
+              "kind": "done"
+            }
+          ]
+        },
+        {
+          "day": "fri",
+          "label": "Friday",
+          "short": "Fri",
+          "steps": []
+        },
+        {
+          "day": "sat",
+          "label": "Saturday",
+          "short": "Sat",
+          "steps": []
+        },
+        {
+          "day": "sun",
+          "label": "Sunday",
+          "short": "Sun",
+          "steps": [
+            {
+              "id": "wrap",
+              "text": "Review the week, then mark it complete on the dashboard",
+              "kind": "wrap"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

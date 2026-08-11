@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from daily_plans import build_daily_plan
 from week_plans import get_week_plan
 
 OUT = Path(__file__).parent / "weeks.json"
@@ -35,6 +36,7 @@ def build_week(week: int) -> dict:
             "build": mp["build"],
             "doneWhen": mp["doneWhen"],
         },
+        "days": build_daily_plan(mp),
     }
     return w
 
