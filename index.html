@@ -3,80 +3,139 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Systems / Agentic Ops Portfolio</title>
+  <title>Kamaal Mirza — AI Systems / Agentic Ops</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #f6f5f2; --surface: #fff; --ink: #141414; --muted: #6b6b6b;
-      --line: #e6e4df; --accent: #0d7377;
+      --line: #e6e4df; --accent: #0d7377; --accent-soft: #e6f3f3;
       --font: "DM Sans", system-ui, sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, monospace;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: var(--font); background:
-        radial-gradient(900px 420px at 10% -10%, #e8f4f4 0%, transparent 55%),
-        radial-gradient(700px 360px at 100% 0%, #f1efe8 0%, transparent 50%),
+      font-family: var(--font); color: var(--ink); min-height: 100vh;
+      background:
+        radial-gradient(1000px 480px at 8% -12%, #e8f4f4 0%, transparent 55%),
+        radial-gradient(800px 400px at 100% 0%, #f1efe8 0%, transparent 50%),
         var(--bg);
-      color: var(--ink); min-height: 100vh;
-      display: flex; align-items: center; justify-content: center; padding: 24px;
+      padding: 32px 20px 64px;
     }
-    .card {
-      max-width: 560px; width: 100%; background: var(--surface);
-      border: 1px solid var(--line); border-radius: 18px; padding: 36px 32px;
-      box-shadow: 0 1px 2px rgba(20,20,20,.04), 0 12px 32px rgba(20,20,20,.05);
+    .shell { max-width: 720px; margin: 0 auto; }
+    .hero {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+      padding: 36px 32px; box-shadow: 0 1px 2px rgba(20,20,20,.04), 0 12px 32px rgba(20,20,20,.05);
+      margin-bottom: 16px;
     }
     .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; }
-    h1 { font-size: 1.7rem; margin: 10px 0 8px; font-weight: 700; letter-spacing: -.03em; line-height: 1.2; }
-    .subtitle { color: var(--muted); font-size: .98rem; margin-bottom: 28px; line-height: 1.5; }
-    nav { display: flex; flex-direction: column; gap: 10px; }
-    a.nav-link {
-      display: block; padding: 16px 18px; border-radius: 14px;
-      border: 1px solid var(--line); color: var(--ink); text-decoration: none; background: #faf9f6;
-      transition: border-color .15s, background .15s;
+    h1 { font-size: clamp(1.8rem, 4vw, 2.25rem); margin: 10px 0 8px; font-weight: 700; letter-spacing: -.03em; line-height: 1.15; }
+    .role { color: var(--accent); font-weight: 650; font-size: 1.05rem; margin-bottom: 10px; }
+    .subtitle { color: var(--muted); font-size: 1rem; line-height: 1.5; max-width: 46ch; margin-bottom: 20px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .chip {
+      font-size: 12px; font-weight: 650; padding: 6px 10px; border-radius: 999px;
+      background: var(--bg); border: 1px solid var(--line); color: var(--ink);
     }
-    a.nav-link:hover { border-color: var(--accent); background: #e6f3f3; }
-    a.nav-link strong { display: block; color: var(--accent); margin-bottom: 3px; font-size: .95rem; }
-    a.nav-link span { font-size: .85rem; color: var(--muted); }
-    footer { margin-top: 24px; font-size: 12px; color: var(--muted); text-align: center; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; padding: 11px 16px; border-radius: 999px;
+      font-size: 14px; font-weight: 650; text-decoration: none;
+    }
+    .btn-primary { background: var(--ink); color: #fff; }
+    .btn-primary:hover { background: #000; }
+    .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    @media (max-width: 700px) {
+      .hero { padding: 28px 20px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+    .panel {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      padding: 20px 22px; box-shadow: 0 1px 2px rgba(20,20,20,.04);
+    }
+    .panel h2 {
+      font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--muted); font-weight: 700; margin-bottom: 12px;
+    }
+    .kv { display: grid; gap: 10px; }
+    .kv div { display: grid; grid-template-columns: 88px 1fr; gap: 10px; font-size: .92rem; }
+    .kv dt { color: var(--muted); font-weight: 650; font-family: var(--mono); font-size: 11px; padding-top: 3px; }
+    .kv dd { margin: 0; line-height: 1.4; }
+    .links { display: flex; flex-direction: column; gap: 8px; }
+    .links a {
+      display: block; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line);
+      background: var(--bg); color: var(--ink); text-decoration: none;
+    }
+    .links a:hover { border-color: var(--accent); background: var(--accent-soft); }
+    .links strong { display: block; color: var(--accent); font-size: .92rem; margin-bottom: 2px; }
+    .links span { font-size: .82rem; color: var(--muted); }
+    footer { margin-top: 18px; text-align: center; font-size: 12px; color: var(--muted); }
     footer a { color: var(--accent); }
   </style>
 </head>
 <body>
-  <div class="card">
-    <p class="eyebrow">Meerzah · AI Systems portfolio</p>
-    <h1>Agentic ops, identity-as-code &amp; cloud delivery</h1>
-    <p class="subtitle">Weekly themes with study, resources, and build guides — culminating in a flagship Agentic Ops Control Plane.</p>
-    <nav>
-      <a class="nav-link" href="tracker/">
-        <strong>Weekly dashboard</strong>
-        <span>Study · resources · sub-tasks · ship for each week</span>
-      </a>
-      <a class="nav-link" href="tracker/workbooks/week-01.html">
-        <strong>Week 1 guide</strong>
-        <span>Curriculum + day-by-day steps for the helpdesk agent</span>
-      </a>
-      <a class="nav-link" href="projects/">
-        <strong>Project gallery</strong>
-        <span>Readable briefs for M1–M8 and the flagship</span>
-      </a>
-      <a class="nav-link" href="site/doc.html?path=projects/08-capstone-ops-agent/README.md">
-        <strong>Flagship control plane</strong>
-        <span>End-to-end hiring-manager demo</span>
-      </a>
-      <a class="nav-link" href="site/doc.html?path=projects/11-okta-iac/README.md">
-        <strong>Okta Identity-as-Code</strong>
-        <span>Terraform groups, apps, policies</span>
-      </a>
-      <a class="nav-link" href="interview-prep/">
-        <strong>Interview prep</strong>
-        <span>System design templates + answers</span>
-      </a>
-    </nav>
+  <div class="shell">
+    <section class="hero">
+      <p class="eyebrow">Meerzah · Portfolio</p>
+      <h1>Kamaal Mirza</h1>
+      <p class="role">AI Systems / Agentic Ops Engineer</p>
+      <p class="subtitle">Identity-backed agents, Okta-as-code, and GCP delivery — built as weekly hard projects that compound into a flagship control plane.</p>
+      <div class="chips">
+        <span class="chip">Okta</span>
+        <span class="chip">Terraform</span>
+        <span class="chip">GCP</span>
+        <span class="chip">MCP</span>
+        <span class="chip">Python</span>
+        <span class="chip">Cloud Run</span>
+        <span class="chip">CI/CD</span>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="tracker/">Weekly dashboard</a>
+        <a class="btn btn-ghost" href="projects/">Project gallery</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/meerzah" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Profile</h2>
+        <dl class="kv">
+          <div><dt>Target</dt><dd>AI Systems / Agentic Ops Engineer</dd></div>
+          <div><dt>Shipped</dt><dd>Slack governance · n8n · Argus · Lumos/Okta @ AppLovin</dd></div>
+          <div><dt>Building</dt><dd>Agentic ops control plane · Okta/GCP IaC · HITL · evals</dd></div>
+          <div><dt>Location</dt><dd>San Francisco Bay Area, CA</dd></div>
+        </dl>
+      </section>
+      <section class="panel">
+        <h2>Open</h2>
+        <div class="links">
+          <a href="site/doc.html?path=projects/08-capstone-ops-agent/README.md">
+            <strong>Flagship control plane</strong>
+            <span>HITL · audit · IaC · deploy narrative</span>
+          </a>
+          <a href="site/doc.html?path=projects/11-okta-iac/README.md">
+            <strong>Okta Identity-as-Code</strong>
+            <span>Groups, apps, policies as Terraform</span>
+          </a>
+          <a href="tracker/workbooks/week-01.html">
+            <strong>Week 1 challenge</strong>
+            <span>Fail-closed decision boundary for agentic IT ops</span>
+          </a>
+          <a href="interview-prep/">
+            <strong>Interview prep</strong>
+            <span>System design templates + answers</span>
+          </a>
+        </div>
+      </section>
+    </div>
+
     <footer>
       <a href="CURRICULUM.md">Curriculum</a> ·
-      <a href="https://github.com/Meerzah/ai-systems-portfolio">GitHub</a>
+      <a href="https://github.com/Meerzah/ai-systems-portfolio">GitHub</a> ·
+      <a href="https://github.com/Meerzah">Profile</a>
     </footer>
   </div>
 </body>

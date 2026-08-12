@@ -2,34 +2,39 @@
 
 # AI Systems / Agentic Ops Portfolio
 
-**Systems engineer → AI-native automation, identity-as-code & cloud delivery**
-
-Identity-backed agents · Okta Terraform · GCP · MCP · HITL · CI/CD · observability
+**Identity-backed agents · Okta-as-code · GCP delivery · HITL · evals**
 
 <br/>
 
-[![Dashboard](https://img.shields.io/badge/Dashboard-36--week_roadmap-58a6ff?style=flat-square)](./tracker/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-meerzah-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/meerzah)
-[![Google Cloud](https://img.shields.io/badge/Google_Cloud-Vertex_AI-4285F4?style=flat-square&logo=googlecloud&logoColor=white)](https://cloud.google.com/vertex-ai)
-[![Terraform](https://img.shields.io/badge/IaC-Terraform-844FBA?style=flat-square&logo=terraform&logoColor=white)](https://www.terraform.io)
-[![MCP](https://img.shields.io/badge/Protocol-MCP-7F77DD?style=flat-square)](https://modelcontextprotocol.io)
-[![Okta](https://img.shields.io/badge/Identity-Okta-007DC1?style=flat-square&logo=okta&logoColor=white)](https://okta.com)
-
-**Live:** [Landing](https://meerzah.github.io/ai-systems-portfolio/) · [Weekly dashboard](https://meerzah.github.io/ai-systems-portfolio/tracker/)
+[![Live site](https://img.shields.io/badge/Live-meerzah.github.io-0d7377?style=for-the-badge)](https://meerzah.github.io/ai-systems-portfolio/)
+[![Dashboard](https://img.shields.io/badge/Dashboard-36--week_roadmap-141414?style=for-the-badge)](https://meerzah.github.io/ai-systems-portfolio/tracker/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-meerzah-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/meerzah)
 
 </div>
 
 ---
 
-```python
-profile = {
-    "target":    "AI Systems / Agentic Ops Engineer",
-    "stack":     ["Okta", "Terraform", "GCP", "MCP", "Python", "Cloud Run", "CI/CD"],
-    "shipped":   "Slack governance, n8n, Argus, Lumos/Okta at AppLovin",
-    "building":  "Agentic ops control plane + Okta/GCP IaC + HITL + evals",
-    "location":  "San Francisco Bay Area, CA",
-}
-```
+### Profile
+
+| | |
+|:--|:--|
+| **Target** | AI Systems / Agentic Ops Engineer |
+| **Stack** | Okta · Terraform · GCP · MCP · Python · Cloud Run · CI/CD |
+| **Shipped** | Slack governance · n8n · Argus · Lumos/Okta @ AppLovin |
+| **Building** | Agentic ops control plane · Okta/GCP IaC · HITL · evals |
+| **Location** | San Francisco Bay Area, CA |
+
+Systems / automation engineer who builds identity-backed, agent-ready ops workflows — and the cloud delivery plane underneath.
+
+<p align="center">
+  <img alt="Okta" src="https://img.shields.io/badge/Okta-007DC1?style=flat-square&logo=okta&logoColor=white"/>
+  <img alt="Terraform" src="https://img.shields.io/badge/Terraform-844FBA?style=flat-square&logo=terraform&logoColor=white"/>
+  <img alt="GCP" src="https://img.shields.io/badge/GCP-4285F4?style=flat-square&logo=googlecloud&logoColor=white"/>
+  <img alt="Cloud Run" src="https://img.shields.io/badge/Cloud_Run-4285F4?style=flat-square&logo=googlecloud&logoColor=white"/>
+  <img alt="MCP" src="https://img.shields.io/badge/MCP-111111?style=flat-square"/>
+  <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+  <img alt="CI/CD" src="https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white"/>
+</p>
 
 ---
 
@@ -37,79 +42,55 @@ profile = {
 
 | Work | Stack | Interview frame |
 |------|-------|-----------------|
-| Slack App Governance → Jira | Deno, Slack API, Jira | "I shipped intake→ticket automation…" |
-| n8n ops workflows | n8n, webhooks | "I automate approval flows…" |
-| Argus endpoint control | GCP Cloud Run | "I built a Cloud Run control plane…" |
-| Okta + Lumos access automation | Okta, SCIM, Lumos | "I operate identity-backed access requests…" |
+| Slack App Governance → Jira | Deno · Slack · Jira | Intake → ticket automation |
+| n8n ops workflows | n8n · webhooks | Approval → action flows |
+| Argus endpoint control | GCP Cloud Run | Endpoint control plane |
+| Okta + Lumos access automation | Okta · SCIM · Lumos | Identity-backed access requests |
 
 ---
 
 ### Portfolio products (mini → flagship)
 
-| ID | Project | Stack | Status | Outcome |
-|----|---------|-------|--------|---------|
-| M1 | [IT Helpdesk Agent](./projects/01-it-helpdesk-agent) | ADK · Vertex · RAG | Portfolio demo | Tool-using ops agent + guardrails |
-| M2 | [Okta MCP Server](./projects/02-okta-mcp-server) | MCP · Okta API | Portfolio demo | Read-only identity tools for agents |
-| M3 | HITL Approval Gate | FastAPI · webhooks | Weeks 9–11 | Side effects blocked without approval |
-| M4 | Agent Eval & Guardrails | eval CSV | Weeks 13–14 | 15-case regression suite |
-| M5 | [Ops Event Plane](./projects/05-adoption-dashboard) | schema · Pub/Sub stub | In progress | Unified query/tool/approve events |
-| M6 | [Platform Foundation](./projects/10-platform-foundation) | Terraform · GCP · Actions | Scaffold | Cloud Run + secrets + CI |
-| M7 | LLMOps Observability | OTel · SLOs | Capstone | Cost/latency + error-budget notes |
-| M8 | [Okta Identity-as-Code](./projects/11-okta-iac) | Terraform · Okta | Scaffold | Groups, apps, policies as code |
-| **Flagship** | [**Agentic Ops Control Plane**](./projects/08-capstone-ops-agent) | All of the above | Weeks 21–24 | Hiring-manager end-to-end demo |
+| ID | Project | Status | Outcome |
+|----|---------|--------|---------|
+| M1 | [Ops Agent Harness](./projects/01-it-helpdesk-agent) | Portfolio demo | Tool-using agent + guardrails |
+| M2 | [Okta MCP Server](./projects/02-okta-mcp-server) | Portfolio demo | Read-only identity tools for agents |
+| M3 | HITL Approval Gate | Weeks 9–11 | Side effects blocked without approval |
+| M4 | Agent Eval & Guardrails | Weeks 13–14 | Adversarial regression suite |
+| M5 | [Ops Event Plane](./projects/05-adoption-dashboard) | In progress | Unified query/tool/approve events |
+| M6 | [Platform Foundation](./projects/10-platform-foundation) | Scaffold | Cloud Run + secrets + CI |
+| M7 | LLMOps Observability | Capstone | Cost/latency + SLO notes |
+| M8 | [Okta Identity-as-Code](./projects/11-okta-iac) | Scaffold | Groups, apps, policies as code |
+| **Flagship** | [**Agentic Ops Control Plane**](./projects/08-capstone-ops-agent) | Weeks 21–24 | End-to-end hiring-manager demo |
 
-Supporting: [Agentspace Rollout](./projects/03-agentspace-rollout) · [Prompt Playbooks](./projects/04-prompt-playbooks) · [CIPHER](./projects/06-cipher) · [ALIUS](./projects/07-alius) · [Endpoint AI Governance](./projects/09-endpoint-ai-governance)
+Supporting: [Agentspace](./projects/03-agentspace-rollout) · [Playbooks](./projects/04-prompt-playbooks) · [CIPHER](./projects/06-cipher) · [ALIUS](./projects/07-alius) · [Endpoint AI](./projects/09-endpoint-ai-governance)
 
-**Status key:** *Portfolio demo* = runnable · *Scaffold* = curriculum-ready stubs · *In development/planning* = AppLovin work (honest labels)
-
-**Okta IaC boundary:** Terraform owns access topology (groups/apps/policies) + sandbox demo users. Production user lifecycle → SCIM/automation.
+**Status:** *Portfolio demo* = runnable · *Scaffold* = curriculum stubs · CIPHER/ALIUS = AppLovin design (honest labels)
 
 ---
 
 ### Study roadmap
 
-**[CURRICULUM.md](./CURRICULUM.md)** — weekly **theme → mini-project → flagship**. Eight competencies:
-
-**Harness · Identity (+ Okta IaC) · Endpoint · Enablement · Workflow · Ops · Cloud platform · Portfolio**
+Hard weekly builds → flagship. See **[CURRICULUM.md](./CURRICULUM.md)**.
 
 | Phase | Weeks | Pressure |
 |-------|-------|----------|
-| Foundation | 1–4 | Decision boundaries, LLM-safe Okta tool surface, adversarial wiring, testable guardrails |
-| Identity-as-code | 5–8 | Topology control plane, drift, TF/SCIM/agent contract, WIF/secrets threat model |
-| Workflow + containers | 9–12 | HITL hard gates, API contracts, idempotency, container boundaries |
-| Evals + events + CI | 13–16 | Eval gates, adversarial 15, audit event plane, change-control CI |
-| Endpoint + prep | 17–20 | Identity-tied AI policy, offboarding graph, Run vs GKE ADR, architecture freeze |
-| **Capstone** | **21–24** | **Integrate under eval pressure → trust → observe → deliver** |
+| Foundation | 1–4 | Decision boundaries, LLM-safe Okta tool surface, adversarial wiring |
+| Identity-as-code | 5–8 | Topology control plane, TF/SCIM/agent contract, WIF/secrets |
+| Workflow | 9–12 | HITL hard gates, API contracts, idempotency, containers |
+| Evals + CI | 13–16 | Eval gates, adversarial 15, event plane, change-control CI |
+| Endpoint + freeze | 17–20 | Identity-tied AI policy, offboarding graph, Run vs GKE ADR |
+| **Capstone** | **21–24** | **Integrate → trust → observe → deliver** |
 | Portfolio | 25–36 | Demo under interrupt, system designs, apply |
 
-| Resource | Link |
-|----------|------|
-| Competency model | [`CURRICULUM.md`](./CURRICULUM.md) |
-| Weekly dashboard | [`tracker/`](./tracker/) |
-| Interview prep | [`interview-prep/`](./interview-prep/) |
+[Dashboard](./tracker/) · [Projects](./projects/) · [Interview prep](./interview-prep/)
 
 ---
-
-### Repo layout
-
-```
-projects/          # M1–M8 minis + flagship capstone
-tracker/           # GitHub Pages dashboard + weeks.json
-phases/            # Phase guides
-interview-prep/    # System design templates + answers
-study-notes/       # Active notes (+ cloud-platform/)
-CONTEXT.md         # Targets, consulting offers
-SETUP.md           # Run projects + tracker locally
-```
-
----
-
-### Contact
 
 <div align="center">
 
 Open to **AI Systems**, **agentic ops**, and **internal AI platform** roles.
 
-[![LinkedIn](https://img.shields.io/badge/Connect-meerzah-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/meerzah)
+[Live site](https://meerzah.github.io/ai-systems-portfolio/) · [LinkedIn](https://linkedin.com/in/meerzah)
 
 </div>
