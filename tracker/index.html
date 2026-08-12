@@ -356,17 +356,18 @@
       const tasks = w.tasks || [];
       document.getElementById("tasks-list").innerHTML = tasks.length
         ? tasks.map((t) => {
+            const primary = (t.docs && t.docs[0] && resolveHref(t.docs[0].url)) || projectHref || "#";
             const docs = (t.docs || []).map((d) => {
               const href = resolveHref(d.url) || d.url;
-              return `<a href="${esc(href)}" target="_blank" rel="noopener" style="font-size:12px;font-weight:650;margin-right:10px">${esc(d.title || "Doc")}</a>`;
+              return `<a href="${esc(href)}" target="_blank" rel="noopener" style="font-size:12px;font-weight:650;margin-right:10px" onclick="event.stopPropagation()">${esc(d.title || "Doc")}</a>`;
             }).join("");
-            return `<div class="res" style="flex-direction:column;align-items:flex-start">
+            return `<a class="res" href="${esc(primary)}" target="_blank" rel="noopener" style="flex-direction:column;align-items:flex-start">
               <strong>${esc(t.title)}</strong>
               <span style="color:var(--muted);font-family:var(--font);font-size:.88rem;margin-top:4px">${esc(t.detail || "")}</span>
               ${docs ? `<div style="margin-top:8px">${docs}</div>` : ""}
-            </div>`;
+            </a>`;
           }).join("")
-        : `<div class="res"><strong>Open the week guide</strong><span>step-by-step tasks</span></div>`;
+        : `<a class="res" href="${esc(workbookHref || "#")}"><strong>Open the week guide</strong><span>step-by-step tasks</span></a>`;
 
       const done = loadWeekDone(n);
       const box = document.getElementById("week-done");

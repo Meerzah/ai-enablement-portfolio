@@ -73,7 +73,8 @@
       <div id="content" class="md"><p class="status">Loading document…</p></div>
     </article>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Pin marked v11: stable parse API; avoid breaking renderer.link changes in latest -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
   <script>
     const params = new URLSearchParams(location.search);
     const rawPath = (params.get("path") || "").replace(/^\/+/, "").replace(/^(\.\.\/)+/, "");
@@ -84,33 +85,39 @@
     const ghLink = document.getElementById("github-link");
 
     function siteRoot() {
-      // /ai-systems-portfolio/site/doc.html → /ai-systems-portfolio/
       const parts = location.pathname.split("/").filter(Boolean);
       const siteIdx = parts.lastIndexOf("site");
-      if (siteIdx >= 0) return "/" + parts.slice(0, siteIdx).join("/") + (siteIdx ? "/" : "");
+      if (siteIdx > 0) return "/" + parts.slice(0, siteIdx).join("/") + "/";
+      if (siteIdx === 0) return "/";
       return "../";
     }
 
     function safePath(p) {
       if (!p || p.includes("://") || p.includes("..")) return null;
-      if (!/\.(md|markdown|txt)$/i.test(p) && !p.endsWith("/")) {
-        // allow bare project dirs → README
-        if (p.startsWith("projects/") || p.startsWith("study-notes/") || p.startsWith("interview-prep/") || p.startsWith("phases/")) {
-          return p.replace(/\/?$/, "/README.md");
-        }
+      // directory → README
+      if (
+        !/\.(md|markdown|txt)$/i.test(p) &&
+        (p.startsWith("projects/") ||
+          p.startsWith("study-notes/") ||
+          p.startsWith("interview-prep/") ||
+          p.startsWith("phases/") ||
+          p.startsWith("tracker/"))
+      ) {
+        return p.replace(/\/?$/, "/README.md");
       }
       if (!/\.(md|markdown|txt)$/i.test(p)) return null;
       return p;
     }
 
     function rewriteHref(href, baseDir) {
-      if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("http")) return href;
+      if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("http://") || href.startsWith("https://")) {
+        return href;
+      }
       const cleaned = href.replace(/^\.\//, "");
       let target;
       if (cleaned.startsWith("../")) {
         const stack = baseDir.split("/").filter(Boolean);
-        const parts = cleaned.split("/");
-        for (const part of parts) {
+        for (const part of cleaned.split("/")) {
           if (part === "..") stack.pop();
           else if (part !== ".") stack.push(part);
         }
@@ -118,19 +125,38 @@
       } else {
         target = (baseDir ? baseDir + "/" : "") + cleaned;
       }
+      target = target.replace(/^\/+/, "");
       if (/\.(md|markdown)$/i.test(target)) {
         return `doc.html?path=${encodeURIComponent(target)}`;
       }
       return siteRoot() + target;
     }
 
+    function rewriteLinks(root, baseDir) {
+      root.querySelectorAll("a[href]").forEach((a) => {
+        const original = a.getAttribute("href");
+        if (!original) return;
+        a.setAttribute("href", rewriteHref(original, baseDir));
+      });
+    }
+
     async function load() {
       const path = safePath(rawPath);
       if (!path) {
         titleEl.textContent = "Document not found";
-        content.innerHTML = `<p class="status error">Missing or invalid <code>?path=</code>. Example: <code>site/doc.html?path=projects/01-it-helpdesk-agent/README.md</code></p>`;
+        content.innerHTML = `<p class="status error">Missing or invalid <code>?path=</code>.<br>Example: <code>site/doc.html?path=projects/01-it-helpdesk-agent/README.md</code></p>`;
         return;
       }
+
+      if (typeof marked === "undefined") {
+        content.innerHTML = `<p class="status error">Markdown library failed to load (CDN blocked?). Try Raw / GitHub links above.</p>`;
+        pathEl.textContent = path;
+        const root = siteRoot();
+        rawLink.href = root + path;
+        ghLink.href = `https://github.com/Meerzah/ai-systems-portfolio/blob/main/${path}`;
+        return;
+      }
+
       const root = siteRoot();
       const fetchUrl = root + path;
       pathEl.textContent = path;
@@ -141,19 +167,24 @@
 
       try {
         const res = await fetch(fetchUrl);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${fetchUrl}`);
         const text = await res.text();
         const baseDir = path.includes("/") ? path.slice(0, path.lastIndexOf("/")) : "";
+
         marked.setOptions({ gfm: true, breaks: false });
-        const renderer = new marked.Renderer();
-        const prevLink = renderer.link.bind(renderer);
-        renderer.link = (href, title, text) => prevLink(rewriteHref(href, baseDir), title, text);
-        content.innerHTML = marked.parse(text, { renderer });
+        content.innerHTML = marked.parse(text);
+        rewriteLinks(content, baseDir);
+
         const h1 = content.querySelector("h1");
-        if (h1) titleEl.textContent = h1.textContent;
-        document.title = titleEl.textContent;
+        if (h1) {
+          titleEl.textContent = h1.textContent || titleEl.textContent;
+          document.title = titleEl.textContent;
+        }
       } catch (err) {
-        content.innerHTML = `<p class="status error">Could not load <code>${path}</code><br>${err.message}</p>`;
+        content.innerHTML = `<p class="status error">Could not load <code>${path}</code><br>${String(err.message || err)}<br><br>
+          <a href="${fetchUrl}">Open raw file</a> ·
+          <a href="https://github.com/Meerzah/ai-systems-portfolio/blob/main/${path}">View on GitHub</a>
+        </p>`;
       }
     }
 

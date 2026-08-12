@@ -112,7 +112,9 @@ a:hover{text-decoration:underline}
 .task-list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
 .task-card{
   border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--bg);
+  transition:border-color .15s,background .15s;cursor:pointer;
 }
+.task-card:hover{border-color:var(--accent);background:var(--accent-soft)}
 .task-card strong{display:block;font-size:.95rem;margin-bottom:6px}
 .task-card p{font-size:.88rem;color:var(--muted);margin:0 0 8px}
 .task-docs{display:flex;flex-wrap:wrap;gap:6px}
@@ -141,7 +143,7 @@ a:hover{text-decoration:underline}
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
-      <a class="primary" href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Open project →</a>
+      <a class="primary" href="../../site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Open project →</a>
       <a href="https://github.com/Meerzah/ai-systems-portfolio.git" target="_blank" rel="noopener">Clone repo</a>
     </div>
   </aside>
@@ -162,11 +164,11 @@ a:hover{text-decoration:underline}
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/11-okta-iac/docs/AGENT-CONTRACT.md" target="_blank" rel="noopener">AGENT-CONTRACT</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">M1 agent</a></div>
+        <div class="res-list"><a href="../../site/doc.html?path=projects/11-okta-iac/docs/AGENT-CONTRACT.md" target="_blank" rel="noopener">AGENT-CONTRACT</a><a href="../../site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">M1 agent</a></div>
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>Sequence diagram: propose → approve → execute with failure/timeout paths</strong><p>Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Implement mock HITL that structurally blocks group-add without approval token</strong><p>Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Negative tests: missing approval, expired approval, unknown group name</strong><p>Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><a class="task-card" href="../../site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit"><strong>Sequence diagram: propose → approve → execute with failure/timeout paths</strong><p>Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="../../site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener" onclick="event.stopPropagation()">Project brief</a></div></a><a class="task-card" href="../../site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit"><strong>Implement mock HITL that structurally blocks group-add without approval token</strong><p>Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="../../site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener" onclick="event.stopPropagation()">Project brief</a></div></a><a class="task-card" href="../../site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit"><strong>Negative tests: missing approval, expired approval, unknown group name</strong><p>Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="../../site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener" onclick="event.stopPropagation()">Project brief</a></div></a></div>
       </div>
     </section>
 
@@ -181,7 +183,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 9, "title": "HITL as a hard gate, not a UX nicety", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Sequence diagram: propose → approve → execute with failure/timeout paths", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Implement mock HITL that structurally blocks group-add without approval token", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Negative tests: missing approval, expired approval, unknown group name", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Demo proves block without approval", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Unknown group rejected before any Okta call", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Timeout/deny path documented", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Sequence diagram: propose → approve → execute with failure/timeout paths", "detail": "Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Implement mock HITL that structurally blocks group-add without approval token", "detail": "Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Negative tests: missing approval, expired approval, unknown group name", "detail": "Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}]};
+const PLAN = {"week": 9, "title": "HITL as a hard gate, not a UX nicety", "path": "projects/01-it-helpdesk-agent/", "projectHref": "../../site/doc.html?path=projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Sequence diagram: propose → approve → execute with failure/timeout paths", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Implement mock HITL that structurally blocks group-add without approval token", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Negative tests: missing approval, expired approval, unknown group name", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Demo proves block without approval", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Unknown group rejected before any Okta call", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Timeout/deny path documented", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Sequence diagram: propose → approve → execute with failure/timeout paths", "detail": "Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Implement mock HITL that structurally blocks group-add without approval token", "detail": "Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Negative tests: missing approval, expired approval, unknown group name", "detail": "Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 
@@ -269,11 +271,20 @@ function findTask(stepText) {
     || null;
 }
 
+function escHtml(s) {
+  return String(s || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function docLink(url) {
   if (!url) return PLAN.projectHref;
   if (url.startsWith("http")) return url;
-  const clean = url.replace(/^(\.\.\/)+/, "");
-  return "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=" + encodeURIComponent(clean);
+  const clean = String(url).replace(/^(?:\.\.\/)+/, "").replace(/^\/+/, "");
+  return "../../site/doc.html?path=" + encodeURIComponent(clean);
 }
 
 function renderFocus() {
@@ -295,19 +306,19 @@ function renderFocus() {
   const done = isDone(step.id);
   const task = findTask(step.text);
   const detail = task && task.detail
-    ? `<div class="detail-box">${task.detail}</div>`
-    : `<p class="hint">Work in <code>${PLAN.path}</code> — mark complete when finished.</p>`;
+    ? `<div class="detail-box">${escHtml(task.detail)}</div>`
+    : `<p class="hint">Work in <code>${escHtml(PLAN.path)}</code> — mark complete when finished.</p>`;
   const docs = (task && task.docs || []).map(d =>
-    `<a href="${docLink(d.url)}" target="_blank" rel="noopener">${d.title || "Doc"}</a>`
+    `<a href="${docLink(d.url)}" target="_blank" rel="noopener">${escHtml(d.title || "Doc")}</a>`
   ).join("");
   const docsRow = docs
     ? `<div class="task-docs">${docs}<a href="${PLAN.projectHref}" target="_blank" rel="noopener">Project brief</a></div>`
     : `<a class="open-link" href="${PLAN.projectHref}" target="_blank" rel="noopener">Open project brief →</a>`;
 
   el.innerHTML = `
-    <div class="focus-meta"><span>${item.dayLabel}</span> · Step ${item.stepInDay} of ${item.stepsInDay}</div>
+    <div class="focus-meta"><span>${escHtml(item.dayLabel)}</span> · Step ${item.stepInDay} of ${item.stepsInDay}</div>
     <span class="kind ${step.kind}">${kindLabel(step.kind)}</span>
-    <h2>${step.text}</h2>
+    <h2>${escHtml(step.text)}</h2>
     ${detail}
     ${docsRow}
     <label class="focus-check${done ? " done-box" : ""}" id="check-wrap">

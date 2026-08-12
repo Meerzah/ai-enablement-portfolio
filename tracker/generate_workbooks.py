@@ -123,7 +123,9 @@ a:hover{text-decoration:underline}
 .task-list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
 .task-card{
   border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--bg);
+  transition:border-color .15s,background .15s;cursor:pointer;
 }
+.task-card:hover{border-color:var(--accent);background:var(--accent-soft)}
 .task-card strong{display:block;font-size:.95rem;margin-bottom:6px}
 .task-card p{font-size:.88rem;color:var(--muted);margin:0 0 8px}
 .task-docs{display:flex;flex-wrap:wrap;gap:6px}
@@ -149,6 +151,7 @@ def normalize_repo_path(path: str) -> str:
 
 
 def doc_href(path: str) -> str:
+    """Absolute Pages URL (workbooks are often opened standalone)."""
     if not path:
         return PAGES_BASE
     if path.startswith("http://") or path.startswith("https://"):
@@ -156,6 +159,17 @@ def doc_href(path: str) -> str:
     if path.endswith(".html"):
         return f"{PAGES_BASE}/{path.lstrip('/')}"
     return f"{DOC_VIEW}?path={quote(normalize_repo_path(path))}"
+
+
+def doc_href_rel(path: str) -> str:
+    """Relative doc viewer link from tracker/workbooks/ (works locally + Pages)."""
+    if not path:
+        return "../../site/doc.html"
+    if path.startswith("http://") or path.startswith("https://"):
+        return path
+    if path.endswith(".html"):
+        return f"../../{path.lstrip('/')}"
+    return f"../../site/doc.html?path={quote(normalize_repo_path(path))}"
 
 
 def project_href(path: str) -> str:
@@ -174,7 +188,7 @@ def render(week: dict) -> str:
     learn = html.escape(week.get("learn") or "")
     challenge = html.escape(week.get("challenge") or "")
     path = mp["path"]
-    href = html.escape(project_href(path))
+    href = html.escape(doc_href_rel(path))
     total_steps = sum(len(d["steps"]) for d in days)
     time_hint = html.escape(week.get("timeHint") or "12–15 hrs")
 
@@ -186,32 +200,34 @@ def render(week: dict) -> str:
     obj_html = "".join(f"<li>{html.escape(x)}</li>" for x in objectives) or "<li>Complete build + done-when</li>"
     study_html = "".join(f"<li>{html.escape(x)}</li>" for x in study) or "<li>Read project README</li>"
     res_html = "".join(
-        f'<a href="{html.escape(resource_href(r.get("url", "#")))}" target="_blank" rel="noopener">{html.escape(r.get("title", "Resource"))}</a>'
+        f'<a href="{html.escape(doc_href_rel(r.get("url", "#")))}" target="_blank" rel="noopener">{html.escape(r.get("title", "Resource"))}</a>'
         for r in resources
-    ) or f'<a href="{html.escape(doc_href("CURRICULUM.md"))}" target="_blank" rel="noopener">Curriculum</a>'
+    ) or f'<a href="{html.escape(doc_href_rel("CURRICULUM.md"))}" target="_blank" rel="noopener">Curriculum</a>'
 
     task_cards = []
     for t in tasks:
         docs = t.get("docs") or []
+        primary = doc_href_rel((docs[0] or {}).get("url") if docs else path)
         docs_html = "".join(
-            f'<a href="{html.escape(resource_href(d.get("url", "#")))}" target="_blank" rel="noopener">{html.escape(d.get("title", "Doc"))}</a>'
+            f'<a href="{html.escape(doc_href_rel(d.get("url", "#")))}" target="_blank" rel="noopener" onclick="event.stopPropagation()">{html.escape(d.get("title", "Doc"))}</a>'
             for d in docs
         )
         task_cards.append(
-            "<div class=\"task-card\">"
+            f'<a class="task-card" href="{html.escape(primary)}" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit">'
             f"<strong>{html.escape(t.get('title', 'Task'))}</strong>"
             f"<p>{html.escape(t.get('detail', ''))}</p>"
             f"<div class=\"task-docs\">{docs_html}</div>"
-            "</div>"
+            "</a>"
         )
     tasks_html = "".join(task_cards) or "<p style=\"color:var(--muted);font-size:.9rem\">See build steps below.</p>"
 
+    # Relative project href for local + Pages; keep tasks urls repo-relative for runtime docLink
     plan_json = json.dumps(
         {
             "week": n,
             "title": week.get("theme") or week["title"],
             "path": path,
-            "projectHref": project_href(path),
+            "projectHref": doc_href_rel(path),
             "days": days,
             "tasks": tasks,
         },
@@ -369,11 +385,20 @@ function findTask(stepText) {{
     || null;
 }}
 
+function escHtml(s) {{
+  return String(s || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}}
+
 function docLink(url) {{
   if (!url) return PLAN.projectHref;
   if (url.startsWith("http")) return url;
-  const clean = url.replace(/^(\\.\\.\\/)+/, "");
-  return "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=" + encodeURIComponent(clean);
+  const clean = String(url).replace(/^(?:\\.\\.\\/)+/, "").replace(/^\\/+/, "");
+  return "../../site/doc.html?path=" + encodeURIComponent(clean);
 }}
 
 function renderFocus() {{
@@ -395,19 +420,19 @@ function renderFocus() {{
   const done = isDone(step.id);
   const task = findTask(step.text);
   const detail = task && task.detail
-    ? `<div class="detail-box">${{task.detail}}</div>`
-    : `<p class="hint">Work in <code>${{PLAN.path}}</code> — mark complete when finished.</p>`;
+    ? `<div class="detail-box">${{escHtml(task.detail)}}</div>`
+    : `<p class="hint">Work in <code>${{escHtml(PLAN.path)}}</code> — mark complete when finished.</p>`;
   const docs = (task && task.docs || []).map(d =>
-    `<a href="${{docLink(d.url)}}" target="_blank" rel="noopener">${{d.title || "Doc"}}</a>`
+    `<a href="${{docLink(d.url)}}" target="_blank" rel="noopener">${{escHtml(d.title || "Doc")}}</a>`
   ).join("");
   const docsRow = docs
     ? `<div class="task-docs">${{docs}}<a href="${{PLAN.projectHref}}" target="_blank" rel="noopener">Project brief</a></div>`
     : `<a class="open-link" href="${{PLAN.projectHref}}" target="_blank" rel="noopener">Open project brief →</a>`;
 
   el.innerHTML = `
-    <div class="focus-meta"><span>${{item.dayLabel}}</span> · Step ${{item.stepInDay}} of ${{item.stepsInDay}}</div>
+    <div class="focus-meta"><span>${{escHtml(item.dayLabel)}}</span> · Step ${{item.stepInDay}} of ${{item.stepsInDay}}</div>
     <span class="kind ${{step.kind}}">${{kindLabel(step.kind)}}</span>
-    <h2>${{step.text}}</h2>
+    <h2>${{escHtml(step.text)}}</h2>
     ${{detail}}
     ${{docsRow}}
     <label class="focus-check${{done ? " done-box" : ""}}" id="check-wrap">
