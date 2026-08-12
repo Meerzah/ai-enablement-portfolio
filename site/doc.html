@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/theme.css" />
+  <style>
+    .top {
+      position: sticky; top: 0; z-index: 20;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+      padding: 12px 20px; border-bottom: 1px solid var(--line); background: rgba(246,245,242,.92);
+      backdrop-filter: blur(10px);
+    }
+    .top-left { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .top-left strong { font-size: 14px; letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: min(70vw, 520px); }
+    .top-left span { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+    .top-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 28px 20px 80px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+      padding: 32px 34px; box-shadow: var(--shadow);
+    }
+    @media (max-width: 700px) { .card { padding: 22px 18px; } }
+    .status { color: var(--muted); font-size: 14px; padding: 40px 0; text-align: center; }
+    .status.error { color: #b42318; }
+    .md { font-size: 1.02rem; }
+    .md > :first-child { margin-top: 0; }
+    .md h1 { font-size: 1.85rem; letter-spacing: -.03em; margin: 0 0 14px; line-height: 1.2; }
+    .md h2 { font-size: 1.25rem; letter-spacing: -.02em; margin: 28px 0 10px; padding-top: 8px; border-top: 1px solid var(--line); }
+    .md h3 { font-size: 1.05rem; margin: 22px 0 8px; }
+    .md p, .md ul, .md ol, .md pre, .md blockquote, .md table { margin: 0 0 14px; }
+    .md ul, .md ol { padding-left: 22px; }
+    .md li { margin-bottom: 6px; }
+    .md code {
+      font-family: var(--mono); font-size: .88em; background: var(--bg);
+      padding: 2px 6px; border-radius: 6px;
+    }
+    .md pre {
+      background: #171717; color: #f5f5f5; padding: 16px 18px; border-radius: 12px;
+      overflow-x: auto; font-size: 13px; line-height: 1.5;
+    }
+    .md pre code { background: transparent; color: inherit; padding: 0; }
+    .md blockquote {
+      border-left: 3px solid var(--accent); padding: 8px 14px; color: var(--muted);
+      background: var(--accent-soft); border-radius: 0 10px 10px 0;
+    }
+    .md table { width: 100%; border-collapse: collapse; font-size: .92rem; display: block; overflow-x: auto; }
+    .md th, .md td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; }
+    .md th { background: var(--bg); font-weight: 650; }
+    .md hr { border: none; border-top: 1px solid var(--line); margin: 24px 0; }
+    .md a { font-weight: 600; }
+    .md img { max-width: 100%; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="top-left">
+      <strong id="doc-title">Loading…</strong>
+      <span id="doc-path"></span>
+    </div>
+    <div class="top-actions">
+      <a class="btn btn-ghost" id="back-dash" href="../tracker/">Dashboard</a>
+      <a class="btn btn-ghost" id="raw-link" href="#" target="_blank" rel="noopener">Raw</a>
+      <a class="btn btn-primary" id="github-link" href="#" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </header>
+  <main class="wrap">
+    <article class="card">
+      <div id="content" class="md"><p class="status">Loading document…</p></div>
+    </article>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const rawPath = (params.get("path") || "").replace(/^\/+/, "").replace(/^(\.\.\/)+/, "");
+    const titleEl = document.getElementById("doc-title");
+    const pathEl = document.getElementById("doc-path");
+    const content = document.getElementById("content");
+    const rawLink = document.getElementById("raw-link");
+    const ghLink = document.getElementById("github-link");
+
+    function siteRoot() {
+      // /ai-systems-portfolio/site/doc.html → /ai-systems-portfolio/
+      const parts = location.pathname.split("/").filter(Boolean);
+      const siteIdx = parts.lastIndexOf("site");
+      if (siteIdx >= 0) return "/" + parts.slice(0, siteIdx).join("/") + (siteIdx ? "/" : "");
+      return "../";
+    }
+
+    function safePath(p) {
+      if (!p || p.includes("://") || p.includes("..")) return null;
+      if (!/\.(md|markdown|txt)$/i.test(p) && !p.endsWith("/")) {
+        // allow bare project dirs → README
+        if (p.startsWith("projects/") || p.startsWith("study-notes/") || p.startsWith("interview-prep/") || p.startsWith("phases/")) {
+          return p.replace(/\/?$/, "/README.md");
+        }
+      }
+      if (!/\.(md|markdown|txt)$/i.test(p)) return null;
+      return p;
+    }
+
+    function rewriteHref(href, baseDir) {
+      if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("http")) return href;
+      const cleaned = href.replace(/^\.\//, "");
+      let target;
+      if (cleaned.startsWith("../")) {
+        const stack = baseDir.split("/").filter(Boolean);
+        const parts = cleaned.split("/");
+        for (const part of parts) {
+          if (part === "..") stack.pop();
+          else if (part !== ".") stack.push(part);
+        }
+        target = stack.join("/");
+      } else {
+        target = (baseDir ? baseDir + "/" : "") + cleaned;
+      }
+      if (/\.(md|markdown)$/i.test(target)) {
+        return `doc.html?path=${encodeURIComponent(target)}`;
+      }
+      return siteRoot() + target;
+    }
+
+    async function load() {
+      const path = safePath(rawPath);
+      if (!path) {
+        titleEl.textContent = "Document not found";
+        content.innerHTML = `<p class="status error">Missing or invalid <code>?path=</code>. Example: <code>site/doc.html?path=projects/01-it-helpdesk-agent/README.md</code></p>`;
+        return;
+      }
+      const root = siteRoot();
+      const fetchUrl = root + path;
+      pathEl.textContent = path;
+      titleEl.textContent = path.split("/").pop();
+      rawLink.href = fetchUrl;
+      ghLink.href = `https://github.com/Meerzah/ai-systems-portfolio/blob/main/${path}`;
+      document.getElementById("back-dash").href = root + "tracker/";
+
+      try {
+        const res = await fetch(fetchUrl);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const text = await res.text();
+        const baseDir = path.includes("/") ? path.slice(0, path.lastIndexOf("/")) : "";
+        marked.setOptions({ gfm: true, breaks: false });
+        const renderer = new marked.Renderer();
+        const prevLink = renderer.link.bind(renderer);
+        renderer.link = (href, title, text) => prevLink(rewriteHref(href, baseDir), title, text);
+        content.innerHTML = marked.parse(text, { renderer });
+        const h1 = content.querySelector("h1");
+        if (h1) titleEl.textContent = h1.textContent;
+        document.title = titleEl.textContent;
+      } catch (err) {
+        content.innerHTML = `<p class="status error">Could not load <code>${path}</code><br>${err.message}</p>`;
+      }
+    }
+
+    load();
+  </script>
+</body>
+</html>

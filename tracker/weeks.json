@@ -56,19 +56,19 @@
       "resources": [
         {
           "title": "Project README \u2014 IT Helpdesk Agent",
-          "url": "../projects/01-it-helpdesk-agent/README.md"
+          "url": "projects/01-it-helpdesk-agent/README.md"
         },
         {
           "title": "Week 1 friction inventory template",
-          "url": "../study-notes/weeks/week-01-friction-inventory.md"
+          "url": "study-notes/weeks/week-01-friction-inventory.md"
         },
         {
           "title": "Week 1 prove log",
-          "url": "../study-notes/weeks/week-01-prove-log.md"
+          "url": "study-notes/weeks/week-01-prove-log.md"
         },
         {
           "title": "Curriculum overview",
-          "url": "../CURRICULUM.md"
+          "url": "CURRICULUM.md"
         },
         {
           "title": "Google ADK docs",
@@ -77,6 +77,38 @@
         {
           "title": "MCP intro",
           "url": "https://modelcontextprotocol.io"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Set up Python venv; install requirements.txt",
+          "detail": "Clone the repo locally, create a venv in projects/01-it-helpdesk-agent, install deps, and confirm imports work. If GCP/Vertex blocks you, write the blocker in the prove log and continue with runbooks.",
+          "docs": [
+            {
+              "title": "Project README \u2014 setup",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Add 2 Markdown runbooks (VPN, SSO, or MDM)",
+          "detail": "Write two short, realistic runbooks an agent can ground on. Prefer steps you know from IT ops. Keep PII out; use generic org language.",
+          "docs": [
+            {
+              "title": "Friction inventory template",
+              "url": "study-notes/weeks/week-01-friction-inventory.md"
+            }
+          ]
+        },
+        {
+          "title": "Run 5 test queries; log results in prove log",
+          "detail": "Ask the agent five questions (mix of in-scope and out-of-scope). Log query, expected behavior, actual result, and whether you\u2019d escalate.",
+          "docs": [
+            {
+              "title": "Prove log",
+              "url": "study-notes/weeks/week-01-prove-log.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs \u00b7 Mon study \u00b7 Tue\u2013Thu build \u00b7 Fri\u2013Sun prove",
@@ -215,7 +247,7 @@
       "resources": [
         {
           "title": "Okta MCP project README",
-          "url": "../projects/02-okta-mcp-server/README.md"
+          "url": "projects/02-okta-mcp-server/README.md"
         },
         {
           "title": "Okta API docs",
@@ -224,6 +256,38 @@
         {
           "title": "MCP specification",
           "url": "https://modelcontextprotocol.io/specification"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Configure read-only Okta API token (preview/sandbox org)",
+          "detail": "Use an Okta preview/developer org only. Create a least-privilege read token. Store it in env \u2014 never commit.",
+          "docs": [
+            {
+              "title": "Okta MCP README",
+              "url": "projects/02-okta-mcp-server/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Verify list_users + get_group_members tools",
+          "detail": "Run the MCP server and exercise both tools. Note required scopes and failure modes.",
+          "docs": [
+            {
+              "title": "Okta MCP README",
+              "url": "projects/02-okta-mcp-server/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Document 3 sample queries (redact PII)",
+          "detail": "Capture three natural-language \u2192 tool call examples with redacted output for the portfolio README or notes.",
+          "docs": [
+            {
+              "title": "Okta MCP README",
+              "url": "projects/02-okta-mcp-server/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -354,11 +418,43 @@
       "resources": [
         {
           "title": "Helpdesk agent tools",
-          "url": "../projects/01-it-helpdesk-agent/"
+          "url": "projects/01-it-helpdesk-agent/"
         },
         {
           "title": "Okta MCP server",
-          "url": "../projects/02-okta-mcp-server/README.md"
+          "url": "projects/02-okta-mcp-server/README.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Wire agent to Okta MCP tools",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "System prompt: identity lookups read-only; escalate writes",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Test group membership + user status queries",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -489,11 +585,43 @@
       "resources": [
         {
           "title": "Helpdesk agent project",
-          "url": "../projects/01-it-helpdesk-agent/"
+          "url": "projects/01-it-helpdesk-agent/"
         },
         {
           "title": "Curriculum \u2014 harness competency",
-          "url": "../CURRICULUM.md"
+          "url": "CURRICULUM.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Write docs/escalation-policy.md",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "3 must-escalate + 3 safe-to-answer examples",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Update agent system prompt to cite policy",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -623,15 +751,47 @@
       "resources": [
         {
           "title": "Okta Identity-as-Code (M8)",
-          "url": "../projects/11-okta-iac/README.md"
+          "url": "projects/11-okta-iac/README.md"
         },
         {
           "title": "ACCESS-TOPOLOGY",
-          "url": "../projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"
+          "url": "projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"
         },
         {
           "title": "Okta Terraform provider",
           "url": "https://registry.terraform.io/providers/okta/okta/latest/docs"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Scaffold providers.tf + modules/groups for sandbox Okta org",
+          "detail": "Wire the Okta provider for sandbox, open modules/groups, and prepare your first terraform plan.",
+          "docs": [
+            {
+              "title": "Okta IaC README",
+              "url": "projects/11-okta-iac/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Define app-access + role groups",
+          "detail": "Create groups such as agent-read-identity and role-it-approvers that the agent/HITL story will use later.",
+          "docs": [
+            {
+              "title": "ACCESS-TOPOLOGY",
+              "url": "projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"
+            }
+          ]
+        },
+        {
+          "title": "Write docs/ACCESS-TOPOLOGY.md diagram",
+          "detail": "Document the intended group \u2192 app \u2192 policy topology and the TF vs SCIM boundary.",
+          "docs": [
+            {
+              "title": "ACCESS-TOPOLOGY",
+              "url": "projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -768,11 +928,43 @@
       "resources": [
         {
           "title": "M8 Okta IaC",
-          "url": "../projects/11-okta-iac/README.md"
+          "url": "projects/11-okta-iac/README.md"
         },
         {
           "title": "Okta apps (TF docs)",
           "url": "https://registry.terraform.io/providers/okta/okta/latest/docs"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Add modules/apps (OIDC or SAML stub) + group assignments",
+          "detail": "Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/11-okta-iac/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Add modules/policies for sign-on / MFA resources provider supports",
+          "detail": "Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/11-okta-iac/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Document API-manageable vs console-only policy gaps",
+          "detail": "Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/11-okta-iac/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -909,11 +1101,43 @@
       "resources": [
         {
           "title": "AGENT-CONTRACT",
-          "url": "../projects/11-okta-iac/docs/AGENT-CONTRACT.md"
+          "url": "projects/11-okta-iac/docs/AGENT-CONTRACT.md"
         },
         {
           "title": "CIPHER ship plan",
-          "url": "../projects/06-cipher/SHIP-PLAN.md"
+          "url": "projects/06-cipher/SHIP-PLAN.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Add modules/users_sandbox with tf-demo-* users only",
+          "detail": "Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/11-okta-iac/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Write docs/AGENT-CONTRACT.md (groups MCP may read; writes need HITL)",
+          "detail": "Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/11-okta-iac/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Update projects/06-cipher design: TF topology vs automation membership",
+          "detail": "Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/11-okta-iac/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -1050,15 +1274,47 @@
       "resources": [
         {
           "title": "Platform foundation (M6)",
-          "url": "../projects/10-platform-foundation/README.md"
+          "url": "projects/10-platform-foundation/README.md"
         },
         {
           "title": "WIF notes",
-          "url": "../projects/10-platform-foundation/docs/WIF.md"
+          "url": "projects/10-platform-foundation/docs/WIF.md"
         },
         {
           "title": "GCP WIF docs",
           "url": "https://cloud.google.com/iam/docs/workload-identity-federation"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Scaffold Terraform: SA + Secret Manager placeholders for agent/Okta creds",
+          "detail": "Complete this step in `projects/10-platform-foundation/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/10-platform-foundation/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Document WIF / no-SA-keys pattern in README",
+          "detail": "Complete this step in `projects/10-platform-foundation/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/10-platform-foundation/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Link pattern for Okta API token \u2192 Secret Manager (sandbox)",
+          "detail": "Complete this step in `projects/10-platform-foundation/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/10-platform-foundation/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -1195,11 +1451,43 @@
       "resources": [
         {
           "title": "Helpdesk agent",
-          "url": "../projects/01-it-helpdesk-agent/"
+          "url": "projects/01-it-helpdesk-agent/"
         },
         {
           "title": "AGENT-CONTRACT",
-          "url": "../projects/11-okta-iac/docs/AGENT-CONTRACT.md"
+          "url": "projects/11-okta-iac/docs/AGENT-CONTRACT.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "docs/hitl-flow.md with sequence diagram",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Mock approval: CLI y/n or Slack Block Kit draft",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Block side-effect (e.g. group add) without approval",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -1333,7 +1621,39 @@
         },
         {
           "title": "Helpdesk agent",
-          "url": "../projects/01-it-helpdesk-agent/"
+          "url": "projects/01-it-helpdesk-agent/"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "FastAPI POST /query with Pydantic models",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Return answer + tools_used + escalated flag",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "curl example in README",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -1467,7 +1787,39 @@
         },
         {
           "title": "Helpdesk agent",
-          "url": "../projects/01-it-helpdesk-agent/"
+          "url": "projects/01-it-helpdesk-agent/"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "POST /hooks/ticket with Idempotency-Key header",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "docs/reliability.md: retry + duplicate handling",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Test duplicate POST returns same response",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -1595,7 +1947,39 @@
         },
         {
           "title": "Helpdesk agent",
-          "url": "../projects/01-it-helpdesk-agent/"
+          "url": "projects/01-it-helpdesk-agent/"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Dockerfile (multi-stage) for agent API",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "docker-compose.yml: agent + MCP (or documented stub)",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "One-command local run documented in README",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -1725,11 +2109,43 @@
       "resources": [
         {
           "title": "Helpdesk agent evals folder",
-          "url": "../projects/01-it-helpdesk-agent/"
+          "url": "projects/01-it-helpdesk-agent/"
         },
         {
           "title": "Curriculum \u2014 ops competency",
-          "url": "../CURRICULUM.md"
+          "url": "CURRICULUM.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "evals/eval_cases.csv: query, expected_behavior, pass/fail",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "5 rows: runbook + identity read",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "evals/results.md with honest outcomes",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -1858,7 +2274,29 @@
       "resources": [
         {
           "title": "Helpdesk agent",
-          "url": "../projects/01-it-helpdesk-agent/"
+          "url": "projects/01-it-helpdesk-agent/"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Expand to 15 cases including escalation + KB miss",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Top 3 failures \u2192 fix plan before capstone",
+          "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/01-it-helpdesk-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -1980,11 +2418,43 @@
       "resources": [
         {
           "title": "Adoption / event plane",
-          "url": "../projects/05-adoption-dashboard/README.md"
+          "url": "projects/05-adoption-dashboard/README.md"
         },
         {
           "title": "GCP Pub/Sub overview",
           "url": "https://cloud.google.com/pubsub/docs/overview"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "events-schema.md: query_submitted, tool_called, escalated, approved",
+          "detail": "Complete this step in `projects/05-adoption-dashboard/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/05-adoption-dashboard/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Publisher stub (Pub/Sub or structured log) + sample events",
+          "detail": "Complete this step in `projects/05-adoption-dashboard/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/05-adoption-dashboard/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Dashboard script from sample logs only",
+          "detail": "Complete this step in `projects/05-adoption-dashboard/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/05-adoption-dashboard/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -2114,15 +2584,47 @@
       "resources": [
         {
           "title": "okta-iac-plan workflow",
-          "url": "../.github/workflows/okta-iac-plan.yml"
+          "url": ".github/workflows/okta-iac-plan.yml"
         },
         {
           "title": "M8 Okta IaC",
-          "url": "../projects/11-okta-iac/README.md"
+          "url": "projects/11-okta-iac/README.md"
         },
         {
           "title": "setup-terraform action",
           "url": "https://github.com/hashicorp/setup-terraform"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "GitHub Actions workflow: terraform fmt/validate/plan for 11-okta-iac",
+          "detail": "Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/11-okta-iac/README.md"
+            }
+          ]
+        },
+        {
+          "title": "CI job: lint/test (or build) for agent/API project",
+          "detail": "Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/11-okta-iac/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Document required secrets (OKTA_*, GCP) \u2014 never commit values",
+          "detail": "Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/11-okta-iac/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -2253,11 +2755,43 @@
       "resources": [
         {
           "title": "Endpoint AI governance",
-          "url": "../projects/09-endpoint-ai-governance/README.md"
+          "url": "projects/09-endpoint-ai-governance/README.md"
         },
         {
           "title": "M8 groups topology",
-          "url": "../projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"
+          "url": "projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "POLICY.md: approved vs prohibited AI tool categories",
+          "detail": "Complete this step in `projects/09-endpoint-ai-governance/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/09-endpoint-ai-governance/README.md"
+            }
+          ]
+        },
+        {
+          "title": "MDM-ROLLOUT-CHECKLIST.md (generic, no employer URLs)",
+          "detail": "Complete this step in `projects/09-endpoint-ai-governance/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/09-endpoint-ai-governance/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Map Okta groups from 11-okta-iac to allowed tool tiers",
+          "detail": "Complete this step in `projects/09-endpoint-ai-governance/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/09-endpoint-ai-governance/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -2386,7 +2920,39 @@
       "resources": [
         {
           "title": "ALIUS architecture",
-          "url": "../projects/07-alius/ARCHITECTURE.md"
+          "url": "projects/07-alius/ARCHITECTURE.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Review ARCHITECTURE.md",
+          "detail": "Complete this step in `projects/07-alius/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/07-alius/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Diagram: device wipe + Okta deactivate + SaaS revoke order",
+          "detail": "Complete this step in `projects/07-alius/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/07-alius/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Note where agent assists vs deterministic; reference M8 groups",
+          "detail": "Complete this step in `projects/07-alius/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/07-alius/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -2515,15 +3081,47 @@
       "resources": [
         {
           "title": "Run vs GKE memo",
-          "url": "../study-notes/cloud-platform/run-vs-gke.md"
+          "url": "study-notes/cloud-platform/run-vs-gke.md"
         },
         {
           "title": "Platform foundation",
-          "url": "../projects/10-platform-foundation/README.md"
+          "url": "projects/10-platform-foundation/README.md"
         },
         {
           "title": "Cloud Run docs",
           "url": "https://cloud.google.com/run/docs"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Write study-notes/cloud-platform/run-vs-gke.md tradeoff memo",
+          "detail": "Complete this step in `study-notes/cloud-platform/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "study-notes/cloud-platform/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Optional: kind or GKE Autopilot hello deploy notes",
+          "detail": "Complete this step in `study-notes/cloud-platform/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "study-notes/cloud-platform/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Recommend default hosting for capstone agent (Cloud Run)",
+          "detail": "Complete this step in `study-notes/cloud-platform/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "study-notes/cloud-platform/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -2652,11 +3250,43 @@
       "resources": [
         {
           "title": "Flagship capstone",
-          "url": "../projects/08-capstone-ops-agent/README.md"
+          "url": "projects/08-capstone-ops-agent/README.md"
         },
         {
           "title": "Curriculum",
-          "url": "../CURRICULUM.md"
+          "url": "CURRICULUM.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "ARCHITECTURE.md: M1\u2013M8 mapped to components",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "demo-script.md: Okta TF \u2192 runbook Q \u2192 identity Q \u2192 HITL \u2192 audit \u2192 metrics",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Repo layout scaffold (folders + README)",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs",
@@ -2784,7 +3414,39 @@
       "resources": [
         {
           "title": "Capstone README",
-          "url": "../projects/08-capstone-ops-agent/README.md"
+          "url": "projects/08-capstone-ops-agent/README.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Merge agent + MCP + FastAPI into capstone layout",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "One local run script or docker-compose",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Port eval suite; MCP queries TF-managed sandbox groups",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs \u00b7 capstone",
@@ -2912,11 +3574,43 @@
       "resources": [
         {
           "title": "AGENT-CONTRACT",
-          "url": "../projects/11-okta-iac/docs/AGENT-CONTRACT.md"
+          "url": "projects/11-okta-iac/docs/AGENT-CONTRACT.md"
         },
         {
           "title": "Capstone",
-          "url": "../projects/08-capstone-ops-agent/README.md"
+          "url": "projects/08-capstone-ops-agent/README.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "HITL gate before side effects",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Audit log on every query",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Reject privilege escalation; only IaC-known groups in write proposals",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs \u00b7 capstone",
@@ -3046,11 +3740,43 @@
       "resources": [
         {
           "title": "Capstone",
-          "url": "../projects/08-capstone-ops-agent/README.md"
+          "url": "projects/08-capstone-ops-agent/README.md"
         },
         {
           "title": "OpenTelemetry overview",
           "url": "https://opentelemetry.io/docs/concepts/"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Wire endpoint policy stub from projects/09",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Structured logs + OTel/metrics stub + short SLO note",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Adoption/event plane reads capstone logs",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs \u00b7 capstone",
@@ -3181,11 +3907,43 @@
       "resources": [
         {
           "title": "Platform foundation",
-          "url": "../projects/10-platform-foundation/README.md"
+          "url": "projects/10-platform-foundation/README.md"
         },
         {
           "title": "Capstone",
-          "url": "../projects/08-capstone-ops-agent/README.md"
+          "url": "projects/08-capstone-ops-agent/README.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Cloud Run deploy via projects/10-platform-foundation (or documented script)",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Confirm Okta IaC CI plan path still valid",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "study-notes/capstone-case-study.md with honest limits",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "12\u201315 hrs \u00b7 capstone",
@@ -3321,7 +4079,39 @@
       "resources": [
         {
           "title": "Capstone demo script",
-          "url": "../projects/08-capstone-ops-agent/README.md"
+          "url": "projects/08-capstone-ops-agent/README.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Rehearse demo-script.md",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Fix top 3 eval failures",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "README architecture diagram",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "8\u201312 hrs",
@@ -3448,7 +4238,29 @@
       "resources": [
         {
           "title": "Platform bridge",
-          "url": "../study-notes/platform-projects/platform-bridge.md"
+          "url": "study-notes/platform-projects/platform-bridge.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Update platform-bridge.md",
+          "detail": "Complete this step in `study-notes/platform-projects/platform-bridge.md`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "study-notes/platform-projects/platform-bridge.md"
+            }
+          ]
+        },
+        {
+          "title": "LinkedIn draft linking minis + capstone",
+          "detail": "Complete this step in `study-notes/platform-projects/platform-bridge.md`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "study-notes/platform-projects/platform-bridge.md"
+            }
+          ]
         }
       ],
       "timeHint": "8\u201312 hrs",
@@ -3561,7 +4373,19 @@
       "resources": [
         {
           "title": "README portfolio grid",
-          "url": "../README.md"
+          "url": "README.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "study-notes/recruiter-one-pager.md: flagship + 8 minis + stack",
+          "detail": "Complete this step in `study-notes/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "study-notes/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "8\u201312 hrs",
@@ -3667,7 +4491,19 @@
       "resources": [
         {
           "title": "Adoption dashboard",
-          "url": "../projects/05-adoption-dashboard/README.md"
+          "url": "projects/05-adoption-dashboard/README.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "study-notes/metrics-baseline.md from real volume only",
+          "detail": "Complete this step in `projects/05-adoption-dashboard/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/05-adoption-dashboard/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "8\u201312 hrs",
@@ -3773,11 +4609,23 @@
       "resources": [
         {
           "title": "Answer draft",
-          "url": "../interview-prep/answers/okta-iac-scim-boundary.md"
+          "url": "interview-prep/answers/okta-iac-scim-boundary.md"
         },
         {
           "title": "System design template",
-          "url": "../interview-prep/system-design-template.md"
+          "url": "interview-prep/system-design-template.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "45-min timed design \u2192 interview-prep/answers/okta-iac-scim-boundary.md",
+          "detail": "Complete this step in `interview-prep/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "interview-prep/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "8\u201312 hrs",
@@ -3883,11 +4731,23 @@
       "resources": [
         {
           "title": "Run vs GKE",
-          "url": "../study-notes/cloud-platform/run-vs-gke.md"
+          "url": "study-notes/cloud-platform/run-vs-gke.md"
         },
         {
           "title": "Questions list",
-          "url": "../interview-prep/questions.json"
+          "url": "interview-prep/questions.json"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Timed design: WIF + MCP + HITL + hosting tradeoff",
+          "detail": "Complete this step in `interview-prep/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "interview-prep/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "8\u201312 hrs",
@@ -3993,7 +4853,29 @@
       "resources": [
         {
           "title": "Behavioral STAR",
-          "url": "../interview-prep/answers/behavioral-star.md"
+          "url": "interview-prep/answers/behavioral-star.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "STAR: automation, Okta IaC, capstone",
+          "detail": "Complete this step in `interview-prep/answers/behavioral-star.md`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "interview-prep/answers/behavioral-star.md"
+            }
+          ]
+        },
+        {
+          "title": "Resume bullets",
+          "detail": "Complete this step in `interview-prep/answers/behavioral-star.md`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "interview-prep/answers/behavioral-star.md"
+            }
+          ]
         }
       ],
       "timeHint": "8\u201312 hrs",
@@ -4106,7 +4988,39 @@
       "resources": [
         {
           "title": "Wave checklist",
-          "url": "../interview-prep/answers/wave-1-checklist.md"
+          "url": "interview-prep/answers/wave-1-checklist.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "1 design aloud",
+          "detail": "Complete this step in `interview-prep/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "interview-prep/README.md"
+            }
+          ]
+        },
+        {
+          "title": "1 STAR aloud",
+          "detail": "Complete this step in `interview-prep/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "interview-prep/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Capstone demo",
+          "detail": "Complete this step in `interview-prep/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "interview-prep/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "8\u201312 hrs",
@@ -4226,7 +5140,29 @@
       "resources": [
         {
           "title": "CONTEXT targets",
-          "url": "../CONTEXT.md"
+          "url": "CONTEXT.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Company research",
+          "detail": "Complete this step in `interview-prep/answers/wave-1-checklist.md`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "interview-prep/answers/wave-1-checklist.md"
+            }
+          ]
+        },
+        {
+          "title": "Tailored resume bullets",
+          "detail": "Complete this step in `interview-prep/answers/wave-1-checklist.md`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "interview-prep/answers/wave-1-checklist.md"
+            }
+          ]
         }
       ],
       "timeHint": "8\u201312 hrs",
@@ -4343,7 +5279,29 @@
         },
         {
           "title": "Capstone",
-          "url": "../projects/08-capstone-ops-agent/README.md"
+          "url": "projects/08-capstone-ops-agent/README.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "1+ applications",
+          "detail": "Complete this step in `interview-prep/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "interview-prep/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Outreach",
+          "detail": "Complete this step in `interview-prep/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "interview-prep/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "8\u201312 hrs",
@@ -4456,7 +5414,19 @@
       "resources": [
         {
           "title": "Curriculum checklist",
-          "url": "../CURRICULUM.md"
+          "url": "CURRICULUM.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "study-notes/program-retro.md",
+          "detail": "Complete this step in `study-notes/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "study-notes/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "6\u201310 hrs",
@@ -4563,11 +5533,43 @@
       "resources": [
         {
           "title": "Capstone",
-          "url": "../projects/08-capstone-ops-agent/README.md"
+          "url": "projects/08-capstone-ops-agent/README.md"
         },
         {
           "title": "Okta IaC",
-          "url": "../projects/11-okta-iac/README.md"
+          "url": "projects/11-okta-iac/README.md"
+        }
+      ],
+      "tasks": [
+        {
+          "title": "Re-run evals",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "terraform plan on 11-okta-iac sandbox",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
+        },
+        {
+          "title": "Keep capstone runnable",
+          "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.",
+          "docs": [
+            {
+              "title": "Project brief",
+              "url": "projects/08-capstone-ops-agent/README.md"
+            }
+          ]
         }
       ],
       "timeHint": "6\u201310 hrs",

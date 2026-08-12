@@ -473,16 +473,100 @@ GUIDES: dict[int, dict] = {
 }
 
 
-def get_guide(week: int) -> dict:
+# Optional richer task cards: title should match (or prefix) a build step when possible.
+TASKS: dict[int, list[dict]] = {
+    1: [
+        {
+            "title": "Set up Python venv; install requirements.txt",
+            "detail": "Clone the repo locally, create a venv in projects/01-it-helpdesk-agent, install deps, and confirm imports work. If GCP/Vertex blocks you, write the blocker in the prove log and continue with runbooks.",
+            "docs": [
+                {"title": "Project README — setup", "url": "projects/01-it-helpdesk-agent/README.md"},
+            ],
+        },
+        {
+            "title": "Add 2 Markdown runbooks (VPN, SSO, or MDM)",
+            "detail": "Write two short, realistic runbooks an agent can ground on. Prefer steps you know from IT ops. Keep PII out; use generic org language.",
+            "docs": [
+                {"title": "Friction inventory template", "url": "study-notes/weeks/week-01-friction-inventory.md"},
+            ],
+        },
+        {
+            "title": "Run 5 test queries; log results in prove log",
+            "detail": "Ask the agent five questions (mix of in-scope and out-of-scope). Log query, expected behavior, actual result, and whether you’d escalate.",
+            "docs": [
+                {"title": "Prove log", "url": "study-notes/weeks/week-01-prove-log.md"},
+            ],
+        },
+    ],
+    2: [
+        {
+            "title": "Configure read-only Okta API token (preview/sandbox org)",
+            "detail": "Use an Okta preview/developer org only. Create a least-privilege read token. Store it in env — never commit.",
+            "docs": [{"title": "Okta MCP README", "url": "projects/02-okta-mcp-server/README.md"}],
+        },
+        {
+            "title": "Verify list_users + get_group_members tools",
+            "detail": "Run the MCP server and exercise both tools. Note required scopes and failure modes.",
+            "docs": [{"title": "Okta MCP README", "url": "projects/02-okta-mcp-server/README.md"}],
+        },
+        {
+            "title": "Document 3 sample queries (redact PII)",
+            "detail": "Capture three natural-language → tool call examples with redacted output for the portfolio README or notes.",
+            "docs": [{"title": "Okta MCP README", "url": "projects/02-okta-mcp-server/README.md"}],
+        },
+    ],
+    5: [
+        {
+            "title": "Scaffold providers.tf + modules/groups for sandbox Okta org",
+            "detail": "Wire the Okta provider for sandbox, open modules/groups, and prepare your first terraform plan.",
+            "docs": [{"title": "Okta IaC README", "url": "projects/11-okta-iac/README.md"}],
+        },
+        {
+            "title": "Define app-access + role groups",
+            "detail": "Create groups such as agent-read-identity and role-it-approvers that the agent/HITL story will use later.",
+            "docs": [{"title": "ACCESS-TOPOLOGY", "url": "projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"}],
+        },
+        {
+            "title": "Write docs/ACCESS-TOPOLOGY.md diagram",
+            "detail": "Document the intended group → app → policy topology and the TF vs SCIM boundary.",
+            "docs": [{"title": "ACCESS-TOPOLOGY", "url": "projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"}],
+        },
+    ],
+}
+
+
+def _default_tasks(build: list[str], path: str) -> list[dict]:
+    tasks = []
+    for step in build or []:
+        tasks.append(
+            {
+                "title": step,
+                "detail": f"Complete this step in `{path}`. Open the project brief for context, then commit when done.",
+                "docs": [{"title": "Project brief", "url": path.rstrip("/") + "/README.md" if path.endswith("/") else path}],
+            }
+        )
+    return tasks
+
+
+def get_guide(week: int, build: list[str] | None = None, path: str = "") -> dict:
     g = GUIDES.get(week) or {
         "objectives": ["Complete this week's mini-project build and done-when checks"],
         "study": ["Read the project README and CURRICULUM.md for this phase"],
-        "resources": [{"title": "Curriculum", "url": "../CURRICULUM.md"}],
+        "resources": [{"title": "Curriculum", "url": "CURRICULUM.md"}],
         "timeHint": "12–15 hrs",
     }
+    tasks = list(g.get("tasks") or TASKS.get(week) or [])
+    if not tasks:
+        tasks = _default_tasks(build or [], path or "projects/")
+    # Normalize resource urls to repo-relative (no ../) for the doc viewer
+    resources = []
+    for r in g.get("resources") or []:
+        url = (r.get("url") or "").replace("../", "")
+        resources.append({"title": r.get("title", "Resource"), "url": url})
     return {
         "objectives": list(g.get("objectives") or []),
         "study": list(g.get("study") or []),
-        "resources": list(g.get("resources") or []),
+        "resources": resources,
+        "tasks": tasks,
         "timeHint": g.get("timeHint") or "12–15 hrs",
     }

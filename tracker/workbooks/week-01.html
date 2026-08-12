@@ -109,6 +109,22 @@ a:hover{text-decoration:underline}
 .step-dots button.done{background:var(--ok)}
 .buffer{text-align:center;padding:28px 12px;color:var(--muted);font-size:14px}
 .buffer p{margin-bottom:12px}
+.task-list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.task-card{
+  border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--bg);
+}
+.task-card strong{display:block;font-size:.95rem;margin-bottom:6px}
+.task-card p{font-size:.88rem;color:var(--muted);margin:0 0 8px}
+.task-docs{display:flex;flex-wrap:wrap;gap:6px}
+.task-docs a{
+  font-size:12px;font-weight:650;padding:5px 10px;border-radius:999px;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;
+}
+.task-docs a:hover{border-color:var(--accent);color:var(--accent)}
+.detail-box{
+  padding:12px 14px;border-radius:12px;background:var(--accent-soft);border:1px solid #b9dcdc;
+  font-size:.9rem;color:#0f4f52;
+}
 </style>
 </head><body>
 <div class="shell">
@@ -125,7 +141,7 @@ a:hover{text-decoration:underline}
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
-      <a class="primary" href="https://meerzah.github.io/ai-systems-portfolio/projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Open project →</a>
+      <a class="primary" href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Open project →</a>
       <a href="https://github.com/Meerzah/ai-systems-portfolio.git" target="_blank" rel="noopener">Clone repo</a>
     </div>
   </aside>
@@ -145,7 +161,11 @@ a:hover{text-decoration:underline}
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project README — IT Helpdesk Agent</a><a href="https://meerzah.github.io/ai-systems-portfolio/study-notes/weeks/week-01-friction-inventory.md" target="_blank" rel="noopener">Week 1 friction inventory template</a><a href="https://meerzah.github.io/ai-systems-portfolio/study-notes/weeks/week-01-prove-log.md" target="_blank" rel="noopener">Week 1 prove log</a><a href="https://meerzah.github.io/ai-systems-portfolio/CURRICULUM.md" target="_blank" rel="noopener">Curriculum overview</a><a href="https://google.github.io/adk-docs/" target="_blank" rel="noopener">Google ADK docs</a><a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">MCP intro</a></div>
+        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project README — IT Helpdesk Agent</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/weeks/week-01-friction-inventory.md" target="_blank" rel="noopener">Week 1 friction inventory template</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/weeks/week-01-prove-log.md" target="_blank" rel="noopener">Week 1 prove log</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=CURRICULUM.md" target="_blank" rel="noopener">Curriculum overview</a><a href="https://google.github.io/adk-docs/" target="_blank" rel="noopener">Google ADK docs</a><a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">MCP intro</a></div>
+      </div>
+      <div class="cur-block" style="margin-top:16px">
+        <h3>Sub-tasks</h3>
+        <div class="task-list"><div class="task-card"><strong>Set up Python venv; install requirements.txt</strong><p>Clone the repo locally, create a venv in projects/01-it-helpdesk-agent, install deps, and confirm imports work. If GCP/Vertex blocks you, write the blocker in the prove log and continue with runbooks.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project README — setup</a></div></div><div class="task-card"><strong>Add 2 Markdown runbooks (VPN, SSO, or MDM)</strong><p>Write two short, realistic runbooks an agent can ground on. Prefer steps you know from IT ops. Keep PII out; use generic org language.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/weeks/week-01-friction-inventory.md" target="_blank" rel="noopener">Friction inventory template</a></div></div><div class="task-card"><strong>Run 5 test queries; log results in prove log</strong><p>Ask the agent five questions (mix of in-scope and out-of-scope). Log query, expected behavior, actual result, and whether you’d escalate.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/weeks/week-01-prove-log.md" target="_blank" rel="noopener">Prove log</a></div></div></div>
       </div>
     </section>
 
@@ -160,7 +180,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 1, "title": "Ops friction → agent scope", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Set up Python venv; install requirements.txt", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Add 2 Markdown runbooks (VPN, SSO, or MDM)", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Run 5 test queries; log results in prove log", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Agent starts (or document blocker + workaround)", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "2 runbooks committed", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "study-notes/weeks/week-01-prove-log.md filled", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}]};
+const PLAN = {"week": 1, "title": "Ops friction → agent scope", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Set up Python venv; install requirements.txt", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Add 2 Markdown runbooks (VPN, SSO, or MDM)", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Run 5 test queries; log results in prove log", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Agent starts (or document blocker + workaround)", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "2 runbooks committed", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "study-notes/weeks/week-01-prove-log.md filled", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Set up Python venv; install requirements.txt", "detail": "Clone the repo locally, create a venv in projects/01-it-helpdesk-agent, install deps, and confirm imports work. If GCP/Vertex blocks you, write the blocker in the prove log and continue with runbooks.", "docs": [{"title": "Project README — setup", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Add 2 Markdown runbooks (VPN, SSO, or MDM)", "detail": "Write two short, realistic runbooks an agent can ground on. Prefer steps you know from IT ops. Keep PII out; use generic org language.", "docs": [{"title": "Friction inventory template", "url": "study-notes/weeks/week-01-friction-inventory.md"}]}, {"title": "Run 5 test queries; log results in prove log", "detail": "Ask the agent five questions (mix of in-scope and out-of-scope). Log query, expected behavior, actual result, and whether you’d escalate.", "docs": [{"title": "Prove log", "url": "study-notes/weeks/week-01-prove-log.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 
@@ -240,6 +260,21 @@ function kindLabel(kind) {
   return "Wrap up";
 }
 
+function findTask(stepText) {
+  const tasks = PLAN.tasks || [];
+  return tasks.find(t => t.title === stepText)
+    || tasks.find(t => stepText && t.title && stepText.indexOf(t.title) === 0)
+    || tasks.find(t => stepText && t.title && t.title.indexOf(stepText.slice(0, 24)) === 0)
+    || null;
+}
+
+function docLink(url) {
+  if (!url) return PLAN.projectHref;
+  if (url.startsWith("http")) return url;
+  const clean = url.replace(/^(\.\.\/)+/, "");
+  return "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=" + encodeURIComponent(clean);
+}
+
 function renderFocus() {
   const item = flat[cursor];
   const el = document.getElementById("focus");
@@ -248,7 +283,7 @@ function renderFocus() {
     return;
   }
   if (item.empty) {
-    el.innerHTML = `<div class="buffer"><p>Buffer day — nothing scheduled for <strong>${item.dayLabel}</strong>.</p><p>Catch up on study topics above, or read the project README.</p><a class="open-link" href="${PLAN.projectHref}" target="_blank" rel="noopener">Open project →</a></div>`;
+    el.innerHTML = `<div class="buffer"><p>Buffer day — nothing scheduled for <strong>${item.dayLabel}</strong>.</p><p>Catch up on study topics or open a sub-task brief above.</p><a class="open-link" href="${PLAN.projectHref}" target="_blank" rel="noopener">Open project brief →</a></div>`;
     document.getElementById("nav-label").textContent = item.dayLabel + " · buffer day";
     document.getElementById("prev").disabled = cursor === 0;
     document.getElementById("next").disabled = cursor === flat.length - 1;
@@ -257,12 +292,23 @@ function renderFocus() {
 
   const step = item.step;
   const done = isDone(step.id);
+  const task = findTask(step.text);
+  const detail = task && task.detail
+    ? `<div class="detail-box">${task.detail}</div>`
+    : `<p class="hint">Work in <code>${PLAN.path}</code> — mark complete when finished.</p>`;
+  const docs = (task && task.docs || []).map(d =>
+    `<a href="${docLink(d.url)}" target="_blank" rel="noopener">${d.title || "Doc"}</a>`
+  ).join("");
+  const docsRow = docs
+    ? `<div class="task-docs">${docs}<a href="${PLAN.projectHref}" target="_blank" rel="noopener">Project brief</a></div>`
+    : `<a class="open-link" href="${PLAN.projectHref}" target="_blank" rel="noopener">Open project brief →</a>`;
+
   el.innerHTML = `
     <div class="focus-meta"><span>${item.dayLabel}</span> · Step ${item.stepInDay} of ${item.stepsInDay}</div>
     <span class="kind ${step.kind}">${kindLabel(step.kind)}</span>
     <h2>${step.text}</h2>
-    <p class="hint">Work in <code>${PLAN.path}</code> — mark complete when finished.</p>
-    <a class="open-link" href="${PLAN.projectHref}" target="_blank" rel="noopener">Open project folder →</a>
+    ${detail}
+    ${docsRow}
     <label class="focus-check${done ? " done-box" : ""}" id="check-wrap">
       <input type="checkbox" id="step-check" ${done ? "checked" : ""} />
       Mark this step complete

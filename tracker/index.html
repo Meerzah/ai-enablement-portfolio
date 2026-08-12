@@ -203,6 +203,11 @@
     </div>
 
     <section class="panel" style="margin-bottom:14px">
+      <h3>Sub-tasks</h3>
+      <div id="tasks-list" class="resources"></div>
+    </section>
+
+    <section class="panel" style="margin-bottom:14px">
       <h3>Done when</h3>
       <ul class="check-list" id="done-list"></ul>
       <label class="ship">
@@ -237,13 +242,18 @@
       if (!raw) return null;
       let p = String(raw).trim();
       if (p.startsWith("http")) return p;
-      if (p.startsWith("../")) return p;
+      p = p.replace(/^(\.\.\/)+/, "").replace(/^\/+/, "");
       const base = linkBase();
-      if (/\.(md|html|json|py|yml|yaml|csv)$/i.test(p)) return `${base}/${p.replace(/^\.\.\//, "")}`;
+      if (/\.html$/i.test(p)) return `${base}/${p}`;
+      if (/\.(json|py|yml|yaml|csv)$/i.test(p)) return `${base}/${p}`;
+      // Markdown + project folders → styled doc viewer
+      if (/\.md$/i.test(p)) {
+        return `${base}/site/doc.html?path=${encodeURIComponent(p)}`;
+      }
       if (p.includes("/")) {
-        const clean = p.replace(/\/$/, "").replace(/^\.\.\//, "");
-        if (/\.(md|html)$/i.test(clean)) return `${base}/${clean}`;
-        return `${base}/${clean}/README.md`;
+        const clean = p.replace(/\/$/, "");
+        const mdPath = /\.md$/i.test(clean) ? clean : `${clean}/README.md`;
+        return `${base}/site/doc.html?path=${encodeURIComponent(mdPath)}`;
       }
       return null;
     }
@@ -340,6 +350,21 @@
             </a>`;
           }).join("")
         : `<div class="res"><strong>Curriculum</strong><span>CURRICULUM.md</span></div>`;
+
+      const tasks = w.tasks || [];
+      document.getElementById("tasks-list").innerHTML = tasks.length
+        ? tasks.map((t) => {
+            const docs = (t.docs || []).map((d) => {
+              const href = resolveHref(d.url) || d.url;
+              return `<a href="${esc(href)}" target="_blank" rel="noopener" style="font-size:12px;font-weight:650;margin-right:10px">${esc(d.title || "Doc")}</a>`;
+            }).join("");
+            return `<div class="res" style="flex-direction:column;align-items:flex-start">
+              <strong>${esc(t.title)}</strong>
+              <span style="color:var(--muted);font-family:var(--font);font-size:.88rem;margin-top:4px">${esc(t.detail || "")}</span>
+              ${docs ? `<div style="margin-top:8px">${docs}</div>` : ""}
+            </div>`;
+          }).join("")
+        : `<div class="res"><strong>Open the week guide</strong><span>step-by-step tasks</span></div>`;
 
       const done = loadWeekDone(n);
       const box = document.getElementById("week-done");

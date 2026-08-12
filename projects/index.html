@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — AI Systems Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../site/assets/theme.css" />
+  <style>
+    .shell { max-width: 980px; margin: 0 auto; padding: 28px 20px 72px; }
+    header { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+    h1 { font-size: clamp(1.6rem, 3vw, 2rem); letter-spacing: -.03em; margin-top: 6px; }
+    .sub { color: var(--muted); margin-top: 6px; max-width: 50ch; }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-start; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      display: flex; flex-direction: column; gap: 10px; padding: 22px;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      box-shadow: var(--shadow); text-decoration: none; color: inherit;
+      transition: border-color .15s, transform .15s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-1px); text-decoration: none; }
+    .card .id { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--accent); }
+    .card h2 { font-size: 1.15rem; letter-spacing: -.02em; }
+    .card p { color: var(--muted); font-size: .92rem; flex: 1; }
+    .card .path { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+    .flagship { grid-column: 1 / -1; background: linear-gradient(135deg, #fff 0%, #e6f3f3 100%); }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div>
+        <div class="eyebrow">Portfolio</div>
+        <h1>Projects</h1>
+        <p class="sub">Mini-projects that feed the flagship Agentic Ops Control Plane. Open any card for a readable project brief.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-ghost" href="../">Home</a>
+        <a class="btn btn-primary" href="../tracker/">Weekly dashboard</a>
+      </div>
+    </header>
+    <div class="grid" id="grid"></div>
+  </div>
+  <script>
+    const projects = [
+      { id: "Flagship", title: "Agentic Ops Control Plane", blurb: "End-to-end hiring-manager demo: agent + Okta MCP + HITL + IaC + Cloud Run.", path: "projects/08-capstone-ops-agent/README.md", flagship: true },
+      { id: "M1", title: "Ops Agent Harness", blurb: "Tool-using helpdesk agent with runbooks and escalation guardrails.", path: "projects/01-it-helpdesk-agent/README.md" },
+      { id: "M2", title: "Okta MCP Server", blurb: "Read-only identity tools for agents via MCP.", path: "projects/02-okta-mcp-server/README.md" },
+      { id: "M5", title: "Ops Event Plane", blurb: "Unified query/tool/approve event schema and adoption views.", path: "projects/05-adoption-dashboard/README.md" },
+      { id: "M6", title: "Platform Foundation", blurb: "GCP Terraform + secrets/IAM patterns for Cloud Run agents.", path: "projects/10-platform-foundation/README.md" },
+      { id: "M8", title: "Okta Identity-as-Code", blurb: "Terraform for groups, apps, policies — access topology as code.", path: "projects/11-okta-iac/README.md" },
+      { id: "09", title: "Endpoint AI Governance", blurb: "MDM / AI tool policy and rollout checklist.", path: "projects/09-endpoint-ai-governance/README.md" },
+      { id: "06", title: "CIPHER", blurb: "Identity provisioning design — architected, not claimed shipped.", path: "projects/06-cipher/README.md" },
+      { id: "07", title: "ALIUS", blurb: "Offboarding orchestration blueprint.", path: "projects/07-alius/README.md" },
+    ];
+
+    document.getElementById("grid").innerHTML = projects.map((p) => `
+      <a class="card ${p.flagship ? "flagship" : ""}" href="../site/doc.html?path=${encodeURIComponent(p.path)}">
+        <div class="id">${p.id}</div>
+        <h2>${p.title}</h2>
+        <p>${p.blurb}</p>
+        <div class="path">${p.path}</div>
+      </a>
+    `).join("");
+  </script>
+</body>
+</html>

@@ -20,7 +20,7 @@ def build_week(week: int) -> dict:
 
     month = min((week - 1) // 4 + 1, 9)
     mp = plan["miniProject"]
-    guide = get_guide(week)
+    guide = get_guide(week, build=mp.get("build") or [], path=mp.get("path") or "")
 
     w: dict = {
         "week": week,
@@ -33,6 +33,7 @@ def build_week(week: int) -> dict:
         "objectives": guide["objectives"],
         "study": guide["study"],
         "resources": guide["resources"],
+        "tasks": guide["tasks"],
         "timeHint": guide["timeHint"],
         "capstoneWeek": week in {21, 22, 23, 24},
         "interviewPrep": week >= 29,

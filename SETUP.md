@@ -3,8 +3,8 @@
 ## For hiring managers
 
 1. Start at [README](./README.md) — shipped AppLovin work + portfolio projects table
-2. Pick any [`projects/`](./projects/) folder — each has a README (+ `ROLLOUT.md` where adoption is documented)
-3. Optional: [weekly study dashboard](./tracker/) shows how the roadmap is structured
+2. Open the [project gallery](./projects/) or any brief via the [doc viewer](./site/doc.html?path=projects/01-it-helpdesk-agent/README.md)
+3. Use the [weekly dashboard](./tracker/) for study, resources, sub-tasks, and ship checks
 
 ## For self-study
 

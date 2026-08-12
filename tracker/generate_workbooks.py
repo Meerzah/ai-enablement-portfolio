@@ -6,6 +6,7 @@ from __future__ import annotations
 import html
 import json
 from pathlib import Path
+from urllib.parse import quote
 
 from daily_plans import build_daily_plan
 
@@ -13,6 +14,7 @@ WEEKS_JSON = Path(__file__).parent / "weeks.json"
 OUT_DIR = Path(__file__).parent / "workbooks"
 PAGES_BASE = "https://meerzah.github.io/ai-systems-portfolio"
 REPO_CLONE = "https://github.com/Meerzah/ai-systems-portfolio.git"
+DOC_VIEW = f"{PAGES_BASE}/site/doc.html"
 
 STYLE = """
 :root{
@@ -118,22 +120,50 @@ a:hover{text-decoration:underline}
 .step-dots button.done{background:var(--ok)}
 .buffer{text-align:center;padding:28px 12px;color:var(--muted);font-size:14px}
 .buffer p{margin-bottom:12px}
+.task-list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.task-card{
+  border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--bg);
+}
+.task-card strong{display:block;font-size:.95rem;margin-bottom:6px}
+.task-card p{font-size:.88rem;color:var(--muted);margin:0 0 8px}
+.task-docs{display:flex;flex-wrap:wrap;gap:6px}
+.task-docs a{
+  font-size:12px;font-weight:650;padding:5px 10px;border-radius:999px;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;
+}
+.task-docs a:hover{border-color:var(--accent);color:var(--accent)}
+.detail-box{
+  padding:12px 14px;border-radius:12px;background:var(--accent-soft);border:1px solid #b9dcdc;
+  font-size:.9rem;color:#0f4f52;
+}
 """
 
 
+def normalize_repo_path(path: str) -> str:
+    p = (path or "").strip().replace("../", "").lstrip("/")
+    if p.endswith("/"):
+        return p + "README.md"
+    if not p.endswith((".md", ".html", ".json", ".yml", ".yaml")) and "/" in p:
+        return p.rstrip("/") + "/README.md"
+    return p
+
+
+def doc_href(path: str) -> str:
+    if not path:
+        return PAGES_BASE
+    if path.startswith("http://") or path.startswith("https://"):
+        return path
+    if path.endswith(".html"):
+        return f"{PAGES_BASE}/{path.lstrip('/')}"
+    return f"{DOC_VIEW}?path={quote(normalize_repo_path(path))}"
+
+
 def project_href(path: str) -> str:
-    p = path.rstrip("/")
-    if p.endswith((".md", ".html")):
-        return f"{PAGES_BASE}/{p}"
-    return f"{PAGES_BASE}/{p}/README.md"
+    return doc_href(path)
 
 
 def resource_href(url: str) -> str:
-    if url.startswith("http"):
-        return url
-    if url.startswith("../"):
-        return f"{PAGES_BASE}/{url[3:]}"
-    return f"{PAGES_BASE}/{url.lstrip('/')}"
+    return doc_href(url)
 
 
 def render(week: dict) -> str:
@@ -150,13 +180,30 @@ def render(week: dict) -> str:
     objectives = week.get("objectives") or []
     study = week.get("study") or []
     resources = week.get("resources") or []
+    tasks = week.get("tasks") or []
 
     obj_html = "".join(f"<li>{html.escape(x)}</li>" for x in objectives) or "<li>Complete build + done-when</li>"
     study_html = "".join(f"<li>{html.escape(x)}</li>" for x in study) or "<li>Read project README</li>"
     res_html = "".join(
         f'<a href="{html.escape(resource_href(r.get("url", "#")))}" target="_blank" rel="noopener">{html.escape(r.get("title", "Resource"))}</a>'
         for r in resources
-    ) or f'<a href="{PAGES_BASE}/CURRICULUM.md" target="_blank" rel="noopener">Curriculum</a>'
+    ) or f'<a href="{html.escape(doc_href("CURRICULUM.md"))}" target="_blank" rel="noopener">Curriculum</a>'
+
+    task_cards = []
+    for t in tasks:
+        docs = t.get("docs") or []
+        docs_html = "".join(
+            f'<a href="{html.escape(resource_href(d.get("url", "#")))}" target="_blank" rel="noopener">{html.escape(d.get("title", "Doc"))}</a>'
+            for d in docs
+        )
+        task_cards.append(
+            "<div class=\"task-card\">"
+            f"<strong>{html.escape(t.get('title', 'Task'))}</strong>"
+            f"<p>{html.escape(t.get('detail', ''))}</p>"
+            f"<div class=\"task-docs\">{docs_html}</div>"
+            "</div>"
+        )
+    tasks_html = "".join(task_cards) or "<p style=\"color:var(--muted);font-size:.9rem\">See build steps below.</p>"
 
     plan_json = json.dumps(
         {
@@ -165,6 +212,7 @@ def render(week: dict) -> str:
             "path": path,
             "projectHref": project_href(path),
             "days": days,
+            "tasks": tasks,
         },
         ensure_ascii=False,
     )
@@ -213,6 +261,10 @@ def render(week: dict) -> str:
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
         <div class="res-list">{res_html}</div>
+      </div>
+      <div class="cur-block" style="margin-top:16px">
+        <h3>Sub-tasks</h3>
+        <div class="task-list">{tasks_html}</div>
       </div>
     </section>
 
@@ -307,6 +359,21 @@ function kindLabel(kind) {{
   return "Wrap up";
 }}
 
+function findTask(stepText) {{
+  const tasks = PLAN.tasks || [];
+  return tasks.find(t => t.title === stepText)
+    || tasks.find(t => stepText && t.title && stepText.indexOf(t.title) === 0)
+    || tasks.find(t => stepText && t.title && t.title.indexOf(stepText.slice(0, 24)) === 0)
+    || null;
+}}
+
+function docLink(url) {{
+  if (!url) return PLAN.projectHref;
+  if (url.startsWith("http")) return url;
+  const clean = url.replace(/^(\\.\\.\\/)+/, "");
+  return "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=" + encodeURIComponent(clean);
+}}
+
 function renderFocus() {{
   const item = flat[cursor];
   const el = document.getElementById("focus");
@@ -315,7 +382,7 @@ function renderFocus() {{
     return;
   }}
   if (item.empty) {{
-    el.innerHTML = `<div class="buffer"><p>Buffer day — nothing scheduled for <strong>${{item.dayLabel}}</strong>.</p><p>Catch up on study topics above, or read the project README.</p><a class="open-link" href="${{PLAN.projectHref}}" target="_blank" rel="noopener">Open project →</a></div>`;
+    el.innerHTML = `<div class="buffer"><p>Buffer day — nothing scheduled for <strong>${{item.dayLabel}}</strong>.</p><p>Catch up on study topics or open a sub-task brief above.</p><a class="open-link" href="${{PLAN.projectHref}}" target="_blank" rel="noopener">Open project brief →</a></div>`;
     document.getElementById("nav-label").textContent = item.dayLabel + " · buffer day";
     document.getElementById("prev").disabled = cursor === 0;
     document.getElementById("next").disabled = cursor === flat.length - 1;
@@ -324,12 +391,23 @@ function renderFocus() {{
 
   const step = item.step;
   const done = isDone(step.id);
+  const task = findTask(step.text);
+  const detail = task && task.detail
+    ? `<div class="detail-box">${{task.detail}}</div>`
+    : `<p class="hint">Work in <code>${{PLAN.path}}</code> — mark complete when finished.</p>`;
+  const docs = (task && task.docs || []).map(d =>
+    `<a href="${{docLink(d.url)}}" target="_blank" rel="noopener">${{d.title || "Doc"}}</a>`
+  ).join("");
+  const docsRow = docs
+    ? `<div class="task-docs">${{docs}}<a href="${{PLAN.projectHref}}" target="_blank" rel="noopener">Project brief</a></div>`
+    : `<a class="open-link" href="${{PLAN.projectHref}}" target="_blank" rel="noopener">Open project brief →</a>`;
+
   el.innerHTML = `
     <div class="focus-meta"><span>${{item.dayLabel}}</span> · Step ${{item.stepInDay}} of ${{item.stepsInDay}}</div>
     <span class="kind ${{step.kind}}">${{kindLabel(step.kind)}}</span>
     <h2>${{step.text}}</h2>
-    <p class="hint">Work in <code>${{PLAN.path}}</code> — mark complete when finished.</p>
-    <a class="open-link" href="${{PLAN.projectHref}}" target="_blank" rel="noopener">Open project folder →</a>
+    ${{detail}}
+    ${{docsRow}}
     <label class="focus-check${{done ? " done-box" : ""}}" id="check-wrap">
       <input type="checkbox" id="step-check" ${{done ? "checked" : ""}} />
       Mark this step complete
