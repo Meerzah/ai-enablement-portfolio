@@ -172,6 +172,7 @@ def render(week: dict) -> str:
     days = week.get("days") or build_daily_plan(mp)
     title = html.escape(week.get("theme") or week["title"])
     learn = html.escape(week.get("learn") or "")
+    challenge = html.escape(week.get("challenge") or "")
     path = mp["path"]
     href = html.escape(project_href(path))
     total_steps = sum(len(d["steps"]) for d in days)
@@ -248,6 +249,7 @@ def render(week: dict) -> str:
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
       <p class="learn">{learn}</p>
+      {f'<p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>{challenge}</p>' if challenge else ""}
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>

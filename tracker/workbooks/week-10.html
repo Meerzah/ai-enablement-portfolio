@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 10 — Agent as a service</title>
+<title>Week 10 — Agent as a production-shaped API</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,13 +131,13 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 10 guide</div>
-      <h1>Agent as a service</h1>
+      <h1>Agent as a production-shaped API</h1>
       <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -148,24 +148,25 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">HTTP contracts with Pydantic; health + query API</p>
+      <p class="learn">Contracts, error budgets thinking, and response shapes for tool-using agents</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>Shape the agent HTTP API like an internal platform service, not a chatbot wrapper.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>Ship FastAPI POST /query + health</li><li>Document curl examples</li></ul>
+          <ul><li>Typed response with tools_used, escalated, rule_ids, latency_ms</li><li>Error taxonomy that ops can page on</li><li>OpenAPI + curls for escalate path</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>Pydantic v2 request/response models</li><li>Agent-as-a-service API design</li><li>escalated / tools_used response fields</li></ol>
+          <ol><li>SLI candidates for agent APIs (latency vs correctness)</li><li>Idempotent clients calling non-deterministic models</li><li>Why health must not invoke the model</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI docs</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Helpdesk agent</a></div>
+        <div class="res-list"><a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI docs</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">M1 agent</a></div>
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>FastAPI POST /query with Pydantic models</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Return answer + tools_used + escalated flag</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>curl example in README</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>FastAPI /query with typed models: answer, tools_used, escalated, rule_ids, latency_ms</strong><p>Shape the agent HTTP API like an internal platform service, not a chatbot wrapper. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Error taxonomy: 4xx client/policy vs 5xx model/tool failures</strong><p>Shape the agent HTTP API like an internal platform service, not a chatbot wrapper. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>OpenAPI snippet + curl examples for happy path and forced escalation</strong><p>Shape the agent HTTP API like an internal platform service, not a chatbot wrapper. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 10, "title": "Agent as a service", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "FastAPI POST /query with Pydantic models", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Return answer + tools_used + escalated flag", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "curl example in README", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "/query works locally", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Health check endpoint", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "FastAPI POST /query with Pydantic models", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Return answer + tools_used + escalated flag", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "curl example in README", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}]};
+const PLAN = {"week": 10, "title": "Agent as a production-shaped API", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "FastAPI /query with typed models: answer, tools_used, escalated, rule_ids, latency_ms", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Error taxonomy: 4xx client/policy vs 5xx model/tool failures", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "OpenAPI snippet + curl examples for happy path and forced escalation", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Response always includes escalated + tools_used", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Error taxonomy documented", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Health endpoint separate from query path", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "FastAPI /query with typed models: answer, tools_used, escalated, rule_ids, latency_ms", "detail": "Shape the agent HTTP API like an internal platform service, not a chatbot wrapper. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Error taxonomy: 4xx client/policy vs 5xx model/tool failures", "detail": "Shape the agent HTTP API like an internal platform service, not a chatbot wrapper. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "OpenAPI snippet + curl examples for happy path and forced escalation", "detail": "Shape the agent HTTP API like an internal platform service, not a chatbot wrapper. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

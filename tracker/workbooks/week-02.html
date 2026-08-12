@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 2 — Identity tools for agents</title>
+<title>Week 2 — Identity tool surface for LLMs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,13 +131,13 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 2 guide</div>
-      <h1>Identity tools for agents</h1>
-      <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs</p>
+      <h1>Identity tool surface for LLMs</h1>
+      <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs · security design week</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -148,24 +148,25 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">MCP tool design; read-only Okta scopes; least-privilege tokens</p>
+      <p class="learn">Design Okta read tools that are safe under LLM misuse — not &#x27;how to make a token&#x27;</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>Specify an Okta read tool surface that remains safe when the LLM is manipulated.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>Run Okta MCP with a read-only sandbox token</li><li>Verify list_users + get_group_members</li><li>Log 3 redacted sample queries</li></ul>
+          <ul><li>Define allowed/denied Okta fields and redaction rules for tool output</li><li>Document confused-deputy + exfil paths via tool responses</li><li>Harden MCP responses in sandbox to match the spec</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>MCP servers vs direct API wrappers</li><li>Okta API tokens: least privilege, read-only scopes</li><li>Never commit tokens; sandbox/preview org only</li><li>How agents consume tools (schemas, errors)</li></ol>
+          <ol><li>Least privilege for machine callers vs human admins (scopes as product decisions)</li><li>PII minimization in tool payloads — what an agent never needs</li><li>Rate limits / pagination abuse as availability attacks</li><li>MCP tool schema design: strict inputs, explicit errors</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/02-okta-mcp-server/README.md" target="_blank" rel="noopener">Okta MCP project README</a><a href="https://developer.okta.com/docs/reference/" target="_blank" rel="noopener">Okta API docs</a><a href="https://modelcontextprotocol.io/specification" target="_blank" rel="noopener">MCP specification</a></div>
+        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/02-okta-mcp-server/README.md" target="_blank" rel="noopener">M2 Okta MCP</a><a href="https://modelcontextprotocol.io/specification" target="_blank" rel="noopener">MCP specification</a><a href="https://docs.cloud.google.com/iam/docs/agent-identity-overview" target="_blank" rel="noopener">GCP Agent Identity overview</a></div>
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>Configure read-only Okta API token (preview/sandbox org)</strong><p>Use an Okta preview/developer org only. Create a least-privilege read token. Store it in env — never commit.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/02-okta-mcp-server/README.md" target="_blank" rel="noopener">Okta MCP README</a></div></div><div class="task-card"><strong>Verify list_users + get_group_members tools</strong><p>Run the MCP server and exercise both tools. Note required scopes and failure modes.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/02-okta-mcp-server/README.md" target="_blank" rel="noopener">Okta MCP README</a></div></div><div class="task-card"><strong>Document 3 sample queries (redact PII)</strong><p>Capture three natural-language → tool call examples with redacted output for the portfolio README or notes.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/02-okta-mcp-server/README.md" target="_blank" rel="noopener">Okta MCP README</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>Ship docs/tool-surface.md: allowed Okta reads, forbidden fields, PII redaction rules, rate/abuse limits</strong><p>Specify an Okta read tool surface that remains safe when the LLM is manipulated. Execute this artifact in `projects/02-okta-mcp-server/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/02-okta-mcp-server/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Implement or harden MCP tools so responses strip high-risk attributes (e.g. factors, recovery, admin flags)</strong><p>Specify an Okta read tool surface that remains safe when the LLM is manipulated. Execute this artifact in `projects/02-okta-mcp-server/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/02-okta-mcp-server/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Threat note: confused deputy + prompt-injection → data exfil via tool output</strong><p>Specify an Okta read tool surface that remains safe when the LLM is manipulated. Execute this artifact in `projects/02-okta-mcp-server/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/02-okta-mcp-server/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 2, "title": "Identity tools for agents", "path": "projects/02-okta-mcp-server/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/02-okta-mcp-server/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Configure read-only Okta API token (preview/sandbox org)", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Verify list_users + get_group_members tools", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Document 3 sample queries (redact PII)", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "MCP server runs", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "3 queries logged in project README or notes", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Configure read-only Okta API token (preview/sandbox org)", "detail": "Use an Okta preview/developer org only. Create a least-privilege read token. Store it in env — never commit.", "docs": [{"title": "Okta MCP README", "url": "projects/02-okta-mcp-server/README.md"}]}, {"title": "Verify list_users + get_group_members tools", "detail": "Run the MCP server and exercise both tools. Note required scopes and failure modes.", "docs": [{"title": "Okta MCP README", "url": "projects/02-okta-mcp-server/README.md"}]}, {"title": "Document 3 sample queries (redact PII)", "detail": "Capture three natural-language → tool call examples with redacted output for the portfolio README or notes.", "docs": [{"title": "Okta MCP README", "url": "projects/02-okta-mcp-server/README.md"}]}]};
+const PLAN = {"week": 2, "title": "Identity tool surface for LLMs", "path": "projects/02-okta-mcp-server/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/02-okta-mcp-server/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Ship docs/tool-surface.md: allowed Okta reads, forbidden fields, PII redaction rules, rate/abuse limits", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Implement or harden MCP tools so responses strip high-risk attributes (e.g. factors, recovery, admin flags)", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Threat note: confused deputy + prompt-injection → data exfil via tool output", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "tool-surface.md is reviewable by a security engineer", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Demo query shows redacted vs raw (sandbox)", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Threat note lists 3 concrete mitigations", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Ship docs/tool-surface.md: allowed Okta reads, forbidden fields, PII redaction rules, rate/abuse limits", "detail": "Specify an Okta read tool surface that remains safe when the LLM is manipulated. Execute this artifact in `projects/02-okta-mcp-server/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/02-okta-mcp-server/README.md"}]}, {"title": "Implement or harden MCP tools so responses strip high-risk attributes (e.g. factors, recovery, admin flags)", "detail": "Specify an Okta read tool surface that remains safe when the LLM is manipulated. Execute this artifact in `projects/02-okta-mcp-server/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/02-okta-mcp-server/README.md"}]}, {"title": "Threat note: confused deputy + prompt-injection → data exfil via tool output", "detail": "Specify an Okta read tool surface that remains safe when the LLM is manipulated. Execute this artifact in `projects/02-okta-mcp-server/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/02-okta-mcp-server/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

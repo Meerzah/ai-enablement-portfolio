@@ -321,6 +321,7 @@
       const workbookHref = w.workbook || null;
       const feeds = (w.feeds || mp.feeds || []).map((f) => `<span class="feed">${esc(f)}</span>`).join("");
 
+      const challenge = w.challenge || "";
       document.getElementById("hero").innerHTML = `
         <div class="meta">
           <span class="pill muted">Week ${n}</span>
@@ -328,6 +329,7 @@
         </div>
         <h2>${esc(w.theme || w.title)}</h2>
         <p class="learn">${esc(w.learn || "")}</p>
+        ${challenge ? `<p class="learn" style="margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>${esc(challenge)}</p>` : ""}
         <div class="feeds">${feeds}</div>
         <p class="time">${esc(w.timeHint || progress.hoursPerWeek || "12–15 hrs")}</p>
         <div class="hero-actions">

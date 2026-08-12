@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 11 — Webhook reliability</title>
+<title>Week 11 — Idempotent intake under retries</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,13 +131,13 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 11 guide</div>
-      <h1>Webhook reliability</h1>
-      <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs</p>
+      <h1>Idempotent intake under retries</h1>
+      <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs · reliability</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 5 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -148,24 +148,25 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">Idempotency-Key, retries, duplicate handling for intake</p>
+      <p class="learn">At-least-once webhooks without double-executing side effects</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>Survive retry storms after approval without double-executing identity changes.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>Idempotent /hooks/ticket</li><li>reliability.md with retry/duplicate rules</li></ul>
+          <ul><li>Idempotency-Key behavior with tests</li><li>reliability.md covering approve-then-crash</li><li>TTL policy for idempotency keys</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>Idempotency-Key header patterns</li><li>Webhook retries and at-least-once delivery</li><li>Idempotent stores (memory → later Firestore)</li></ol>
+          <ol><li>At-least-once delivery realities</li><li>Exactly-once illusions in distributed systems</li><li>Poison message handling for ticket webhooks</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://stripe.com/docs/api/idempotent_requests" target="_blank" rel="noopener">Stripe idempotency guide (pattern)</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Helpdesk agent</a></div>
+        <div class="res-list"><a href="https://stripe.com/docs/api/idempotent_requests" target="_blank" rel="noopener">Idempotent request patterns</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">M1 agent</a></div>
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>POST /hooks/ticket with Idempotency-Key header</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>docs/reliability.md: retry + duplicate handling</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Test duplicate POST returns same response</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>Idempotency-Key store for /hooks/ticket; duplicate returns same body</strong><p>Survive retry storms after approval without double-executing identity changes. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>reliability.md: retry storms, poison messages, partial failure after approval</strong><p>Survive retry storms after approval without double-executing identity changes. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Chaos note: what happens if executor succeeds but ack is lost</strong><p>Survive retry storms after approval without double-executing identity changes. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 11, "title": "Webhook reliability", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "POST /hooks/ticket with Idempotency-Key header", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "docs/reliability.md: retry + duplicate handling", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Test duplicate POST returns same response", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Reliability doc + test log", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": []}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "POST /hooks/ticket with Idempotency-Key header", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "docs/reliability.md: retry + duplicate handling", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Test duplicate POST returns same response", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}]};
+const PLAN = {"week": 11, "title": "Idempotent intake under retries", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Idempotency-Key store for /hooks/ticket; duplicate returns same body", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "reliability.md: retry storms, poison messages, partial failure after approval", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Chaos note: what happens if executor succeeds but ack is lost", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Duplicate POST test logged", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "reliability.md covers approve-then-crash", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Idempotency key TTL policy stated", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Idempotency-Key store for /hooks/ticket; duplicate returns same body", "detail": "Survive retry storms after approval without double-executing identity changes. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "reliability.md: retry storms, poison messages, partial failure after approval", "detail": "Survive retry storms after approval without double-executing identity changes. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Chaos note: what happens if executor succeeds but ack is lost", "detail": "Survive retry storms after approval without double-executing identity changes. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 9 — HITL before side effects</title>
+<title>Week 9 — HITL as a hard gate, not a UX nicety</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,13 +131,13 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 9 guide</div>
-      <h1>HITL before side effects</h1>
+      <h1>HITL as a hard gate, not a UX nicety</h1>
       <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -148,24 +148,25 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">Approval gate patterns; propose add-to-group against IaC-known groups</p>
+      <p class="learn">Side effects are blocked in code until approval; proposals only against IaC-known groups</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>Implement HITL so side effects are impossible without an approval token — including unknown groups.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>HITL flow diagram + mock approval</li><li>Demo: group-add blocked without approval</li></ul>
+          <ul><li>Sequence with timeout/deny/failure paths</li><li>Code-level block without approval</li><li>Negative tests for missing/expired/unknown group</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>Human-in-the-loop patterns for agents</li><li>Propose vs execute separation</li><li>Slack Block Kit / CLI approval UX</li></ol>
+          <ol><li>Two-person control patterns for identity changes</li><li>Approval TTL and replay attacks</li><li>Propose/execute separation in agent platforms</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Helpdesk agent</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/11-okta-iac/docs/AGENT-CONTRACT.md" target="_blank" rel="noopener">AGENT-CONTRACT</a></div>
+        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/11-okta-iac/docs/AGENT-CONTRACT.md" target="_blank" rel="noopener">AGENT-CONTRACT</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">M1 agent</a></div>
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>docs/hitl-flow.md with sequence diagram</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Mock approval: CLI y/n or Slack Block Kit draft</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Block side-effect (e.g. group add) without approval</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>Sequence diagram: propose → approve → execute with failure/timeout paths</strong><p>Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Implement mock HITL that structurally blocks group-add without approval token</strong><p>Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Negative tests: missing approval, expired approval, unknown group name</strong><p>Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 9, "title": "HITL before side effects", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "docs/hitl-flow.md with sequence diagram", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Mock approval: CLI y/n or Slack Block Kit draft", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Block side-effect (e.g. group add) without approval", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Demo: action blocked without approval", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Diagram committed", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "docs/hitl-flow.md with sequence diagram", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Mock approval: CLI y/n or Slack Block Kit draft", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Block side-effect (e.g. group add) without approval", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}]};
+const PLAN = {"week": 9, "title": "HITL as a hard gate, not a UX nicety", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Sequence diagram: propose → approve → execute with failure/timeout paths", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Implement mock HITL that structurally blocks group-add without approval token", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Negative tests: missing approval, expired approval, unknown group name", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Demo proves block without approval", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Unknown group rejected before any Okta call", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Timeout/deny path documented", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Sequence diagram: propose → approve → execute with failure/timeout paths", "detail": "Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Implement mock HITL that structurally blocks group-add without approval token", "detail": "Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Negative tests: missing approval, expired approval, unknown group name", "detail": "Implement HITL so side effects are impossible without an approval token — including unknown groups. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

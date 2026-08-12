@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 22 — Enforce identity + HITL</title>
+<title>Week 22 — Enforce trust boundaries</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,13 +131,13 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 22 guide</div>
-      <h1>Enforce identity + HITL</h1>
+      <h1>Enforce trust boundaries</h1>
       <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs · capstone</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -148,15 +148,16 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">Unapproved writes blocked; propose changes only against IaC-known groups</p>
+      <p class="learn">HITL + audit are non-optional control points</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>Make trust boundaries non-optional in the running system.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>HITL + audit enforced; IaC-known groups only</li></ul>
+          <ul><li>HITL hard gate</li><li>Audit on refusals too</li><li>Escalation evals still hold</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>Audit fields: actor, action, resource, approved_by</li><li>Reject privilege-escalation eval cases</li></ol>
+          <ol><li>Audit completeness</li><li>Unknown-group rejection paths</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
@@ -165,7 +166,7 @@ a:hover{text-decoration:underline}
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>HITL gate before side effects</strong><p>Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Audit log on every query</strong><p>Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Reject privilege escalation; only IaC-known groups in write proposals</strong><p>Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>HITL gate before any side effect</strong><p>Make trust boundaries non-optional in the running system. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Audit event on every query (incl. refusals)</strong><p>Make trust boundaries non-optional in the running system. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Reject privilege-escalation + unknown-group proposals</strong><p>Make trust boundaries non-optional in the running system. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 22, "title": "Enforce identity + HITL", "path": "projects/08-capstone-ops-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "HITL gate before side effects", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Audit log on every query", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Reject privilege escalation; only IaC-known groups in write proposals", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Unapproved writes blocked", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Audit samples logged", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "HITL gate before side effects", "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}, {"title": "Audit log on every query", "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}, {"title": "Reject privilege escalation; only IaC-known groups in write proposals", "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}]};
+const PLAN = {"week": 22, "title": "Enforce trust boundaries", "path": "projects/08-capstone-ops-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "HITL gate before any side effect", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Audit event on every query (incl. refusals)", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Reject privilege-escalation + unknown-group proposals", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Unapproved writes impossible in demo", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Audit samples committed", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Escalation evals still hold", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "HITL gate before any side effect", "detail": "Make trust boundaries non-optional in the running system. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}, {"title": "Audit event on every query (incl. refusals)", "detail": "Make trust boundaries non-optional in the running system. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}, {"title": "Reject privilege-escalation + unknown-group proposals", "detail": "Make trust boundaries non-optional in the running system. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

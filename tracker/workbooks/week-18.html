@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 18 — Offboarding orchestration</title>
+<title>Week 18 — Offboarding as distributed systems</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,13 +131,13 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 18 guide</div>
-      <h1>Offboarding orchestration</h1>
+      <h1>Offboarding as distributed systems</h1>
       <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -148,15 +148,16 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">Deterministic vs agent-assisted steps; revoke TF-managed app groups</p>
+      <p class="learn">Ordering, retries, and agent assist vs deterministic revoke of TF-managed access</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>Design offboarding as a distributed revoke graph with compensations.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>ALIUS architecture update with revoke order + agent vs deterministic</li></ul>
+          <ul><li>Ordered revoke + compensation diagram</li><li>Failure modes when Okta/MDM/SaaS disagree</li><li>Hard line: agent triage vs never auto-revoke</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>Offboarding orchestration sequencing</li><li>Idempotent revoke of TF-managed app groups</li><li>Where agents assist vs deterministic pipelines</li></ol>
+          <ol><li>Saga/compensation thinking for identity</li><li>Partial offboarding as a security incident</li><li>Where TF-managed app groups fit in revoke order</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
@@ -165,7 +166,7 @@ a:hover{text-decoration:underline}
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>Review ARCHITECTURE.md</strong><p>Complete this step in `projects/07-alius/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/07-alius/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Diagram: device wipe + Okta deactivate + SaaS revoke order</strong><p>Complete this step in `projects/07-alius/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/07-alius/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Note where agent assists vs deterministic; reference M8 groups</strong><p>Complete this step in `projects/07-alius/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/07-alius/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>Architecture: ordered revoke graph with compensations</strong><p>Design offboarding as a distributed revoke graph with compensations. Execute this artifact in `projects/07-alius/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/07-alius/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Failure modes: Okta down, MDM wipe delayed, SaaS without SCIM</strong><p>Design offboarding as a distributed revoke graph with compensations. Execute this artifact in `projects/07-alius/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/07-alius/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Where an agent may triage vs must never auto-revoke</strong><p>Design offboarding as a distributed revoke graph with compensations. Execute this artifact in `projects/07-alius/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/07-alius/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 18, "title": "Offboarding orchestration", "path": "projects/07-alius/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/07-alius/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Review ARCHITECTURE.md", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Diagram: device wipe + Okta deactivate + SaaS revoke order", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Note where agent assists vs deterministic; reference M8 groups", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Updated architecture section", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Honest planning status", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Review ARCHITECTURE.md", "detail": "Complete this step in `projects/07-alius/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/07-alius/README.md"}]}, {"title": "Diagram: device wipe + Okta deactivate + SaaS revoke order", "detail": "Complete this step in `projects/07-alius/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/07-alius/README.md"}]}, {"title": "Note where agent assists vs deterministic; reference M8 groups", "detail": "Complete this step in `projects/07-alius/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/07-alius/README.md"}]}]};
+const PLAN = {"week": 18, "title": "Offboarding as distributed systems", "path": "projects/07-alius/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/07-alius/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Architecture: ordered revoke graph with compensations", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Failure modes: Okta down, MDM wipe delayed, SaaS without SCIM", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Where an agent may triage vs must never auto-revoke", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Diagram includes compensations", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Agent boundary is explicit", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Honest planning status retained", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Architecture: ordered revoke graph with compensations", "detail": "Design offboarding as a distributed revoke graph with compensations. Execute this artifact in `projects/07-alius/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/07-alius/README.md"}]}, {"title": "Failure modes: Okta down, MDM wipe delayed, SaaS without SCIM", "detail": "Design offboarding as a distributed revoke graph with compensations. Execute this artifact in `projects/07-alius/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/07-alius/README.md"}]}, {"title": "Where an agent may triage vs must never auto-revoke", "detail": "Design offboarding as a distributed revoke graph with compensations. Execute this artifact in `projects/07-alius/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/07-alius/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

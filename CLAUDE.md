@@ -54,7 +54,7 @@ identity-backed automation daily.
 
 ## This Workspace: What It's For
 
-**Primary path:** AI Systems / Agentic Ops — 36-week roadmap. Weekly **theme → mini-project → flagship capstone**. Cloud engineering (Docker, Terraform GCP + Okta, CI/CD, observability, K8s literacy) supports the spine — it does not replace it.
+**Primary path:** AI Systems / Agentic Ops — 36-week roadmap. Weekly **challenge → hard mini-build → flagship capstone**. Assume Okta/GCP/Python competence — no token/venv tutorials. Optimize for decision boundaries, failure modes, and enforceable controls. Cloud engineering supports the spine — it does not replace it.
 
 **Weekly spine (use this by default):**
 

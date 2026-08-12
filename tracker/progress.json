@@ -1,6 +1,6 @@
 {
   "title": "AI Systems Engineering Roadmap",
-  "subtitle": "Theme → mini-project → flagship control plane · identity-as-code · cloud delivery",
+  "subtitle": "Hard weekly builds → flagship control plane · fail-closed agents · Okta/GCP as code",
   "careerFocus": "Move 1 — AI Systems / Agentic Ops",
   "repoName": "ai-systems-portfolio",
   "pagesBase": "https://meerzah.github.io/ai-systems-portfolio",
@@ -8,7 +8,7 @@
   "currentWeek": 1,
   "currentPhase": 1,
   "currentUnit": 1,
-  "currentUnitLabel": "Week 1: ops friction → agent scope",
+  "currentUnitLabel": "Week 1: decision boundary for agentic IT ops",
   "weeksTotal": 36,
   "hoursPerWeek": "12–15",
   "competencies": [

@@ -1,548 +1,534 @@
-"""Per-week curriculum: objectives, study/prep, resources. Merged into weeks.json."""
+"""Per-week curriculum: design challenges, hard study, task cards.
+
+Audience: experienced Okta/GCP/systems engineer leveling into AI Systems.
+Ban: token tutorials, venv walkthroughs, 'what is an API' content.
+"""
 
 from __future__ import annotations
 
-# Each guide: objectives[], study[], resources[{title, url}], timeHint (optional)
-
 GUIDES: dict[int, dict] = {
     1: {
+        "challenge": "Design a fail-closed decision boundary for an IT ops agent that can see identity data — under social-engineering pressure.",
         "objectives": [
-            "Define which IT questions an agent should answer vs escalate",
-            "Run the helpdesk agent locally (or document the blocker)",
-            "Ship 2 runbooks and a prove log with 5 test queries",
+            "Produce a blast-radius matrix for 8 real IT frictions (agent / deterministic / human)",
+            "Encode escalation contracts inside runbooks, not only in prose",
+            "Prove the agent refuses adversarial asks (not just answers happy paths)",
         ],
         "study": [
-            "Read project README end-to-end — problem, architecture, setup",
-            "Agent vs chatbot: tools + grounding vs free-form chat",
-            "When RAG helps (stable runbooks) vs when it fails (policy changes)",
-            "Friction inventory: list 5 high-volume IT questions from your world",
-            "Skim Google ADK / agent tool-calling concepts (high level)",
+            "When tool-using agents increase blast radius vs reduce toil (write your own criteria)",
+            "RAG failure modes: stale policy, conflicting runbooks, confident wrong answers",
+            "Structural controls vs prompt hopes — what belongs in code",
+            "Map 3 AppLovin-style frictions (sanitized) into the matrix without leaking internals",
         ],
         "resources": [
-            {"title": "Project README — IT Helpdesk Agent", "url": "../projects/01-it-helpdesk-agent/README.md"},
-            {"title": "Week 1 friction inventory template", "url": "../study-notes/weeks/week-01-friction-inventory.md"},
-            {"title": "Week 1 prove log", "url": "../study-notes/weeks/week-01-prove-log.md"},
-            {"title": "Curriculum overview", "url": "../CURRICULUM.md"},
-            {"title": "Google ADK docs", "url": "https://google.github.io/adk-docs/"},
-            {"title": "MCP intro", "url": "https://modelcontextprotocol.io"},
+            {"title": "Flagship target architecture", "url": "projects/08-capstone-ops-agent/README.md"},
+            {"title": "M1 agent project", "url": "projects/01-it-helpdesk-agent/README.md"},
+            {"title": "Curriculum bar", "url": "CURRICULUM.md"},
+            {"title": "OWASP LLM Top 10 (threat framing)", "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/"},
         ],
-        "timeHint": "12–15 hrs · Mon study · Tue–Thu build · Fri–Sun prove",
+        "timeHint": "12–15 hrs · design-heavy week",
     },
     2: {
+        "challenge": "Specify an Okta read tool surface that remains safe when the LLM is manipulated.",
         "objectives": [
-            "Run Okta MCP with a read-only sandbox token",
-            "Verify list_users + get_group_members",
-            "Log 3 redacted sample queries",
+            "Define allowed/denied Okta fields and redaction rules for tool output",
+            "Document confused-deputy + exfil paths via tool responses",
+            "Harden MCP responses in sandbox to match the spec",
         ],
         "study": [
-            "MCP servers vs direct API wrappers",
-            "Okta API tokens: least privilege, read-only scopes",
-            "Never commit tokens; sandbox/preview org only",
-            "How agents consume tools (schemas, errors)",
+            "Least privilege for machine callers vs human admins (scopes as product decisions)",
+            "PII minimization in tool payloads — what an agent never needs",
+            "Rate limits / pagination abuse as availability attacks",
+            "MCP tool schema design: strict inputs, explicit errors",
         ],
         "resources": [
-            {"title": "Okta MCP project README", "url": "../projects/02-okta-mcp-server/README.md"},
-            {"title": "Okta API docs", "url": "https://developer.okta.com/docs/reference/"},
+            {"title": "M2 Okta MCP", "url": "projects/02-okta-mcp-server/README.md"},
             {"title": "MCP specification", "url": "https://modelcontextprotocol.io/specification"},
+            {"title": "GCP Agent Identity overview", "url": "https://docs.cloud.google.com/iam/docs/agent-identity-overview"},
         ],
-        "timeHint": "12–15 hrs",
+        "timeHint": "12–15 hrs · security design week",
     },
     3: {
+        "challenge": "Make identity writes structurally impossible for the agent — then try to break your own design.",
         "objectives": [
-            "Wire agent to Okta MCP for identity lookups",
-            "Prove write attempts escalate (no direct Okta writes)",
+            "Prove write tools are absent from the registry (code review artifact)",
+            "Ship an adversarial pack with expected fail-closed outcomes",
+            "Separate prompt instructions from enforceable controls in an architecture note",
         ],
         "study": [
-            "Read vs write tool boundaries for agents",
-            "System prompt patterns for escalation",
-            "Failure modes: malformed tool args, API errors",
+            "Prompt injection → tool invocation chains",
+            "Allow-list vs deny-list for tool registration",
+            "Audit fields you wish you had when something goes wrong",
         ],
         "resources": [
-            {"title": "Helpdesk agent tools", "url": "../projects/01-it-helpdesk-agent/"},
-            {"title": "Okta MCP server", "url": "../projects/02-okta-mcp-server/README.md"},
+            {"title": "M1 agent", "url": "projects/01-it-helpdesk-agent/README.md"},
+            {"title": "M2 MCP", "url": "projects/02-okta-mcp-server/README.md"},
+            {"title": "OWASP LLM Top 10", "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/"},
         ],
-        "timeHint": "12–15 hrs",
+        "timeHint": "12–15 hrs · red-team yourself",
     },
     4: {
+        "challenge": "Turn escalation into a testable product with rule IDs — not 'be careful' text.",
         "objectives": [
-            "Ship escalation-policy.md as a product artifact",
-            "Test 3 must-escalate + 3 safe-to-answer cases",
+            "Severity matrix with rule IDs an eval can assert",
+            "Agent must cite rule IDs on refuse/escalate",
+            "Mini-eval with honest failures documented",
         ],
         "study": [
-            "Guardrails as policy docs agents must cite",
-            "Privilege escalation / social engineering via tickets",
-            "Human-in-the-loop triggers",
+            "Policy-as-code mental models applied to LLM guardrails",
+            "Social engineering via helpdesk channels",
+            "What 'eval-driven development' means for agents",
         ],
         "resources": [
-            {"title": "Helpdesk agent project", "url": "../projects/01-it-helpdesk-agent/"},
-            {"title": "Curriculum — harness competency", "url": "../CURRICULUM.md"},
+            {"title": "M1 agent", "url": "projects/01-it-helpdesk-agent/README.md"},
+            {"title": "Capstone definition", "url": "projects/08-capstone-ops-agent/README.md"},
         ],
         "timeHint": "12–15 hrs",
     },
     5: {
+        "challenge": "Design Okta group topology as the control plane agents and automation must not violate.",
         "objectives": [
-            "Apply (or plan) Okta groups module in sandbox",
-            "Document ACCESS-TOPOLOGY.md",
+            "Taxonomy with blast-radius rationale per group",
+            "Terraform groups(+rules) with a clean plan",
+            "Diagram: TF topology vs SCIM lifecycle ownership",
         ],
         "study": [
-            "Okta Terraform provider basics",
-            "Groups + group rules as access topology",
-            "TF state, plan, apply workflow for IdP",
+            "IdP as infrastructure — drift, review, promotion across envs",
+            "Group explosion failure mode and how taxonomy prevents it",
+            "How agents invent group names if allow-lists are missing",
         ],
         "resources": [
-            {"title": "Okta Identity-as-Code (M8)", "url": "../projects/11-okta-iac/README.md"},
-            {"title": "ACCESS-TOPOLOGY", "url": "../projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"},
+            {"title": "M8 Okta IaC", "url": "projects/11-okta-iac/README.md"},
+            {"title": "ACCESS-TOPOLOGY", "url": "projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"},
             {"title": "Okta Terraform provider", "url": "https://registry.terraform.io/providers/okta/okta/latest/docs"},
         ],
-        "timeHint": "12–15 hrs",
+        "timeHint": "12–15 hrs · identity architecture",
     },
     6: {
+        "challenge": "Eliminate click-ops as the source of truth for app assignments and auth policies.",
         "objectives": [
-            "Scaffold apps + policies modules",
-            "Document API-manageable vs console-only gaps",
+            "App + assignment in TF from your taxonomy",
+            "Honest API-gap inventory for policies",
+            "One-page drift detection playbook for sandbox",
         ],
         "study": [
-            "OIDC/SAML app resources in Terraform",
-            "Group assignments to apps",
-            "Sign-on / MFA policy resources",
+            "OIDC/SAML assignment models worth encoding",
+            "Which MFA/sign-on knobs are actually API-manageable",
+            "PR review standards for identity changes",
         ],
         "resources": [
-            {"title": "M8 Okta IaC", "url": "../projects/11-okta-iac/README.md"},
-            {"title": "Okta apps (TF docs)", "url": "https://registry.terraform.io/providers/okta/okta/latest/docs"},
+            {"title": "M8 Okta IaC", "url": "projects/11-okta-iac/README.md"},
+            {"title": "Okta provider docs", "url": "https://registry.terraform.io/providers/okta/okta/latest/docs"},
         ],
         "timeHint": "12–15 hrs",
     },
     7: {
+        "challenge": "Write the contract that keeps TF, SCIM, and agents from stepping on each other.",
         "objectives": [
-            "Sandbox tf-demo users module",
-            "AGENT-CONTRACT.md + CIPHER boundary note",
+            "AGENT-CONTRACT allow-list for reads/proposals",
+            "Explicit anti-pattern: prod users as primary TF resources",
+            "CIPHER design delta with honest status",
         ],
         "study": [
-            "Why TF should not own production user lifecycle",
-            "SCIM / HRIS vs Terraform topology",
-            "Agent contract: read vs HITL write",
+            "Joiner/mover/leaver ownership boundaries",
+            "Break-glass vs steady-state automation",
+            "How HITL proposals reference IaC-known groups only",
         ],
         "resources": [
-            {"title": "AGENT-CONTRACT", "url": "../projects/11-okta-iac/docs/AGENT-CONTRACT.md"},
-            {"title": "CIPHER ship plan", "url": "../projects/06-cipher/SHIP-PLAN.md"},
+            {"title": "AGENT-CONTRACT", "url": "projects/11-okta-iac/docs/AGENT-CONTRACT.md"},
+            {"title": "CIPHER ship plan", "url": "projects/06-cipher/SHIP-PLAN.md"},
         ],
         "timeHint": "12–15 hrs",
     },
     8: {
+        "challenge": "Design credential flow for agents as if a token leak is inevitable.",
         "objectives": [
-            "GCP Terraform stub: SA + Secret Manager pattern",
-            "Document WIF / no SA keys",
+            "Least-privilege IAM table for runtime SA + secrets",
+            "WIF path for CI (or concrete backlog)",
+            "Threat model for Okta token leakage from agent logs",
         ],
         "study": [
-            "GCP Secret Manager for Okta tokens",
-            "Workload Identity Federation overview",
-            "Least-privilege runtime SA for Cloud Run",
+            "WIF vs SA keys — interview-grade tradeoffs",
+            "Secret Manager access patterns for Cloud Run",
+            "Log redaction for tool arguments/results",
         ],
         "resources": [
-            {"title": "Platform foundation (M6)", "url": "../projects/10-platform-foundation/README.md"},
-            {"title": "WIF notes", "url": "../projects/10-platform-foundation/docs/WIF.md"},
+            {"title": "M6 platform foundation", "url": "projects/10-platform-foundation/README.md"},
+            {"title": "WIF notes", "url": "projects/10-platform-foundation/docs/WIF.md"},
             {"title": "GCP WIF docs", "url": "https://cloud.google.com/iam/docs/workload-identity-federation"},
         ],
-        "timeHint": "12–15 hrs",
+        "timeHint": "12–15 hrs · platform security",
     },
     9: {
+        "challenge": "Implement HITL so side effects are impossible without an approval token — including unknown groups.",
         "objectives": [
-            "HITL flow diagram + mock approval",
-            "Demo: group-add blocked without approval",
+            "Sequence with timeout/deny/failure paths",
+            "Code-level block without approval",
+            "Negative tests for missing/expired/unknown group",
         ],
         "study": [
-            "Human-in-the-loop patterns for agents",
-            "Propose vs execute separation",
-            "Slack Block Kit / CLI approval UX",
+            "Two-person control patterns for identity changes",
+            "Approval TTL and replay attacks",
+            "Propose/execute separation in agent platforms",
         ],
         "resources": [
-            {"title": "Helpdesk agent", "url": "../projects/01-it-helpdesk-agent/"},
-            {"title": "AGENT-CONTRACT", "url": "../projects/11-okta-iac/docs/AGENT-CONTRACT.md"},
+            {"title": "AGENT-CONTRACT", "url": "projects/11-okta-iac/docs/AGENT-CONTRACT.md"},
+            {"title": "M1 agent", "url": "projects/01-it-helpdesk-agent/README.md"},
         ],
         "timeHint": "12–15 hrs",
     },
     10: {
+        "challenge": "Shape the agent HTTP API like an internal platform service, not a chatbot wrapper.",
         "objectives": [
-            "Ship FastAPI POST /query + health",
-            "Document curl examples",
+            "Typed response with tools_used, escalated, rule_ids, latency_ms",
+            "Error taxonomy that ops can page on",
+            "OpenAPI + curls for escalate path",
         ],
         "study": [
-            "Pydantic v2 request/response models",
-            "Agent-as-a-service API design",
-            "escalated / tools_used response fields",
+            "SLI candidates for agent APIs (latency vs correctness)",
+            "Idempotent clients calling non-deterministic models",
+            "Why health must not invoke the model",
         ],
         "resources": [
             {"title": "FastAPI docs", "url": "https://fastapi.tiangolo.com/"},
-            {"title": "Helpdesk agent", "url": "../projects/01-it-helpdesk-agent/"},
+            {"title": "M1 agent", "url": "projects/01-it-helpdesk-agent/README.md"},
         ],
         "timeHint": "12–15 hrs",
     },
     11: {
+        "challenge": "Survive retry storms after approval without double-executing identity changes.",
         "objectives": [
-            "Idempotent /hooks/ticket",
-            "reliability.md with retry/duplicate rules",
+            "Idempotency-Key behavior with tests",
+            "reliability.md covering approve-then-crash",
+            "TTL policy for idempotency keys",
         ],
         "study": [
-            "Idempotency-Key header patterns",
-            "Webhook retries and at-least-once delivery",
-            "Idempotent stores (memory → later Firestore)",
+            "At-least-once delivery realities",
+            "Exactly-once illusions in distributed systems",
+            "Poison message handling for ticket webhooks",
         ],
         "resources": [
-            {"title": "Stripe idempotency guide (pattern)", "url": "https://stripe.com/docs/api/idempotent_requests"},
-            {"title": "Helpdesk agent", "url": "../projects/01-it-helpdesk-agent/"},
+            {"title": "Idempotent request patterns", "url": "https://stripe.com/docs/api/idempotent_requests"},
+            {"title": "M1 agent", "url": "projects/01-it-helpdesk-agent/README.md"},
         ],
-        "timeHint": "12–15 hrs",
+        "timeHint": "12–15 hrs · reliability",
     },
     12: {
+        "challenge": "Containerize the control plane with supply-chain and secret-boundary discipline.",
         "objectives": [
-            "Dockerfile + docker-compose for agent (+ MCP stub)",
-            "One-command local run documented",
+            "Multi-stage, non-root image",
+            "compose without secret bake-in",
+            "Pinning/digest note or explicit risk acceptance",
         ],
         "study": [
-            "Multi-stage Docker builds",
-            "Secrets: env files vs bake-into-image",
-            "Compose networking basics",
+            "Image provenance basics for internal tools",
+            "Attack surface of local compose demos vs Cloud Run",
+            "What hiring managers look for in Dockerfiles",
         ],
         "resources": [
             {"title": "Docker multi-stage", "url": "https://docs.docker.com/build/building/multi-stage/"},
-            {"title": "Helpdesk agent", "url": "../projects/01-it-helpdesk-agent/"},
+            {"title": "M6 platform", "url": "projects/10-platform-foundation/README.md"},
         ],
         "timeHint": "12–15 hrs",
     },
     13: {
+        "challenge": "Build an eval harness that can block a ship — including cases you expect to fail.",
         "objectives": [
-            "5 eval cases CSV + honest results.md",
+            "8 goldens across answer/escalate/refuse",
+            "Runnable pass/fail producer",
+            "Honest failure narrative",
         ],
         "study": [
-            "Eval harnesses for tool-using agents",
-            "Why not invent accuracy percentages",
-            "Golden vs adversarial cases",
+            "Eval-driven agent development",
+            "Why accuracy % is usually a lie for tool-use",
+            "Flaky evals vs flaky models",
         ],
         "resources": [
-            {"title": "Helpdesk agent evals folder", "url": "../projects/01-it-helpdesk-agent/"},
-            {"title": "Curriculum — ops competency", "url": "../CURRICULUM.md"},
+            {"title": "M1 agent / evals", "url": "projects/01-it-helpdesk-agent/README.md"},
+            {"title": "Curriculum ops competency", "url": "CURRICULUM.md"},
         ],
         "timeHint": "12–15 hrs",
     },
     14: {
+        "challenge": "Red-team your agent with 15 adversarial cases and a concrete fix plan.",
         "objectives": [
-            "Expand to 15 cases; top-3 failure plan",
+            "15-case suite including PII fishing and tool-arg injection",
+            "Top-3 failures with specific fixes",
+            "Regression rule for prompt/model changes",
         ],
         "study": [
-            "Privilege escalation eval design",
-            "KB miss / ambiguous user cases",
-            "Regression before model or prompt changes",
+            "Jailbreak patterns relevant to IT ops agents",
+            "KB poisoning / conflicting sources",
+            "Privilege escalation via 'urgent VIP' narratives",
         ],
         "resources": [
-            {"title": "Helpdesk agent", "url": "../projects/01-it-helpdesk-agent/"},
+            {"title": "OWASP LLM Top 10", "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/"},
+            {"title": "M1 agent", "url": "projects/01-it-helpdesk-agent/README.md"},
         ],
-        "timeHint": "12–15 hrs",
+        "timeHint": "12–15 hrs · adversarial",
     },
     15: {
+        "challenge": "Make silent side effects a detectable bug via an ops event schema.",
         "objectives": [
-            "Event schema + publisher stub + dashboard on samples",
+            "Security-reviewable event schema",
+            "Sample HITL lifecycle published",
+            "Queries for escalation rate + tool errors on samples",
         ],
         "study": [
-            "Unified logs/metrics/events schema",
-            "Pub/Sub vs structured logging for ops events",
-            "Adoption metrics you can actually measure",
+            "Audit vs product analytics — field requirements differ",
+            "Pub/Sub vs log sinks for control-plane events",
+            "What you'd page on at 2am",
         ],
         "resources": [
-            {"title": "Adoption / event plane", "url": "../projects/05-adoption-dashboard/README.md"},
-            {"title": "GCP Pub/Sub overview", "url": "https://cloud.google.com/pubsub/docs/overview"},
+            {"title": "Event plane project", "url": "projects/05-adoption-dashboard/README.md"},
+            {"title": "Pub/Sub overview", "url": "https://cloud.google.com/pubsub/docs/overview"},
         ],
         "timeHint": "12–15 hrs",
     },
     16: {
+        "challenge": "Treat Okta Terraform and agent changes as change-controlled production.",
         "objectives": [
-            "CI: terraform plan path for Okta IaC + agent lint/build",
+            "CI plan gate for Okta IaC",
+            "Agent lint/eval CI (or risk-documented blocker)",
+            "Approval ownership note for identity vs harness PRs",
         ],
         "study": [
-            "GitHub Actions basics for Terraform",
-            "Secrets in CI (never log tokens)",
-            "fmt / validate / plan gates on PR",
+            "Identity changes as high-risk deploys",
+            "Plan artifacts in PR review culture",
+            "Break-glass when CI cannot reach Okta sandbox",
         ],
         "resources": [
-            {"title": "okta-iac-plan workflow", "url": "../.github/workflows/okta-iac-plan.yml"},
-            {"title": "M8 Okta IaC", "url": "../projects/11-okta-iac/README.md"},
-            {"title": "setup-terraform action", "url": "https://github.com/hashicorp/setup-terraform"},
+            {"title": "okta-iac-plan workflow", "url": ".github/workflows/okta-iac-plan.yml"},
+            {"title": "M8 Okta IaC", "url": "projects/11-okta-iac/README.md"},
         ],
         "timeHint": "12–15 hrs",
     },
     17: {
+        "challenge": "Bind endpoint AI controls to identity tiers from your Okta topology.",
         "objectives": [
-            "Endpoint AI POLICY + MDM rollout checklist",
-            "Map Okta groups to tool tiers",
+            "Risk tiers mapped to M8 groups",
+            "Time-bounded exception process with audit fields",
+            "Sanitized detection ideas with owners",
         ],
         "study": [
-            "Shadow AI risk on managed endpoints",
-            "MDM policy tiers by identity group",
-            "Approved vs prohibited AI tools",
+            "Shadow AI as an identity + endpoint problem",
+            "Exception debt and how it becomes permanent access",
+            "How agents should read device posture (stub vs real)",
         ],
         "resources": [
-            {"title": "Endpoint AI governance", "url": "../projects/09-endpoint-ai-governance/README.md"},
-            {"title": "M8 groups topology", "url": "../projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"},
+            {"title": "Endpoint AI governance", "url": "projects/09-endpoint-ai-governance/README.md"},
+            {"title": "ACCESS-TOPOLOGY", "url": "projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"},
         ],
         "timeHint": "12–15 hrs",
     },
     18: {
+        "challenge": "Design offboarding as a distributed revoke graph with compensations.",
         "objectives": [
-            "ALIUS architecture update with revoke order + agent vs deterministic",
+            "Ordered revoke + compensation diagram",
+            "Failure modes when Okta/MDM/SaaS disagree",
+            "Hard line: agent triage vs never auto-revoke",
         ],
         "study": [
-            "Offboarding orchestration sequencing",
-            "Idempotent revoke of TF-managed app groups",
-            "Where agents assist vs deterministic pipelines",
+            "Saga/compensation thinking for identity",
+            "Partial offboarding as a security incident",
+            "Where TF-managed app groups fit in revoke order",
         ],
         "resources": [
-            {"title": "ALIUS architecture", "url": "../projects/07-alius/ARCHITECTURE.md"},
+            {"title": "ALIUS architecture", "url": "projects/07-alius/ARCHITECTURE.md"},
         ],
         "timeHint": "12–15 hrs",
     },
     19: {
+        "challenge": "Write an ADR that a staff engineer would argue with — Cloud Run vs GKE for this agent.",
         "objectives": [
-            "Cloud Run vs GKE tradeoff memo + hosting recommendation",
+            "ADR with forces, decision, consequences, dissent",
+            "Map WIF + progressive delivery to HITL releases",
+            "Link deploy path in platform foundation",
         ],
         "study": [
-            "Cloud Run revisions / scale-to-zero",
-            "K8s literacy: pod, service, deployment",
-            "WIF on Cloud Run for agent identity",
+            "Scale-to-zero vs always-on agent workers",
+            "Multi-tenant cluster ops cost vs Cloud Run constraints",
+            "When GKE becomes the right answer later",
         ],
         "resources": [
-            {"title": "Run vs GKE memo", "url": "../study-notes/cloud-platform/run-vs-gke.md"},
-            {"title": "Platform foundation", "url": "../projects/10-platform-foundation/README.md"},
+            {"title": "Run vs GKE memo", "url": "study-notes/cloud-platform/run-vs-gke.md"},
             {"title": "Cloud Run docs", "url": "https://cloud.google.com/run/docs"},
+            {"title": "M6 platform", "url": "projects/10-platform-foundation/README.md"},
         ],
         "timeHint": "12–15 hrs",
     },
     20: {
+        "challenge": "Freeze an architecture a hiring manager can attack for 30 minutes.",
         "objectives": [
-            "Capstone ARCHITECTURE.md + demo-script.md",
+            "Component + trust-boundary diagram covering M1–M8",
+            "Timed demo script",
+            "Top-5 residual risks for the POC",
         ],
         "study": [
-            "Map M1–M8 into one control plane",
-            "2-minute hiring-manager demo narrative",
-            "Honest POC vs production claims",
+            "How to present portfolio vs production without overclaim",
+            "Trust boundaries reviewers always poke",
+            "What 'agent identity' means in your diagram",
         ],
         "resources": [
-            {"title": "Flagship capstone", "url": "../projects/08-capstone-ops-agent/README.md"},
-            {"title": "Curriculum", "url": "../CURRICULUM.md"},
+            {"title": "Flagship README", "url": "projects/08-capstone-ops-agent/README.md"},
+            {"title": "Curriculum", "url": "CURRICULUM.md"},
         ],
         "timeHint": "12–15 hrs",
     },
     21: {
-        "objectives": [
-            "Assemble control plane; one-command run; 5 evals green",
-        ],
-        "study": [
-            "Integration order: evals first, then wiring",
-            "MCP against TF-managed sandbox groups",
-        ],
-        "resources": [
-            {"title": "Capstone README", "url": "../projects/08-capstone-ops-agent/README.md"},
-        ],
+        "challenge": "Integrate only what evals prove — no feature theater.",
+        "objectives": ["One runnable plane", "5 core evals green", "TF group allow-list enforced"],
+        "study": ["Integration order: tests first", "Binding MCP to IaC-known groups"],
+        "resources": [{"title": "Capstone", "url": "projects/08-capstone-ops-agent/README.md"}],
         "timeHint": "12–15 hrs · capstone",
     },
     22: {
-        "objectives": [
-            "HITL + audit enforced; IaC-known groups only",
-        ],
-        "study": [
-            "Audit fields: actor, action, resource, approved_by",
-            "Reject privilege-escalation eval cases",
-        ],
+        "challenge": "Make trust boundaries non-optional in the running system.",
+        "objectives": ["HITL hard gate", "Audit on refusals too", "Escalation evals still hold"],
+        "study": ["Audit completeness", "Unknown-group rejection paths"],
         "resources": [
-            {"title": "AGENT-CONTRACT", "url": "../projects/11-okta-iac/docs/AGENT-CONTRACT.md"},
-            {"title": "Capstone", "url": "../projects/08-capstone-ops-agent/README.md"},
+            {"title": "AGENT-CONTRACT", "url": "projects/11-okta-iac/docs/AGENT-CONTRACT.md"},
+            {"title": "Capstone", "url": "projects/08-capstone-ops-agent/README.md"},
         ],
         "timeHint": "12–15 hrs · capstone",
     },
     23: {
-        "objectives": [
-            "Endpoint policy stub + metrics/SLO note + event plane",
-        ],
-        "study": [
-            "SLOs / error budgets for agent APIs (honest sketches)",
-            "Structured logs + basic OTel concepts",
-            "LLM cost/latency fields worth emitting",
-        ],
+        "challenge": "Diagnose a failed tool call from telemetry alone; define an SLO without fake numbers.",
+        "objectives": ["Structured logs/metrics for tools", "SLO measurement definition", "Policy stub in demo"],
+        "study": ["LLM cost/latency fields worth emitting", "Error budgets for agent correctness"],
         "resources": [
-            {"title": "Capstone", "url": "../projects/08-capstone-ops-agent/README.md"},
-            {"title": "OpenTelemetry overview", "url": "https://opentelemetry.io/docs/concepts/"},
+            {"title": "OpenTelemetry concepts", "url": "https://opentelemetry.io/docs/concepts/"},
+            {"title": "Capstone", "url": "projects/08-capstone-ops-agent/README.md"},
         ],
         "timeHint": "12–15 hrs · capstone",
     },
     24: {
-        "objectives": [
-            "Cloud Run deploy path + case study with honest limits",
-        ],
-        "study": [
-            "Terraform apply vs documented deploy script tradeoffs",
-            "Case study structure: problem → architecture → limits",
-        ],
+        "challenge": "Ship a stranger-reproducible deliver path and a case study that refuses to overclaim.",
+        "objectives": ["Cloud Run path", "Okta plan in the story", "Honest limits case study"],
+        "study": ["Portfolio POC vs production language", "What proof links to put on a resume"],
         "resources": [
-            {"title": "Platform foundation", "url": "../projects/10-platform-foundation/README.md"},
-            {"title": "Capstone", "url": "../projects/08-capstone-ops-agent/README.md"},
+            {"title": "M6 platform", "url": "projects/10-platform-foundation/README.md"},
+            {"title": "Capstone", "url": "projects/08-capstone-ops-agent/README.md"},
         ],
         "timeHint": "12–15 hrs · capstone",
     },
     25: {
-        "objectives": ["2-minute demo rehearsed; README diagram"],
-        "study": ["Demo scripting: open with Okta IaC, close with deploy path"],
-        "resources": [{"title": "Capstone demo script", "url": "../projects/08-capstone-ops-agent/README.md"}],
+        "challenge": "Survive interrupt questions mid-demo without losing the narrative.",
+        "objectives": ["5 interrupt Q&As written", "Timed demo", "Screen-share diagram"],
+        "study": ["Security and identity questions hiring managers ask"],
+        "resources": [{"title": "Capstone", "url": "projects/08-capstone-ops-agent/README.md"}],
         "timeHint": "8–12 hrs",
     },
     26: {
-        "objectives": ["Platform-bridge narrative linking shipped work + M1–M8"],
-        "study": ["Positioning: AI Systems + cloud delivery, not generic automation"],
-        "resources": [{"title": "Platform bridge", "url": "../study-notes/platform-projects/platform-bridge.md"}],
+        "challenge": "Write the career narrative that connects shipped work to the control plane without lying.",
+        "objectives": ["platform-bridge updated", "Shipped vs POC clearly split"],
+        "study": ["Positioning for AI Systems / agentic ops"],
+        "resources": [{"title": "Platform bridge", "url": "study-notes/platform-projects/platform-bridge.md"}],
         "timeHint": "8–12 hrs",
     },
     27: {
-        "objectives": ["Recruiter technical one-pager"],
-        "study": ["What hiring managers scan in 30 seconds"],
-        "resources": [{"title": "README portfolio grid", "url": "../README.md"}],
+        "challenge": "One page a recruiter actually forwards.",
+        "objectives": ["recruiter-one-pager with proof links"],
+        "study": ["30-second scan hierarchy"],
+        "resources": [{"title": "README", "url": "README.md"}],
         "timeHint": "8–12 hrs",
     },
     28: {
-        "objectives": ["Metrics baseline from real volume only"],
-        "study": ["Never invent deflection/CSAT"],
-        "resources": [{"title": "Adoption dashboard", "url": "../projects/05-adoption-dashboard/README.md"}],
+        "challenge": "Define metrics you'd defend under cross-examination.",
+        "objectives": ["Formulas + real data sources only"],
+        "study": ["Vanity KPI failure modes"],
+        "resources": [{"title": "Event plane", "url": "projects/05-adoption-dashboard/README.md"}],
         "timeHint": "8–12 hrs",
     },
     29: {
-        "objectives": ["Timed Okta-as-code + SCIM design writeup"],
-        "study": ["TF topology vs SCIM lifecycle; agent HITL"],
+        "challenge": "45-minute design: Okta-as-code + SCIM + agent HITL under drift and abuse.",
+        "objectives": ["Full design with abuse cases"],
+        "study": ["TF/SCIM split interview answers"],
         "resources": [
-            {"title": "Answer draft", "url": "../interview-prep/answers/okta-iac-scim-boundary.md"},
-            {"title": "System design template", "url": "../interview-prep/system-design-template.md"},
+            {"title": "Answer draft", "url": "interview-prep/answers/okta-iac-scim-boundary.md"},
+            {"title": "System design template", "url": "interview-prep/system-design-template.md"},
         ],
         "timeHint": "8–12 hrs",
     },
     30: {
-        "objectives": ["Timed Cloud Run vs GKE + WIF/HITL design"],
-        "study": ["Hosting tradeoffs for agent platforms"],
+        "challenge": "45-minute design: agent hosting + WIF + progressive delivery with HITL.",
+        "objectives": ["Tradeoff table + recommendation"],
+        "study": ["Cloud Run vs GKE under identity constraints"],
         "resources": [
-            {"title": "Run vs GKE", "url": "../study-notes/cloud-platform/run-vs-gke.md"},
-            {"title": "Questions list", "url": "../interview-prep/questions.json"},
+            {"title": "Run vs GKE", "url": "study-notes/cloud-platform/run-vs-gke.md"},
+            {"title": "Questions", "url": "interview-prep/questions.json"},
         ],
         "timeHint": "8–12 hrs",
     },
     31: {
-        "objectives": ["STAR stories + resume bullets for Okta TF / MCP / HITL"],
-        "study": ["STAR tied to shipped + portfolio artifacts"],
-        "resources": [{"title": "Behavioral STAR", "url": "../interview-prep/answers/behavioral-star.md"}],
+        "challenge": "STAR + resume bullets that map to artifacts, not adjectives.",
+        "objectives": ["STAR set + resume lines with links"],
+        "study": ["Anti-overclaim language"],
+        "resources": [{"title": "Behavioral STAR", "url": "interview-prep/answers/behavioral-star.md"}],
         "timeHint": "8–12 hrs",
     },
     32: {
-        "objectives": ["Mock: design + STAR + capstone demo aloud"],
-        "study": ["Self-score honestly; fix top gaps"],
-        "resources": [{"title": "Wave checklist", "url": "../interview-prep/answers/wave-1-checklist.md"}],
+        "challenge": "Mock loop that surfaces real gaps.",
+        "objectives": ["Self-score + fix list"],
+        "study": ["Feedback conversion into backlog"],
+        "resources": [{"title": "Wave checklist", "url": "interview-prep/answers/wave-1-checklist.md"}],
         "timeHint": "8–12 hrs",
     },
     33: {
-        "objectives": ["3 target companies researched"],
-        "study": ["AI Systems / agentic ops / internal AI platform roles"],
-        "resources": [{"title": "CONTEXT targets", "url": "../CONTEXT.md"}],
+        "challenge": "Pick targets where this portfolio is a weapon, not a stretch.",
+        "objectives": ["3 targets with lead artifact each"],
+        "study": ["AI Systems / internal platform role mapping"],
+        "resources": [{"title": "CONTEXT", "url": "CONTEXT.md"}],
         "timeHint": "8–12 hrs",
     },
     34: {
-        "objectives": ["Submit 1+ applications with portfolio links"],
-        "study": ["Link dashboard + capstone + Okta IaC"],
+        "challenge": "Apply with proof URLs that open the control plane story.",
+        "objectives": ["Applications + outreach log"],
+        "study": ["What to lead with in first email"],
         "resources": [
             {"title": "Live dashboard", "url": "https://meerzah.github.io/ai-systems-portfolio/tracker/"},
-            {"title": "Capstone", "url": "../projects/08-capstone-ops-agent/README.md"},
+            {"title": "Capstone", "url": "projects/08-capstone-ops-agent/README.md"},
         ],
         "timeHint": "8–12 hrs",
     },
     35: {
-        "objectives": ["Program retro + next-quarter plan"],
-        "study": ["What elevated positioning; what to harden"],
-        "resources": [{"title": "Curriculum checklist", "url": "../CURRICULUM.md"}],
+        "challenge": "Kill anything still basic; raise next-quarter difficulty.",
+        "objectives": ["Retro with keep/kill/raise"],
+        "study": ["What still wouldn't impress a staff interviewer"],
+        "resources": [{"title": "Curriculum", "url": "CURRICULUM.md"}],
         "timeHint": "6–10 hrs",
     },
     36: {
-        "objectives": ["Re-run evals; Okta terraform plan; keep capstone runnable"],
-        "study": ["Portfolio keep-alive cadence"],
+        "challenge": "Prove the portfolio hasn't rotted.",
+        "objectives": ["Evals re-run", "Okta plan clean or drift explained"],
+        "study": ["Portfolio maintenance as engineering"],
         "resources": [
-            {"title": "Capstone", "url": "../projects/08-capstone-ops-agent/README.md"},
-            {"title": "Okta IaC", "url": "../projects/11-okta-iac/README.md"},
+            {"title": "Capstone", "url": "projects/08-capstone-ops-agent/README.md"},
+            {"title": "Okta IaC", "url": "projects/11-okta-iac/README.md"},
         ],
         "timeHint": "6–10 hrs",
     },
 }
 
 
-# Optional richer task cards: title should match (or prefix) a build step when possible.
-TASKS: dict[int, list[dict]] = {
-    1: [
-        {
-            "title": "Set up Python venv; install requirements.txt",
-            "detail": "Clone the repo locally, create a venv in projects/01-it-helpdesk-agent, install deps, and confirm imports work. If GCP/Vertex blocks you, write the blocker in the prove log and continue with runbooks.",
-            "docs": [
-                {"title": "Project README — setup", "url": "projects/01-it-helpdesk-agent/README.md"},
-            ],
-        },
-        {
-            "title": "Add 2 Markdown runbooks (VPN, SSO, or MDM)",
-            "detail": "Write two short, realistic runbooks an agent can ground on. Prefer steps you know from IT ops. Keep PII out; use generic org language.",
-            "docs": [
-                {"title": "Friction inventory template", "url": "study-notes/weeks/week-01-friction-inventory.md"},
-            ],
-        },
-        {
-            "title": "Run 5 test queries; log results in prove log",
-            "detail": "Ask the agent five questions (mix of in-scope and out-of-scope). Log query, expected behavior, actual result, and whether you’d escalate.",
-            "docs": [
-                {"title": "Prove log", "url": "study-notes/weeks/week-01-prove-log.md"},
-            ],
-        },
-    ],
-    2: [
-        {
-            "title": "Configure read-only Okta API token (preview/sandbox org)",
-            "detail": "Use an Okta preview/developer org only. Create a least-privilege read token. Store it in env — never commit.",
-            "docs": [{"title": "Okta MCP README", "url": "projects/02-okta-mcp-server/README.md"}],
-        },
-        {
-            "title": "Verify list_users + get_group_members tools",
-            "detail": "Run the MCP server and exercise both tools. Note required scopes and failure modes.",
-            "docs": [{"title": "Okta MCP README", "url": "projects/02-okta-mcp-server/README.md"}],
-        },
-        {
-            "title": "Document 3 sample queries (redact PII)",
-            "detail": "Capture three natural-language → tool call examples with redacted output for the portfolio README or notes.",
-            "docs": [{"title": "Okta MCP README", "url": "projects/02-okta-mcp-server/README.md"}],
-        },
-    ],
-    5: [
-        {
-            "title": "Scaffold providers.tf + modules/groups for sandbox Okta org",
-            "detail": "Wire the Okta provider for sandbox, open modules/groups, and prepare your first terraform plan.",
-            "docs": [{"title": "Okta IaC README", "url": "projects/11-okta-iac/README.md"}],
-        },
-        {
-            "title": "Define app-access + role groups",
-            "detail": "Create groups such as agent-read-identity and role-it-approvers that the agent/HITL story will use later.",
-            "docs": [{"title": "ACCESS-TOPOLOGY", "url": "projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"}],
-        },
-        {
-            "title": "Write docs/ACCESS-TOPOLOGY.md diagram",
-            "detail": "Document the intended group → app → policy topology and the TF vs SCIM boundary.",
-            "docs": [{"title": "ACCESS-TOPOLOGY", "url": "projects/11-okta-iac/docs/ACCESS-TOPOLOGY.md"}],
-        },
-    ],
-}
-
-
-def _default_tasks(build: list[str], path: str) -> list[dict]:
+def _tasks_from_build(build: list[str], path: str, challenge: str) -> list[dict]:
+    """Default task cards: each build step is a design/build challenge, not a tutorial."""
     tasks = []
     for step in build or []:
         tasks.append(
             {
                 "title": step,
-                "detail": f"Complete this step in `{path}`. Open the project brief for context, then commit when done.",
-                "docs": [{"title": "Project brief", "url": path.rstrip("/") + "/README.md" if path.endswith("/") else path}],
+                "detail": (
+                    f"{challenge} Execute this artifact in `{path}`. "
+                    "Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: "
+                    "tradeoffs, failure modes, and enforceable controls — not setup steps."
+                ),
+                "docs": [
+                    {
+                        "title": "Project brief",
+                        "url": path.rstrip("/") + "/README.md" if str(path).endswith("/") else path,
+                    }
+                ],
             }
         )
     return tasks
@@ -550,20 +536,24 @@ def _default_tasks(build: list[str], path: str) -> list[dict]:
 
 def get_guide(week: int, build: list[str] | None = None, path: str = "") -> dict:
     g = GUIDES.get(week) or {
-        "objectives": ["Complete this week's mini-project build and done-when checks"],
-        "study": ["Read the project README and CURRICULUM.md for this phase"],
+        "challenge": "Ship a portfolio artifact that compounds into the flagship control plane.",
+        "objectives": ["Complete this week's build with enforceable controls documented"],
+        "study": ["Read CURRICULUM.md and the target project architecture"],
         "resources": [{"title": "Curriculum", "url": "CURRICULUM.md"}],
         "timeHint": "12–15 hrs",
     }
-    tasks = list(g.get("tasks") or TASKS.get(week) or [])
+    challenge = g.get("challenge") or "Raise the bar on this week's artifact."
+    tasks = list(g.get("tasks") or [])
     if not tasks:
-        tasks = _default_tasks(build or [], path or "projects/")
-    # Normalize resource urls to repo-relative (no ../) for the doc viewer
+        tasks = _tasks_from_build(build or [], path or "projects/", challenge)
+
     resources = []
     for r in g.get("resources") or []:
         url = (r.get("url") or "").replace("../", "")
         resources.append({"title": r.get("title", "Resource"), "url": url})
+
     return {
+        "challenge": challenge,
         "objectives": list(g.get("objectives") or []),
         "study": list(g.get("study") or []),
         "resources": resources,

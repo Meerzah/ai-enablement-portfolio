@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 20 — Capstone architecture freeze</title>
+<title>Week 20 — Freeze the control plane architecture</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,13 +131,13 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 20 guide</div>
-      <h1>Capstone architecture freeze</h1>
+      <h1>Freeze the control plane architecture</h1>
       <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -148,24 +148,25 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">Map M1–M8 into one control plane; freeze demo script</p>
+      <p class="learn">Integrate M1–M8 into one narrative a hiring manager can attack</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>Freeze an architecture a hiring manager can attack for 30 minutes.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>Capstone ARCHITECTURE.md + demo-script.md</li></ul>
+          <ul><li>Component + trust-boundary diagram covering M1–M8</li><li>Timed demo script</li><li>Top-5 residual risks for the POC</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>Map M1–M8 into one control plane</li><li>2-minute hiring-manager demo narrative</li><li>Honest POC vs production claims</li></ol>
+          <ol><li>How to present portfolio vs production without overclaim</li><li>Trust boundaries reviewers always poke</li><li>What &#x27;agent identity&#x27; means in your diagram</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Flagship capstone</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=CURRICULUM.md" target="_blank" rel="noopener">Curriculum</a></div>
+        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Flagship README</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=CURRICULUM.md" target="_blank" rel="noopener">Curriculum</a></div>
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>ARCHITECTURE.md: M1–M8 mapped to components</strong><p>Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>demo-script.md: Okta TF → runbook Q → identity Q → HITL → audit → metrics</strong><p>Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Repo layout scaffold (folders + README)</strong><p>Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>ARCHITECTURE.md: component diagram + trust boundaries + data flows</strong><p>Freeze an architecture a hiring manager can attack for 30 minutes. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>demo-script.md: 2-min path that surfaces IaC → agent → HITL → audit → deploy</strong><p>Freeze an architecture a hiring manager can attack for 30 minutes. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Risk register: top 5 residual risks for the POC</strong><p>Freeze an architecture a hiring manager can attack for 30 minutes. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 20, "title": "Capstone architecture freeze", "path": "projects/08-capstone-ops-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "ARCHITECTURE.md: M1–M8 mapped to components", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "demo-script.md: Okta TF → runbook Q → identity Q → HITL → audit → metrics", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Repo layout scaffold (folders + README)", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Architecture + demo script committed", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Eval failures from W14 addressed in plan", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "ARCHITECTURE.md: M1–M8 mapped to components", "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}, {"title": "demo-script.md: Okta TF → runbook Q → identity Q → HITL → audit → metrics", "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}, {"title": "Repo layout scaffold (folders + README)", "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}]};
+const PLAN = {"week": 20, "title": "Freeze the control plane architecture", "path": "projects/08-capstone-ops-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "ARCHITECTURE.md: component diagram + trust boundaries + data flows", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "demo-script.md: 2-min path that surfaces IaC → agent → HITL → audit → deploy", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Risk register: top 5 residual risks for the POC", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Every Mi maps to a box on the diagram", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Demo script is timed", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Risks are honest (not 'none')", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "ARCHITECTURE.md: component diagram + trust boundaries + data flows", "detail": "Freeze an architecture a hiring manager can attack for 30 minutes. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}, {"title": "demo-script.md: 2-min path that surfaces IaC → agent → HITL → audit → deploy", "detail": "Freeze an architecture a hiring manager can attack for 30 minutes. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}, {"title": "Risk register: top 5 residual risks for the POC", "detail": "Freeze an architecture a hiring manager can attack for 30 minutes. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

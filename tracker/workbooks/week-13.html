@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 13 — Eval harness (core)</title>
+<title>Week 13 — Eval harness that can fail you</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,13 +131,13 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 13 guide</div>
-      <h1>Eval harness (core)</h1>
+      <h1>Eval harness that can fail you</h1>
       <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -148,24 +148,25 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">Golden cases for tool-use; honest pass/fail — no invented accuracy %</p>
+      <p class="learn">Goldens for tool-use and policy — evals that block ship, not vanity metrics</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>Build an eval harness that can block a ship — including cases you expect to fail.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>5 eval cases CSV + honest results.md</li></ul>
+          <ul><li>8 goldens across answer/escalate/refuse</li><li>Runnable pass/fail producer</li><li>Honest failure narrative</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>Eval harnesses for tool-using agents</li><li>Why not invent accuracy percentages</li><li>Golden vs adversarial cases</li></ol>
+          <ol><li>Eval-driven agent development</li><li>Why accuracy % is usually a lie for tool-use</li><li>Flaky evals vs flaky models</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Helpdesk agent evals folder</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=CURRICULUM.md" target="_blank" rel="noopener">Curriculum — ops competency</a></div>
+        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">M1 agent / evals</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=CURRICULUM.md" target="_blank" rel="noopener">Curriculum ops competency</a></div>
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>evals/eval_cases.csv: query, expected_behavior, pass/fail</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>5 rows: runbook + identity read</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>evals/results.md with honest outcomes</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>eval_cases.csv: 8 cases spanning runbook, identity read, escalate, refuse</strong><p>Build an eval harness that can block a ship — including cases you expect to fail. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Runner script or makefile target that produces pass/fail without invented %</strong><p>Build an eval harness that can block a ship — including cases you expect to fail. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>results.md: which cases you expect to still fail and why</strong><p>Build an eval harness that can block a ship — including cases you expect to fail. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 13, "title": "Eval harness (core)", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "evals/eval_cases.csv: query, expected_behavior, pass/fail", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "5 rows: runbook + identity read", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "evals/results.md with honest outcomes", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "CSV + results committed", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "No invented accuracy %", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "evals/eval_cases.csv: query, expected_behavior, pass/fail", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "5 rows: runbook + identity read", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "evals/results.md with honest outcomes", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}]};
+const PLAN = {"week": 13, "title": "Eval harness that can fail you", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "eval_cases.csv: 8 cases spanning runbook, identity read, escalate, refuse", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Runner script or makefile target that produces pass/fail without invented %", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "results.md: which cases you expect to still fail and why", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Runner is deterministic enough to re-run", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "At least one intentional failing case documented", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "No accuracy marketing numbers", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "eval_cases.csv: 8 cases spanning runbook, identity read, escalate, refuse", "detail": "Build an eval harness that can block a ship — including cases you expect to fail. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Runner script or makefile target that produces pass/fail without invented %", "detail": "Build an eval harness that can block a ship — including cases you expect to fail. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "results.md: which cases you expect to still fail and why", "detail": "Build an eval harness that can block a ship — including cases you expect to fail. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

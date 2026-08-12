@@ -72,15 +72,15 @@ Supporting: [Agentspace Rollout](./projects/03-agentspace-rollout) · [Prompt Pl
 
 **Harness · Identity (+ Okta IaC) · Endpoint · Enablement · Workflow · Ops · Cloud platform · Portfolio**
 
-| Phase | Weeks | What you ship |
-|-------|-------|---------------|
-| Foundation | 1–4 | Agent + Okta MCP + guardrails |
-| Identity-as-code | 5–8 | Okta TF groups/apps/policies + GCP secrets stub |
-| Workflow + containers | 9–12 | HITL, API, webhooks, Docker |
-| Evals + events + CI | 13–16 | 15 evals, event stream, CI for Okta TF + agent |
-| Endpoint + prep | 17–20 | Endpoint AI policy, Run vs GKE, architecture freeze |
-| **Capstone** | **21–24** | **Flagship Agentic Ops Control Plane** |
-| Portfolio | 25–36 | Demo, narrative, system design, apply |
+| Phase | Weeks | Pressure |
+|-------|-------|----------|
+| Foundation | 1–4 | Decision boundaries, LLM-safe Okta tool surface, adversarial wiring, testable guardrails |
+| Identity-as-code | 5–8 | Topology control plane, drift, TF/SCIM/agent contract, WIF/secrets threat model |
+| Workflow + containers | 9–12 | HITL hard gates, API contracts, idempotency, container boundaries |
+| Evals + events + CI | 13–16 | Eval gates, adversarial 15, audit event plane, change-control CI |
+| Endpoint + prep | 17–20 | Identity-tied AI policy, offboarding graph, Run vs GKE ADR, architecture freeze |
+| **Capstone** | **21–24** | **Integrate under eval pressure → trust → observe → deliver** |
+| Portfolio | 25–36 | Demo under interrupt, system designs, apply |
 
 | Resource | Link |
 |----------|------|

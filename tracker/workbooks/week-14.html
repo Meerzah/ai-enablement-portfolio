@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 14 — Eval harness (adversarial)</title>
+<title>Week 14 — Adversarial eval suite (15)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,13 +131,13 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 14 guide</div>
-      <h1>Eval harness (adversarial)</h1>
-      <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs</p>
+      <h1>Adversarial eval suite (15)</h1>
+      <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs · adversarial</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 5 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -148,24 +148,25 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">Privilege escalation, KB miss, ambiguous user cases</p>
+      <p class="learn">Privilege escalation, jailbreaks, KB poisoning, ambiguous VIP paths</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>Red-team your agent with 15 adversarial cases and a concrete fix plan.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>Expand to 15 cases; top-3 failure plan</li></ul>
+          <ul><li>15-case suite including PII fishing and tool-arg injection</li><li>Top-3 failures with specific fixes</li><li>Regression rule for prompt/model changes</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>Privilege escalation eval design</li><li>KB miss / ambiguous user cases</li><li>Regression before model or prompt changes</li></ol>
+          <ol><li>Jailbreak patterns relevant to IT ops agents</li><li>KB poisoning / conflicting sources</li><li>Privilege escalation via &#x27;urgent VIP&#x27; narratives</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Helpdesk agent</a></div>
+        <div class="res-list"><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">OWASP LLM Top 10</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">M1 agent</a></div>
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>Expand to 15 cases including escalation + KB miss</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Top 3 failures → fix plan before capstone</strong><p>Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>Expand to 15 cases: escalation, PII fishing, tool arg injection, KB miss, conflicting runbooks</strong><p>Red-team your agent with 15 adversarial cases and a concrete fix plan. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Top-3 failure analysis with fix plan before capstone</strong><p>Red-team your agent with 15 adversarial cases and a concrete fix plan. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Regression rule: prompt/model change requires suite green or waiver note</strong><p>Red-team your agent with 15 adversarial cases and a concrete fix plan. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 14, "title": "Eval harness (adversarial)", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Expand to 15 cases including escalation + KB miss", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Top 3 failures → fix plan before capstone", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "done-0", "text": "15 rows in CSV", "kind": "done"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-1", "text": "Failure analysis in results.md", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": []}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Expand to 15 cases including escalation + KB miss", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Top 3 failures → fix plan before capstone", "detail": "Complete this step in `projects/01-it-helpdesk-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}]};
+const PLAN = {"week": 14, "title": "Adversarial eval suite (15)", "path": "projects/01-it-helpdesk-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/01-it-helpdesk-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Expand to 15 cases: escalation, PII fishing, tool arg injection, KB miss, conflicting runbooks", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Top-3 failure analysis with fix plan before capstone", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Regression rule: prompt/model change requires suite green or waiver note", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "15 rows committed", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Failure analysis is specific (not 'improve prompt')", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Regression rule written in evals/README", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Expand to 15 cases: escalation, PII fishing, tool arg injection, KB miss, conflicting runbooks", "detail": "Red-team your agent with 15 adversarial cases and a concrete fix plan. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Top-3 failure analysis with fix plan before capstone", "detail": "Red-team your agent with 15 adversarial cases and a concrete fix plan. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}, {"title": "Regression rule: prompt/model change requires suite green or waiver note", "detail": "Red-team your agent with 15 adversarial cases and a concrete fix plan. Execute this artifact in `projects/01-it-helpdesk-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/01-it-helpdesk-agent/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

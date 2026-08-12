@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 19 — Cloud Run vs Kubernetes</title>
+<title>Week 19 — Hosting tradeoff: Cloud Run vs GKE for agents</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,13 +131,13 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 19 guide</div>
-      <h1>Cloud Run vs Kubernetes</h1>
+      <h1>Hosting tradeoff: Cloud Run vs GKE for agents</h1>
       <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -148,24 +148,25 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">K8s literacy (kind or GKE Autopilot touch) + when Cloud Run wins for agents</p>
+      <p class="learn">Defend a hosting choice with identity, scale, and progressive delivery constraints</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>Write an ADR that a staff engineer would argue with — Cloud Run vs GKE for this agent.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>Cloud Run vs GKE tradeoff memo + hosting recommendation</li></ul>
+          <ul><li>ADR with forces, decision, consequences, dissent</li><li>Map WIF + progressive delivery to HITL releases</li><li>Link deploy path in platform foundation</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>Cloud Run revisions / scale-to-zero</li><li>K8s literacy: pod, service, deployment</li><li>WIF on Cloud Run for agent identity</li></ol>
+          <ol><li>Scale-to-zero vs always-on agent workers</li><li>Multi-tenant cluster ops cost vs Cloud Run constraints</li><li>When GKE becomes the right answer later</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/cloud-platform/run-vs-gke.md" target="_blank" rel="noopener">Run vs GKE memo</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/10-platform-foundation/README.md" target="_blank" rel="noopener">Platform foundation</a><a href="https://cloud.google.com/run/docs" target="_blank" rel="noopener">Cloud Run docs</a></div>
+        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/cloud-platform/run-vs-gke.md" target="_blank" rel="noopener">Run vs GKE memo</a><a href="https://cloud.google.com/run/docs" target="_blank" rel="noopener">Cloud Run docs</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/10-platform-foundation/README.md" target="_blank" rel="noopener">M6 platform</a></div>
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>Write study-notes/cloud-platform/run-vs-gke.md tradeoff memo</strong><p>Complete this step in `study-notes/cloud-platform/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/cloud-platform/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Optional: kind or GKE Autopilot hello deploy notes</strong><p>Complete this step in `study-notes/cloud-platform/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/cloud-platform/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Recommend default hosting for capstone agent (Cloud Run)</strong><p>Complete this step in `study-notes/cloud-platform/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/cloud-platform/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>run-vs-gke.md as an ADR: decision, forces, consequences</strong><p>Write an ADR that a staff engineer would argue with — Cloud Run vs GKE for this agent. Execute this artifact in `study-notes/cloud-platform/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/cloud-platform/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Optional micro-lab notes only if they strengthen the ADR</strong><p>Write an ADR that a staff engineer would argue with — Cloud Run vs GKE for this agent. Execute this artifact in `study-notes/cloud-platform/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/cloud-platform/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Map WIF + revisions/traffic split to HITL release strategy</strong><p>Write an ADR that a staff engineer would argue with — Cloud Run vs GKE for this agent. Execute this artifact in `study-notes/cloud-platform/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/cloud-platform/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 19, "title": "Cloud Run vs Kubernetes", "path": "study-notes/cloud-platform/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/cloud-platform/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Write study-notes/cloud-platform/run-vs-gke.md tradeoff memo", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Optional: kind or GKE Autopilot hello deploy notes", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Recommend default hosting for capstone agent (Cloud Run)", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Tradeoff memo committed", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Clear hosting recommendation for capstone", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Write study-notes/cloud-platform/run-vs-gke.md tradeoff memo", "detail": "Complete this step in `study-notes/cloud-platform/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "study-notes/cloud-platform/README.md"}]}, {"title": "Optional: kind or GKE Autopilot hello deploy notes", "detail": "Complete this step in `study-notes/cloud-platform/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "study-notes/cloud-platform/README.md"}]}, {"title": "Recommend default hosting for capstone agent (Cloud Run)", "detail": "Complete this step in `study-notes/cloud-platform/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "study-notes/cloud-platform/README.md"}]}]};
+const PLAN = {"week": 19, "title": "Hosting tradeoff: Cloud Run vs GKE for agents", "path": "study-notes/cloud-platform/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/cloud-platform/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "run-vs-gke.md as an ADR: decision, forces, consequences", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Optional micro-lab notes only if they strengthen the ADR", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Map WIF + revisions/traffic split to HITL release strategy", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "ADR recommends default for THIS portfolio with reasons", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Counter-argument section included", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Link to platform foundation deploy path", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "run-vs-gke.md as an ADR: decision, forces, consequences", "detail": "Write an ADR that a staff engineer would argue with — Cloud Run vs GKE for this agent. Execute this artifact in `study-notes/cloud-platform/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "study-notes/cloud-platform/README.md"}]}, {"title": "Optional micro-lab notes only if they strengthen the ADR", "detail": "Write an ADR that a staff engineer would argue with — Cloud Run vs GKE for this agent. Execute this artifact in `study-notes/cloud-platform/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "study-notes/cloud-platform/README.md"}]}, {"title": "Map WIF + revisions/traffic split to HITL release strategy", "detail": "Write an ADR that a staff engineer would argue with — Cloud Run vs GKE for this agent. Execute this artifact in `study-notes/cloud-platform/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "study-notes/cloud-platform/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

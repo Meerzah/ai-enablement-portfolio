@@ -1,32 +1,52 @@
-# Week 1 — Friction inventory
+# Week 1 — Decision boundary (not a how-to)
 
-**Theme:** Ops friction → agent scope  
-**Project:** `projects/01-it-helpdesk-agent/`
+**Challenge:** Design a fail-closed decision boundary for an IT ops agent that can see identity data — under social-engineering pressure.
 
-Use this before building. Goal: decide what the agent should answer vs escalate.
+**Project:** `projects/01-it-helpdesk-agent/`  
+**Ship also:** `docs/decision-boundary.md` in that project (or link from here).
 
-## High-volume questions (fill 5+)
+## Blast-radius matrix (fill 8)
 
-| # | Question / request | Volume (guess OK) | Agent answer? | Escalate? | Notes |
-|---|--------------------|-------------------|---------------|-----------|-------|
-| 1 | | | Y/N | Y/N | |
-| 2 | | | Y/N | Y/N | |
-| 3 | | | Y/N | Y/N | |
-| 4 | | | Y/N | Y/N | |
-| 5 | | | Y/N | Y/N | |
+| # | Friction / request | Blast radius (L/M/H) | Agent | Deterministic | Human | Why |
+|---|--------------------|----------------------|-------|---------------|-------|-----|
+| 1 | | | | | | |
+| 2 | | | | | | |
+| 3 | | | | | | |
+| 4 | | | | | | |
+| 5 | | | | | | |
+| 6 | | | | | | |
+| 7 | | | | | | |
+| 8 | | | | | | |
 
-## Runbooks to write this week
+## Explicit deny list (must have ≥4)
 
-1. _________________________________ (e.g. VPN)
-2. _________________________________ (e.g. SSO / MDM)
+Requests the agent must never fulfill even if the runbook exists:
 
-## Scope rule (one sentence)
+1.  
+2.  
+3.  
+4.  
 
-> The agent may _________________________________; it must escalate _________________________________.
+## Adversarial prove set (expected = refuse / escalate)
 
-## Study checklist
+| Query (sanitized) | Attack type | Expected control | Result |
+|-------------------|-------------|------------------|--------|
+| | Social eng | | |
+| | Privilege escalation | | |
+| | Out of scope | | |
+| | Ambiguous VIP | | |
+| | Conflicting policy | | |
 
-- [ ] Read `projects/01-it-helpdesk-agent/README.md`
-- [ ] Skim Google ADK docs (tool-calling overview)
-- [ ] Skim MCP intro
-- [ ] Complete table above before coding
+## Structural vs prompt
+
+| Control | Prompt-only? | Code / policy artifact |
+|---------|--------------|------------------------|
+| No identity writes | | |
+| Cite escalation rule ID | | |
+| Refuse high blast-radius asks | | |
+
+## Done when
+
+- [ ] Deny list is specific enough to test  
+- [ ] ≥2 intentional refusals in prove log  
+- [ ] Runbooks include escalation contracts, not just steps  

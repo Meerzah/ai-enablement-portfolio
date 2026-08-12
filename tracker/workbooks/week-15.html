@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 15 — Unified ops event stream</title>
+<title>Week 15 — Ops event plane for agent actions</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,13 +131,13 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 15 guide</div>
-      <h1>Unified ops event stream</h1>
+      <h1>Ops event plane for agent actions</h1>
       <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -148,24 +148,25 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">One schema for query/tool/approve/fail; Pub/Sub or log pipeline stub</p>
+      <p class="learn">Unify query/tool/approve/fail into an auditable stream (Pub/Sub or log sink)</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>Make silent side effects a detectable bug via an ops event schema.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>Event schema + publisher stub + dashboard on samples</li></ul>
+          <ul><li>Security-reviewable event schema</li><li>Sample HITL lifecycle published</li><li>Queries for escalation rate + tool errors on samples</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>Unified logs/metrics/events schema</li><li>Pub/Sub vs structured logging for ops events</li><li>Adoption metrics you can actually measure</li></ol>
+          <ol><li>Audit vs product analytics — field requirements differ</li><li>Pub/Sub vs log sinks for control-plane events</li><li>What you&#x27;d page on at 2am</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">Adoption / event plane</a><a href="https://cloud.google.com/pubsub/docs/overview" target="_blank" rel="noopener">GCP Pub/Sub overview</a></div>
+        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">Event plane project</a><a href="https://cloud.google.com/pubsub/docs/overview" target="_blank" rel="noopener">Pub/Sub overview</a></div>
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>events-schema.md: query_submitted, tool_called, escalated, approved</strong><p>Complete this step in `projects/05-adoption-dashboard/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Publisher stub (Pub/Sub or structured log) + sample events</strong><p>Complete this step in `projects/05-adoption-dashboard/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Dashboard script from sample logs only</strong><p>Complete this step in `projects/05-adoption-dashboard/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>events-schema.md with required fields for security review (actor, action, resource, approved_by)</strong><p>Make silent side effects a detectable bug via an ops event schema. Execute this artifact in `projects/05-adoption-dashboard/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Publisher stub emitting sample lifecycle for one HITL flow</strong><p>Make silent side effects a detectable bug via an ops event schema. Execute this artifact in `projects/05-adoption-dashboard/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Dashboard/query that answers: escalation rate + tool error rate on sample data</strong><p>Make silent side effects a detectable bug via an ops event schema. Execute this artifact in `projects/05-adoption-dashboard/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/05-adoption-dashboard/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 15, "title": "Unified ops event stream", "path": "projects/05-adoption-dashboard/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/05-adoption-dashboard/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "events-schema.md: query_submitted, tool_called, escalated, approved", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Publisher stub (Pub/Sub or structured log) + sample events", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Dashboard script from sample logs only", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Schema + script run on test data", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Screenshot or terminal output saved", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "events-schema.md: query_submitted, tool_called, escalated, approved", "detail": "Complete this step in `projects/05-adoption-dashboard/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/05-adoption-dashboard/README.md"}]}, {"title": "Publisher stub (Pub/Sub or structured log) + sample events", "detail": "Complete this step in `projects/05-adoption-dashboard/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/05-adoption-dashboard/README.md"}]}, {"title": "Dashboard script from sample logs only", "detail": "Complete this step in `projects/05-adoption-dashboard/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/05-adoption-dashboard/README.md"}]}]};
+const PLAN = {"week": 15, "title": "Ops event plane for agent actions", "path": "projects/05-adoption-dashboard/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/05-adoption-dashboard/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "events-schema.md with required fields for security review (actor, action, resource, approved_by)", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Publisher stub emitting sample lifecycle for one HITL flow", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Dashboard/query that answers: escalation rate + tool error rate on sample data", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Schema forbids silent side effects (no event = bug)", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Sample pipeline runs locally", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Metrics defined without fake baselines", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "events-schema.md with required fields for security review (actor, action, resource, approved_by)", "detail": "Make silent side effects a detectable bug via an ops event schema. Execute this artifact in `projects/05-adoption-dashboard/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/05-adoption-dashboard/README.md"}]}, {"title": "Publisher stub emitting sample lifecycle for one HITL flow", "detail": "Make silent side effects a detectable bug via an ops event schema. Execute this artifact in `projects/05-adoption-dashboard/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/05-adoption-dashboard/README.md"}]}, {"title": "Dashboard/query that answers: escalation rate + tool error rate on sample data", "detail": "Make silent side effects a detectable bug via an ops event schema. Execute this artifact in `projects/05-adoption-dashboard/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/05-adoption-dashboard/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 16 — CI for identity + agent</title>
+<title>Week 16 — CI as a change-control plane</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,13 +131,13 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 16 guide</div>
-      <h1>CI for identity + agent</h1>
+      <h1>CI as a change-control plane</h1>
       <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -148,24 +148,25 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">GitHub Actions: terraform plan on Okta IaC + lint/test/build agent image</p>
+      <p class="learn">PR gates for Okta TF plan + agent tests — identity changes are code review</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>Treat Okta Terraform and agent changes as change-controlled production.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>CI: terraform plan path for Okta IaC + agent lint/build</li></ul>
+          <ul><li>CI plan gate for Okta IaC</li><li>Agent lint/eval CI (or risk-documented blocker)</li><li>Approval ownership note for identity vs harness PRs</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>GitHub Actions basics for Terraform</li><li>Secrets in CI (never log tokens)</li><li>fmt / validate / plan gates on PR</li></ol>
+          <ol><li>Identity changes as high-risk deploys</li><li>Plan artifacts in PR review culture</li><li>Break-glass when CI cannot reach Okta sandbox</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=.github/workflows/okta-iac-plan.yml" target="_blank" rel="noopener">okta-iac-plan workflow</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/11-okta-iac/README.md" target="_blank" rel="noopener">M8 Okta IaC</a><a href="https://github.com/hashicorp/setup-terraform" target="_blank" rel="noopener">setup-terraform action</a></div>
+        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=.github/workflows/okta-iac-plan.yml" target="_blank" rel="noopener">okta-iac-plan workflow</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/11-okta-iac/README.md" target="_blank" rel="noopener">M8 Okta IaC</a></div>
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>GitHub Actions workflow: terraform fmt/validate/plan for 11-okta-iac</strong><p>Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/11-okta-iac/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>CI job: lint/test (or build) for agent/API project</strong><p>Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/11-okta-iac/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Document required secrets (OKTA_*, GCP) — never commit values</strong><p>Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/11-okta-iac/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>Harden GitHub Actions: fmt/validate/plan for Okta IaC; fail on drift format issues</strong><p>Treat Okta Terraform and agent changes as change-controlled production. Execute this artifact in `projects/11-okta-iac/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/11-okta-iac/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Agent CI job: lint + eval subset (or document blocker with risk)</strong><p>Treat Okta Terraform and agent changes as change-controlled production. Execute this artifact in `projects/11-okta-iac/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/11-okta-iac/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>CODEOWNERS-style note: who must approve identity TF vs agent harness PRs</strong><p>Treat Okta Terraform and agent changes as change-controlled production. Execute this artifact in `projects/11-okta-iac/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/11-okta-iac/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 16, "title": "CI for identity + agent", "path": "projects/11-okta-iac/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/11-okta-iac/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "GitHub Actions workflow: terraform fmt/validate/plan for 11-okta-iac", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "CI job: lint/test (or build) for agent/API project", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Document required secrets (OKTA_*, GCP) — never commit values", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "CI workflow files committed", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Plan job documented as green or blocked with reason", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "GitHub Actions workflow: terraform fmt/validate/plan for 11-okta-iac", "detail": "Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/11-okta-iac/README.md"}]}, {"title": "CI job: lint/test (or build) for agent/API project", "detail": "Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/11-okta-iac/README.md"}]}, {"title": "Document required secrets (OKTA_*, GCP) — never commit values", "detail": "Complete this step in `projects/11-okta-iac/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/11-okta-iac/README.md"}]}]};
+const PLAN = {"week": 16, "title": "CI as a change-control plane", "path": "projects/11-okta-iac/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/11-okta-iac/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Harden GitHub Actions: fmt/validate/plan for Okta IaC; fail on drift format issues", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Agent CI job: lint + eval subset (or document blocker with risk)", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "CODEOWNERS-style note: who must approve identity TF vs agent harness PRs", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Workflow files committed and explained", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Plan artifact path documented for reviewers", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Approval note exists even if CODEOWNERS not enabled", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Harden GitHub Actions: fmt/validate/plan for Okta IaC; fail on drift format issues", "detail": "Treat Okta Terraform and agent changes as change-controlled production. Execute this artifact in `projects/11-okta-iac/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/11-okta-iac/README.md"}]}, {"title": "Agent CI job: lint + eval subset (or document blocker with risk)", "detail": "Treat Okta Terraform and agent changes as change-controlled production. Execute this artifact in `projects/11-okta-iac/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/11-okta-iac/README.md"}]}, {"title": "CODEOWNERS-style note: who must approve identity TF vs agent harness PRs", "detail": "Treat Okta Terraform and agent changes as change-controlled production. Execute this artifact in `projects/11-okta-iac/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/11-okta-iac/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

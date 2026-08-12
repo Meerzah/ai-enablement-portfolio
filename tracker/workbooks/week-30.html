@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 30 — System design: agent hosting</title>
+<title>Week 30 — System design: agent hosting + identity</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,7 +131,7 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 30 guide</div>
-      <h1>System design: agent hosting</h1>
+      <h1>System design: agent hosting + identity</h1>
       <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">8–12 hrs</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
@@ -148,24 +148,25 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">WIF + MCP + HITL; Cloud Run vs GKE for agent workloads</p>
+      <p class="learn">WIF, Cloud Run vs GKE, progressive delivery with HITL</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>45-minute design: agent hosting + WIF + progressive delivery with HITL.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>Timed Cloud Run vs GKE + WIF/HITL design</li></ul>
+          <ul><li>Tradeoff table + recommendation</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>Hosting tradeoffs for agent platforms</li></ol>
+          <ol><li>Cloud Run vs GKE under identity constraints</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/cloud-platform/run-vs-gke.md" target="_blank" rel="noopener">Run vs GKE</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=interview-prep/questions.json" target="_blank" rel="noopener">Questions list</a></div>
+        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=study-notes/cloud-platform/run-vs-gke.md" target="_blank" rel="noopener">Run vs GKE</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=interview-prep/questions.json" target="_blank" rel="noopener">Questions</a></div>
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>Timed design: WIF + MCP + HITL + hosting tradeoff</strong><p>Complete this step in `interview-prep/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=interview-prep/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>Timed design doc with explicit tradeoff table</strong><p>45-minute design: agent hosting + WIF + progressive delivery with HITL. Execute this artifact in `interview-prep/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=interview-prep/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 30, "title": "System design: agent hosting", "path": "interview-prep/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=interview-prep/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Timed design: WIF + MCP + HITL + hosting tradeoff", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "done-0", "text": "Design doc committed", "kind": "done"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": []}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": []}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": []}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Timed design: WIF + MCP + HITL + hosting tradeoff", "detail": "Complete this step in `interview-prep/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "interview-prep/README.md"}]}]};
+const PLAN = {"week": 30, "title": "System design: agent hosting + identity", "path": "interview-prep/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=interview-prep/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Timed design doc with explicit tradeoff table", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "done-0", "text": "Hosting recommendation defended with constraints", "kind": "done"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": []}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": []}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": []}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Timed design doc with explicit tradeoff table", "detail": "45-minute design: agent hosting + WIF + progressive delivery with HITL. Execute this artifact in `interview-prep/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "interview-prep/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

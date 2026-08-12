@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 23 — Observability + policy</title>
+<title>Week 23 — Observe agent behavior</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,13 +131,13 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 23 guide</div>
-      <h1>Observability + policy</h1>
+      <h1>Observe agent behavior</h1>
       <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">12–15 hrs · capstone</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
     <div class="stat">
       <strong id="pct">0%</strong>
-      <span id="step-count">0 of 6 steps</span>
+      <span id="step-count">0 of 7 steps</span>
       <div class="progress-track"><div class="progress-fill" id="bar" style="width:0%"></div></div>
     </div>
     <div class="side-actions">
@@ -148,24 +148,25 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">Endpoint policy stub; OTel/metrics; SLO sketch; event plane</p>
+      <p class="learn">SLOs, traces, and LLM cost/latency as first-class ops signals</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>Diagnose a failed tool call from telemetry alone; define an SLO without fake numbers.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>Endpoint policy stub + metrics/SLO note + event plane</li></ul>
+          <ul><li>Structured logs/metrics for tools</li><li>SLO measurement definition</li><li>Policy stub in demo</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>SLOs / error budgets for agent APIs (honest sketches)</li><li>Structured logs + basic OTel concepts</li><li>LLM cost/latency fields worth emitting</li></ol>
+          <ol><li>LLM cost/latency fields worth emitting</li><li>Error budgets for agent correctness</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
         <h3>Resources</h3>
-        <div class="res-list"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Capstone</a><a href="https://opentelemetry.io/docs/concepts/" target="_blank" rel="noopener">OpenTelemetry overview</a></div>
+        <div class="res-list"><a href="https://opentelemetry.io/docs/concepts/" target="_blank" rel="noopener">OpenTelemetry concepts</a><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Capstone</a></div>
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>Wire endpoint policy stub from projects/09</strong><p>Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Structured logs + OTel/metrics stub + short SLO note</strong><p>Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Adoption/event plane reads capstone logs</strong><p>Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>Emit structured logs + minimal trace/metric fields for tool calls</strong><p>Diagnose a failed tool call from telemetry alone; define an SLO without fake numbers. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>SLO sketch: availability + escalation correctness (define measurement, no fake %)</strong><p>Diagnose a failed tool call from telemetry alone; define an SLO without fake numbers. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div><div class="task-card"><strong>Wire endpoint policy stub into demo path</strong><p>Diagnose a failed tool call from telemetry alone; define an SLO without fake numbers. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 23, "title": "Observability + policy", "path": "projects/08-capstone-ops-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Wire endpoint policy stub from projects/09", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "Structured logs + OTel/metrics stub + short SLO note", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Adoption/event plane reads capstone logs", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "Policy check in demo flow", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "Metrics + SLO note present", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Wire endpoint policy stub from projects/09", "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}, {"title": "Structured logs + OTel/metrics stub + short SLO note", "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}, {"title": "Adoption/event plane reads capstone logs", "detail": "Complete this step in `projects/08-capstone-ops-agent/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}]};
+const PLAN = {"week": 23, "title": "Observe agent behavior", "path": "projects/08-capstone-ops-agent/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=projects/08-capstone-ops-agent/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Emit structured logs + minimal trace/metric fields for tool calls", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "build-1", "text": "SLO sketch: availability + escalation correctness (define measurement, no fake %)", "kind": "build"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": [{"id": "build-2", "text": "Wire endpoint policy stub into demo path", "kind": "build"}]}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": [{"id": "done-0", "text": "One failed tool call is diagnosable from logs", "kind": "done"}]}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": [{"id": "done-1", "text": "SLO note states numerator/denominator", "kind": "done"}]}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": [{"id": "done-2", "text": "Policy check visible in demo", "kind": "done"}]}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Emit structured logs + minimal trace/metric fields for tool calls", "detail": "Diagnose a failed tool call from telemetry alone; define an SLO without fake numbers. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}, {"title": "SLO sketch: availability + escalation correctness (define measurement, no fake %)", "detail": "Diagnose a failed tool call from telemetry alone; define an SLO without fake numbers. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}, {"title": "Wire endpoint policy stub into demo path", "detail": "Diagnose a failed tool call from telemetry alone; define an SLO without fake numbers. Execute this artifact in `projects/08-capstone-ops-agent/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "projects/08-capstone-ops-agent/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 

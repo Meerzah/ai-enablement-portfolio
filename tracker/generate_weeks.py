@@ -30,6 +30,7 @@ def build_week(week: int) -> dict:
         "theme": plan.get("theme", plan["title"]),
         "learn": plan.get("learn", ""),
         "feeds": plan.get("feeds", mp.get("feeds", [])),
+        "challenge": guide.get("challenge", ""),
         "objectives": guide["objectives"],
         "study": guide["study"],
         "resources": guide["resources"],

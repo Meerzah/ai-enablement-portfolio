@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Week 29 — System design: Okta-as-code</title>
+<title>Week 29 — System design: Okta-as-code + SCIM + agents</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -131,7 +131,7 @@ a:hover{text-decoration:underline}
   <aside class="side">
     <div>
       <div class="eyebrow">Week 29 guide</div>
-      <h1>System design: Okta-as-code</h1>
+      <h1>System design: Okta-as-code + SCIM + agents</h1>
       <p style="margin-top:8px;font-size:12px;color:var(--muted);font-family:var(--mono)">8–12 hrs</p>
       <p style="margin-top:12px"><a class="back" href="../">← Dashboard</a></p>
     </div>
@@ -148,15 +148,16 @@ a:hover{text-decoration:underline}
   <main class="main">
     <section class="curriculum">
       <h2>This week’s curriculum</h2>
-      <p class="learn">TF topology vs SCIM lifecycle; agent HITL for membership</p>
+      <p class="learn">45-min design defending TF/SCIM/HITL split under drift and abuse</p>
+      <p class="learn" style="padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:#0f4f52"><strong style="color:var(--ink)">Challenge — </strong>45-minute design: Okta-as-code + SCIM + agent HITL under drift and abuse.</p>
       <div class="cur-grid">
         <div class="cur-block">
           <h3>Objectives</h3>
-          <ul><li>Timed Okta-as-code + SCIM design writeup</li></ul>
+          <ul><li>Full design with abuse cases</li></ul>
         </div>
         <div class="cur-block">
           <h3>Study &amp; prep</h3>
-          <ol><li>TF topology vs SCIM lifecycle; agent HITL</li></ol>
+          <ol><li>TF/SCIM split interview answers</li></ol>
         </div>
       </div>
       <div class="cur-block" style="margin-top:14px">
@@ -165,7 +166,7 @@ a:hover{text-decoration:underline}
       </div>
       <div class="cur-block" style="margin-top:16px">
         <h3>Sub-tasks</h3>
-        <div class="task-list"><div class="task-card"><strong>45-min timed design → interview-prep/answers/okta-iac-scim-boundary.md</strong><p>Complete this step in `interview-prep/`. Open the project brief for context, then commit when done.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=interview-prep/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
+        <div class="task-list"><div class="task-card"><strong>Timed design → answers/okta-iac-scim-boundary.md with failure modes</strong><p>45-minute design: Okta-as-code + SCIM + agent HITL under drift and abuse. Execute this artifact in `interview-prep/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.</p><div class="task-docs"><a href="https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=interview-prep/README.md" target="_blank" rel="noopener">Project brief</a></div></div></div>
       </div>
     </section>
 
@@ -180,7 +181,7 @@ a:hover{text-decoration:underline}
   </main>
 </div>
 <script>
-const PLAN = {"week": 29, "title": "System design: Okta-as-code", "path": "interview-prep/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=interview-prep/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "45-min timed design → interview-prep/answers/okta-iac-scim-boundary.md", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "done-0", "text": "Written design committed", "kind": "done"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": []}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": []}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": []}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "45-min timed design → interview-prep/answers/okta-iac-scim-boundary.md", "detail": "Complete this step in `interview-prep/`. Open the project brief for context, then commit when done.", "docs": [{"title": "Project brief", "url": "interview-prep/README.md"}]}]};
+const PLAN = {"week": 29, "title": "System design: Okta-as-code + SCIM + agents", "path": "interview-prep/", "projectHref": "https://meerzah.github.io/ai-systems-portfolio/site/doc.html?path=interview-prep/README.md", "days": [{"day": "mon", "label": "Monday", "short": "Mon", "steps": [{"id": "build-0", "text": "Timed design → answers/okta-iac-scim-boundary.md with failure modes", "kind": "build"}]}, {"day": "tue", "label": "Tuesday", "short": "Tue", "steps": [{"id": "done-0", "text": "Design includes sequence + abuse cases", "kind": "done"}]}, {"day": "wed", "label": "Wednesday", "short": "Wed", "steps": []}, {"day": "thu", "label": "Thursday", "short": "Thu", "steps": []}, {"day": "fri", "label": "Friday", "short": "Fri", "steps": []}, {"day": "sat", "label": "Saturday", "short": "Sat", "steps": []}, {"day": "sun", "label": "Sunday", "short": "Sun", "steps": [{"id": "wrap", "text": "Review the week, then mark it complete on the dashboard", "kind": "wrap"}]}], "tasks": [{"title": "Timed design → answers/okta-iac-scim-boundary.md with failure modes", "detail": "45-minute design: Okta-as-code + SCIM + agent HITL under drift and abuse. Execute this artifact in `interview-prep/`. Assume Okta/GCP/Python fundamentals. Optimize for something a hiring manager can interrogate: tradeoffs, failure modes, and enforceable controls — not setup steps.", "docs": [{"title": "Project brief", "url": "interview-prep/README.md"}]}]};
 const PREFIX = "workbook-" + PLAN.week + "-";
 const TODAY = ["sun","mon","tue","wed","thu","fri","sat"][new Date().getDay()];
 
