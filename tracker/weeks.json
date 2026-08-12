@@ -67,8 +67,12 @@
           "url": "CURRICULUM.md"
         },
         {
-          "title": "OWASP LLM Top 10 (threat framing)",
-          "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+          "title": "GCP Agent Identity overview",
+          "url": "https://docs.cloud.google.com/iam/docs/agent-identity-overview"
+        },
+        {
+          "title": "Week 1 decision-boundary worksheet",
+          "url": "study-notes/weeks/week-01-friction-inventory.md"
         }
       ],
       "tasks": [
@@ -427,8 +431,12 @@
           "url": "projects/02-okta-mcp-server/README.md"
         },
         {
-          "title": "OWASP LLM Top 10",
-          "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+          "title": "MCP specification \u2014 tools",
+          "url": "https://modelcontextprotocol.io/specification"
+        },
+        {
+          "title": "GCP Agent Identity overview",
+          "url": "https://docs.cloud.google.com/iam/docs/agent-identity-overview"
         }
       ],
       "tasks": [
@@ -2359,12 +2367,16 @@
       ],
       "resources": [
         {
-          "title": "OWASP LLM Top 10",
-          "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+          "title": "M1 agent / evals",
+          "url": "projects/01-it-helpdesk-agent/README.md"
         },
         {
-          "title": "M1 agent",
-          "url": "projects/01-it-helpdesk-agent/README.md"
+          "title": "Flagship control plane",
+          "url": "projects/08-capstone-ops-agent/README.md"
+        },
+        {
+          "title": "AGENT-CONTRACT (allow-listed groups)",
+          "url": "projects/11-okta-iac/docs/AGENT-CONTRACT.md"
         }
       ],
       "tasks": [
